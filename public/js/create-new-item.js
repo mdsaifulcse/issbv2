@@ -542,7 +542,7 @@ $(document).ready(function(){
 
 
     /* add more sub question */
-    var i = 0;
+    var i = 1;
     $('#sub_question').on('click', function(){
         i++;
         names.push('options_'+i);
@@ -555,8 +555,9 @@ $(document).ready(function(){
             if(sub_options_type){
                 if(sub_question_type == 1){
                     $('#more_sub_question').append('<div class="sub_question_txt extra_question"><span id="id_'+i+'" class="btn btn-danger btn-sm remove_sub_question" style="float: right;margin-bottom: 2px;">&times;</span><div class="form-group">'+
-                        '<label for="sub_question">Sub Question</label>'+
-                        '<input type="text" class="form-control sub_question_text" name="sub_text_question[]" id="" placeholder="Sub Question" required/>'+
+                        '<label for="sub_question">Sub Question '+ i +'</label>'+
+                        // '<input type="text" class="form-control sub_question_text" name="sub_text_question[]" id="" placeholder="Sub Question" required/>'+
+                        '<textarea class="form-control sub_question_text tinymce-editor" name="sub_text_question[]" placeholder="Sub Question '+ i+'"></textarea>'+
                         '<div class="invalid-feedback">This field is required.</div>'+
                         '</div>' +
                         '<span id="more_sub_option_'+i+'"></span>' +
@@ -566,6 +567,24 @@ $(document).ready(function(){
                         '</select>' +
                         '<div class="invalid-feedback">This field is required.</div>'+
                         '<br></div>');
+
+                        // ----------- For Appended Sub Question Text editor
+                        tinymce.init({
+                                    selector: 'textarea.tinymce-editor',
+                                    height: 150,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image charmap print preview anchor',
+                                        'searchreplace visualblocks code fullscreen',
+                                        'insertdatetime media table paste code help wordcount', 'image'
+                                    ],
+                                    toolbar: 'undo redo | formatselect | ' +
+                                        'bold italic forecolor backcolor | alignleft aligncenter ' +
+                                        'alignright alignjustify | bullist numlist outdent indent | ' +
+                                        'removeformat | help',
+                                    //content_css: '//www.tiny.cloud/css/codepen.min.css'
+                                });
+
                 }
                 else if(sub_question_type == 2)
                 {

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="{{ asset('assets/images/issb-logo.png') }}" type="image/png" sizes="16x16">
+    <!-- <link rel="icon" href="{{ asset('assets/images/issb-logo.png') }}" type="image/png" sizes="16x16"> -->
     <title>
         @section('title')
         | ISSB

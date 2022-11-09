@@ -38,15 +38,17 @@ Item Bank
     <!--section starts-->
     <h1>
         @if($status == 1)
-        Active
-        @elseif($status == 2)
-        Inactive
+            Active
+            @elseif($status == 2)
+            Inactive
         @endif
+
         @foreach($test_list as $test)
-        @if($test->id == $item_for)
-        {{ $test->name }}
-        @endif
+            @if($test->id == $item_for)
+                {{ $test->name }}
+            @endif
         @endforeach
+
         Item Bank
     </h1>
     <ol class="breadcrumb">
@@ -133,7 +135,7 @@ Item Bank
                                 <td>{{ $value->name }}</td>
                                 <td>
                                     @if($value->item_type == 1)
-                                    {{ $value->item }}
+                                     <?php echo $value->item; ?> 
                                     @elseif($value->item_type == 2)
                                     <img src="{{ asset('assets/uploads/questions/images/'.$value->item) }}" alt="..." style="width: 250px; height: 150px;">
                                     @elseif($value->item_type == 3)

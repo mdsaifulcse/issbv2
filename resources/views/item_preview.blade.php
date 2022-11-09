@@ -26,6 +26,12 @@ Test
     .pagination {
         float: right;
     }
+    .question-heading{
+        display: inline-flex;
+    }
+    .question-answer{
+        text-indent: 20px;
+    }
 </style>
 @stop
 
@@ -73,7 +79,15 @@ Test
             <div class="panel panel-info">
                 <div class="panel-heading clearfix">
                     <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        {{ ($itemDetails->sub_question_status==1)? $itemDetails->sub_question:$itemDetails->item }}
+                        {{$itemDetails->item}}
+                       <!--  <?php // saif
+                            if ($itemDetails->sub_question_status==1) {
+                                echo $itemDetails->item;
+                            }else {
+                                echo $itemDetails->sub_question;
+                            }
+                        ?> -->
+                        <!-- {{ ($itemDetails->sub_question_status==1)? $itemDetails->sub_question:$itemDetails->item }} -->
                     </h3>
                 </div>
                 <div class="panel-body">
@@ -150,54 +164,51 @@ Test
                             $corAnswers     = explode('||', $itemDetails->sub_correct_answer);
                         @endphp
                         @foreach ($items as $key=>$item)
-                        <table id="" class="" style="width:100%;" >
-                            <tbody>
-                                <tr>
-                                    <th width="30%">Question</th>
-                                    <th width="70%">:
-                                        @if($itemType == 1)
-                                        {{ $item }}
-                                        @elseif($itemType == 2)
-                                        <img src="{{ asset('assets/uploads/questions/images/'.$item) }}" alt="..." style="width: 250px; height: 150px;">
-                                        @elseif($itemType == 3)
-                                        <audio controls>
-                                            <source src="{{ asset('assets/uploads/questions/sounds/'.$item) }}" type="audio/ogg">
-                                            <source src="{{ asset('assets/uploads/questions/sounds/'.$item) }}" type="audio/mpeg">
-                                            Your browser does not support the audio element.
-                                        </audio>
-                                        @endif
-                                </tr>
-                                @php
-                                    $questionOptions    = explode('||', $optionsAll[$key]);
-                                    $corAns             = $corAnswers[$key];
-                                @endphp
 
-                                @if (count($questionOptions)>0)
-                                    <tr>
-                                        <th width="30%">Options</th>
-                                        <th width="70%">:</th>
-                                    </tr>
-                                    @foreach ($questionOptions as $key=>$questionOption)
-                                        <tr>
-                                            <th width="30%"></th>
-                                            <th width="70%"> {{ $key+1 .') ' }}
-                                                @if($optionType == 1)
-                                                    {{ $questionOption }}
-                                                @elseif($optionType == 2)
-                                                <img src="{{ asset($imagePath.$questionOption) }}" alt="..." style="width: 250px; height: 150px; margin-top:5px;">
-                                                @elseif($optionType == 3)
-                                                <audio controls>
-                                                    <source src="{{ asset($soundPath.$questionOption) }}" type="audio/ogg">
-                                                    <source src="{{ asset($soundPath.$questionOption) }}" type="audio/mpeg">
-                                                    Your browser does not support the audio element.
-                                                </audio>
-                                                @endif
-                                            </th>
-                                        </tr>
-                                    @endforeach
+
+                        <div class="question">
+                            @if($itemType == 1)
+                               <h3 class="question-heading">{{$key+1}}. &nbsp; <?php echo $item?> </h3>
+                                @elseif($itemType == 2)
+                                <img src="{{ asset('assets/uploads/questions/images/'.$item) }}" alt="..." style="width: 250px; height: 150px;">
+                                @elseif($itemType == 3)
+                                <audio controls>
+                                    <source src="{{ asset('assets/uploads/questions/sounds/'.$item) }}" type="audio/ogg">
+                                    <source src="{{ asset('assets/uploads/questions/sounds/'.$item) }}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            @endif
+
+
+                        </div>
+
+                        <div class="question-answer">
+                              @php
+                                $questionOptions    = explode('||', $optionsAll[$key]);
+                                $corAns             = $corAnswers[$key];
+                              @endphp
+
+                            @if (count($questionOptions)>0)
+                              @foreach ($questionOptions as $j=>$questionOption)
+
+                                @if($optionType == 1)
+                                    <label class="btn btn-success">{{ $questionOption }}</label>
+
+                                @elseif($optionType == 2)
+                                    <img src="{{ asset($imagePath.$questionOption) }}" alt="..." style="width: 250px; height: 150px; margin-top:5px;">
+                                @elseif($optionType == 3)
+                                    <audio controls>
+                                        <source src="{{ asset($soundPath.$questionOption) }}" type="audio/ogg">
+                                        <source src="{{ asset($soundPath.$questionOption) }}" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
                                 @endif
-                            </tbody>
-                        </table>
+
+
+                               @endforeach
+                            @endif
+                        </div>
+
                         @endforeach
                     @endif
                 </div>

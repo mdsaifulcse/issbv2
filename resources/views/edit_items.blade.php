@@ -319,7 +319,7 @@
                                 <div id="qt_text_show" @if($item->item_type != 1) hidden @endif>
                                     <div class="form-group">
                                         <label for="option">Item</label>
-                                        <textarea class="form-control text_questions" name="item_text" id="" placeholder="Item">@if($item->item_type == 1){{  $item->item }}@endif</textarea>
+                                        <textarea class="form-control text_questions tinymce-editor" name="item_text" id="" placeholder="Item">@if($item->item_type == 1){{  $item->item }}@endif</textarea>
                                         <div class="invalid-feedback">This field is required.</div>
                                     </div>
                                 </div>
@@ -407,8 +407,12 @@
                                             <div class="sub_question_blog mb-4 extra_question">
                                                 <span id="id_{{ $key }}" class="btn btn-danger btn-sm sub_qt_old remove_sub_question" id="remove_{{ $key+1 }}" style="float: right;margin-bottom: 2px;">&times;</span>
                                                 <div id="sub_question_text" class="form-group old_questions" @if($item->sub_question_type != 1) hidden @endif>
-                                                    <label for="sub_question">Sub Question</label>
-                                                    <input type="text" class="form-control sub_question_text" name="sub_text_question[]" value="{{ $sub_question }}" id="" placeholder="Sub Question"/>
+                                                    <label for="sub_question">Sub Question {{$key+1}}</label>
+
+                                                <textarea class="form-control sub_question_text tinymce-editor" name="sub_text_question[]" placeholder="Sub Question">{{ $sub_question }}</textarea>
+
+                                                <!-- <input type="text" class="form-control sub_question_text" name="sub_text_question[]" value="{{ $sub_question }}" id="" placeholder="Sub Question"/> -->
+
                                                     <div class="invalid-feedback">This field is required.</div>
                                                 </div>
 
@@ -569,7 +573,7 @@
                                         @endforeach
                                     </div>
 
-                                    <input type="hidden" class="total_prev_sub_question" value="{{ count($sub_questions) }}">
+                                    <input type="text" class="total_prev_sub_question" value="{{ count($sub_questions) }}">
                                     <span id="more_sub_question"></span><br>
                                     <div class="btn btn-primary btn-sm mt-2" id="sub_question">add more sub question</div>
                                 </div>
@@ -722,6 +726,27 @@
     <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
     <script src="{{asset('js/jequery-validation.js')}}"></script>
     <script src="{{ asset('js/edit-items.js') }}"></script>
+    <script src="{{ asset('assets/tinymce/tinymce.min.js') }}"></script>
+
+     <script>
+        
+            tinymce.init({
+            selector: 'textarea.tinymce-editor',
+            height: 150,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount', 'image'
+            ],
+            toolbar: 'undo redo | formatselect | ' +
+                'bold italic forecolor backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat | help',
+            //content_css: '//www.tiny.cloud/css/codepen.min.css'
+        });
+
+    </script>
 
 
     <script>

@@ -23,12 +23,6 @@ Test
     .pagination {
         float: right;
     }
-    .question-heading{
-        display: inline-flex;
-    }
-    .question-answer{
-        text-indent: 20px;
-    }
 </style>
 <?php $__env->stopSection(); ?>
 
@@ -167,49 +161,60 @@ Test
                         <?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
 
-                        <div class="question">
-                            <?php if($itemType == 1): ?>
-                               <h3 class="question-heading"><?php echo e($key+1); ?>. &nbsp; <?php echo $item?> </h3>
-                                <?php elseif($itemType == 2): ?>
-                                <img src="<?php echo e(asset('assets/uploads/questions/images/'.$item)); ?>" alt="..." style="width: 250px; height: 150px;">
-                                <?php elseif($itemType == 3): ?>
-                                <audio controls>
-                                    <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$item)); ?>" type="audio/ogg">
-                                    <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$item)); ?>" type="audio/mpeg">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            <?php endif; ?>
 
 
-                        </div>
 
-                        <div class="question-answer">
-                              <?php
-                                $questionOptions    = explode('||', $optionsAll[$key]);
-                                $corAns             = $corAnswers[$key];
-                              ?>
+                        <table id="" class="" style="width:100%;" >
+                            <tbody>
+                                <tr>
+                                    <th width="30%">Question</th>
+                                    <th width="70%">:
+                                        <?php if($itemType == 1): ?>
+                                        <?php echo e($item); ?>
 
-                            <?php if(count($questionOptions)>0): ?>
-                              <?php $__currentLoopData = $questionOptions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $j=>$questionOption): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php elseif($itemType == 2): ?>
+                                        <img src="<?php echo e(asset('assets/uploads/questions/images/'.$item)); ?>" alt="..." style="width: 250px; height: 150px;">
+                                        <?php elseif($itemType == 3): ?>
+                                        <audio controls>
+                                            <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$item)); ?>" type="audio/ogg">
+                                            <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$item)); ?>" type="audio/mpeg">
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                        <?php endif; ?>
+                                    </th>
+                                </tr>
+                                <?php
+                                    $questionOptions    = explode('||', $optionsAll[$key]);
+                                    $corAns             = $corAnswers[$key];
+                                ?>
 
-                                <?php if($optionType == 1): ?>
-                                    <label class="btn btn-success"><?php echo e($questionOption); ?></label>
+                                <?php if(count($questionOptions)>0): ?>
+                                    <tr>
+                                        <th width="30%">Options</th>
+                                        <th width="70%">:</th>
+                                    </tr>
+                                    <?php $__currentLoopData = $questionOptions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$questionOption): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <tr>
+                                            <th width="30%"></th>
+                                            <th width="70%"> <?php echo e($key+1 .') '); ?>
 
-                                <?php elseif($optionType == 2): ?>
-                                    <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="..." style="width: 250px; height: 150px; margin-top:5px;">
-                                <?php elseif($optionType == 3): ?>
-                                    <audio controls>
-                                        <source src="<?php echo e(asset($soundPath.$questionOption)); ?>" type="audio/ogg">
-                                        <source src="<?php echo e(asset($soundPath.$questionOption)); ?>" type="audio/mpeg">
-                                        Your browser does not support the audio element.
-                                    </audio>
+                                                <?php if($optionType == 1): ?>
+                                                    <?php echo e($questionOption); ?> dd
+                                                <?php elseif($optionType == 2): ?>
+                                                <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="..." style="width: 250px; height: 150px; margin-top:5px;">
+                                                <?php elseif($optionType == 3): ?>
+                                                <audio controls>
+                                                    <source src="<?php echo e(asset($soundPath.$questionOption)); ?>" type="audio/ogg">
+                                                    <source src="<?php echo e(asset($soundPath.$questionOption)); ?>" type="audio/mpeg">
+                                                    Your browser does not support the audio element.
+                                                </audio>
+                                                <?php endif; ?>
+                                            </th>
+                                        </tr>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php endif; ?>
-
-
-                               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            <?php endif; ?>
-                        </div>
-
+                            </tbody>
+                        </table>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <?php endif; ?>
                 </div>
@@ -314,4 +319,4 @@ Test
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\issb_psychometric\resources\views/item_preview.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\issb_psychometric\resources\views/item_preview1.blade.php ENDPATH**/ ?>
