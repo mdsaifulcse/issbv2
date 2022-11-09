@@ -1,0 +1,17 @@
+.main-content {
+    background: url(/assets/images/background.png);
+    max-width: 466px;
+    height: 100%;
+    margin: 35px auto;
+    padding: 10px;
+}
+p.icons {
+    display: inline;
+    margin: 0px 9px;
+    border: 2px solid #2021ea;
+    padding: 7px 8px;
+    border-radius: 50%;
+}
+img.icons {
+    margin: 26px 45px;
+}

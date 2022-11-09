@@ -1,0 +1,712 @@
+@charset "UTF-8";
+
+body {
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+/* Student Dashboard logo */
+.navbar-brand > img {
+    height: 20px;
+}
+.navbar-inverse .navbar-brand {
+    padding-left: 20px;
+}
+
+/* Overview graph CSS */
+body .overview-graph #filter_button {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  z-index: 99;
+  right: 0;
+  margin: auto;
+  display: block;
+  width: 320px;
+  text-align: center;
+}
+body .overview-graph #filter_button button{
+  padding: 5px 15px;
+}
+.dashboard-graph .highcharts-figure {
+/*    min-width: inherit;
+*/    max-width: 100%;
+    margin-bottom: 0;
+}
+.thumbnail.lfwf-p-thumbnail {
+    padding-top: 15px;
+}
+.lfwf-p-thumbnail .course-name {
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 16px;
+    position: relative;
+}
+/*.lfwf-p-thumbnail p.course-name::after{
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    width: 80px;
+    height: 2px;
+    background: #20ad96;
+    margin: auto;
+    border-radius: 50%;
+}*/
+/*.dashboard-graph .highcharts-figure .highcharts-legend {
+    display: none !important;
+}*/
+@media all and (max-width: 1400px) {
+  body .overview-graph #filter_button {
+      top: 10px;
+      left: inherit;
+      right: 0;
+      right: 18px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  body .overview-graph #filter_button {
+      position: absolute;
+      top: 10px;
+      left: inherit;
+      right: 0;
+      display: block;
+      width: inherit;
+      text-align: right;
+      background: transparent;
+      right: 20px;
+      min-width: inherit;
+  }
+  body .overview-graph #filter_button button{
+    padding: 5px;
+  }
+}
+
+.dataTables_info {
+    padding-left: 15px;
+}
+/* Quiz CSS */
+#examTimeCountDown {
+    font-size: 20px;
+    color: #e74c3c;
+    font-weight: 500;
+}
+/* Progress page */
+.overall-progress .panel.panel-body.border-top-info.text-center {
+    margin-bottom: 0;
+}
+.overall-progress h6 {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 400;
+}
+/* Header CSS */
+.navbar.navbar-inverse.navbar-fixed-top {
+    background-image: linear-gradient(to right, #43cea2 , #185a9d) !important;
+    border: none;
+}
+.page-container .page-header .breadcrumb-line {
+    background-color: #f7f7f7;
+}
+.navbar.navbar-inverse.navbar-fixed-top .nav>li>a {
+    /*padding: 9px 13px;*/
+}
+
+/* Overview Graph */
+.highcharts-figure .highcharts-credits {
+    display: none;
+}
+.highcharts-description.highcharts-linked-description {
+    text-align: center;
+}
+.progress.content-group-sm {
+    margin-bottom: 0 !important;
+}
+body .progress {
+    height: 30px;
+}
+body .progress-bar {
+    line-height: 32px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Modify_jillur CSS */
+body .page-header + .content {
+    padding-top: 0;
+    max-width: 1600px;
+    margin: auto;
+}
+#videoPlayerIframe #video-placeholder {
+    border: 10px solid #fff;
+    border-radius: 10px;
+    height: 730px !important;
+    width: 100% !important;
+}
+#load_content .content {
+    padding: 0;
+}
+
+/* Video Scrolling issue solve */
+.has-detached-left .content-detached {
+    height: 100vh;
+}
+
+.panel-body#videoPlayerIframe {
+    padding: 0 !important;
+}
+
+/* Additional Media Profile CSS */
+.lfwf-p-thumbnail .thumb {
+    text-align: center;
+}
+.lfwf-p-thumbnail .thumb img {
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    text-align: center;
+    border-radius: 50%;
+    border: 5px solid #ecf0f1;
+}
+
+.has-detached-left .content-detached .footer {
+  display: none;
+}
+
+/* Start Thumbnail Header CSS */
+  .lfwf-student-name{
+    position: relative;
+    display: inline-block;
+  }
+  .lfwf-student-name svg {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        width: calc(90% + 20px);
+        height: calc(30% + 50px);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        overflow: visible;
+    }
+  .lfwf-student-name svg path {
+        stroke: #f39c12;
+        stroke-width: 9;
+        fill: none;
+        stroke-dasharray: 1500;
+        -webkit-animation: elementor-headline-dash 10s infinite;
+        animation: elementor-headline-dash 10s infinite;
+    }
+  .lfwf-student-name svg path:nth-of-type(2) {
+        -webkit-animation-delay: 0.6s;
+        animation-delay: 0.6s;
+    }
+    @-webkit-keyframes elementor-headline-dash {
+        0% {
+            stroke-dasharray: 0 1500;
+        }
+        15% {
+            stroke-dasharray: 1500 1500;
+        }
+        85% {
+            opacity: 1;
+        }
+        90% {
+            stroke-dasharray: 1500 1500;
+            opacity: 0;
+        }
+        to {
+            stroke-dasharray: 0 1500;
+            opacity: 0;
+        }
+    }
+    @keyframes elementor-headline-dash {
+        0% {
+            stroke-dasharray: 0 1500;
+        }
+        15% {
+            stroke-dasharray: 1500 1500;
+        }
+        85% {
+            opacity: 1;
+        }
+        90% {
+            stroke-dasharray: 1500 1500;
+            opacity: 0;
+        }
+        to {
+            stroke-dasharray: 0 1500;
+            opacity: 0;
+        }
+    }
+
+/* End Thumbnail Header CSS */
+
+/* Student Home page CSS */
+.lfwf-p-thumbnail h6.text-semibold {
+    font-size: 20px;
+}
+.lfwf-p-thumbnail ul.icons-list.mt-15 {
+    margin-top: 12px !important;
+}
+.lfwf-p-thumbnail li .batch_no {
+    font-weight: bold;
+    font-size: 14px;
+}
+.lfwf-p-thumbnail li a {
+    position: relative;
+    top: -2px;
+    left: 4px;
+}
+.lfwf-p-thumbnail li a i {
+    color: #1b74e4;
+    font-size: 16px;
+    border: none;
+    text-shadow: none;
+}
+
+/* End Modified_jillur CSS */
+/* Practice Time CSS */
+
+/* --------- */
+  #timerItem {
+    width: 180px;
+    height: 180px;
+    background-color: rgba(38, 50, 56,.8);
+    border: 18px solid rgba(144, 164, 174,.8);
+    box-shadow: 0 4px 15px 0 rgba(84, 110, 122, 0.75);
+    border-radius: 50%;
+    touch-action: none;
+    user-select: none;
+    transition: .2s;
+    position: fixed;
+    right: 0;
+    top: 105px;
+    z-index: 999999;
+    color: #fff;
+  }
+  #timerItem:active {
+    background-color: #757575;
+    /*background-color: rgba(168, 218, 220, 1.00);*/
+  }
+  #timerItem:hover {
+    cursor: pointer;
+    border-width: 20px;
+  }
+
+  /*  Custom CSS  */
+.lfwf-clock-wrap,.lfwf-button-wrap{
+    text-align: center;
+}
+.lfwf-clock-wrap{
+    font-size: 24px;
+    transition: .3s;
+    /* font-size: 25px; */
+}
+
+.lfwf-timer,.lfwf-clock-wrap{
+    pointer-events: none;
+}
+.lfwf-timer {
+    position: relative;
+    transform: translateY(42px);
+    transition: .3s ease-in-out;
+}
+.lfwf-clock-wrap{
+    font-weight: bold;
+    color: #fff;
+}
+
+/*  Button  */
+.lfwf-timer .lfwf-button-wrap{
+    pointer-events: painted;
+    text-align: center;
+}
+.lfwf-toggle-btn {
+    font-size: 16px;
+    color: #fff !important;
+    cursor: pointer;
+    padding: 5px 22px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    background-image: linear-gradient(
+        to right,
+        #fc6076,
+        #ff9a44,
+        #ef9d43,
+        #e75516
+      );
+    box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
+    margin-top: 4px;
+    cursor: pointer;
+    border-radius: 50px;
+    moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+  
+  .lfwf-toggle-btn:hover {
+    color: #fff !important;
+    background-position: 100% 0;
+    moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+  
+  .lfwf-toggle-btn:focus {
+    color: #fff !important;
+    outline: none;
+  }
+.lfwf-button-wrap button{
+    opacity: 0;
+    visibility: hidden;
+}
+
+/*  Hover Statement  */
+#timerItem:hover .lfwf-clock-wrap{
+    font-size: 25px;
+}
+#timerItem:hover .lfwf-timer{
+    position: relative;
+    transform: translateY(39px);
+}
+#timerItem:hover .lfwf-toggle-btn,
+#timerItem:active .lfwf-toggle-btn{
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --------- */
+div#startPractice {
+    margin-top: 3px;
+}
+.start-practice::before {
+    content: "Start Practice";
+    font-size: 15px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: .4s;
+    transition-delay: 250ms;
+    color: #ddd;
+}
+#timerItem:hover .start-practice::before,
+#timerItem:active .start-practice::before {
+    opacity: 0;
+    visibility: hidden;
+    transition-delay: 10ms;
+}
+
+/* Practice Time Animation CSS */
+.stage.filter-contrast {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 5px 0;
+    margin: 0 -5%;
+    overflow: hidden;
+    width: 110px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6px;
+    background-color: rgba(79, 89, 94,0);
+/*    filter: contrast(5);*/
+    opacity: 1;
+    visibility: visible;
+    transition: .5s;
+}
+#timerItem:hover .stage.filter-contrast,
+#timerItem:active .stage.filter-contrast {
+    opacity: 0;
+    visibility: hidden;
+}
+#stop-timer {
+    position: absolute;
+    left: 20px;
+    right: 0;
+    margin: auto;
+    bottom: -18px;
+}
+/**
+ * ==============================================
+ * Experiment-Gooey Effect
+ * Dot Shuttle
+ * ==============================================
+ */
+.dot-shuttle {
+  position: relative;
+  left: -15px;
+  width: 9px;
+  height: 9px;
+  border-radius: 6px;
+  background-color: #ddd;
+  color: transparent;
+  margin: -1px 0;
+/*  filter: blur(2px);*/
+}
+.dot-shuttle::before, .dot-shuttle::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 6px;
+  background-color: #ddd;
+  color: transparent;
+/*  filter: blur(2px);*/
+}
+
+.dot-shuttle::before {
+  left: 15px;
+  width: 10px;
+  animation: dotShuttle 2s infinite ease-out;
+}
+
+.dot-shuttle::after {
+  left: 30px;
+}
+
+@keyframes dotShuttle {
+  0%,
+  50%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-45px);
+  }
+  75% {
+    transform: translateX(45px);
+  }
+}
+
+
+/* Responsive CSS */
+@media all and (max-width: 1660px) {
+
+  /* Fixed Responsive CSS */
+  .navbar-header {
+      min-width: auto;
+  }
+  .breadcrumb-line {
+      display: none;
+  }
+
+  #videoPlayerIframe #video-placeholder {
+      border: 10px solid #fff;
+      border-radius: 10px;
+      height: 566px !important;
+      width: 100% !important;
+  }
+  .panel-body#videoPlayerIframe {
+      padding: 20px !important;
+      padding-top: 0 !important;
+  }
+
+  /* Practice Counter Timing */
+  #timerItem {
+      width: 112px;
+      height: 112px;
+      border: 12px solid rgba(144, 164, 174,.8);
+      top: 47px;
+  }
+  .lfwf-clock-wrap {
+      font-size: 15px;
+  }
+  .start-practice::before {
+      content: "Start Practice";
+      font-size: 10px;
+  }
+  .lfwf-timer {
+      transform: translateY(28px);
+  }
+  #timerItem:hover {
+      cursor: pointer;
+      border-width: 13.5px;
+  }
+  #timerItem:hover .lfwf-clock-wrap {
+      font-size: 15px;
+  }
+  #timerItem:hover .lfwf-timer {
+      position: relative;
+      transform: translateY(25px);
+  }
+  .lfwf-toggle-btn {
+    font-size: 12px;
+    padding: 2px 12px;
+    margin-top: 0 !important;
+  }
+  #timerItem:hover .lfwf-timer {
+      transform: translateY(24px);
+  }
+  .stage.filter-contrast {
+    padding: 5px 0;
+    width: calc(100% - 15px);
+    margin-top: 2px;
+    border-radius: 20px;
+  }
+  #stop-timer {
+    bottom: -8px;
+  }
+  /* Counting animation */
+  .dot-shuttle {
+    position: relative;
+    left: -10px;
+  }
+  .dot-shuttle::after{
+      left: 25px;
+  }
+
+  .dot-shuttle {
+    width: 8px;
+    height: 8px;
+  /*  filter: blur(2px);*/
+  }
+  .dot-shuttle::before, .dot-shuttle::after {
+    width: 8px;
+    height: 8px;
+  }
+
+  .dot-shuttle::before {
+    width: 9px;
+  }
+  @keyframes dotShuttle {
+    0%,
+    50%,
+    100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-37px);
+    }
+    75% {
+      transform: translateX(26px);
+    }
+  }
+
+}
+
+
+/**
+ * ==============================================
+ * Dot Floating
+ * ==============================================
+ */
+.panel.panel-body.text-center.lfwfgolepanal {
+    border-top: 5px solid #2980b9;
+}
+.lfwfgolepanal mark {
+    margin-right: 5px;
+}
+.lfwfgolepanal h6 {
+    font-size: 16px;
+}
+/**
+ * ==============================================
+ * Experiment-Gooey Effect
+ * Dot Hourglass
+ * ==============================================
+ */
+.floting-animaciton{
+    filter: contrast(5);
+    background-color: white;
+}
+.floting-animaciton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 2rem 0;
+    margin: 0 -5%;
+    overflow: hidden;
+}
+
+.dot-hourglass {
+  position: relative;
+  top: -15px;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: black;
+  color: transparent;
+  margin: -1px 0;
+  filter: blur(2px);
+  transform-origin: 5px 20px;
+  animation: dotHourglass 2.4s infinite ease-in-out;
+  animation-delay: .6s;
+}
+
+.dot-hourglass::before, .dot-hourglass::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: black;
+  color: transparent;
+  filter: blur(2px);
+}
+
+.dot-hourglass::before {
+  top: 30px;
+}
+
+.dot-hourglass::after {
+  animation: dotHourglassAfter 2.4s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+@keyframes dotHourglass {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  25% {
+    transform: rotateZ(180deg);
+  }
+  50% {
+    transform: rotateZ(180deg);
+  }
+  75% {
+    transform: rotateZ(360deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes dotHourglassAfter {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(30px);
+  }
+  50% {
+    transform: translateY(30px);
+  }
+  75% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+/* Responsive CSS */
+@media all and (max-width: 768px) {
+  #timerItem{
+    top: 50px;
+  }
+}
