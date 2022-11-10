@@ -1534,11 +1534,11 @@ class AdminController extends Controller
             $insert_data->correct_answer = $correct_answer;
         }
 
-        $test_list = TestList::get()->toArray();
+        $testData = TestList::find($item_for);
 
         $insert_data->save();
 
-        return redirect('/items/' . $item_for . '/' . $status)->with('success', $test_list[$item_for - 1]['name'] . ' Item has been successfully created.');
+        return redirect('/items/' . $item_for . '/' . $status)->with('success', $testData->name . ' Item has been successfully created.');
     }
 
     public function editItems($id)

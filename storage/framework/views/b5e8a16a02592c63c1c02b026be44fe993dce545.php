@@ -1,80 +1,80 @@
-@extends('admin/layouts/default')
-
-{{-- Page title --}}
-@section('title')
-@if($status == 1)
+<?php $__env->startSection('title'); ?>
+<?php if($status == 1): ?>
 Active
-@elseif($status == 2)
+<?php elseif($status == 2): ?>
 Inactive
-@endif
-@foreach($test_list as $test)
-@if($test->id == $item_for)
-{{ $test->name }}
-@endif
-@endforeach
-Item Bank
-@parent
-@stop
+<?php endif; ?>
+<?php $__currentLoopData = $test_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $test): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+<?php if($test->id == $item_for): ?>
+<?php echo e($test->name); ?>
 
-{{-- page level styles --}}
-@section('header_styles')
+<?php endif; ?>
+<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+Item Bank
+##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('header_styles'); ?>
 <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 
 <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
 
 <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" /> -->
-<link href="{{ asset('DataTables/datatables.min.css') }}" rel="stylesheet" />
+<link href="<?php echo e(asset('DataTables/datatables.min.css')); ?>" rel="stylesheet" />
 <style>
     .pagination {
         float: right;
     }
 </style>
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- Page content --}}
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 <section class="content-header">
     <!--section starts-->
     <h1>
-        @if($status == 1)
+        <?php if($status == 1): ?>
             Active
-            @elseif($status == 2)
+            <?php elseif($status == 2): ?>
             Inactive
-        @endif
+        <?php endif; ?>
 
-        @foreach($test_list as $test)
-            @if($test->id == $item_for)
-                {{ $test->name }}
-            @endif
-        @endforeach
+        <?php $__currentLoopData = $test_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $test): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php if($test->id == $item_for): ?>
+                <?php echo e($test->name); ?>
+
+            <?php endif; ?>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         Item Bank
     </h1>
     <ol class="breadcrumb">
         <li>
-            <a href="{{ URL::to('/') }}">Dashboard</a>
+            <a href="<?php echo e(URL::to('/')); ?>">Dashboard</a>
         </li>
         <li>
-            @if($status == 1)
-            <a href="{{ URL::to('/item-bank/active') }}"> Active
-                @elseif($status == 2)
-                <a href="{{ URL::to('/item-bank/inactive') }}"> Inactive
-                    @endif
+            <?php if($status == 1): ?>
+            <a href="<?php echo e(URL::to('/item-bank/active')); ?>"> Active
+                <?php elseif($status == 2): ?>
+                <a href="<?php echo e(URL::to('/item-bank/inactive')); ?>"> Inactive
+                    <?php endif; ?>
                     Item Bank
                 </a>
         </li>
         <li class="active">
-            @if($status == 1)
+            <?php if($status == 1): ?>
             Active
-            @elseif($status == 2)
+            <?php elseif($status == 2): ?>
             Inactive
-            @endif
-            @foreach($test_list as $test)
-            @if($test->id == $item_for)
-            {{ $test->name }}
-            @endif
-            @endforeach
+            <?php endif; ?>
+            <?php $__currentLoopData = $test_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $test): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php if($test->id == $item_for): ?>
+            <?php echo e($test->name); ?>
+
+            <?php endif; ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             Item Bank
         </li>
     </ol>
@@ -86,34 +86,35 @@ Item Bank
             <div class="panel panel-info">
                 <div class="panel-heading clearfix">
                     <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        @if($status == 1)
+                        <?php if($status == 1): ?>
                         Active
-                        @elseif($status == 2)
+                        <?php elseif($status == 2): ?>
                         Inactive
-                        @endif
-                        @foreach($test_list as $test)
-                        @if($test->id == $item_for)
-                        {{ $test->name }}
-                        @endif
-                        @endforeach
+                        <?php endif; ?>
+                        <?php $__currentLoopData = $test_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $test): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php if($test->id == $item_for): ?>
+                        <?php echo e($test->name); ?>
+
+                        <?php endif; ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         Item Bank
                     </h3>
-                    @if($status == 1)
+                    <?php if($status == 1): ?>
                     <div class="pull-right">
-                        <a href="{{ URL::to('/items/'.$item_for.'/2') }}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span>Add Item</a>
+                        <a href="<?php echo e(URL::to('/items/'.$item_for.'/2')); ?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span>Add Item</a>
                     </div>
-                    @endif
+                    <?php endif; ?>
                 </div>
                 <div class="panel-body">
 
                     <table id="example" class="display nowrap" style="width:100%">
                         <thead>
                             <tr>
-                                @if($status == 1)
+                                <?php if($status == 1): ?>
                                 <th>Sl No</th>
-                                @elseif($status == 2)
+                                <?php elseif($status == 2): ?>
                                 <th>Selection</th>
-                                @endif
+                                <?php endif; ?>
                                 <th>Name</th>
                                 <th>Item</th>
                                 <th>Status</th>
@@ -121,64 +122,65 @@ Item Bank
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($items as $key => $value)
+                            <?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                @if($status == 1)
-                                <td>{{ ++$key }}</td>
-                                @elseif($status == 2)
+                                <?php if($status == 1): ?>
+                                <td><?php echo e(++$key); ?></td>
+                                <?php elseif($status == 2): ?>
                                 <td class="text-center">
                                     <div class="checkbox-container">
-                                        <input type="checkbox" class="check" value="{{ $value->id }}" id="check_{{$value->id}}" name="checkbox[]" />
+                                        <input type="checkbox" class="check" value="<?php echo e($value->id); ?>" id="check_<?php echo e($value->id); ?>" name="checkbox[]" />
                                     </div>
                                 </td>
-                                @endif
-                                <td>{{ $value->name }}</td>
+                                <?php endif; ?>
+                                <td><?php echo e($value->name); ?></td>
                                 <td>
-                                    @if($value->item_type == 1)
+                                    <?php if($value->item_type == 1): ?>
                                      <?php echo $value->item; ?> 
-                                    @elseif($value->item_type == 2)
-                                    <img src="{{ asset('assets/uploads/questions/images/'.$value->item) }}" alt="..." style="width: 150px; height: 95px">
-                                    @elseif($value->item_type == 3)
+                                    <?php elseif($value->item_type == 2): ?>
+                                    <img src="<?php echo e(asset('assets/uploads/questions/images/'.$value->item)); ?>" alt="..." style="width: 150px; height: 95px">
+                                    <?php elseif($value->item_type == 3): ?>
                                     <audio controls>
-                                        <source src="{{ asset('assets/uploads/questions/sounds/'.$value->item) }}" type="audio/ogg">
-                                        <source src="{{ asset('assets/uploads/questions/sounds/'.$value->item) }}" type="audio/mpeg">
+                                        <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$value->item)); ?>" type="audio/ogg">
+                                        <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$value->item)); ?>" type="audio/mpeg">
                                         Your browser does not support the audio element.
                                     </audio>
-                                    @endif
+                                    <?php endif; ?>
                                 </td>
                                 <td>
-                                    @if($value->item_status == 1)
+                                    <?php if($value->item_status == 1): ?>
                                     <span class="label label-success">Active</span>
-                                    @elseif ($value->item_status == 2)
+                                    <?php elseif($value->item_status == 2): ?>
                                     <span class="label label-danger">Inactive
-                                    @elseif ($value->item_status == 3)
+                                    <?php elseif($value->item_status == 3): ?>
                                     <span class="label label-danger">Test
-                                    @else
+                                    <?php else: ?>
                                     <span class="label label-primary">No-Answer
-                                    @endif</span></td>
+                                    <?php endif; ?></span></td>
                                 <td class="text-center">
-                                    <a href="{{ URL::to('/edit-items/'.$value->id) }}"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14" title="Update data"></i></a>
+                                    <a href="<?php echo e(URL::to('/edit-items/'.$value->id)); ?>"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14" title="Update data"></i></a>
                                     <a><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=QuestionDelete('<?php echo $value->id ?>');></i></a>
 
                                     <br>
-                                    <a href="{{ URL::to('/item-preview/'.$value->id) }}">
+                                    <a href="<?php echo e(URL::to('/item-preview/'.$value->id)); ?>">
                                         <button class="btn btn-primary btn-sm">Preview</button>
                                     </a>
                                 </td>
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
-                    {{ $items->links() }}
-                    @if($status == 2 || $status == 3)
+                    <?php echo e($items->links()); ?>
+
+                    <?php if($status == 2 || $status == 3): ?>
                     <label for="checkall" style="margin:20px 15px;">
                         <div class="checkbox-container">
-                            <input type="checkbox" id="checkall" data="{{ $item_for }}" name="checkall" value="1" /> Check all
+                            <input type="checkbox" id="checkall" data="<?php echo e($item_for); ?>" name="checkall" value="1" /> Check all
                         </div>
                     </label>
                     <br>
                     <button type="submit" class="btn btn-success btn-sm submit">Activate</button>
-                    @endif
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -187,19 +189,19 @@ Item Bank
 </section>
 <!-- content -->
 
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- page level scripts --}}
-@section('footer_scripts')
+
+<?php $__env->startSection('footer_scripts'); ?>
 <!-- For Editors -->
 <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script> -->
-<script language="javascript" type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
-<script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
-@if($status == 2)
-<script src="{{ asset('js/activate.js') }}"></script>
-@endif
+<script language="javascript" type="text/javascript" src="<?php echo e(asset('DataTables/datatables.min.js')); ?>"></script>
+<script language="javascript" type="text/javascript" src="<?php echo e(asset('assets/vendors/select2/js/select2.js')); ?>"></script>
+<?php if($status == 2): ?>
+<script src="<?php echo e(asset('js/activate.js')); ?>"></script>
+<?php endif; ?>
 
 <script>
     $(document).ready(function() {
@@ -223,11 +225,11 @@ Item Bank
             }]
         });
 
-        @if($message = Session::get('success'))
-        toastr.success('{{ $message }}', 'Success Alert', {
+        <?php if($message = Session::get('success')): ?>
+        toastr.success('<?php echo e($message); ?>', 'Success Alert', {
             timeOut: 5000
         });
-        @endif
+        <?php endif; ?>
     });
 
     function QuestionDelete(id) {
@@ -274,5 +276,8 @@ Item Bank
             });
     }
 </script>
-{{ session()->forget('success') }}
-@stop
+<?php echo e(session()->forget('success')); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\issb_psychometric\resources\views/item_list.blade.php ENDPATH**/ ?>

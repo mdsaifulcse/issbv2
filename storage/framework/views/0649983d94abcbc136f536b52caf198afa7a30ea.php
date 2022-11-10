@@ -20,15 +20,35 @@ Test
 <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" /> -->
 <link href="<?php echo e(asset('DataTables/datatables.min.css')); ?>" rel="stylesheet" />
 <style>
+    .single-question-answer{
+        border: 1px dashed #c4b9d5;
+        margin-bottom: 10px;
+    }
+    .question{
+        margin: 5px;
+        /*border-bottom: 1px solid #d9d0d09e;*/
+    }
     .pagination {
         float: right;
     }
-    .question-heading{
+    .question-heading, .answer-option{
         display: inline-flex;
     }
     .question-answer{
         text-indent: 20px;
+        margin: 10px;
+        /*border-bottom: 1px dashed #c4b9d5;*/
     }
+    .answer-option{
+        border: 2px dashed #04aceb;
+        margin: 10px;
+        padding: 8px;
+    }
+    .answer-option img{
+        width: 90px;
+        height: 56px;
+    }
+
 </style>
 <?php $__env->stopSection(); ?>
 
@@ -76,15 +96,12 @@ Test
             <div class="panel panel-info">
                 <div class="panel-heading clearfix">
                     <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        <?php echo e($itemDetails->item); ?>
+                        <?php if($itemDetails->item_type==1): ?>
+                        <?php echo $itemDetails->item?>
+                        <?php elseif($itemDetails->item_type==2): ?>
+                            <img src="<?php echo e(asset('assets/uploads/questions/images/'.$itemDetails->item)); ?>" alt="..." style="width: 40px; height: auto;" title="This image is the question">
+                        <?php endif; ?>
 
-                       <!--  <?php // saif
-                            if ($itemDetails->sub_question_status==1) {
-                                echo $itemDetails->item;
-                            }else {
-                                echo $itemDetails->sub_question;
-                            }
-                        ?> -->
                         <!-- <?php echo e(($itemDetails->sub_question_status==1)? $itemDetails->sub_question:$itemDetails->item); ?> -->
                     </h3>
                 </div>
@@ -106,113 +123,172 @@ Test
                     ?>
 
                     <?php if($itemDetails->sub_question_status !=1): ?>
-                    <table id="" class="" style="width:100%">
-                        <tbody>
-                            <tr>
-                                <th width="30%">Question</th>
-                                <th width="70%">:
+
+                    <div class="single-question-answer">
+
+                        <div class="row">
+                            <div class="col-md-12 col-xl-12 col-xs-12">
+                                <div class="question">
                                     <?php if($itemType == 1): ?>
-                                    <?php echo e($item); ?>
-
+                                        <h3 class="question-heading text-dark"> &nbsp; <?php echo $item?> </h3>
                                     <?php elseif($itemType == 2): ?>
-                                    <img src="<?php echo e(asset('assets/uploads/questions/images/'.$item)); ?>" alt="..." style="width: 250px; height: 150px;">
+                                        <strong>Question: </strong> <img src="<?php echo e(asset('assets/uploads/questions/images/'.$item)); ?>" alt="..." style="width: 180px; height: 113px;" title="This image is the question">
                                     <?php elseif($itemType == 3): ?>
+                                    <h3>Question : </h3>
                                     <audio controls>
-                                        <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$item)); ?>" type="audio/ogg">
-                                        <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$item)); ?>" type="audio/mpeg">
-                                        Your browser does not support the audio element.
-                                    </audio>
+                                            <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$item)); ?>" type="audio/ogg">
+                                            <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$item)); ?>" type="audio/mpeg">
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                      
                                     <?php endif; ?>
-                            </tr>
-                            <?php
-                                $options = $itemDetails->options;
-                                $corAns = $itemDetails->correct_answer;
+                                </div>
+                            </div>
+                        </div>
 
-                                $questionOptions = explode('||', $options);
-                            ?>
 
-                            <?php if(count($questionOptions)>0): ?>
-                                <tr>
-                                    <th width="30%">Options</th>
-                                    <th width="70%">:</th>
-                                </tr>
-                                <?php $__currentLoopData = $questionOptions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$questionOption): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <tr>
-                                        <th width="30%"></th>
-                                        <th width="70%"> <?php echo e($key+1 .') '); ?>
+
+                        <div class="row">
+                            <div class="col-md-12 col-xl-12 col-xs-12">
+                                <div class="question-answer">
+                                    <?php
+                                        $options = $itemDetails->options;
+                                        $itemCorAns = $itemDetails->correct_answer;
+
+                                        $questionOptions = explode('||', $options);
+                                    ?>
+
+
+                                    <?php if(count($questionOptions)>0): ?>
+                                        <?php $__currentLoopData = $questionOptions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$questionOption): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                             <?php if($optionType == 1): ?>
-                                                <?php echo e($item); ?>
+
+                                                <?php if($itemCorAns==$key+1): ?>
+                                                    <label class="btn btn-success" title="This one is correct answer"><?php echo e($questionOption); ?> <i class="fa fa-check" title="This is correct answer"> </i></label>
+                                                <?php else: ?>
+                                                    <label class="btn btn-info"><?php echo e($questionOption); ?> </label>
+                                                <?php endif; ?>
 
                                             <?php elseif($optionType == 2): ?>
-                                            <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="..." style="width: 250px; height: 150px; margin-top:5px;">
+                                                <?php if($itemCorAns==$key+1): ?>
+                                                    <div class="answer-option"> <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="..." >
+                                                    <i class="fa fa-check" title="This image is the correct answer"> </i></div>
+                                                <?php else: ?>
+                                                <div class="answer-option">
+                                                    <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="...">
+                                                </div>
+                                                <?php endif; ?>
+                                                
                                             <?php elseif($optionType == 3): ?>
-                                            <audio controls>
-                                                <source src="<?php echo e(asset($soundPath.$questionOption)); ?>" type="audio/ogg">
-                                                <source src="<?php echo e(asset($soundPath.$questionOption)); ?>" type="audio/mpeg">
-                                                Your browser does not support the audio element.
-                                            </audio>
+                                                Option <?php echo e($key+1); ?>: <audio controls>
+                                                    <source src="<?php echo e(asset($soundPath.$questionOption)); ?>" type="audio/ogg">
+                                                    <source src="<?php echo e(asset($soundPath.$questionOption)); ?>" type="audio/mpeg">
+                                                    Your browser does not support the audio element.
+                                                </audio>
                                             <?php endif; ?>
-                                        </th>
-                                    </tr>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            <?php endif; ?>
-                        </tbody>
-                    </table>
+
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php endif; ?>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
                     <?php else: ?>
+                         <!-- ------------------ For Sub Question and Option --------------------- -->
                         <?php
                             $optionsAll    = explode('~~', $itemDetails->sub_options);
                             $corAnswers     = explode('||', $itemDetails->sub_correct_answer);
                         ?>
                         <?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
+                    <div class="single-question-answer">
+                        <div class="row">
+                            <div class="col-md-12 col-xl-12 col-xs-12">
+                                <div class="question">
+                                    <?php if($itemType == 1): ?>
+                                        <h3 class="question-heading text-dark"><?php echo e($key+1); ?>. &nbsp; <?php echo $item?> </h3>
+                                    <?php elseif($itemType == 2): ?>
 
-                        <div class="question">
-                            <?php if($itemType == 1): ?>
-                               <h3 class="question-heading"><?php echo e($key+1); ?>. &nbsp; <?php echo $item?> </h3>
-                                <?php elseif($itemType == 2): ?>
-                                <img src="<?php echo e(asset('assets/uploads/questions/images/'.$item)); ?>" alt="..." style="width: 250px; height: 150px;">
-                                <?php elseif($itemType == 3): ?>
-                                <audio controls>
-                                    <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$item)); ?>" type="audio/ogg">
-                                    <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$item)); ?>" type="audio/mpeg">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            <?php endif; ?>
+                                    <strong> Question <?php echo e($key+1); ?>: &nbsp; &nbsp;</strong> <img src="<?php echo e(asset('assets/uploads/sub_questions/images/'.$item)); ?>" alt="..." style="width: 180px; height: 113px;" title="This image is the question">
 
+                                    <?php elseif($itemType == 3): ?>
+                                    <h3><?php echo e($key+1); ?>. Question : </h3>
+                                        <audio controls>
+                                            <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$item)); ?>" type="audio/ogg">
+                                            <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$item)); ?>" type="audio/mpeg">
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    <?php endif; ?>
+
+                                </div>
+                            </div>
 
                         </div>
 
-                        <div class="question-answer">
-                              <?php
-                                $questionOptions    = explode('||', $optionsAll[$key]);
-                                $corAns             = $corAnswers[$key];
-                              ?>
 
-                            <?php if(count($questionOptions)>0): ?>
-                              <?php $__currentLoopData = $questionOptions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $j=>$questionOption): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                                <?php if($optionType == 1): ?>
-                                    <label class="btn btn-success"><?php echo e($questionOption); ?></label>
+                    <div class="row">
+                        <div class="col-md-12 col-xl-12 col-xs-12">
+                            <div class="question-answer">
+                                <?php
+                                    $questionOptions    = explode('||', $optionsAll[$key]);
+                                    $corAns             = $corAnswers[$key];
+                                ?>
 
-                                <?php elseif($optionType == 2): ?>
-                                    <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="..." style="width: 250px; height: 150px; margin-top:5px;">
-                                <?php elseif($optionType == 3): ?>
-                                    <audio controls>
-                                        <source src="<?php echo e(asset($soundPath.$questionOption)); ?>" type="audio/ogg">
-                                        <source src="<?php echo e(asset($soundPath.$questionOption)); ?>" type="audio/mpeg">
-                                        Your browser does not support the audio element.
-                                    </audio>
+                                <?php if(count($questionOptions)>0): ?>
+                                    <?php $__currentLoopData = $questionOptions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $j=>$questionOption): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                        <?php if($optionType == 1): ?>
+                                            <?php if($corAns==$j+1): ?>
+                                                <label class="btn btn-success" title="This one is correct answer"><?php echo e($questionOption); ?> <i class="fa fa-check" title="This is correct answer"> </i></label>
+                                            <?php else: ?>
+                                                <label class="btn btn-info"><?php echo e($questionOption); ?> </label>
+                                        <?php endif; ?>
+
+
+                                        <?php elseif($optionType == 2): ?>
+
+                                            <?php if($corAns==$j+1): ?>
+                                                <div class="answer-option"> 
+                                                    <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="..." >
+                                                <i class="fa fa-check" title="This image is the correct answer"> </i>
+                                                </div>
+                                            <?php else: ?>
+                                                <div class="answer-option"> 
+                                                    <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="...">
+                                                </div>
+                                            <?php endif; ?>
+                                    
+
+                                        <?php elseif($optionType == 3): ?>
+                                        Option <?php echo e($j+1); ?>:
+                                            <audio controls>
+                                                <source src="<?php echo e(asset($soundPath.$questionOption)); ?>" type="audio/ogg">
+                                                <source src="<?php echo e(asset($soundPath.$questionOption)); ?>" type="audio/mpeg">
+                                                Your browser does not support the audio element.
+                                            </audio>
+                                        <?php endif; ?>
+
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php endif; ?>
-
-
-                               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            <?php endif; ?>
+                            </div>
                         </div>
+
+                    </div>
+                </div>
 
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <?php endif; ?>
                 </div>
+
                 <div class="panel-footer">
                     <button onclick="history.go(-1)">Back to List</button>
                     

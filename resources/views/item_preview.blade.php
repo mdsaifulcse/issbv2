@@ -23,15 +23,35 @@ Test
 <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" /> -->
 <link href="{{ asset('DataTables/datatables.min.css') }}" rel="stylesheet" />
 <style>
+    .single-question-answer{
+        border: 1px dashed #c4b9d5;
+        margin-bottom: 10px;
+    }
+    .question{
+        margin: 5px;
+        /*border-bottom: 1px solid #d9d0d09e;*/
+    }
     .pagination {
         float: right;
     }
-    .question-heading{
+    .question-heading, .answer-option{
         display: inline-flex;
     }
     .question-answer{
         text-indent: 20px;
+        margin: 10px;
+        /*border-bottom: 1px dashed #c4b9d5;*/
     }
+    .answer-option{
+        border: 2px dashed #04aceb;
+        margin: 10px;
+        padding: 8px;
+    }
+    .answer-option img{
+        width: 90px;
+        height: 56px;
+    }
+
 </style>
 @stop
 
@@ -79,14 +99,12 @@ Test
             <div class="panel panel-info">
                 <div class="panel-heading clearfix">
                     <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                        @if($itemDetails->item_type==1)
                         <?php echo $itemDetails->item?>
-                       <!--  <?php // saif
-                            if ($itemDetails->sub_question_status==1) {
-                                echo $itemDetails->item;
-                            }else {
-                                echo $itemDetails->sub_question;
-                            }
-                        ?> -->
+                        @elseif($itemDetails->item_type==2)
+                            <img src="{{ asset('assets/uploads/questions/images/'.$itemDetails->item) }}" alt="..." style="width: 40px; height: auto;" title="This image is the question">
+                        @endif
+
                         <!-- {{ ($itemDetails->sub_question_status==1)? $itemDetails->sub_question:$itemDetails->item }} -->
                     </h3>
                 </div>
@@ -109,19 +127,23 @@ Test
 
                     @if ($itemDetails->sub_question_status !=1)
 
+                    <div class="single-question-answer">
+
                         <div class="row">
                             <div class="col-md-12 col-xl-12 col-xs-12">
                                 <div class="question">
                                     @if($itemType == 1)
                                         <h3 class="question-heading text-dark"> &nbsp; <?php echo $item?> </h3>
                                     @elseif($itemType == 2)
-                                        <img src="{{ asset('assets/uploads/questions/images/'.$item) }}" alt="..." style="width: 250px; height: 150px;">
+                                        <strong>Question: </strong> <img src="{{ asset('assets/uploads/questions/images/'.$item) }}" alt="..." style="width: 180px; height: 113px;" title="This image is the question">
                                     @elseif($itemType == 3)
-                                        <audio controls>
+                                    <h3>Question : </h3>
+                                    <audio controls>
                                             <source src="{{ asset('assets/uploads/questions/sounds/'.$item) }}" type="audio/ogg">
                                             <source src="{{ asset('assets/uploads/questions/sounds/'.$item) }}" type="audio/mpeg">
                                             Your browser does not support the audio element.
                                         </audio>
+                                      
                                     @endif
                                 </div>
                             </div>
@@ -152,9 +174,17 @@ Test
                                                 @endif
 
                                             @elseif($optionType == 2)
-                                                <img src="{{ asset($imagePath.$questionOption) }}" alt="..." style="width: 250px; height: 150px; margin-top:5px;">
+                                                @if($itemCorAns==$key+1)
+                                                    <div class="answer-option"> <img src="{{ asset($imagePath.$questionOption) }}" alt="..." >
+                                                    <i class="fa fa-check" title="This image is the correct answer"> </i></div>
+                                                @else
+                                                <div class="answer-option">
+                                                    <img src="{{ asset($imagePath.$questionOption) }}" alt="...">
+                                                </div>
+                                                @endif
+                                                
                                             @elseif($optionType == 3)
-                                                <audio controls>
+                                                Option {{$key+1}}: <audio controls>
                                                     <source src="{{ asset($soundPath.$questionOption) }}" type="audio/ogg">
                                                     <source src="{{ asset($soundPath.$questionOption) }}" type="audio/mpeg">
                                                     Your browser does not support the audio element.
@@ -168,27 +198,31 @@ Test
                                 </div>
                             </div>
                         </div>
+                    </div>
 
 
 
 
                     @else
-                        // ------------------ For Sub Question and Option ---------------------
+                         <!-- ------------------ For Sub Question and Option --------------------- -->
                         @php
                             $optionsAll    = explode('~~', $itemDetails->sub_options);
                             $corAnswers     = explode('||', $itemDetails->sub_correct_answer);
                         @endphp
                         @foreach ($items as $key=>$item)
 
-
+                    <div class="single-question-answer">
                         <div class="row">
                             <div class="col-md-12 col-xl-12 col-xs-12">
                                 <div class="question">
                                     @if($itemType == 1)
                                         <h3 class="question-heading text-dark">{{$key+1}}. &nbsp; <?php echo $item?> </h3>
                                     @elseif($itemType == 2)
-                                        <img src="{{ asset('assets/uploads/questions/images/'.$item) }}" alt="..." style="width: 250px; height: 150px;">
+
+                                    <strong> Question {{$key+1}}: &nbsp; &nbsp;</strong> <img src="{{ asset('assets/uploads/sub_questions/images/'.$item) }}" alt="..." style="width: 180px; height: 113px;" title="This image is the question">
+
                                     @elseif($itemType == 3)
+                                    <h3>{{$key+1}}. Question : </h3>
                                         <audio controls>
                                             <source src="{{ asset('assets/uploads/questions/sounds/'.$item) }}" type="audio/ogg">
                                             <source src="{{ asset('assets/uploads/questions/sounds/'.$item) }}" type="audio/mpeg">
@@ -223,8 +257,21 @@ Test
 
 
                                         @elseif($optionType == 2)
-                                            <img src="{{ asset($imagePath.$questionOption) }}" alt="..." style="width: 250px; height: 150px; margin-top:5px;">
+
+                                            @if($corAns==$j+1)
+                                                <div class="answer-option"> 
+                                                    <img src="{{ asset($imagePath.$questionOption) }}" alt="..." >
+                                                <i class="fa fa-check" title="This image is the correct answer"> </i>
+                                                </div>
+                                            @else
+                                                <div class="answer-option"> 
+                                                    <img src="{{ asset($imagePath.$questionOption) }}" alt="...">
+                                                </div>
+                                            @endif
+                                    
+
                                         @elseif($optionType == 3)
+                                        Option {{$j+1}}:
                                             <audio controls>
                                                 <source src="{{ asset($soundPath.$questionOption) }}" type="audio/ogg">
                                                 <source src="{{ asset($soundPath.$questionOption) }}" type="audio/mpeg">
@@ -239,6 +286,7 @@ Test
                         </div>
 
                     </div>
+                </div>
 
                         @endforeach
                     @endif
