@@ -2,7 +2,13 @@
 
 {{-- Page title --}}
 @section('title')
+    @foreach($test_list as $test)
+        @if($test->id == $set_for)
+            {{ $test->name }}
+        @endif
+    @endforeach
     Question Set List
+    @parent
 @stop
 
 {{-- page level styles --}}
@@ -28,6 +34,11 @@
     <section class="content-header">
         <!--section starts-->
         <h1>
+            @foreach($test_list as $test)
+                @if($test->id == $set_for)
+                    {{ $test->name }}
+                @endif
+            @endforeach
             Question Set List
         </h1>
         <ol class="breadcrumb">
@@ -38,6 +49,11 @@
                 <a href="{{ URL::to('/question-set') }}">Question Set</a>
             </li>
             <li class="active">
+                @foreach($test_list as $test)
+                    @if($test->id == $set_for)
+                        {{ $test->name }}
+                    @endif
+                @endforeach
                 Question Set List
             </li>
         </ol>
@@ -49,6 +65,11 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                            @foreach($test_list as $test)
+                                @if($test->id == $set_for)
+                                    {{ $test->name }}
+                                @endif
+                            @endforeach
                             Question Set List
                         </h3>
                         <div class="pull-right">

@@ -2293,6 +2293,14 @@ class AdminController extends Controller
         return view('question_set_navigation', compact('test_list'));
     }
 
+     public function questionSetList()
+    {
+        $candidate_type = CandidateType::get();
+        $test_list = TestList::get();
+        $questions_set = QuestionSet::paginate(20);
+        return view('question_set_list', compact('questions_set', 'set_for', 'candidate_type', 'test_list'));
+    }
+
     public function questionSet($set_for)
     {
         $candidate_type = CandidateType::get();
@@ -2820,11 +2828,18 @@ class AdminController extends Controller
         return view('test_config_navigation', compact('test_list'));
     }
 
+     public function testConfigList()
+    {
+        $test_config_list = TestConfiguration::with('testFor')->paginate(20);
+        return view('test_config_list', compact('test_config_list'));
+    }
+
+
     public function testConfigurations($test_for)
     {
-        $test_list = TestList::get();
-        $test_config_list = TestConfiguration::where('test_for', $test_for)->paginate(20);
-        return view('test_config_list', compact('test_config_list', 'test_for', 'test_list'));
+        $testData = TestList::find($test_for);
+        $test_config_list = TestConfiguration::with('testFor')->where('test_for', $test_for)->paginate(20);
+        return view('test_config_list1', compact('test_config_list', 'testData'));
     }
 
     public function testConfig()

@@ -2,12 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    @foreach($test_list as $value)
-        @if($test_for == $value->id)
-            {{ $value->name }}
-        @endif
-    @endforeach
-    Test Config List
+   Test Config List
     @parent
 @stop
 
@@ -32,12 +27,7 @@
     <section class="content-header">
         <!--section starts-->
         <h1>
-            @foreach($test_list as $value)
-                @if($test_for == $value->id)
-                    {{ $value->name }}
-                @endif
-            @endforeach
-            Test Config List</h1>
+           Test Config List</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="{{ URL::to('/') }}">Admin</a>
@@ -46,12 +36,7 @@
                 <a href="{{ URL::to('/test-configuration-list') }}">Test Config</a>
             </li>
             <li class="active">
-                @foreach($test_list as $value)
-                    @if($test_for == $value->id)
-                        {{ $value->name }}
-                    @endif
-                @endforeach
-                Test Config List
+                 Test Config List
             </li>
         </ol>
     </section>
@@ -62,12 +47,7 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            @foreach($test_list as $value)
-                                @if($test_for == $value->id)
-                                    {{ $value->name }}
-                                @endif
-                            @endforeach
-                            Test Config List
+                         Test Config List
                         </h3>
                     </div>
                     <div class="panel-body">
@@ -76,6 +56,7 @@
                             <thead>
                             <tr>
                                 <th width="10%">SL No</th>
+                                <th width="10%">Test For</th>
                                 <th width="50%">Test Name</th>
                                 <th width="10%">Type</th>
                                 <th width="5%">Total Time</th>
@@ -87,6 +68,7 @@
                             @foreach($test_config_list as $key => $value)
                                 <tr>
                                     <td>{{ ++$key }}</td>
+                                    <td>{{ $value->testFor->name }}</td>
                                     <td>{{ $value->test_name }}</td>
                                     <td>
                                         @if (!empty($value->set_id))

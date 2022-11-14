@@ -253,7 +253,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // set configuration
     Route::get('/question-set/{set_for}', 'AdminController@questionSet');
-    Route::get('/question-set', 'AdminController@questionSetNavigation');
+    Route::get('/question-set', 'AdminController@questionSetList');
     Route::get('/create-set', 'AdminController@createSets');
     Route::post('/setRedirect', 'AdminController@setRedirect');
     Route::get('/create-question-set', 'AdminController@createItemSet');
@@ -278,7 +278,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // test configuration
     Route::get('/test-configuration-list/{test_for}', 'AdminController@testConfigurations');
-    Route::get('/test-configuration-list', 'AdminController@testConfigNavigation');
+    Route::get('/test-configuration-list', 'AdminController@testConfigList');
     Route::get('/new-test-configuration', 'AdminController@testConfig');
     Route::post('/testRedirect', 'AdminController@testRedirect');
     Route::get('/create-test-configuration', 'AdminController@createTestConfig');

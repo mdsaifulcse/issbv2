@@ -557,7 +557,7 @@ $(document).ready(function(){
                     $('#more_sub_question').append('<div class="sub_question_txt extra_question"><span id="id_'+i+'" class="btn btn-danger btn-sm remove_sub_question" style="float: right;margin-bottom: 2px;">&times;</span><div class="form-group">'+
                         '<label for="sub_question">Sub Question '+ i +'</label>'+
                         // '<input type="text" class="form-control sub_question_text" name="sub_text_question[]" id="" placeholder="Sub Question" required/>'+
-                        '<textarea class="form-control sub_question_text tinymce-editor" name="sub_text_question[]" placeholder="Sub Question '+ i+'"></textarea>'+
+                        '<textarea class="form-control sub_question_text tinymce-editor" name="sub_text_question[]" placeholder="Sub Question"></textarea>'+
                         '<div class="invalid-feedback">This field is required.</div>'+
                         '</div>' +
                         '<span id="more_sub_option_'+i+'"></span>' +
@@ -568,7 +568,7 @@ $(document).ready(function(){
                         '<div class="invalid-feedback">This field is required.</div>'+
                         '<br></div>');
 
-                        // ----------- For Appended Sub Question Text editor
+                        // ----------- For Appended Sub Question Texty
                         tinymce.init({
                                     selector: 'textarea.tinymce-editor',
                                     height: 150,
