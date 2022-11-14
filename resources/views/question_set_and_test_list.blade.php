@@ -20,6 +20,9 @@
         .pagination {
             float: right;
         }
+        . content-height{
+            max-height:400px;
+        }
     </style>
 @stop
 
@@ -42,7 +45,7 @@
             </li>
         </ol>
     </section>
-    <section class="content">
+    <section class="content content-height">
         <div class="row">
 
             <div class="col-lg-12">
@@ -111,10 +114,10 @@
         <h1>
             Test Config List</h1>
         <ol class="breadcrumb">
-           
+
         </ol>
     </section>
-    <section class="content">
+    <section class="content content-height">
         <div class="row">
 
             <div class="col-lg-12">

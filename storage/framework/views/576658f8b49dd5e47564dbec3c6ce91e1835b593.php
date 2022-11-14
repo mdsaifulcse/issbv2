@@ -299,12 +299,22 @@
         </ul>
     </li> -->
 
-    <li class="">
-        <a class="single_url" href="<?php echo e(URL::to('/board-configuration')); ?>">
-            <i class="livicon" data-name="settings" data-c="#67C5DF" data-hc="#67C5DF"
+
+    <li>
+        <a href="#">
+            <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C"
                data-size="18" data-loop="true"></i>
-            Board Configuration
+            <span class="title">Board Configuration</span>
+            <span class="fa arrow"></span>
         </a>
+        <ul class="sub-menu">
+            <li>
+                <a href="<?php echo e(URL::to('/question-set-and-test-configuration-list')); ?>">
+                    <i class="fa fa-angle-double-right"></i>
+                    Question Set And Test Configuration List
+                </a>
+            </li>
+        </ul>
     </li>
     
 
