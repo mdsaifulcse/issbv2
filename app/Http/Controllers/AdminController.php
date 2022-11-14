@@ -2293,13 +2293,21 @@ class AdminController extends Controller
         return view('question_set_navigation', compact('test_list'));
     }
 
-     public function questionSetList()
-    {
-        $candidate_type = CandidateType::get();
-        $test_list = TestList::get();
-        $questions_set = QuestionSet::paginate(20);
-        return view('question_set_list', compact('questions_set', 'set_for', 'candidate_type', 'test_list'));
+
+    public function questionSetAndTestConfigurationList(){
+
+        $questions_set = QuestionSet::with('itemFor','candidateType')->paginate(20);
+        $test_config_list = TestConfiguration::with('testFor')->paginate(20);
+
+        return view('question_set_and_test_list', compact('questions_set','test_config_list'));
     }
+
+    public function questionSetList(){
+        $questions_set = QuestionSet::with('itemFor','candidateType')->paginate(20);
+        return view('question_set_list',compact('questions_set'));
+    }
+
+
 
     public function questionSet($set_for)
     {

@@ -104,6 +104,76 @@
     </section>
     <!-- content -->
 
+
+
+    <section class="content-header">
+        <!--section starts-->
+        <h1>
+            Test Config List</h1>
+        <ol class="breadcrumb">
+           
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                            Test Config List
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <table id="example" class="display nowrap" style="width:100%">
+                            <thead>
+                            <tr>
+                                <th width="10%">SL No</th>
+                                <th width="10%">Test For</th>
+                                <th width="50%">Test Name</th>
+                                <th width="10%">Type</th>
+                                <th width="5%">Total Time</th>
+                                <th width="5%">Pass Mark</th>
+                                <th width="20%" class="text-center">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($test_config_list as $key => $value)
+                                <tr>
+                                    <td>{{ ++$key }}</td>
+                                    <td>{{ $value->testFor->name }}</td>
+                                    <td>{{ $value->test_name }}</td>
+                                    <td>
+                                        @if (!empty($value->set_id))
+                                            Satic
+                                        @else
+                                            Random
+                                        @endif
+                                    </td>
+                                    <td>{{ $value->total_time }}</td>
+                                    <td>{{ $value->pass_mark }}</td>
+                                    <td class="text-center">
+                                        <a href="{{ route('configInstruction.index', ['configId'=>$value->id]) }}" class="btn btn-sm btn-primary">Set Instruction Slide</a>
+                                        @if(Auth::user()->hasRole('admin'))
+                                            <a href="{{ URL::to('update-test-configuration/'.$value->id) }}"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14" title="Update data" ></i></a>
+                                            <a><i class="livicon" data-name="trash" data-size="20" data-loop="true"  data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=testDelete('<?php echo $value->id ?>'); ></i></a>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        {{ $test_config_list->links() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+
     @stop
 
     {{-- page level scripts --}}

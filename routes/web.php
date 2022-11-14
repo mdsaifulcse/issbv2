@@ -251,6 +251,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/activateItem', 'AdminController@activateItem');
     Route::delete('/destroyItem/{id}', 'AdminController@destroyItem');
 
+    // set & Test list - -- Saif
+    Route::get('/question-set-and-test-configuration-list', 'AdminController@questionSetAndTestConfigurationList');
+
+
     // set configuration
     Route::get('/question-set/{set_for}', 'AdminController@questionSet');
     Route::get('/question-set', 'AdminController@questionSetList');
