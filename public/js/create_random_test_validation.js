@@ -68,7 +68,8 @@ $("#create_random_test").validate(
                         }
                         else {
                             sessionStorage.setItem("new_success", "success");
-                            window.location.href = "/test-configuration-list/"+data;
+                            window.location.href = "/test-configuration-list";
+                            //window.location.href = "/test-configuration-list/"+data;
                         }
                     },
                     error: function (e) {

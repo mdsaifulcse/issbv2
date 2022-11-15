@@ -1,34 +1,17 @@
 <?php $__env->startSection('title'); ?>
-    Test Instruction
+    Test List
     ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
 <?php $__env->stopSection(); ?>
 
 
 <?php $__env->startSection('header_styles'); ?>
     <link href="<?php echo e(asset('DataTables/datatables.min.css')); ?>" rel="stylesheet" />
-    <link href="<?php echo e(asset('css/image_viewer_css/lc_lightbox.css')); ?>" rel="stylesheet" />
-    <link href="<?php echo e(asset('css/image_viewer_css/skins/minimal.css')); ?>" rel="stylesheet" />
     <style>
         .pagination {
             float: right;
         }
-
-        .elem, .elem * {
-            box-sizing: border-box;
-            margin: 0 !important;
-        }
-        .elem {
-            display: inline-block;
-            font-size: 0;
-            width: 40%;
-        }
-        .elem > span {
-            display: block;
-            cursor: pointer;
-            height: 0;
-            padding-bottom:	70%;
-            background-size: cover;
-            background-position: center center;
+        .color-full {
+            background-color: #a0ffff!important;
         }
     </style>
 <?php $__env->stopSection(); ?>
@@ -37,12 +20,12 @@
 <?php $__env->startSection('content'); ?>
     <section class="content-header">
         <!--section starts-->
-        <h1>Test Instruction Slider</h1>
+        <h1>Test List</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="#">Admin</a>
             </li>
-            <li class="active">Test Instruction Slider</li>
+            <li class="active">Test List</li>
         </ol>
     </section>
     <section class="content">
@@ -52,45 +35,53 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Test Instructions Slider
+                            Test List
                         </h3>
                         <div class="pull-right">
-                            <button class="btn btn-sm btn-default" onclick="history.go(-1)">Back To List</button>
-                            <a href="<?php echo e(route('configInstruction.create', ['configId'=>$configId])); ?>" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span>Add Slide</a>
-
+                            <a href="<?php echo e(route('examConfig.create')); ?>" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span>Create Test</a>
                         </div>
                     </div>
                     <div class="panel-body">
                         <table id="example" class="display nowrap" style="width:100%">
                             <thead>
                             <tr>
-                                <th>Sl No</th>
-                                <th>Text</th>
-                                <th>Image</th>
-                                <th class="text-center">Action</th>
+                                <th width="10%">Sl No</th>
+                                <th width="10%">Test Name</th>
+                                <th width="10%">Board Name</th>
+                                <th width="15%">Test Date</th>
+                                <th width="15%">Duration</th>
+                                <th width="10%">Total Candidate</th>
+                                <th width="10%">Status</th>
+                                <th width="20%" class="text-center">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $__currentLoopData = $configInstructions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $instruction): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <tr>
-                                <td><?php echo e(++$key); ?></td>
-                                <td><?php echo e($instruction->text); ?></td>
-                                <td>
-                                    
-                                    <a class="elem" href="<?php echo e(asset('uploads/instruction/'.$instruction->image)); ?>" title="image <?php echo e($key++); ?>" data-lcl-txt="lorem ipsum dolor sit amet" data-lcl-author="someone" data-lcl-thumb="<?php echo e(asset('uploads/instruction/'.$instruction->image)); ?>">
-                                        <span style="background-image: url(<?php echo e(asset('uploads/instruction/'.$instruction->image)); ?>);"></span>
-                                    </a>
-                                </td>
+                            <?php $__currentLoopData = $examConfigs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $config): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr <?php if($config->exam_status == 1): ?> class="color-full" <?php endif; ?>>
+                                <td <?php if($config->exam_status == 1): ?> class="color-full" <?php endif; ?>><?php echo e(++$key); ?></td>
+                                <td><?php echo e($config->test_name); ?></td>
+                                <td><?php echo e($config->board_name); ?></td>
+                                <td><?php echo e($config->exam_date); ?></td>
+                                <td><?php echo e($config->exam_duration); ?></td>
+                                <td><?php echo e($config->total_candidate); ?></td>
+                                <td><?php if($config->preview_status == 0): ?> Pending <?php else: ?> Activated <?php endif; ?></td>
                                 <td class="text-center">
-                                    
-                                    <a><i class="livicon" data-name="trash" data-size="20" data-loop="true"  data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete('<?php echo $instruction->id ?>'); ></i></a>
-
+                                    <?php if($config->exam_status == 1): ?>
+                                    <a href="<?php echo e(route('runningExamTimeRemain', ['examId'=>$config->id])); ?>">
+                                        <i class="livicon" data-name="clock" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Remaining Time"></i>
+                                    </a>
+                                    <?php endif; ?>
+                                    <a href="<?php echo e(route('examPreview', ['examId'=>$config->id])); ?>" target="_blank">
+                                        <i class="livicon" data-name="eye" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Preview"></i>
+                                    </a>
+                                    <a href="<?php echo e(route('examConfig.edit', [$config->id])); ?>"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
+                                    <a><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete(<?php echo e($config->id); ?>);></i></a>
                                 </td>
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
-                            <?php if(!empty($configInstructions)): ?>
-                            <?php echo e($configInstructions->links()); ?>
+                            <?php if(!empty($examConfig)): ?>
+                            <?php echo e($examConfigs->links()); ?>
 
                             <?php endif; ?>
                         </table>
@@ -104,16 +95,20 @@
     <?php $__env->stopSection(); ?>
 
     
-    <?php $__env->startSection('footer_scripts'); ?>
+<?php $__env->startSection('footer_scripts'); ?>
 
     <script language="javascript" type="text/javascript" src="<?php echo e(asset('DataTables/datatables.min.js')); ?>"></script>
     <script language="javascript" type="text/javascript" src="<?php echo e(asset('assets/vendors/select2/js/select2.js')); ?>"></script>
 
-    <script language="javascript" type="text/javascript" src="<?php echo e(asset('js/image_viewer_js/lc_lightbox.lite.js')); ?>"></script>
-    <script language="javascript" type="text/javascript" src="<?php echo e(asset('js/image_viewer_js/lib/AlloyFinger/alloy_finger.min.js')); ?>"></script>
-
     <script>
         $(document).ready(function() {
+            <?php if(session('msgType') == 'success'): ?>
+                toastr.success('<?php echo e(session("messege")); ?>', 'Success', {timeOut: 5000});
+            <?php endif; ?>
+
+            <?php if(session('msgType') == 'danger'): ?>
+                toastr.warning('<?php echo e(session("messege")); ?>', 'Warning', {timeOut: 5000});
+            <?php endif; ?>
 
             if (sessionStorage.getItem('new_success') == 'success')
             {
@@ -131,19 +126,7 @@
                     { "orderable": false, "targets": 2 }
                 ]
             } );
-
-            // live handler
-            lc_lightbox('.elem', {
-                wrap_class: 'lcl_fade_oc',
-                gallery : true,
-                thumb_attr: 'data-lcl-thumb',
-
-                skin: 'minimal',
-                radius: 0,
-                padding	: 0,
-                border_w: 0,
-            });
-         } );
+        });
 
         function Delete(id)
         {
@@ -159,7 +142,7 @@
             },
             function () {
                 $.ajax({
-                    url: '/configInstruction/' + id,
+                    url: '/examConfig/' + id,
                     method: 'DELETE',
                     headers:
                     {
@@ -189,4 +172,4 @@
     </script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\issb_psychometric\resources\views/configInstruction/listData.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/testingOfficer/examConfig/listData.blade.php ENDPATH**/ ?>

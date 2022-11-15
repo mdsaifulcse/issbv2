@@ -54,9 +54,9 @@
                         <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                             Question Set List
                         </h3>
-                        <div class="pull-right">
-                            <a href="{{ URL::to('/create-set') }}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus" ></span>Create new set</a>
-                        </div>
+                        {{--<div class="pull-right">--}}
+                            {{--<a href="{{ URL::to('/create-set') }}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus" ></span>Create new set</a>--}}
+                        {{--</div>--}}
                     </div>
                     <div class="panel-body">
 

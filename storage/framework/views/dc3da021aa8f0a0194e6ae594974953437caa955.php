@@ -1,18 +1,15 @@
-@extends('admin/layouts/default')
-
-{{-- Page title --}}
-@section('title')
+<?php $__env->startSection('title'); ?>
     Create Generate Token
-    @parent
-@stop
+    ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
+<?php $__env->stopSection(); ?>
 
-{{-- page level styles --}}
-@section('header_styles')
-    <link href="{{ asset('assets/css/toastr.css') }}" rel="stylesheet">
-@stop
 
-{{-- Page content --}}
-@section('content')
+<?php $__env->startSection('header_styles'); ?>
+    <link href="<?php echo e(asset('assets/css/toastr.css')); ?>" rel="stylesheet">
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('content'); ?>
     <section class="content-header">
         <!--section starts-->
         <h5>Generate Token</h5>
@@ -36,23 +33,24 @@
                     </div>
                     <div class="panel-body">
                         <div class="form">
-                            @if (session('msgType'))
-                                <div id="msgDiv" class="msgDiv alert alert-{{session('msgType')}} alert-styled-left alert-arrow-left alert-bordered">
+                            <?php if(session('msgType')): ?>
+                                <div id="msgDiv" class="msgDiv alert alert-<?php echo e(session('msgType')); ?> alert-styled-left alert-arrow-left alert-bordered">
                                     <button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>
-                                    <span class="text-semibold">{{ session('msgType') }}!</span> {{ session('messege') }}
+                                    <span class="text-semibold"><?php echo e(session('msgType')); ?>!</span> <?php echo e(session('messege')); ?>
+
                                 </div>
-                            @endif
-                            @if ($errors->any())
-                                @foreach ($errors->all() as $error)
+                            <?php endif; ?>
+                            <?php if($errors->any()): ?>
+                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="msgDiv alert alert-danger alert-styled-left alert-bordered">
                                     <button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>
-                                    <span class="text-semibold">Opps!</span> {{ $error }}.
+                                    <span class="text-semibold">Opps!</span> <?php echo e($error); ?>.
                                 </div>
-                                @endforeach
-                            @endif
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endif; ?>
 
-                            <form action="{{route('saveGenarateToken')}}" method="post" class="needs-validation form-horizontal" novalidate enctype="multipart/form-data">
-                                @csrf
+                            <form action="<?php echo e(route('saveGenarateToken')); ?>" method="post" class="needs-validation form-horizontal" novalidate enctype="multipart/form-data">
+                                <?php echo csrf_field(); ?>
                                 <div class="row">
                                     <div class="form-group">
                                         <label class="control-label col-lg-3" for="action_type">Select Action</label>
@@ -76,7 +74,7 @@
                                 <div id="export_div">
                                     <div class="col-md-9 col-md-offset-3">
                                         <button type="submit" submitType="0" class="btn btn-primary submitbutton">Genarate Token & Download Users <i class="icon-arrow-right14 position-right"></i></button>
-                                        {{-- <button type="submit" submitType="1" class="btn btn-info submitbutton">Download CSV <i class="icon-arrow-right14 position-right"></i></button> --}}
+                                        
                                     </div>
                                 </div>
 
@@ -99,18 +97,18 @@
         <!--/row-->
     </section>
 
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- page level scripts --}}
-@section('footer_scripts')
-    <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
-    <script src="{{asset('js/jequery-validation.js')}}"></script>
+
+<?php $__env->startSection('footer_scripts'); ?>
+    <script src="<?php echo e(asset('assets/js/toastr.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/jequery-validation.js')); ?>"></script>
 
     <script>
         $(document).ready(function(){
-            @if (session('msgType'))
+            <?php if(session('msgType')): ?>
                 setTimeout(function() {$('.msgDiv').hide()}, 6000);
-            @endif
+            <?php endif; ?>
 
             $('.submitbutton').click(function() {
                 let submitType = $(this).attr('submitType');
@@ -136,8 +134,9 @@
         });
 
         function getBoard(){
+            console.log('sdf')
             $.ajax({
-                url: "{{url('/get-candidate-board')}}",
+                url: "<?php echo e(url('/get-candidate-board')); ?>",
                 method: 'get',
                 dataType: 'json',
                 success: function (data) {
@@ -149,4 +148,6 @@
         }
     </script>
 
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/testingOfficer/genarateToken/create.blade.php ENDPATH**/ ?>

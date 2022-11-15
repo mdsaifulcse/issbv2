@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    Assessment List
+    Test List
     @parent
 @stop
 
@@ -23,12 +23,12 @@
 @section('content')
     <section class="content-header">
         <!--section starts-->
-        <h1>Assessment List</h1>
+        <h1>Test List</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="#">Admin</a>
             </li>
-            <li class="active">Assessment List</li>
+            <li class="active">Test List</li>
         </ol>
     </section>
     <section class="content">
@@ -38,10 +38,10 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Assessment List
+                            Test List
                         </h3>
                         <div class="pull-right">
-                            <a href="{{ route('examConfig.create') }}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span>Create Assessment</a>
+                            <a href="{{ route('examConfig.create') }}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span>Create Test</a>
                         </div>
                     </div>
                     <div class="panel-body">
@@ -51,7 +51,7 @@
                                 <th width="10%">Sl No</th>
                                 <th width="10%">Test Name</th>
                                 <th width="10%">Board Name</th>
-                                <th width="15%">Assessment Date</th>
+                                <th width="15%">Test Date</th>
                                 <th width="15%">Duration</th>
                                 <th width="10%">Total Candidate</th>
                                 <th width="10%">Status</th>
