@@ -42,4 +42,4 @@
         <?php endif; ?>
     </ul>
 <?php endif; ?>
-<?php /**PATH E:\xampp\htdocs\issb_psychometric\vendor\laravel\framework\src\Illuminate\Pagination/resources/views/bootstrap-4.blade.php ENDPATH**/ ?>
+<?php /**PATH D:\xampp74\htdocs\issbv2\vendor\laravel\framework\src\Illuminate\Pagination/resources/views/bootstrap-4.blade.php ENDPATH**/ ?>

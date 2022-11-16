@@ -581,4 +581,4 @@
 
     
 </ul>
-<?php /**PATH E:\xampp\htdocs\issb_psychometric\resources\views/admin/layouts/_left_menu.blade.php ENDPATH**/ ?>
+<?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/admin/layouts/_left_menu.blade.php ENDPATH**/ ?>

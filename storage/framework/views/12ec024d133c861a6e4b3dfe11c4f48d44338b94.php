@@ -1,5 +1,5 @@
 <?php $__env->startSection('title'); ?>
-    Test List
+    Assessment Configuration
     ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
 <?php $__env->stopSection(); ?>
 
@@ -11,7 +11,7 @@
             float: right;
         }
         .color-full {
-            background-color: #a0ffff!important;
+            background-color: #c6aa68!important;
         }
     </style>
 <?php $__env->stopSection(); ?>
@@ -20,12 +20,12 @@
 <?php $__env->startSection('content'); ?>
     <section class="content-header">
         <!--section starts-->
-        <h1>Test List</h1>
+        <h1>Board & Candidates</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="#">Admin</a>
             </li>
-            <li class="active">Test List</li>
+            <li class="active">Board & Candidates</li>
         </ol>
     </section>
     <section class="content">
@@ -35,10 +35,10 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Test List
+                            Board & Candidates
                         </h3>
                         <div class="pull-right">
-                            <a href="<?php echo e(route('examConfig.create')); ?>" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span>Create Test</a>
+                            <a href="<?php echo e(route('boardCandidate.create')); ?>" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span>Create</a>
                         </div>
                     </div>
                     <div class="panel-body">
@@ -46,42 +46,28 @@
                             <thead>
                             <tr>
                                 <th width="10%">Sl No</th>
-                                <th width="10%">Test Name</th>
-                                <th width="10%">Board Name</th>
-                                <th width="15%">Test Date</th>
-                                <th width="15%">Duration</th>
+                                <th width="20%">Board No</th>
                                 <th width="10%">Total Candidate</th>
                                 <th width="10%">Status</th>
                                 <th width="20%" class="text-center">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $__currentLoopData = $examConfigs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $config): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <tr <?php if($config->exam_status == 1): ?> class="color-full" <?php endif; ?>>
-                                <td <?php if($config->exam_status == 1): ?> class="color-full" <?php endif; ?>><?php echo e(++$key); ?></td>
-                                <td><?php echo e($config->test_name); ?></td>
-                                <td><?php echo e($config->board_name); ?></td>
-                                <td><?php echo e($config->exam_date); ?></td>
-                                <td><?php echo e($config->exam_duration); ?></td>
-                                <td><?php echo e($config->total_candidate); ?></td>
-                                <td><?php if($config->status == 0): ?> Pending <?php else: ?> Activated <?php endif; ?></td>
+                            <?php $__currentLoopData = $boardCandidates; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $candidate): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr>
+                                <td><?php echo e(++$key); ?></td>
+                                <td><?php echo e($candidate->board_name); ?></td>
+                                <td><?php echo e($candidate->total_candidate); ?></td>
+                                <td><?php if($candidate->status == 0): ?> InActive <?php else: ?> Active <?php endif; ?></td>
                                 <td class="text-center">
-                                    <?php if($config->exam_status == 1): ?>
-                                    <a href="<?php echo e(route('runningExamTimeRemain', ['examId'=>$config->id])); ?>">
-                                        <i class="livicon" data-name="clock" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Remaining Time"></i>
-                                    </a>
-                                    <?php endif; ?>
-                                    <a href="<?php echo e(route('examPreview', ['examId'=>$config->id])); ?>" target="_blank">
-                                        <i class="livicon" data-name="eye" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Preview"></i>
-                                    </a>
-                                    <a href="<?php echo e(route('examConfig.edit', [$config->id])); ?>"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
-                                    <a><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete(<?php echo e($config->id); ?>);></i></a>
+                                    <a href="<?php echo e(route('boardCandidate.edit', [$candidate->id])); ?>"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
+                                    <a><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete(<?php echo e($candidate->id); ?>);></i></a>
                                 </td>
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
-                            <?php if(!empty($examConfig)): ?>
-                            <?php echo e($examConfigs->links()); ?>
+                            <?php if(!empty($boardCandidates)): ?>
+                            <?php echo e($boardCandidates->links()); ?>
 
                             <?php endif; ?>
                         </table>
@@ -142,7 +128,7 @@
             },
             function () {
                 $.ajax({
-                    url: '/examConfig/' + id,
+                    url: '/boardCandidate/' + id,
                     method: 'DELETE',
                     headers:
                     {
@@ -172,4 +158,4 @@
     </script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\issb_psychometric\resources\views/testingOfficer/examConfig/listData.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/testingOfficer/boardCandidate/listData.blade.php ENDPATH**/ ?>
