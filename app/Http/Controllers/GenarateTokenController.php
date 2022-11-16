@@ -111,12 +111,12 @@ class GenarateTokenController extends Controller
                         'roll_no'       => ($candidateInfo)? $candidateInfo->roll_no+1: 1,
                         'secret_key'    => Str::random(6),
                     ]);
-                }  
+                }
                 
                 return Excel::download(new UsersExport($board_no), 'users.xlsx');
                 $output['messege'] = 'Candidates has been inserted successfully';
                 $output['msgType'] = 'success';        
-                return redirect()->back();      
+                return redirect()->back();
             } else {
                 return redirect()->back();
             }

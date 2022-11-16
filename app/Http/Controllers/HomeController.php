@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BoardCandidate;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -22,6 +23,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function dashboard(){
+        $activeBoard = BoardCandidate::where('status', 1)->first();
+        return view('welcome',compact('activeBoard'));
+
+    }
+
+
     public function index()
     {
         return view('home');

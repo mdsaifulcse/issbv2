@@ -1,13 +1,10 @@
-@extends('admin/layouts/default')
-
-{{-- Page title --}}
-@section('title')
+<?php $__env->startSection('title'); ?>
     Dashboard
-@parent
-@stop
+##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
+<?php $__env->stopSection(); ?>
 
-{{-- page level styles --}}
-@section('header_styles')
+
+<?php $__env->startSection('header_styles'); ?>
 <style>
     a.view-details {
         color: #ffffff;
@@ -61,11 +58,11 @@
         border-bottom: 2px solid #321919;
     }
 </style>
-<link href="{{ asset('assets/vendors/modal-popup-ybox/dist/css/yBox.min.css') }}" rel="stylesheet" />
-@stop
+<link href="<?php echo e(asset('assets/vendors/modal-popup-ybox/dist/css/yBox.min.css')); ?>" rel="stylesheet" />
+<?php $__env->stopSection(); ?>
 
-{{-- Page content --}}
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 <section class="content-header">
     <!--section starts-->
     <h4>Welcome to Psychometric Dimension</h4>
@@ -77,25 +74,25 @@
     </ol>
 </section>
 
-@if(Auth::user()->hasRole('admin'))
+<?php if(Auth::user()->hasRole('admin')): ?>
 <section class="content">
     <h1 class="text-center" style="color: #515763;">Welcome to Admin</h1>
 </section>
-@endif
+<?php endif; ?>
 
-@if(Auth::user()->hasRole('testing'))
+<?php if(Auth::user()->hasRole('testing')): ?>
 <section class="content">
     <div class="row">
         <div class="col-md-3 animated fadeInLeftBig">
 
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <a class="view-details" href="{{url('/psy-picture-list')}}">
+                    <a class="view-details" href="<?php echo e(url('/psy-picture-list')); ?>">
                         <b>Current Board Number</b>
                     </a>
                 </div>
                 <div class="panel-body">
-                    <b>{{$activeBoard?$activeBoard->board_name:'N/A'}}</b>
+                    <b><?php echo e($activeBoard?$activeBoard->board_name:'N/A'); ?></b>
                 </div>
             </div>
 
@@ -104,10 +101,10 @@
 
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <a class="view-details" href="{{url('/psy-picture-list')}}"><b>Total Number of Candidate</b></a>
+                    <a class="view-details" href="<?php echo e(url('/psy-picture-list')); ?>"><b>Total Number of Candidate</b></a>
                 </div>
                 <div class="panel-body">
-                    <b>{{$activeBoard?$activeBoard->total_candidate:'N/A'}}</b>
+                    <b><?php echo e($activeBoard?$activeBoard->total_candidate:'N/A'); ?></b>
                 </div>
             </div>
 
@@ -116,7 +113,7 @@
 
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <a class="view-details" href="{{url('/psy-picture-list')}}"><b>Active Tests</b></a>
+                    <a class="view-details" href="<?php echo e(url('/psy-picture-list')); ?>"><b>Active Tests</b></a>
                 </div>
                 <div class="panel-body">
                     <b>5521</b>
@@ -128,7 +125,7 @@
 
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <a class="view-details" href="{{url('/psy-picture-list')}}"><b>Seat plan</b></a>
+                    <a class="view-details" href="<?php echo e(url('/psy-picture-list')); ?>"><b>Seat plan</b></a>
                 </div>
                 <div class="panel-body panel-primary">
                     <b>10/20</b>
@@ -140,14 +137,14 @@
     </div>
     <!--/row-->
 </section>
-@endif
+<?php endif; ?>
 
-@if(Auth::user()->hasRole('user'))
+<?php if(Auth::user()->hasRole('user')): ?>
 <section class="content">
     <!-- <div class="row">
         <div class="col-md-4">
             <div class="row">
-                <div>Welcome: {{Auth::user()->name}}</div>
+                <div>Welcome: <?php echo e(Auth::user()->name); ?></div>
                 <div style="padding: 10px; text-align:center">
                     <h4>On Going Board Info</h4>
                     <p>Board Number: 2209</p>
@@ -156,8 +153,9 @@
                 </div>
                 <div style="padding: 10px">
                     <h4>Share Here / Drop Box</h4>
-                    <form class="form-inline" enctype="multipart/form-data" action="{{ url('sharedoc-store') }}" method="POST" novalidate>
-                        {{ csrf_field() }}
+                    <form class="form-inline" enctype="multipart/form-data" action="<?php echo e(url('sharedoc-store')); ?>" method="POST" novalidate>
+                        <?php echo e(csrf_field()); ?>
+
                         <input class="form-group" type="file" name="item_img" accept="image/*" id="">
                         <button type="submit" class="btn btn-primary mb-2">Upload</button>
                     </form>
@@ -166,61 +164,62 @@
                         $sharedocs = DB::table('psy_modules')->where('type', 'share_doc')->orderBy('id','DESC')->take(5)->get();
                     ?>
                     <ul>
-                        @if($sharedocs)
-                        @foreach ($sharedocs as $sdoc)
-                            <li style="padding-bottom: 7px">{{$sdoc->file}} <a href="{{asset('assets/uploads/psy_module/'.$sdoc->file)}}" target="_blank"><i class="fa fa-download"></i></a></li>
-                        @endforeach
-                        @endif
+                        <?php if($sharedocs): ?>
+                        <?php $__currentLoopData = $sharedocs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sdoc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li style="padding-bottom: 7px"><?php echo e($sdoc->file); ?> <a href="<?php echo e(asset('assets/uploads/psy_module/'.$sdoc->file)); ?>" target="_blank"><i class="fa fa-download"></i></a></li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="col-md-4" style="border-left:1px solid #CCC;border-right:1px solid #CCC">
             <div class="row">
-                <div>Today: {{date('j F Y, ')}}<span id="MyTime"></span></div>
+                <div>Today: <?php echo e(date('j F Y, ')); ?><span id="MyTime"></span></div>
                 <div style="padding: 10px">
                     <?php
                         $sescal = DB::table('psy_modules')->where('type', 'session_calender')->orderBy('order','DESC')->first();
                     ?>
-                    @if($sescal)
+                    <?php if($sescal): ?>
                     <h4>Calender</h4>
-                       <a href="{{asset('assets/uploads/psy_module/'.$sescal->file)}}" target="_blank"><img src="{{asset('assets/uploads/psy_module/'.$sescal->file)}}" width="90%" alt="{{$sescal->title}}"></a>
-                    @endif
+                       <a href="<?php echo e(asset('assets/uploads/psy_module/'.$sescal->file)); ?>" target="_blank"><img src="<?php echo e(asset('assets/uploads/psy_module/'.$sescal->file)); ?>" width="90%" alt="<?php echo e($sescal->title); ?>"></a>
+                    <?php endif; ?>
                 </div>
                 <div style="padding: 10px">
                     <?php
                         $events = DB::table('psy_modules')->where('type', 'upcoming_events')->orderBy('order','ASC')->take(2)->get();
                         $cnt=1;
                     ?>
-                    @if($events)
+                    <?php if($events): ?>
                     <h4>Upcoming Events</h4>
-                    @foreach ($events as $event)
-                    <a href="">{!! $cnt.'. '.$event->title.'<br>'!!}</a>
+                    <?php $__currentLoopData = $events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <a href=""><?php echo $cnt.'. '.$event->title.'<br>'; ?></a>
                         <?php $cnt++; ?>
-                    @endforeach
-                    @endif
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <?php endif; ?>
                 </div>
                 <div style="padding: 10px">
                     <?php
                         $notice = DB::table('psy_modules')->where('type', 'announcement')->orderBy('order','DESC')->first();
                         $cnt=1;
                     ?>
-                    @if($notice)
+                    <?php if($notice): ?>
                     <h4>Notice</h4>
                     <div class="col-md-6">
-                        <a href=""><img src="{{asset('assets/uploads/psy_module/'.$notice->file)}}" width="40%" alt="{{$notice->title}}"></a>
+                        <a href=""><img src="<?php echo e(asset('assets/uploads/psy_module/'.$notice->file)); ?>" width="40%" alt="<?php echo e($notice->title); ?>"></a>
                     </div>
                     <div class="col-md-6" style="font-weight:500">
-                        {!!'<b>'.$notice->title.'</b><br>'.$notice->details!!}
+                        <?php echo '<b>'.$notice->title.'</b><br>'.$notice->details; ?>
+
                     </div>
-                    @endif
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="row">
                 <div></div>
-                <div>{{Auth::user()->name}}</div>
+                <div><?php echo e(Auth::user()->name); ?></div>
                 <div>
                     <h4>History</h4>
                 </div>
@@ -230,16 +229,16 @@
     <div style="height: 5em">&nbsp;</div>
     <!--/row-->
 </section>
-@endif
+<?php endif; ?>
 
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- page level scripts --}}
-@section('footer_scripts')
 
-<script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/modal-popup-ybox/dist/js/directive.min.js') }}"></script>
-<script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/modal-popup-ybox/dist/js/yBox.min.js') }}"></script>
-<script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
+<?php $__env->startSection('footer_scripts'); ?>
+
+<script language="javascript" type="text/javascript" src="<?php echo e(asset('assets/vendors/modal-popup-ybox/dist/js/directive.min.js')); ?>"></script>
+<script language="javascript" type="text/javascript" src="<?php echo e(asset('assets/vendors/modal-popup-ybox/dist/js/yBox.min.js')); ?>"></script>
+<script language="javascript" type="text/javascript" src="<?php echo e(asset('assets/vendors/select2/js/select2.js')); ?>"></script>
 
 
 <script>
@@ -250,4 +249,6 @@
     }
 </script>
 
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\issb_psychometric\resources\views/welcome.blade.php ENDPATH**/ ?>

@@ -65,9 +65,11 @@ Route::get('/candidate/sample-test', 'ExamController@sampleTest');
 
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    Route::get('/', 'HomeController@dashboard');
+
+//    Route::get('/', function () {
+//        return view('welcome');
+//    });
 
     // side navigation
     Route::get('/item-create', 'AdminController@itemCreate');

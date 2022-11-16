@@ -1,14 +1,11 @@
-@extends('admin/layouts/default')
-
-{{-- Page title --}}
-@section('title')
+<?php $__env->startSection('title'); ?>
     Test List
-    @parent
-@stop
+    ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
+<?php $__env->stopSection(); ?>
 
-{{-- page level styles --}}
-@section('header_styles')
-    <link href="{{ asset('DataTables/datatables.min.css') }}" rel="stylesheet" />
+
+<?php $__env->startSection('header_styles'); ?>
+    <link href="<?php echo e(asset('DataTables/datatables.min.css')); ?>" rel="stylesheet" />
     <style>
         .pagination {
             float: right;
@@ -17,10 +14,10 @@
             background-color: #a0ffff!important;
         }
     </style>
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- Page content --}}
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <section class="content-header">
         <!--section starts-->
         <h1>Test List</h1>
@@ -41,7 +38,7 @@
                             Test List
                         </h3>
                         <div class="pull-right">
-                            <a href="{{ route('examConfig.create') }}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span>Create Test</a>
+                            <a href="<?php echo e(route('examConfig.create')); ?>" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span>Create Test</a>
                         </div>
                     </div>
                     <div class="panel-body">
@@ -59,33 +56,34 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($examConfigs as $key => $config)
-                            <tr @if ($config->exam_status == 1) class="color-full" @endif>
-                                <td @if ($config->exam_status == 1) class="color-full" @endif>{{ ++$key }}</td>
-                                <td>{{ $config->test_name }}</td>
-                                <td>{{ $config->board_name }}</td>
-                                <td>{{ $config->exam_date }}</td>
-                                <td>{{ $config->exam_duration }}</td>
-                                <td>{{ $config->total_candidate }}</td>
-                                <td>@if($config->status == 0) Pending @else Activated @endif</td>
+                            <?php $__currentLoopData = $examConfigs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $config): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr <?php if($config->exam_status == 1): ?> class="color-full" <?php endif; ?>>
+                                <td <?php if($config->exam_status == 1): ?> class="color-full" <?php endif; ?>><?php echo e(++$key); ?></td>
+                                <td><?php echo e($config->test_name); ?></td>
+                                <td><?php echo e($config->board_name); ?></td>
+                                <td><?php echo e($config->exam_date); ?></td>
+                                <td><?php echo e($config->exam_duration); ?></td>
+                                <td><?php echo e($config->total_candidate); ?></td>
+                                <td><?php if($config->status == 0): ?> Pending <?php else: ?> Activated <?php endif; ?></td>
                                 <td class="text-center">
-                                    @if ($config->exam_status == 1)
-                                    <a href="{{ route('runningExamTimeRemain', ['examId'=>$config->id]) }}">
+                                    <?php if($config->exam_status == 1): ?>
+                                    <a href="<?php echo e(route('runningExamTimeRemain', ['examId'=>$config->id])); ?>">
                                         <i class="livicon" data-name="clock" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Remaining Time"></i>
                                     </a>
-                                    @endif
-                                    <a href="{{ route('examPreview', ['examId'=>$config->id]) }}" target="_blank">
+                                    <?php endif; ?>
+                                    <a href="<?php echo e(route('examPreview', ['examId'=>$config->id])); ?>" target="_blank">
                                         <i class="livicon" data-name="eye" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Preview"></i>
                                     </a>
-                                    <a href="{{ route('examConfig.edit', [$config->id]) }}"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
-                                    <a><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete({{ $config->id }});></i></a>
+                                    <a href="<?php echo e(route('examConfig.edit', [$config->id])); ?>"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
+                                    <a><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete(<?php echo e($config->id); ?>);></i></a>
                                 </td>
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
-                            @if (!empty($examConfig))
-                            {{ $examConfigs->links() }}
-                            @endif
+                            <?php if(!empty($examConfig)): ?>
+                            <?php echo e($examConfigs->links()); ?>
+
+                            <?php endif; ?>
                         </table>
                     </div>
                 </div>
@@ -94,23 +92,23 @@
 
     </section>
     <!-- content -->
-    @stop
+    <?php $__env->stopSection(); ?>
 
-    {{-- page level scripts --}}
-@section('footer_scripts')
+    
+<?php $__env->startSection('footer_scripts'); ?>
 
-    <script language="javascript" type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
-    <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
+    <script language="javascript" type="text/javascript" src="<?php echo e(asset('DataTables/datatables.min.js')); ?>"></script>
+    <script language="javascript" type="text/javascript" src="<?php echo e(asset('assets/vendors/select2/js/select2.js')); ?>"></script>
 
     <script>
         $(document).ready(function() {
-            @if (session('msgType') == 'success')
-                toastr.success('{{ session("messege") }}', 'Success', {timeOut: 5000});
-            @endif
+            <?php if(session('msgType') == 'success'): ?>
+                toastr.success('<?php echo e(session("messege")); ?>', 'Success', {timeOut: 5000});
+            <?php endif; ?>
 
-            @if (session('msgType') == 'danger')
-                toastr.warning('{{ session("messege") }}', 'Warning', {timeOut: 5000});
-            @endif
+            <?php if(session('msgType') == 'danger'): ?>
+                toastr.warning('<?php echo e(session("messege")); ?>', 'Warning', {timeOut: 5000});
+            <?php endif; ?>
 
             if (sessionStorage.getItem('new_success') == 'success')
             {
@@ -172,4 +170,6 @@
             });
         }
     </script>
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\issb_psychometric\resources\views/testingOfficer/examConfig/listData.blade.php ENDPATH**/ ?>
