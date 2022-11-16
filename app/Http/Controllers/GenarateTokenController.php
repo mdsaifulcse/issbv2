@@ -107,7 +107,7 @@ class GenarateTokenController extends Controller
                     Candidates::create([
                         'chest_no'      => ($candidateInfo)? $candidateInfo->chest_no+1: 1,
                         'board_no'      => $board_no,
-                        'name'          => NULL,
+                        'name'          => 'name',//NULL,
                         'roll_no'       => ($candidateInfo)? $candidateInfo->roll_no+1: 1,
                         'secret_key'    => Str::random(6),
                     ]);

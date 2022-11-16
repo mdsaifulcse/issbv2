@@ -43,6 +43,9 @@
         label#-error {
             display: none;
         }
+        .tox-notifications-container,.tox-statusbar__branding{
+            display: none;
+        }
     </style>
 @stop
 
@@ -382,21 +385,7 @@
                                         <label id="sub_question_type_error" class="error" for="sub_question_type" hidden>This field is required.</label>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Sub Options Type</label><br>
-                                        <label for="sub_opt_text_field">
-                                            <input type="radio" name="sub_option_type" class="sub_option_type" id="sub_opt_text_field" value="1" @if($item->sub_option_type == 1) checked @endif/> Text Field
-                                            &nbsp;&nbsp;&nbsp;
-                                        </label>
-                                        <label for="sub_opt_img_field">
-                                            <input type="radio" name="sub_option_type" class="sub_option_type" id="sub_opt_img_field" value="2" @if($item->sub_option_type == 2) checked @endif/> Image Field
-                                            &nbsp;&nbsp;&nbsp;
-                                        </label>
-                                        <label for="sub_opt_sound_field">
-                                            <input type="radio" name="sub_option_type" class="sub_option_type" id="sub_opt_sound_field" value="3" @if($item->sub_option_type == 3) checked @endif/> Sound Field
-                                        </label><br>
-                                        <label id="sub_option_type_error" class="error" for="sub_option_type_0" hidden>This field is required.</label>
-                                    </div>
+
                                   <?php $sub_questions = explode('||', $item->sub_question);
                                         $sub_options = explode('~~', $item->sub_options);
                                         $sub_correct_answer = explode('||', $item->sub_correct_answer);
@@ -572,10 +561,27 @@
                                             <?php $i++?>
                                         @endforeach
                                     </div>
-
-                                    <input type="text" class="total_prev_sub_question" value="{{ count($sub_questions) }}">
+                                    <input type="hidden" class="total_prev_sub_question" value="{{ count($sub_questions) }}">
                                     <span id="more_sub_question"></span><br>
                                     <div class="btn btn-primary btn-sm mt-2" id="sub_question">add more sub question</div>
+
+                                    <div class="form-group">
+                                        <label>Sub Options Type</label><br>
+                                        <label for="sub_opt_text_field">
+                                            <input type="radio" name="sub_option_type" class="sub_option_type" id="sub_opt_text_field" value="1" @if($item->sub_option_type == 1) checked @endif/> Text Field
+                                            &nbsp;&nbsp;&nbsp;
+                                        </label>
+                                        <label for="sub_opt_img_field">
+                                            <input type="radio" name="sub_option_type" class="sub_option_type" id="sub_opt_img_field" value="2" @if($item->sub_option_type == 2) checked @endif/> Image Field
+                                            &nbsp;&nbsp;&nbsp;
+                                        </label>
+                                        <label for="sub_opt_sound_field">
+                                            <input type="radio" name="sub_option_type" class="sub_option_type" id="sub_opt_sound_field" value="3" @if($item->sub_option_type == 3) checked @endif/> Sound Field
+                                        </label><br>
+                                        <label id="sub_option_type_error" class="error" for="sub_option_type_0" hidden>This field is required.</label>
+                                    </div>
+
+
                                 </div>
 
                              <div id="pm_vit" @if($item->sub_question_status == 1) hidden @endif>

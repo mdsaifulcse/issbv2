@@ -349,21 +349,6 @@
                                             <label id="sub_question_type_error" class="error" for="sub_question_type" hidden>This field is required.</label>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label>Sub Answer Type</label><br>
-                                            <label for="sub_opt_text_field">
-                                                <input type="radio" name="sub_option_type" class="sub_option_type" id="sub_opt_text_field" value="1"/> Text Field
-                                                &nbsp;&nbsp;&nbsp;
-                                            </label>
-                                            <label for="sub_opt_img_field">
-                                                <input type="radio" name="sub_option_type" class="sub_option_type" id="sub_opt_img_field" value="2"/> Image Field
-                                                &nbsp;&nbsp;&nbsp;
-                                            </label>
-                                            <label for="sub_opt_sound_field">
-                                                <input type="radio" name="sub_option_type" class="sub_option_type" id="sub_opt_sound_field" value="3"/> Sound Field
-                                            </label><br>
-                                            <label id="sub_option_type_error" class="error" for="sub_option_type_0" hidden>This field is required.</label>
-                                        </div>
 
                                         <div id="sub_question_text" class="form-group" hidden>
                                             <label for="sub_question">Sub Item</label>
@@ -407,6 +392,27 @@
                                                 <div class="invalid-feedback">This field is required.</div>
                                             </div>
                                         </div>
+
+                                        <span id="more_sub_question"></span><br>
+                                        <div class="btn btn-primary btn-sm mt-2" id="sub_question">add more sub question</div>
+
+                                        <div class="form-group">
+                                            <label>Sub Answer Type</label><br>
+                                            <label for="sub_opt_text_field">
+                                                <input type="radio" name="sub_option_type" class="sub_option_type" id="sub_opt_text_field" value="1"/> Text Field
+                                                &nbsp;&nbsp;&nbsp;
+                                            </label>
+                                            <label for="sub_opt_img_field">
+                                                <input type="radio" name="sub_option_type" class="sub_option_type" id="sub_opt_img_field" value="2"/> Image Field
+                                                &nbsp;&nbsp;&nbsp;
+                                            </label>
+                                            <label for="sub_opt_sound_field">
+                                                <input type="radio" name="sub_option_type" class="sub_option_type" id="sub_opt_sound_field" value="3"/> Sound Field
+                                            </label><br>
+                                            <label id="sub_option_type_error" class="error" for="sub_option_type_0" hidden>This field is required.</label>
+                                        </div>
+
+
 
                                         <div id="otp_text">
                                             <div id="sub_otp_text_show" hidden>
@@ -466,8 +472,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <span id="more_sub_question"></span><br>
-                                    <div class="btn btn-primary btn-sm mt-2" id="sub_question">add more sub question</div>
+
                                 </div>
 
                              <div id="pm_vit">

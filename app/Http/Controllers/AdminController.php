@@ -1313,7 +1313,7 @@ class AdminController extends Controller
     public function itemList($item_for, $status)
     {
         $test_list = TestList::get();
-        $items = ItemBank::where('item_for', $item_for)->where('item_status', $status)->paginate(10);
+        $items = ItemBank::where('item_for', $item_for)->where('item_status', $status)->latest()->paginate(10);
 
         return view('item_list', compact('items', 'test_list', 'item_for', 'status'));
     }

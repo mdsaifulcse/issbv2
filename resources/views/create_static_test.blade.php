@@ -276,7 +276,7 @@
                                 }
 
                                 $.ajax({
-                                    url:"/storeTestConfig",
+                                    url:"{{url('/storeTestConfig')}}",
                                     method:"POST",
                                     data: {'data': data, 'test_for': item_set_for, 'test_type': set_configuration_type, 'pass_mark': pass_mark, 'candidate_type': candidate_type, 'test_name': item_set_name, 'total_time': total_time, 'flag': flag},
                                     success:function(data)
@@ -290,7 +290,8 @@
                                         else {
                                             localStorage.clear();
                                             sessionStorage.setItem("new_success", "success");
-                                            window.location.href = "/test-configuration-list/"+data;
+                                            window.location.href = "{{url('/test-configuration-list')}}";
+                                            //window.location.href = "/test-configuration-list/"+data;
                                         }
                                     },
                                     error: function (e) {

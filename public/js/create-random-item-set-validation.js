@@ -50,7 +50,7 @@ $("#create_qusetion_set").validate(
                 $('.create_set').text('Sending...');
                 var formData = new FormData($(form)[0]);
                 $.ajax({
-                    url:"/storeItemSet",
+                    url:'/storeItemSet',
                     method:"POST",
                     data:formData,
                     contentType: false,
@@ -61,7 +61,7 @@ $("#create_qusetion_set").validate(
                         if (data)
                         {
                             sessionStorage.setItem("new_success", "success");
-                            window.location.href = "/question-set/"+data;
+                            window.location.href = "/question-set";
                         }
                     },
                     error: function (e) {

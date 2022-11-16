@@ -126,6 +126,7 @@
                 } else if (action_type == 2) { //2=import
                     $('#import_div').show();
                     $('#export_div').hide();
+                    console.log('123')
                     getBoard();
                 } else {
                     $('#import_div').hide();
@@ -136,7 +137,7 @@
 
         function getBoard(){
             $.ajax({
-                url: '/get-candidate-board',
+                url: "{{url('/get-candidate-board')}}",
                 method: 'get',
                 dataType: 'json',
                 success: function (data) {

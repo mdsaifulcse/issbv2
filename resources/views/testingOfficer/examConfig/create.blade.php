@@ -26,12 +26,12 @@
 @section('content')
     <section class="content-header">
         <!--section starts-->
-        <h5>Assessment Configuration</h5>
+        <h5>Test Configuration</h5>
         <ol class="breadcrumb">
             <li>
                 <a href="#">Admin</a>
             </li>
-            <li class="active">Create Assessment Configuration</li>
+            <li class="active">Create Test Configuration</li>
         </ol>
     </section>
 
@@ -42,7 +42,7 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"><i class="livicon" data-name="doc-portrait" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Create Assessment Configuration
+                            Create Test Configuration
                         </h3>
                     </div>
                     <div class="panel-body">
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="form-group">
-                                        <label class="control-label col-lg-3">Assessment Date</label>
+                                        <label class="control-label col-lg-3">Test Date</label>
                                         <div class="col-lg-6">
                                             <input type="date" class="form-control" name="exam_date" required="">
                                         </div>
@@ -91,7 +91,7 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            In-Active And Force Stop Assessment List
+                            In-Active And Force Stop Test List
                         </h3>
                     </div>
                     <div class="panel-body">
@@ -101,7 +101,7 @@
                                 <th width="10%">Sl No</th>
                                 <th width="10%">Test Name</th>
                                 <th width="10%">Board Name</th>
-                                <th width="15%">Assessment Date</th>
+                                <th width="15%">Test Date</th>
                                 <th width="15%">Duration</th>
                                 <th width="10%">Total Candidate</th>
                                 <th width="10%">Status</th>
@@ -157,7 +157,7 @@
                 @csrf
                 <div class="form-group text-center">
                     <h3>Are You Sure!</h3>
-                    <h4>Publish this Assessment!</h4>
+                    <h4>Publish this Test!</h4>
                     <input type="hidden" class="assignment_id" name="assignment_id">
                 </div>
               </form>
