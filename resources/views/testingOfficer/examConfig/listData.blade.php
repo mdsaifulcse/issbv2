@@ -67,7 +67,7 @@
                                 <td>{{ $config->exam_date }}</td>
                                 <td>{{ $config->exam_duration }}</td>
                                 <td>{{ $config->total_candidate }}</td>
-                                <td>@if($config->status == 0) Pending @else Activated @endif</td>
+                                <td>@if($config->status == 1 && $config->preview_status == 1) Activated @else Pending   @endif</td>
                                 <td class="text-center">
                                     @if ($config->exam_status == 1)
                                     <a href="{{ route('runningExamTimeRemain', ['examId'=>$config->id]) }}">

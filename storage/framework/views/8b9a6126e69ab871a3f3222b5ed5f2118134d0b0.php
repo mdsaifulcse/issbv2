@@ -87,7 +87,7 @@
 
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <a class="view-details" href="<?php echo e(url('/psy-picture-list')); ?>">
+                    <a class="view-details" href="#">
                         <b>Current Board Number</b>
                     </a>
                 </div>
@@ -101,7 +101,7 @@
 
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <a class="view-details" href="<?php echo e(url('/psy-picture-list')); ?>"><b>Total Number of Candidate</b></a>
+                    <a class="view-details" href="#"><b>Total Number of Candidate</b></a>
                 </div>
                 <div class="panel-body">
                     <b><?php echo e($activeBoard?$activeBoard->total_candidate:'N/A'); ?></b>
@@ -111,26 +111,30 @@
         </div>
         <div class="col-md-3 animated fadeInLeftBig">
 
+            <a class="view-details" href="<?php echo e(url('/examConfig?all_active=1')); ?>">
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <a class="view-details" href="<?php echo e(url('/psy-picture-list')); ?>"><b>Active Tests</b></a>
+                    <b>Active Tests</b>
                 </div>
                 <div class="panel-body">
-                    <b>5521</b>
+                    <b><?php echo e($activeTest); ?></b>
                 </div>
             </div>
+            </a>
 
         </div>
         <div class="col-md-3 animated fadeInLeftBig">
 
+            <a class="view-details" href="<?php echo e(url('/stdSeatPlan')); ?>">
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <a class="view-details" href="<?php echo e(url('/psy-picture-list')); ?>"><b>Seat plan</b></a>
+                    <b>Seat plan</b>
                 </div>
                 <div class="panel-body panel-primary">
-                    <b>10/20</b>
+                    <b><?php echo e($data['total_live']); ?>/<?php echo e($data['total_candidate']); ?></b>
                 </div>
             </div>
+            </a>
 
         </div>
 
@@ -251,4 +255,4 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\issb_psychometric\resources\views/welcome.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/welcome.blade.php ENDPATH**/ ?>

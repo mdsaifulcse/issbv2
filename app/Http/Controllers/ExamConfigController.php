@@ -22,13 +22,23 @@ class ExamConfigController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['examConfigs'] = ExamConfig::join('test_config', 'test_config.id', '=', 'exam_configs.test_config_id')
+         $examConfigs= ExamConfig::join('test_config', 'test_config.id', '=', 'exam_configs.test_config_id')
             ->join('board_candidates', 'board_candidates.id', '=', 'exam_configs.board_candidate_id')
             ->select('exam_configs.*', 'test_config.test_name', 'board_candidates.board_name', 'board_candidates.total_candidate')
-            ->whereIn('exam_configs.status', [1])
-            ->paginate(10);
+            ->where(['exam_configs.status'=>1]); //,'exam_configs.preview_status'=>1
+
+        if ($request->all_active==1){
+            $examConfigs=$examConfigs->where(['exam_configs.status'=>1,'exam_configs.preview_status'=>1]);
+        }else{
+            $examConfigs=$examConfigs->where(['exam_configs.status'=>1]);
+        }
+
+        $examConfigs=$examConfigs->latest()->paginate(20);
+
+
+        $data['examConfigs']=$examConfigs;
 
         return view('testingOfficer.examConfig.listData', $data);
     }
@@ -74,6 +84,7 @@ class ExamConfigController extends Controller
         $insert->exam_date           = $request->exam_date;
         $insert->board_candidate_id  = $activeBoard->id;
         $insert->exam_status         = 0; // 0=Upcomming
+        $insert->preview_status         = 1;//1= Active
         $insert->status              = 1; // 1=Active
         $insert->created_by          = Auth::id(); // 1=Active
         $insert->save();
@@ -120,10 +131,12 @@ class ExamConfigController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $this->validate($request, [
             'test_config_id'        => 'required',
             'exam_date'             => 'required',
             'status'                => 'required',
+            'preview_status'        => 'required',
         ]);
         $activeBoard = BoardCandidate::where('status', 1)->first();
         $testConfig = TestConfiguration::find($request->test_config_id);
@@ -133,6 +146,7 @@ class ExamConfigController extends Controller
             'exam_date'             => $request->exam_date,
             'exam_duration'         => $testConfig->total_time,
             'board_candidate_id'    => $activeBoard->id,
+            'preview_status'        => $request->preview_status,
             'status'                => $request->status,
             'updated_at'            => date('Y-m-d H:i:s'),
             'updated_by'            => Auth::id(),
@@ -278,13 +292,13 @@ class ExamConfigController extends Controller
         
         $storeData = ExamConfig::create([
             "board_candidate_id"        => $activeBoardId,
-            "exam_date"                 => $examConfigDetails->exam_date,
+            "exam_date"                 => date('Y-m-d'), //$examConfigDetails->exam_date,
             "exam_duration"             => $examConfigDetails->exam_duration,
             "guest_time_duration"       => $examConfigDetails->guest_time_duration,
             "test_config_id"            => $examConfigDetails->test_config_id,
             "assign_to"                 => $examConfigDetails->assign_to,
             "exam_status"               => $examConfigDetails->exam_status,
-            "preview_status"            => $examConfigDetails->preview_status,
+            "preview_status"            => 1, //1=Active,
             "status"                    => 1, //1=Active
             "created_by"                => Auth::id()
         ]);

@@ -90,7 +90,7 @@
 
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <a class="view-details" href="{{url('/psy-picture-list')}}">
+                    <a class="view-details" href="#">
                         <b>Current Board Number</b>
                     </a>
                 </div>
@@ -104,7 +104,7 @@
 
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <a class="view-details" href="{{url('/psy-picture-list')}}"><b>Total Number of Candidate</b></a>
+                    <a class="view-details" href="#"><b>Total Number of Candidate</b></a>
                 </div>
                 <div class="panel-body">
                     <b>{{$activeBoard?$activeBoard->total_candidate:'N/A'}}</b>
@@ -114,26 +114,30 @@
         </div>
         <div class="col-md-3 animated fadeInLeftBig">
 
+            <a class="view-details" href="{{url('/examConfig?all_active=1')}}">
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <a class="view-details" href="{{url('/psy-picture-list')}}"><b>Active Tests</b></a>
+                    <b>Active Tests</b>
                 </div>
                 <div class="panel-body">
-                    <b>5521</b>
+                    <b>{{$activeTest}}</b>
                 </div>
             </div>
+            </a>
 
         </div>
         <div class="col-md-3 animated fadeInLeftBig">
 
+            <a class="view-details" href="{{url('/stdSeatPlan')}}">
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <a class="view-details" href="{{url('/psy-picture-list')}}"><b>Seat plan</b></a>
+                    <b>Seat plan</b>
                 </div>
                 <div class="panel-body panel-primary">
-                    <b>10/20</b>
+                    <b>{{$data['total_live']}}/{{ $data['total_candidate'] }}</b>
                 </div>
             </div>
+            </a>
 
         </div>
 

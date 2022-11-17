@@ -17,7 +17,7 @@
             <li>
                 <a href="#">Admin</a>
             </li>
-            <li class="active">Create Board & Candidates</li>
+            <li class="active">Update Board & Candidates</li>
         </ol>
     </section>
 
@@ -28,18 +28,19 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"><i class="livicon" data-name="doc-portrait" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Create
+                            Update
                         </h3>
                     </div>
                     <div class="panel-body">
                         <div class="form">
-                            <form action="<?php echo e(route('boardCandidate.store')); ?>" method="post" class="needs-validation form-horizontal" novalidate>
+                            <form action="<?php echo e(route('boardCandidate.update', [$boardCandidate->id])); ?>" method="post" class="needs-validation form-horizontal" novalidate>
+                                <?php echo method_field('PUT'); ?>
                                 <?php echo csrf_field(); ?>
                                 <div class="row">
                                     <div class="form-group">
                                         <label class="control-label col-lg-3">Board No</label>
                                         <div class="col-lg-6">
-                                            <input type="text" class="form-control" name="board_name" required="">
+                                            <input type="text" class="form-control" name="board_name" value="<?php echo e($boardCandidate->board_name); ?>" required="">
                                         </div>
                                     </div>
                                 </div>
@@ -47,18 +48,19 @@
                                     <div class="form-group">
                                         <label class="control-label col-lg-3">Total Candidate</label>
                                         <div class="col-lg-6">
-                                            <input type="number" class="form-control" name="total_candidate" required="">
+                                            <input type="number" class="form-control" name="total_candidate" value="<?php echo e($boardCandidate->total_candidate); ?>" required="">
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="form-group">
                                         <label class="control-label col-lg-3" for="status">Select Status</label>
                                         <div class="col-lg-6">
                                             <select name="status" id="status" class="form-control" required>
                                                 <option value="">Select Test</option>
-                                                <option value="1">Active</option>
-                                                <option value="0">In Active</option>
+                                                <option value="1" <?php if($boardCandidate->status == 1): ?> selected <?php endif; ?>>Active</option>
+                                                <option value="0" <?php if($boardCandidate->status == 0): ?> selected <?php endif; ?>>In Active</option>
                                             </select>
                                         </div>
                                     </div>
@@ -66,7 +68,7 @@
 
                                 <div class="row text-right">
                                     <div class="col-md-9 offset-md-3">
-                                        <button type="submit" class="btn btn-primary">Create <i class="icon-arrow-right14 position-right"></i></button>
+                                        <button type="submit" class="btn btn-primary">Update <i class="icon-arrow-right14 position-right"></i></button>
                                         <a href="<?php echo e(route('boardCandidate.index')); ?>" class="btn btn-default">Back To List <i class="icon-backward2 position-right"></i></a>
                                     </div>
                                 </div>
@@ -100,4 +102,4 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\issb_psychometric\resources\views/testingOfficer/boardCandidate/create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/testingOfficer/boardCandidate/update.blade.php ENDPATH**/ ?>
