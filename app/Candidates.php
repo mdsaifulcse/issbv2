@@ -14,5 +14,6 @@ class Candidates extends Authenticatable
     protected $hidden = [
         'password',
     ];
-    
+
+
 }

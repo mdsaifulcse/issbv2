@@ -15,6 +15,7 @@ class UsersExport implements FromCollection
     public function __construct($boardno){
         $this->boardno = $boardno;
     }
+
     public function collection()
     {
         $boardno = $this->boardno;
