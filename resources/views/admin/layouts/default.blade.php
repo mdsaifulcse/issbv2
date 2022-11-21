@@ -126,7 +126,8 @@
                     <div class="page-sidebar  sidebar-nav">
                         <div class="clearfix"></div>
                         <!-- BEGIN SIDEBAR MENU -->
-                        @include('admin.layouts._left_menu')
+
+                        @include('admin.layouts._left_menu',compact('testingConfig'))
                         <!-- END SIDEBAR MENU -->
                     </div>
                 </section>
