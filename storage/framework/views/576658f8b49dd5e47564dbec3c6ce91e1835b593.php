@@ -520,13 +520,14 @@
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 
         <?php endif; ?>
+
     </li>
         <!--  Testing list End -->
 
     <li>
         <a href="<?php echo e(route('examConfig.index')); ?>">
             <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
-            <span class="title">Test List</span>
+            <span class="title">All Test List</span>
         </a>
     </li>
 

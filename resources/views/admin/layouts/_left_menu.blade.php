@@ -566,13 +566,14 @@
         @empty
 
         @endforelse
+
     </li>
         <!--  Testing list End -->
 
     <li>
         <a href="{{ route('examConfig.index') }}">
             <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
-            <span class="title">Test List</span>
+            <span class="title">All Test List</span>
         </a>
     </li>
 

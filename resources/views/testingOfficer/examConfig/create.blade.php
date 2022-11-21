@@ -55,8 +55,8 @@
                                         <div class="col-lg-6">
                                             <select name="test_config_id" id="test_config_id" class="form-control" required>
                                                 <option value="">Select Test</option>
-                                                @foreach ($testConfigs as $test)
-                                                <option value="{{$test->id}}">{{$test->test_name}}</option>
+                                                @foreach ($data['testConfigs'] as $test)
+                                                <option value="{{$test->id}}" {{$request->test_config_id==$test->id?"selected":""}}>{{$test->test_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -109,7 +109,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($examConfigs as $key => $config)
+                            @foreach($data['examConfigs'] as $key => $config)
                             <tr @if ($config->exam_status == 1) class="color-full" @endif>
                                 <td @if ($config->exam_status == 1) class="color-full" @endif>{{ ++$key }}</td>
                                 <td>{{ $config->test_name }}</td>

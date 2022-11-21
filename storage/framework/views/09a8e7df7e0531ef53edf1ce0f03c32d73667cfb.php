@@ -52,8 +52,8 @@
                                         <div class="col-lg-6">
                                             <select name="test_config_id" id="test_config_id" class="form-control" required>
                                                 <option value="">Select Test</option>
-                                                <?php $__currentLoopData = $testConfigs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $test): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option value="<?php echo e($test->id); ?>"><?php echo e($test->test_name); ?></option>
+                                                <?php $__currentLoopData = $data['testConfigs']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $test): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($test->id); ?>" <?php echo e($request->test_config_id==$test->id?"selected":""); ?>><?php echo e($test->test_name); ?></option>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>
@@ -106,7 +106,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $__currentLoopData = $examConfigs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $config): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $data['examConfigs']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $config): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr <?php if($config->exam_status == 1): ?> class="color-full" <?php endif; ?>>
                                 <td <?php if($config->exam_status == 1): ?> class="color-full" <?php endif; ?>><?php echo e(++$key); ?></td>
                                 <td><?php echo e($config->test_name); ?></td>

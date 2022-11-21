@@ -24,23 +24,25 @@ class ExamConfigController extends Controller
      */
     public function index(Request $request)
     {
-         $examConfigs= ExamConfig::join('test_config', 'test_config.id', '=', 'exam_configs.test_config_id')
-            ->join('board_candidates', 'board_candidates.id', '=', 'exam_configs.board_candidate_id')
-            ->select('exam_configs.*', 'test_config.test_name', 'board_candidates.board_name', 'board_candidates.total_candidate')
-            ->where(['exam_configs.status'=>1]); //,'exam_configs.preview_status'=>1
+         $examConfigs= ExamConfig::with('boardCandidate','testConfig','testConfig.testFor');
+         //->where(['exam_configs.status'=>1]); //,'exam_configs.preview_status'=>1
+
+        if ($request->test_config_id){
+            $examConfigs=$examConfigs->whereHas('testConfig', function ($query) use($request) {
+                $query->where('test_config_id', $request->test_config_id);
+            });
+        }
 
         if ($request->all_active==1){
             $examConfigs=$examConfigs->where(['exam_configs.status'=>1,'exam_configs.preview_status'=>1]);
-        }else{
-            $examConfigs=$examConfigs->where(['exam_configs.status'=>1]);
         }
+//        else{
+//            $examConfigs=$examConfigs->where(['exam_configs.status'=>1]);
+//        }
 
         $examConfigs=$examConfigs->latest()->paginate(20);
 
-
-        $data['examConfigs']=$examConfigs;
-
-        return view('testingOfficer.examConfig.listData', $data);
+        return view('testingOfficer.examConfig.listData',compact('examConfigs','request'));
     }
 
     /**
@@ -48,11 +50,10 @@ class ExamConfigController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $data['testConfigs'] = TestConfiguration::get();
-        $data['questionSets'] = QuestionSet::get();
-        $data['users'] = User::get();
+
 
         $data['examConfigs'] = ExamConfig::join('test_config', 'test_config.id', '=', 'exam_configs.test_config_id')
             ->join('board_candidates', 'board_candidates.id', '=', 'exam_configs.board_candidate_id')
@@ -60,7 +61,7 @@ class ExamConfigController extends Controller
             ->whereIn('exam_configs.status', [0, 2])
             ->paginate(10);
 
-        return view('testingOfficer.examConfig.create', $data);
+        return view('testingOfficer.examConfig.create', compact('data','request'));
     }
 
     /**
@@ -101,9 +102,24 @@ class ExamConfigController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
-        //
+        if ($request->status==0){
+            $status=0;
+        }else{
+            $status=1;
+        }
+
+        ExamConfig::find($id)->update([
+            'preview_status'        => $status,
+            'status'                => $status,
+            'updated_at'            => date('Y-m-d H:i:s'),
+            'updated_by'            => Auth::id(),
+        ]);
+
+        $output['messege'] = 'Exam Configuration has been updated';
+        $output['msgType'] = 'success';
+        return redirect()->back()->with($output);
     }
 
     /**
