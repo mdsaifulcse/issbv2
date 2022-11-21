@@ -131,7 +131,7 @@
                     <b>Seat plan</b>
                 </div>
                 <div class="panel-body panel-primary">
-                    <b><?php echo e($data['total_live']); ?>/<?php echo e($data['total_candidate']); ?></b>
+                    <b><?php echo e($data['total_live']); ?>/<?php echo e($activeBoard?$activeBoard->total_candidate:'N/A'); ?></b>
                 </div>
             </div>
             </a>

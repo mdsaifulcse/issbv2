@@ -37,11 +37,11 @@ class HomeController extends Controller
             ->where('status', 1)
             ->first();
 
-        if (!empty($configuredExam)) {
-            $data['total_candidate'] = BoardCandidate::find($configuredExam->board_candidate_id)->total_candidate;
-        } else {
-            $data['total_candidate'] = 0;
-        }
+//        if (!empty($configuredExam)) {
+//            $data['total_candidate'] = BoardCandidate::find($configuredExam->board_candidate_id)->total_candidate;
+//        } else {
+//            $data['total_candidate'] = 0;
+//        }
 
         $data['total_live'] = Candidates::where('seat_no', '!=', 0)->where('is_logged_in', 1)->count();
         return view('welcome',compact('activeBoard','activeTest','data'));

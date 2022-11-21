@@ -51,7 +51,7 @@
 
                             <form action="<?php echo e(route('saveGenarateToken')); ?>" method="post" class="needs-validation form-horizontal" novalidate enctype="multipart/form-data">
                                 <?php echo csrf_field(); ?>
-                                
+
                                 <div id="export_div">
                                     <div class="col-md-9 col-md-offset-3">
                                         <button type="submit" submitType="0" class="btn btn-primary submitbutton">Genarate Token & Download Users <i class="icon-arrow-right14 position-right"></i></button>

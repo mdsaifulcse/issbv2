@@ -134,7 +134,7 @@
                     <b>Seat plan</b>
                 </div>
                 <div class="panel-body panel-primary">
-                    <b>{{$data['total_live']}}/{{ $data['total_candidate'] }}</b>
+                    <b>{{$data['total_live']}}/{{$activeBoard?$activeBoard->total_candidate:'N/A'}}</b>
                 </div>
             </div>
             </a>

@@ -133,8 +133,8 @@ class GenarateTokenController extends Controller
             Candidates::create([
                 'chest_no'      => $i+1,
                 'board_no'      => $activeBoard->board_name,
-                'name'          => 'N/A',//NULL,
-                'roll_no'       => $i+1,
+                'name'          => 'Add you name here',//NULL,
+                'roll_no'       => 0,
                 'secret_key'    => $this->getGenerateSecretKey(), // default digit 4
             ]);
         }

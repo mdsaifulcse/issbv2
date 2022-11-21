@@ -477,12 +477,59 @@
             <span class="title">Board & Candidate</span>
         </a>
     </li>
+
+    <!--  Testing list Start -->
+    <li>
+        <a href="#">
+            <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
+            <span class="title">Test List</span>
+            <span class="fa arrow"></span>
+        </a>
+        <?php $__empty_1 = true; $__currentLoopData = $testingConfig; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$testingData): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+        <ul class="sub-menu">
+            <li>
+                <a href="#">
+                    <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
+                    <span class="title"><?php echo e($testingData->test_name); ?></span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="<?php echo e(URL::to('/examConfig/create?test_config_id='.$testingData->id)); ?>">
+                            <i class="fa fa-angle-double-right"></i>
+                            Create <?php echo e($testingData->test_name); ?>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo e(URL::to('/examConfig?test_config_id='.$testingData->id)); ?>">
+                            <i class="fa fa-angle-double-right"></i>
+                             <?php echo e($testingData->test_name); ?> List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo e(URL::to('/test-result?test_config_id='.$testingData->id)); ?>">
+                            <i class="fa fa-angle-double-right"></i>
+                             <?php echo e($testingData->test_name); ?> Test Result
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+
+        <?php endif; ?>
+    </li>
+        <!--  Testing list End -->
+
     <li>
         <a href="<?php echo e(route('examConfig.index')); ?>">
             <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
             <span class="title">Test List</span>
         </a>
     </li>
+
     <li>
         <a href="<?php echo e(route('stdSeatPlan')); ?>">
             <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>

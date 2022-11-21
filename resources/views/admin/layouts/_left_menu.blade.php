@@ -524,12 +524,58 @@
             <span class="title">Board & Candidate</span>
         </a>
     </li>
+
+    <!--  Testing list Start -->
+    <li>
+        <a href="#">
+            <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
+            <span class="title">Test List</span>
+            <span class="fa arrow"></span>
+        </a>
+        @forelse($testingConfig as $key=>$testingData)
+        <ul class="sub-menu">
+            <li>
+                <a href="#">
+                    <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
+                    <span class="title">{{$testingData->test_name}}</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="{{ URL::to('/examConfig/create?test_config_id='.$testingData->id) }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Create {{$testingData->test_name}}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ URL::to('/examConfig?test_config_id='.$testingData->id) }}">
+                            <i class="fa fa-angle-double-right"></i>
+                             {{$testingData->test_name}} List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ URL::to('/test-result?test_config_id='.$testingData->id) }}">
+                            <i class="fa fa-angle-double-right"></i>
+                             {{$testingData->test_name}} Test Result
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+        @empty
+
+        @endforelse
+    </li>
+        <!--  Testing list End -->
+
     <li>
         <a href="{{ route('examConfig.index') }}">
             <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
             <span class="title">Test List</span>
         </a>
     </li>
+
     <li>
         <a href="{{ route('stdSeatPlan') }}">
             <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
