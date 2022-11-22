@@ -191,7 +191,10 @@
                                         <a href="<?php echo e(route('examPreview', ['examId'=>$config->id])); ?>" target="_blank">
                                             <i class="livicon" data-name="eye" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Preview"></i>
                                         </a>
-                                        <a href="<?php echo e(route('examConfig.edit', [$config->id])); ?>"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
+                                            <?php
+                                                $test_for=$config->testConfig->testFor->id;
+                                            ?>
+                                        <a href="<?php echo e(route('examConfig.edit', [$config->id])."?test_for=$test_for"); ?>"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
                                         <a href="javascript:void(0)"><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete(<?php echo e($config->id); ?>);></i></a>
                                     </td>
                                 </tr>

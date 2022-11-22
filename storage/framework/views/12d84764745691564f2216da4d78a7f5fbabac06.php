@@ -78,7 +78,7 @@
                                         <a href="<?php echo e(route('examPreview', ['examId'=>$config->id])); ?>" target="_blank">
                                             <i class="livicon" data-name="eye" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Preview"></i>
                                         </a>
-                                        <a href="<?php echo e(route('examConfig.edit', [$config->id])); ?>"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
+                                        <a href="<?php echo e(route('examConfig.edit', [$config->id])."?test_for=$request->test_for"); ?>"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
                                         <a href="javascript:void(0)"><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete(<?php echo e($config->id); ?>);></i></a>
                                     </td>
                                 </tr>
@@ -150,11 +150,11 @@
                                         <a href="<?php echo e(route('examPreview', ['examId'=>$data->id])); ?>" target="_blank">
                                             <i class="livicon" data-name="eye" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Preview"></i>
                                         </a>
-                                        <a href="<?php echo e(route('examConfig.edit', [$data->id])); ?>"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
+                                        <a href="<?php echo e(route('examConfig.edit', [$data->id])."?test_for=$request->test_for"); ?>"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
 
                                         <a href="javascript:void(0)"><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete(<?php echo e($data->id); ?>);></i></a>
 
-                                        <a href="javascript:void(0)"><i data="<?php echo e($config->id); ?>" class="livicon ass_conf_status_update" data-name="info" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
+                                        <a href="javascript:void(0)"><i data="<?php echo e($data->id); ?>" class="livicon ass_conf_status_update" data-name="info" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
                                     </td>
                                 </tr>
                                 <?php endif; ?>

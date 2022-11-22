@@ -12,7 +12,7 @@
         <a href="#">
             <i class="livicon" data-name="doc-portrait" data-c="#67C5DF" data-hc="#67C5DF" data-size="18" data-loop="true"></i>
             <span class="title">Board Configuration</span>
-            <span class="fa arrow"></span>
+            <span class="fa fa-angle-right"></span>
         </a>
 
         <ul class="sub-menu">
@@ -49,7 +49,7 @@
         <a href="#">
             <i class="livicon" data-name="doc-portrait" data-c="#67C5DF" data-hc="#67C5DF" data-size="18" data-loop="true"></i>
             <span class="title">Item Configuration</span>
-            <span class="fa arrow"></span>
+            <span class="fa fa-angle-right"></span>
         </a>
 
         <ul class="sub-menu">
@@ -207,7 +207,7 @@
         <a href="#">
         <i class="livicon" data-name="doc-portrait" data-size="18" data-c="#EF6F6C" data-hc="#EF6F6C" data-loop="true"></i>
             <span class="title">Create Items</span>
-            <span class="fa arrow"></span>
+            <span class="fa fa-angle-right"></span>
         </a>
         <ul class="sub-menu">
             <li class="">
@@ -229,7 +229,7 @@
         <a href="#">
             <i class="livicon" data-name="table" data-c="#67C5DF" data-hc="#67C5DF" data-size="18" data-loop="true"></i>
             <span class="title">Item Bank</span>
-            <span class="fa arrow"></span>
+            <span class="fa fa-angle-right "></span>
         </a>
         <ul class="sub-menu">
             <li>
@@ -264,7 +264,7 @@
             <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C"
                    data-size="18" data-loop="true"></i>
             <span class="title">Sets Configuration</span>
-            <span class="fa arrow"></span>
+            <span class="fa fa-angle-right"></span>
         </a>
         <ul class="sub-menu">
             <li>
@@ -286,7 +286,7 @@
         <a href="#">
             <i class="livicon" data-name="settings" data-c="#67C5DF" data-hc="#67C5DF" data-size="18" data-loop="true"></i>
             <span class="title">Tests Configuration</span>
-            <span class="fa arrow"></span>
+            <span class="fa fa-angle-right"></span>
         </a>
         <ul class="sub-menu">
 
@@ -315,7 +315,7 @@
         <a href="#">
             <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
             <span class="title">Memory Item</span>
-            <span class="fa arrow"></span>
+            <span class="fa fa-angle-right"></span>
         </a>
         <ul class="sub-menu">
             <li>
@@ -333,7 +333,7 @@
             <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C"
                data-size="18" data-loop="true"></i>
             <span class="title">Board Configuration</span>
-            <span class="fa arrow"></span>
+            <span class="fa fa-angle-right"></span>
         </a>
         <ul class="sub-menu">
             <li>
@@ -348,7 +348,7 @@
         <a href="#">
             <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
             <span class="title">Examiners</span>
-            <span class="fa arrow"></span>
+            <span class="fa fa-angle-right"></span>
         </a>
         <ul class="sub-menu">
             <li>
@@ -370,7 +370,7 @@
         <a href="#">
             <i class="livicon" data-name="wrench" data-c="#67C5DF" data-hc="#67C5DF" data-size="18" data-loop="true"></i>
             <span class="title">Role Management</span>
-            <span class="fa arrow"></span>
+            <span class="fa fa-angle-right"></span>
         </a>
         <ul class="sub-menu">
             <li {!! (Request::is('admin/users') || Request::is('admin/users/create') || Request::is('admin/user_profile') || Request::is('admin/users/*') || Request::is('admin/deleted_users') ? 'class="active"' : '' ) !!}>
@@ -411,14 +411,14 @@
         <a href="#">
             <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
             <span class="title">Uploads Section</span>
-            <span class="fa arrow"></span>
+            <span class="fa fa-angle-right"></span>
         </a>
         <ul class="sub-menu">
             <li>
                 <a href="#">
                     <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
                     <span class="title">TAT / BL</span>
-                    <span class="fa arrow"></span>
+                    <span class="fa fa-angle-right"></span>
                 </a>
                 <ul class="sub-menu">
                     <li>
@@ -434,7 +434,7 @@
                 <a href="#">
                     <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
                     <span class="title">Session Calender</span>
-                    <span class="fa arrow"></span>
+                    <span class="fa fa-angle-right"></span>
                 </a>
                 <ul class="sub-menu">
                     <li>
@@ -450,7 +450,7 @@
                 <a href="#">
                     <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
                     <span class="title">Testing Schedule</span>
-                    <span class="fa arrow"></span>
+                    <span class="fa fa-angle-right"></span>
                 </a>
                 <ul class="sub-menu">
                     <li>
@@ -466,7 +466,7 @@
                 <a href="#">
                     <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
                     <span class="title">Announcement</span>
-                    <span class="fa arrow"></span>
+                    <span class="fa fa-angle-right"></span>
                 </a>
                 <ul class="sub-menu">
                     <li>
@@ -482,7 +482,7 @@
                 <a href="#">
                     <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
                     <span class="title">Course Schedule</span>
-                    <span class="fa arrow"></span>
+                    <span class="fa fa-angle-right"></span>
                 </a>
                 <ul class="sub-menu">
                     <li>
@@ -500,7 +500,7 @@
         <a href="#">
             <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
             <span class="title">Upcoming Events</span>
-            <span class="fa arrow"></span>
+            <span class="fa fa-angle-right"></span>
         </a>
         <ul class="sub-menu">
             <li>
@@ -530,33 +530,33 @@
         <a href="#">
             <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
             <span class="title">Test List</span>
-            <span class="fa arrow"></span>
+            <span class="fa fa-angle-right"></span>
         </a>
-        @forelse($testingConfig as $key=>$testingData)
+        @forelse($testLists as $key=>$testList)
         <ul class="sub-menu">
             <li>
                 <a href="#">
                     <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
-                    <span class="title">{{$testingData->test_name}}</span>
-                    <span class="fa arrow"></span>
+                    <span class="title">{{$testList->name}}</span>
+                    <span class="fa fa-angle-right"></span>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="{{ URL::to('/examConfig/create?test_config_id='.$testingData->id) }}">
+                        <a href="{{ URL::to('/examConfig/create?test_for='.$testList->id) }}">
                             <i class="fa fa-angle-double-right"></i>
-                            Create {{$testingData->test_name}}
+                            Create {{$testList->name}}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ URL::to('/examConfig?test_config_id='.$testingData->id) }}">
+                        <a href="{{ URL::to('/examConfig?test_for='.$testList->id) }}">
                             <i class="fa fa-angle-double-right"></i>
-                             {{$testingData->test_name}} List
+                             {{$testList->name}} List
                         </a>
                     </li>
                     <li>
-                        <a href="{{ URL::to('/test-result?test_config_id='.$testingData->id) }}">
+                        <a href="{{ URL::to('/test-result?test_for='.$testList->id) }}">
                             <i class="fa fa-angle-double-right"></i>
-                             {{$testingData->test_name}} Test Result
+                             {{$testList->name}} Test Result
                         </a>
                     </li>
                 </ul>
@@ -598,7 +598,7 @@
         <a href="#">
             <i class="livicon" data-name="doc-portrait" data-c="#67C5DF" data-hc="#67C5DF" data-size="18" data-loop="true"></i>
             <span class="title">Reports</span>
-            <span class="fa arrow"></span>
+            <span class="fa fa-angle-right"></span>
         </a>
         <ul class="sub-menu">
             <li>

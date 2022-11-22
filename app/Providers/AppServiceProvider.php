@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Candidates;
 use App\TestConfiguration;
+use App\TestList;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
@@ -29,8 +30,8 @@ class AppServiceProvider extends ServiceProvider
             'admin.layouts.default',
             function ($view)
             {
-                $testingConfig=TestConfiguration::get();
-                $view->with(['testingConfig'=>$testingConfig]);
+                $testLists=TestList::get();
+                $view->with(['testLists'=>$testLists]);
             }
         );
     }

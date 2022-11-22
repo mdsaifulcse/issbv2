@@ -15,12 +15,12 @@
 @section('content')
     <section class="content-header">
         <!--section starts-->
-        <h5>Assessment Configuration</h5>
+        <h5>{{$test?$test->name:''}} :Assessment Configuration</h5>
         <ol class="breadcrumb">
             <li>
                 <a href="#">Admin</a>
             </li>
-            <li class="active">Create Assessment Configuration</li>
+            <li class="active">{{$test?$test->name:''}} :Create Assessment Configuration</li>
         </ol>
     </section>
 
@@ -31,7 +31,7 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"><i class="livicon" data-name="doc-portrait" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Create Assessment Configuration
+                            {{$test?$test->name:''}} : Create Assessment Configuration
                         </h3>
                     </div>
                     <div class="panel-body">
@@ -91,7 +91,7 @@
                                 <div class="row text-right">
                                     <div class="col-md-9 offset-md-3">
                                         <button type="submit" class="btn btn-primary">Update Question<i class="icon-arrow-right14 position-right"></i></button>
-                                        <a href="{{route('examConfig.index')}}" class="btn btn-default">Back To List <i class="icon-backward2 position-right"></i></a>
+                                        <a href="{{route('examConfig.index')."?test_for=$test->id"}}" class="btn btn-default">Back To List <i class="icon-backward2 position-right"></i></a>
                                     </div>
                                 </div>
                             </form>

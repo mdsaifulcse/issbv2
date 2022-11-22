@@ -960,6 +960,9 @@ li.dropdown-footer {
 .dropdown > .messages-menu > .open {
     background : #FFF !important;
 }
+.fa-angle-right {
+    float : right;
+}
 .arrow {
     float : right;
 }

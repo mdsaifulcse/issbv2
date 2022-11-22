@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TestList;
 use Auth;
 use App\User;
 use App\ItemBank;
@@ -27,9 +28,9 @@ class ExamConfigController extends Controller
          $examConfigs= ExamConfig::with('boardCandidate','testConfig','testConfig.testFor');
          //->where(['exam_configs.status'=>1]); //,'exam_configs.preview_status'=>1
 
-        if ($request->test_config_id){
+        if ($request->test_for){
             $examConfigs=$examConfigs->whereHas('testConfig', function ($query) use($request) {
-                $query->where('test_config_id', $request->test_config_id);
+                $query->where('test_config.test_for', $request->test_for);
             });
         }
 
@@ -52,7 +53,15 @@ class ExamConfigController extends Controller
      */
     public function create(Request $request)
     {
-        $testConfigs = TestConfiguration::get();
+
+        $test='';
+        $testConfigs = TestConfiguration::latest();
+        if ($request->test_for){
+            $testConfigs=$testConfigs->where('test_for',$request->test_for);
+
+            $test=TestList::find($request->test_for);
+        }
+        $testConfigs = $testConfigs->get();
 
 
 //        $examConfigs = ExamConfig::join('test_config', 'test_config.id', '=', 'exam_configs.test_config_id')
@@ -61,7 +70,7 @@ class ExamConfigController extends Controller
 //            ->whereIn('exam_configs.status', [0, 2])
 //            ->paginate(10);
 
-        return view('testingOfficer.examConfig.create', compact('testConfigs','request'));
+        return view('testingOfficer.examConfig.create', compact('testConfigs','test','request'));
     }
 
     /**
@@ -128,12 +137,14 @@ class ExamConfigController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,Request $request)
     {
         $data['testConfigs'] = TestConfiguration::get();
         $data['questionSets'] = QuestionSet::get();
         $data['users'] = User::get();
         $data['examConfig'] = ExamConfig::find($id);
+
+        $data['test']=TestList::find($request->test_for);
 
         return view('testingOfficer.examConfig.update', $data);
     }

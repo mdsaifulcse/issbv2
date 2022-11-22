@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    Create Test
+    {{$test?$test->name:''}} : Create Test
     @parent
 @stop
 @section('header_styles')
@@ -26,12 +26,12 @@
 @section('content')
     <section class="content-header">
         <!--section starts-->
-        <h5>Test Configuration</h5>
+        <h5> {{$test?$test->name:''}} : Test Configuration</h5>
         <ol class="breadcrumb">
             <li>
                 <a href="#">Admin</a>
             </li>
-            <li class="active">Create Test Configuration</li>
+            <li class="active">{{$test?$test->name:''}} : Create Test Configuration</li>
         </ol>
     </section>
 
@@ -42,12 +42,12 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"><i class="livicon" data-name="doc-portrait" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Create Test Configuration
+                            {{$test?$test->name:''}} : Create Test Configuration
                         </h3>
                     </div>
                     <div class="panel-body">
                         <div class="form">
-                            <form action="{{route('examConfig.store')}}" method="post" class="needs-validation form-horizontal" novalidate>
+                            <form action="{{route('examConfig.store')}}" method="post" class="needs-validation form-horizontal" >
                                 @csrf
                                 <div class="row">
                                     <div class="form-group">
@@ -56,7 +56,7 @@
                                             <select name="test_config_id" id="test_config_id" class="form-control" required>
                                                 <option value="">Select Test</option>
                                                 @foreach ($testConfigs as $test)
-                                                <option value="{{$test->id}}" {{$request->test_config_id==$test->id?"selected":""}}>{{$test->test_name}}</option>
+                                                <option value="{{$test->id}}">{{$test->test_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -74,7 +74,7 @@
                                 <div class="row text-right">
                                     <div class="col-md-9 offset-md-3">
                                         <button type="submit" class="btn btn-primary">Generate Question <i class="icon-arrow-right14 position-right"></i></button>
-                                        <a href="{{route('examConfig.index')}}" class="btn btn-default">Back To List <i class="icon-backward2 position-right"></i></a>
+                                        <a href="{{route('examConfig.index')."?test_for=$request->test_for"}}" class="btn btn-default">Back To List <i class="icon-backward2 position-right"></i></a>
                                     </div>
                                 </div>
                             </form>
@@ -182,64 +182,64 @@
     <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
     <script src="{{asset('js/jequery-validation.js')}}"></script>
 
-    {{--<script>--}}
-        {{----}}
-        {{--$.ajaxSetup({--}}
-            {{--headers: {--}}
-                {{--'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
-            {{--}--}}
-        {{--});--}}
-        {{----}}
-        {{--$(document).ready(function(){--}}
+    <script>
 
-            {{----}}
-            {{--@if (session('msgType') == 'success')--}}
-                {{--toastr.success('{{ session("messege") }}', 'Success', {timeOut: 5000});--}}
-            {{--@endif--}}
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
-            {{--@if (session('msgType') == 'danger')--}}
-                {{--toastr.warning('{{ session("messege") }}', 'Warning', {timeOut: 5000});--}}
-            {{--@endif--}}
+        $(document).ready(function(){
 
-            {{--$('#example').DataTable( {--}}
-                {{--"searching": false,--}}
-                {{--"paging": false,--}}
-                {{--"info": false,--}}
-                {{--"lengthChange":false,--}}
-                {{--responsive: true,--}}
-                {{--"columnDefs": [--}}
-                    {{--{ "orderable": false, "targets": 2 }--}}
-                {{--]--}}
-            {{--} );--}}
 
-            {{--$('.ass_conf_status_update').on('click', function(){--}}
-                {{--var id = $(this).attr('data');--}}
-                {{--$("#ass_conf_status").modal('show');--}}
-                {{--$('.assignment_id').val(id);--}}
-            {{--});--}}
+            @if (session('msgType') == 'success')
+                toastr.success('{{ session("messege") }}', 'Success', {timeOut: 5000});
+            @endif
 
-            {{--$(".status_update_btn").on('click', function(e) {--}}
-                {{--e.preventDefault(); --}}
-                {{--var assignment_id = $('.assignment_id').val();--}}
-                {{----}}
-                {{--$.ajax({--}}
-                    {{--type: "get",--}}
-                    {{--url: "{{url('/assessment-status-update')}}",--}}
-                    {{--data: {assignment_id:assignment_id},--}}
-                    {{--dataType: 'json',--}}
-                    {{--success: function(data) {--}}
-                        {{--if (data.msgType == 'success') {--}}
-                            {{--$("#ass_conf_status").modal('hide');--}}
-                            {{--toastr.success(data.messege, 'Success', {timeOut: 5000});--}}
-                        {{--} else {--}}
-                            {{--$("#ass_conf_status").modal('hide');--}}
-                            {{--toastr.warning(data.messege, 'Warning', {timeOut: 5000});--}}
-                        {{--}--}}
-                        {{----}}
-                    {{--}--}}
-                {{--});--}}
-            {{--});--}}
-        {{--});--}}
-    {{--</script>--}}
+            @if (session('msgType') == 'danger')
+                toastr.warning('{{ session("messege") }}', 'Warning', {timeOut: 5000});
+            @endif
+
+            $('#example').DataTable( {
+                "searching": false,
+                "paging": false,
+                "info": false,
+                "lengthChange":false,
+                responsive: true,
+                "columnDefs": [
+                    { "orderable": false, "targets": 2 }
+                ]
+            } );
+
+            $('.ass_conf_status_update').on('click', function(){
+                var id = $(this).attr('data');
+                $("#ass_conf_status").modal('show');
+                $('.assignment_id').val(id);
+            });
+
+            $(".status_update_btn").on('click', function(e) {
+                e.preventDefault();
+                var assignment_id = $('.assignment_id').val();
+
+                $.ajax({
+                    type: "get",
+                    url: "{{url('/assessment-status-update')}}",
+                    data: {assignment_id:assignment_id},
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.msgType == 'success') {
+                            $("#ass_conf_status").modal('hide');
+                            toastr.success(data.messege, 'Success', {timeOut: 5000});
+                        } else {
+                            $("#ass_conf_status").modal('hide');
+                            toastr.warning(data.messege, 'Warning', {timeOut: 5000});
+                        }
+
+                    }
+                });
+            });
+        });
+    </script>
 
 @stop

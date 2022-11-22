@@ -128,7 +128,7 @@
                         <div class="clearfix"></div>
                         <!-- BEGIN SIDEBAR MENU -->
 
-                        <?php echo $__env->make('admin.layouts._left_menu',compact('testingConfig'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                        <?php echo $__env->make('admin.layouts._left_menu',compact('testLists'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                         <!-- END SIDEBAR MENU -->
                     </div>
                 </section>
