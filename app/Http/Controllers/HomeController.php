@@ -44,7 +44,12 @@ class HomeController extends Controller
 //        }
 
         $data['total_live'] = Candidates::where('seat_no', '!=', 0)->where('is_logged_in', 1)->count();
-        return view('welcome',compact('activeBoard','activeTest','data'));
+
+        $examConfigs= ExamConfig::with('boardCandidate','testConfig','testConfig.testFor')
+            ->where(['exam_configs.status'=>1,'exam_configs.preview_status'=>1])
+            ->latest()->paginate(20);
+
+        return view('welcome',compact('activeBoard','activeTest','data','examConfigs'));
 
     }
 

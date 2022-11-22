@@ -52,16 +52,16 @@ class ExamConfigController extends Controller
      */
     public function create(Request $request)
     {
-        $data['testConfigs'] = TestConfiguration::get();
+        $testConfigs = TestConfiguration::get();
 
 
-        $data['examConfigs'] = ExamConfig::join('test_config', 'test_config.id', '=', 'exam_configs.test_config_id')
-            ->join('board_candidates', 'board_candidates.id', '=', 'exam_configs.board_candidate_id')
-            ->select('exam_configs.*', 'test_config.test_name', 'board_candidates.id', 'board_candidates.board_name', 'board_candidates.total_candidate', 'exam_configs.board_candidate_id')
-            ->whereIn('exam_configs.status', [0, 2])
-            ->paginate(10);
+//        $examConfigs = ExamConfig::join('test_config', 'test_config.id', '=', 'exam_configs.test_config_id')
+//            ->join('board_candidates', 'board_candidates.id', '=', 'exam_configs.board_candidate_id')
+//            ->select('exam_configs.*', 'test_config.test_name', 'board_candidates.id', 'board_candidates.board_name', 'board_candidates.total_candidate', 'exam_configs.board_candidate_id')
+//            ->whereIn('exam_configs.status', [0, 2])
+//            ->paginate(10);
 
-        return view('testingOfficer.examConfig.create', compact('data','request'));
+        return view('testingOfficer.examConfig.create', compact('testConfigs','request'));
     }
 
     /**

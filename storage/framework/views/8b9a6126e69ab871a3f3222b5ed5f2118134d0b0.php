@@ -58,6 +58,7 @@
         border-bottom: 2px solid #321919;
     }
 </style>
+<link href="<?php echo e(asset('DataTables/datatables.min.css')); ?>" rel="stylesheet" />
 <link href="<?php echo e(asset('assets/vendors/modal-popup-ybox/dist/css/yBox.min.css')); ?>" rel="stylesheet" />
 <?php $__env->stopSection(); ?>
 
@@ -111,7 +112,7 @@
         </div>
         <div class="col-md-3 animated fadeInLeftBig">
 
-            <a class="view-details" href="<?php echo e(url('/examConfig?all_active=1')); ?>">
+            
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
                     <b>Active Tests</b>
@@ -120,7 +121,7 @@
                     <b><?php echo e($activeTest); ?></b>
                 </div>
             </div>
-            </a>
+            
 
         </div>
         <div class="col-md-3 animated fadeInLeftBig">
@@ -140,7 +141,82 @@
 
     </div>
     <!--/row-->
+
+    <div class="row">
+
+        <div class="col-lg-12" style="">
+            <div class="panel panel-primary " style="border: 1px solid red; margin-bottom: 50px;">
+                <div class="panel-heading clearfix">
+                    <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                        All Active Test List
+                    </h3>
+                    <div class="pull-right">
+                        
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <table id="activeTest" class="display nowrap" style="width:100%">
+                        <thead>
+                        <tr class="color-full">
+                            <th width="10%">Sl No</th>
+                            <th width="10%">Test For</th>
+                            <th width="10%">Test Name</th>
+                            <th width="10%">Board Name</th>
+                            <th width="15%">Test Date</th>
+                            <th width="15%">Duration</th>
+                            <th width="10%">Total Candidate</th>
+                            <th width="10%">Status</th>
+                            <th width="20%" class="text-center">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php $__currentLoopData = $examConfigs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $config): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php if($config->status == 1 && $config->preview_status == 1): ?>
+                                <tr <?php if($config->exam_status == 1): ?> class="bg" <?php endif; ?>>
+                                    <td <?php if($config->exam_status == 1): ?> class="color-full1" <?php endif; ?>><?php echo e(++$key); ?></td>
+                                    <td><?php echo e($config->testConfig->testFor->name); ?></td>
+                                    <td><?php echo e($config->testConfig->test_name); ?></td>
+                                    <td><?php echo e($config->boardCandidate->board_name); ?></td>
+                                    <td><?php echo e($config->exam_date); ?></td>
+                                    <td><?php echo e($config->exam_duration); ?></td>
+                                    <td><?php echo e($config->boardCandidate->total_candidate); ?></td>
+                                    <td> <a href="<?php echo e(route('examConfig.show', [$config->id]).'?status=0'); ?>"><b>Activate</b> </a>   </td>
+                                    <td class="text-center">
+                                        <?php if($config->exam_status == 1): ?>
+                                            <a href="<?php echo e(route('runningExamTimeRemain', ['examId'=>$config->id])); ?>">
+                                                <i class="livicon" data-name="clock" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Remaining Time"></i>
+                                            </a>
+                                        <?php endif; ?>
+                                        <a href="<?php echo e(route('examPreview', ['examId'=>$config->id])); ?>" target="_blank">
+                                            <i class="livicon" data-name="eye" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Preview"></i>
+                                        </a>
+                                        <a href="<?php echo e(route('examConfig.edit', [$config->id])); ?>"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
+                                        <a href="javascript:void(0)"><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete(<?php echo e($config->id); ?>);></i></a>
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </tbody>
+
+
+
+                    </table>
+                    <?php if(count($examConfigs)>0): ?>
+                        <?php echo e($examConfigs->links()); ?>
+
+                    <?php endif; ?>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
 </section>
+
 <?php endif; ?>
 
 <?php if(Auth::user()->hasRole('user')): ?>
@@ -232,6 +308,11 @@
     </div> -->
     <div style="height: 5em">&nbsp;</div>
     <!--/row-->
+
+
+
+
+
 </section>
 <?php endif; ?>
 
@@ -239,11 +320,23 @@
 
 
 <?php $__env->startSection('footer_scripts'); ?>
-
+<script language="javascript" type="text/javascript" src="<?php echo e(asset('DataTables/datatables.min.js')); ?>"></script>
 <script language="javascript" type="text/javascript" src="<?php echo e(asset('assets/vendors/modal-popup-ybox/dist/js/directive.min.js')); ?>"></script>
 <script language="javascript" type="text/javascript" src="<?php echo e(asset('assets/vendors/modal-popup-ybox/dist/js/yBox.min.js')); ?>"></script>
 <script language="javascript" type="text/javascript" src="<?php echo e(asset('assets/vendors/select2/js/select2.js')); ?>"></script>
 
+<script>
+    $('#activeTest').DataTable( {
+        "searching": true,
+        "paging": false,
+        "info": false,
+        "lengthChange":false,
+        responsive: true,
+        "columnDefs": [
+            { "orderable": false, "targets": 2 }
+        ]
+    } );
+</script>
 
 <script>
     setInterval(myTimer, 1000);

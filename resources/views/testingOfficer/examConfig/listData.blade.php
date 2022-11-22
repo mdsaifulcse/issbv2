@@ -82,7 +82,7 @@
                                             <i class="livicon" data-name="eye" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Preview"></i>
                                         </a>
                                         <a href="{{ route('examConfig.edit', [$config->id]) }}"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
-                                        <a><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete({{ $config->id }});></i></a>
+                                        <a href="javascript:void(0)"><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete({{ $config->id }});></i></a>
                                     </td>
                                 </tr>
                                 @endif
@@ -153,8 +153,10 @@
                                             <i class="livicon" data-name="eye" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Preview"></i>
                                         </a>
                                         <a href="{{ route('examConfig.edit', [$data->id]) }}"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
-                                        <a><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete({{ $data->id }});></i></a>
-                                        <a href="#"><i data="{{ $config->id }}" class="livicon ass_conf_status_update" data-name="info" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
+
+                                        <a href="javascript:void(0)"><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete({{ $data->id }});></i></a>
+
+                                        <a href="javascript:void(0)"><i data="{{ $config->id }}" class="livicon ass_conf_status_update" data-name="info" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
                                     </td>
                                 </tr>
                                 @endif

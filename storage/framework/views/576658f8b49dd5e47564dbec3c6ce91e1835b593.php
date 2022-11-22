@@ -521,15 +521,24 @@
 
         <?php endif; ?>
 
+        <ul class="sub-menu">
+            <li>
+                <a href="<?php echo e(route('examConfig.index')); ?>">
+                    <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
+                    <span class="title">All Test List</span>
+                </a>
+            </li>
+        </ul>
+
     </li>
         <!--  Testing list End -->
 
-    <li>
-        <a href="<?php echo e(route('examConfig.index')); ?>">
-            <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
-            <span class="title">All Test List</span>
-        </a>
-    </li>
+    
+        
+            
+            
+        
+    
 
     <li>
         <a href="<?php echo e(route('stdSeatPlan')); ?>">
