@@ -29,21 +29,16 @@ class HomeController extends Controller
     public function dashboard(){
         $activeBoard = BoardCandidate::where('status', 1)->first();
 
+        if (empty($activeBoard)){ // ----- For no active board
+            $output['messege'] = 'No active board, Please create board first';
+            $output['msgType'] = 'danger';
+            return redirect()->back()->with($output);
+        }
+
         $activeTest = ExamConfig::where(['exam_configs.status'=>1,'exam_configs.preview_status'=>1])->count();
 
 
-        $configuredExam = ExamConfig::whereIn('exam_status', [1,4])
-            ->where('exam_date', date('Y-m-d'))
-            ->where('status', 1)
-            ->first();
-
-//        if (!empty($configuredExam)) {
-//            $data['total_candidate'] = BoardCandidate::find($configuredExam->board_candidate_id)->total_candidate;
-//        } else {
-//            $data['total_candidate'] = 0;
-//        }
-
-        $data['total_live'] = Candidates::where('seat_no', '!=', 0)->where('is_logged_in', 1)->count();
+        $data['total_live'] = Candidates::where('seat_no', '!=', 0)->where(['is_logged_in'=>1,'board_no'=>$activeBoard->board_name])->count();
 
         $examConfigs= ExamConfig::with('boardCandidate','testConfig','testConfig.testFor')
             ->where(['exam_configs.status'=>1,'exam_configs.preview_status'=>1])

@@ -15,12 +15,11 @@ class ExamScheduleController extends Controller
 {
     public function index()
     {
-        $data['examConfigs'] = ExamConfig::join('test_config', 'test_config.id', '=', 'exam_configs.test_config_id')
-            ->select('exam_configs.*', 'test_config.test_name')
-            ->where('exam_configs.status', 1)
-            ->where('exam_configs.preview_status', 1) //1=activate from testing officer
-            // ->where('exam_configs.assign_to', Auth::id())
-            ->paginate(10);
+
+
+        $data['examConfigs']=ExamConfig::with('boardCandidate','testConfig','testConfig.testFor')
+            ->where(['exam_configs.status'=>1,'exam_configs.preview_status'=>1])
+            ->latest()->paginate(20);
 
         return view('conductOfficer.examSchedule.listData', $data);
     }

@@ -329,6 +329,16 @@
 <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
 
 <script>
+    $(document).ready(function() {
+        @if (session('msgType') == 'success')
+        toastr.success('{{ session("messege") }}', 'Success', {timeOut: 5000});
+        @endif
+
+        @if (session('msgType') == 'danger')
+        toastr.warning('{{ session("messege") }}', 'Warning', {timeOut: 5000});
+        @endif
+    });
+
     $('#activeTest').DataTable( {
         "searching": true,
         "paging": false,

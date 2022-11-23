@@ -15,26 +15,26 @@ class StdSeatPlanController extends Controller
 {
     public function index()
     {
-        $data = array();
-        $currentDate = date('Y-m-d');
-        $candidates = Candidates::where('seat_no', '!=', 0)->get();
+        $activeBoard = BoardCandidate::where('status', 1)->first();
 
-        $configuredExam = ExamConfig::whereIn('exam_status', [1,4])
-            ->where('exam_date', $currentDate)
-            ->where('status', 1)
-            ->first();
-
-        if (!empty($configuredExam)) {
-            $data['total_candidate'] = BoardCandidate::find($configuredExam->board_candidate_id)->total_candidate;
-        } else {
-            $data['total_candidate'] = 0;
+        if (empty($activeBoard)){ // ----- For no active board
+            $output['messege'] = 'No active board, Please create board first';
+            $output['msgType'] = 'danger';
+            return redirect()->back()->with($output);
         }
+
+        $data = array();
+
+        $candidates = Candidates::where('seat_no', '!=', 0)->where('board_no',$activeBoard->board_name)->get();
+
+        $data['total_candidate'] = $activeBoard->total_candidate;
+
 
         // where('board_no', 'one')
         foreach ($candidates as $key => $candidate) {
             $data["candidate_$candidate->seat_no"] = $candidate->is_logged_in;
         }
-        $data['total_live'] = Candidates::where('seat_no', '!=', 0)->where('is_logged_in', 1)->count();
+        $data['total_live'] = Candidates::where('seat_no', '!=', 0)->where(['is_logged_in'=> 1,'board_no'=>101])->count();
 
 
         // dd($data);
