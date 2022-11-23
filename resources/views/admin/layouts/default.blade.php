@@ -127,7 +127,7 @@
                         <div class="clearfix"></div>
                         <!-- BEGIN SIDEBAR MENU -->
 
-                        @include('admin.layouts._left_menu',compact('testingConfig'))
+                        @include('admin.layouts._left_menu',compact('testLists'))
                         <!-- END SIDEBAR MENU -->
                     </div>
                 </section>
