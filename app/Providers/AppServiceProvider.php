@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
             'admin.layouts.default',
             function ($view)
             {
-                $testLists=TestList::get();
+                $testLists=TestList::join('test_config','test_lists.id','test_config.test_for')->where('test_lists.status',1)->latest('test_lists.id')->get();
                 $view->with(['testLists'=>$testLists]);
             }
         );
