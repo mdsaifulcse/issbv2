@@ -79,6 +79,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/item-bank/no_answer', 'AdminController@itemNoAnswer');
     Route::get('/item-bank/test', 'AdminController@itemBankTest');
     Route::get('/item-bank/inactive', 'AdminController@itemBankInactive');
+    Route::get('/item-bank/demo', 'AdminController@itemBankDemo');
 
     // create new pm question
     Route::get('create-question', ['as' => 'create.question', 'uses' => 'AdminController@createQuestion']);

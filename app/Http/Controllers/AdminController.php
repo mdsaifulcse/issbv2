@@ -1120,6 +1120,14 @@ class AdminController extends Controller
         return view('item_bank_inactive', compact('test_list', 'memory_bank'));
     }
 
+    public function itemBankDemo()
+    {
+        $memory_bank = MemoryBank::where('item_status', 5)->count();
+        $itemFor = ItemBank::where('item_status', 5)->select('item_for')->groupBy('item_for')->get()->toArray();
+        $test_list = TestList::whereIn('id', $itemFor)->get();
+        return view('item_bank_demo', compact('test_list', 'memory_bank'));
+    }
+
 
 
     public function numericItemSetList()
