@@ -87,30 +87,26 @@ class ExamScheduleController extends Controller
     public function examDemoItemPreview(Request $request)
     {
         $data['examId'] = $request->examId;
-        $nextDemoQuestionId = $request->next_demo_question_id;
 
         $examConfig = ExamConfig::with('testConfig')->find($request->examId);
 
-//        $totalDemoQuestion = ItemBank::where(['item_for'=>$examConfig->testConfig->test_for,'item_status'=>5])
-//            ->where('id', '>', $nextDemoQuestionId)->orderBy('id','ASC')->first();
-
-        $skip=1;
-        if ($request->next_demo_question_id){
+        $skip=$request->skip?$request->skip:1;
+        // item_status =5 (Demo test)
+        if ($request->next_demo_question_id && $request->skip){
             $skip=$skip+1;
-             $itemDetails = ItemBank::where(['item_for'=>$examConfig->testConfig->test_for,'item_status'=>5]);
+            $itemDetails = ItemBank::where(['item_for'=>$examConfig->testConfig->test_for,'item_status'=>5]);
 
             $itemDetails=$itemDetails->where('id',$request->next_demo_question_id);
-
             $itemDetails=$itemDetails->orderBy('id','ASC')->first();
-
         }else{
             $data['itemDetails'] = $itemDetails = ItemBank::where(['item_for'=>$examConfig->testConfig->test_for,'item_status'=>5])
-                ->orderBy('id','ASC')->first(); // item_status =5 (Demo test)
+                ->orderBy('id','ASC')->first();
         }
 
+        $data['skip']=$skip;
         $data['itemDetails']=$itemDetails;
-        
 
+        // Identify the next question ------ skip the previous question by skip -----
         $nextDemoQuestion=ItemBank::where(['item_for'=>$examConfig->testConfig->test_for,'item_status'=>5])
             ->skip($skip)->orderBy('id','ASC')->first();
 
@@ -125,8 +121,6 @@ class ExamScheduleController extends Controller
         } else {
             $data['next_demo_question_id'] = $nextDemoQuestion->id;
         }
-
-
 
         $data['status'] = $itemDetails->item_status;
 
