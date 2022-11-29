@@ -1120,6 +1120,14 @@ class AdminController extends Controller
         return view('item_bank_inactive', compact('test_list', 'memory_bank'));
     }
 
+    public function itemBankDemo()
+    {
+        $memory_bank = MemoryBank::where('item_status', 5)->count();
+        $itemFor = ItemBank::where('item_status', 5)->select('item_for')->groupBy('item_for')->get()->toArray();
+        $test_list = TestList::whereIn('id', $itemFor)->get();
+        return view('item_bank_demo', compact('test_list', 'memory_bank'));
+    }
+
 
 
     public function numericItemSetList()
@@ -2340,6 +2348,7 @@ class AdminController extends Controller
 
     public function createItemSet()
     {
+
         $item_set_for = Session::get('item_set_for');
         $item_set_name = Session::get('item_set_name');
         $item_configuration_type = Session::get('item_configuration_type');
@@ -2350,6 +2359,7 @@ class AdminController extends Controller
         $item_levels = ItemLevel::select('id', 'name')->get();
 
         if ($item_configuration_type == 1) {
+
             $counts = [];
             foreach ($item_levels as $level) {
                 $count = ItemBank::Where('level', $level->id)->Where('item_for', $item_set_for)->WhereIn('item_status', [1,3])->count();
@@ -2360,6 +2370,7 @@ class AdminController extends Controller
             }
             return view('create_random_item_set', compact('item_set_for', 'test_list', 'candidate_type', 'item_set_name', 'counts', 'total_item'));
         } elseif ($item_configuration_type == 2) {
+
             $item_bank = ItemBank::WhereIn('item_status', [1,3])->Where('item_for', $item_set_for)->paginate(10);
             return view('create_static_item_set', compact('item_set_for', 'test_list', 'candidate_type', 'item_set_name', 'item_bank', 'item_levels', 'total_item'));
         } else {
@@ -2838,7 +2849,7 @@ class AdminController extends Controller
 
      public function testConfigList()
     {
-        $test_config_list = TestConfiguration::with('testFor')->paginate(20);
+        $test_config_list = TestConfiguration::with('testFor')->latest()->paginate(20);
         return view('test_config_list', compact('test_config_list'));
     }
 

@@ -256,6 +256,12 @@
                     Inactive
                 </a>
             </li>
+            <li>
+                <a href="{{ URL::to('/item-bank/demo') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Demo
+                </a>
+            </li>
         </ul>
     </li>
 

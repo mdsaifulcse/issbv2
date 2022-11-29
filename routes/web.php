@@ -79,6 +79,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/item-bank/no_answer', 'AdminController@itemNoAnswer');
     Route::get('/item-bank/test', 'AdminController@itemBankTest');
     Route::get('/item-bank/inactive', 'AdminController@itemBankInactive');
+    Route::get('/item-bank/demo', 'AdminController@itemBankDemo');
 
     // create new pm question
     Route::get('create-question', ['as' => 'create.question', 'uses' => 'AdminController@createQuestion']);
@@ -414,6 +415,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/examScheduleList', 'ExamScheduleController@index')->name('examScheduleList');
     Route::get('/examInstruction', 'ExamScheduleController@examInstruction')->name('examInstruction');
     Route::get('/nextInstruction', 'ExamScheduleController@nextInstruction')->name('nextInstruction');
+
+    Route::get('/examDemoItemPreview', 'ExamScheduleController@examDemoItemPreview')->name('examDemoItemPreview');
+
     Route::get('/examDemoQOne', 'ExamScheduleController@examDemoQOne')->name('examDemoQOne');
     Route::get('/examDemoQTwo', 'ExamScheduleController@examDemoQTwo')->name('examDemoQTwo');
     Route::get('/examDemoQThree', 'ExamScheduleController@examDemoQThree')->name('examDemoQThree');

@@ -41,46 +41,99 @@
                             Assessment Schedules
                         </h3>
                     </div>
+
                     <div class="panel-body">
                         <table id="example" class="display nowrap" style="width:100%">
                             <thead>
-                            <tr>
-                                <th>Sl No</th>
-                                <th>Test Name</th>
-                                <th>Assessment Date</th>
-                                <th>Duration</th>
-                                <th>Status</th>
-                                <th class="text-center">Action</th>
+                            <tr class="color-full">
+                                <th width="10%">Sl No</th>
+                                <th width="10%">Test For</th>
+                                <th width="10%">Test Name</th>
+                                <th width="10%">Board Name</th>
+                                <th width="15%">Test Date</th>
+                                <th width="15%">Duration</th>
+                                <th width="10%">Total Candidate</th>
+                                <th width="10%">Status</th>
+                                <th width="20%" class="text-center">Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($examConfigs as $key => $config)
-                            <tr @if ($config->exam_status == 1) class="color-full" @endif>
-                                <td @if ($config->exam_status == 1) class="color-full" @endif>{{ ++$key }}</td>
-                                <td>{{ $config->test_name }}</td>
-                                <td>{{ $config->exam_date }}</td>
-                                <td>{{ $config->exam_duration }} Minutes</td>
-                                <td>@if($config->preview_status == 0) Pending @else Activated @endif</td>
-                                <td class="text-center">
-                                    <a href="{{ url('examPreview?examId='.$config->id) }}" target="_blank" class="btn btn-sm btn-primary">Preview Exam</a>
+                                @if($config->status == 1 && $config->preview_status == 1)
+                                    <tr @if ($config->exam_status == 1) class="bg" @endif>
+                                        <td @if ($config->exam_status == 1) class="color-full1" @endif>{{ ++$key }}</td>
+                                        <td>{{ $config->testConfig->testFor->name }}</td>
+                                        <td>{{ $config->testConfig->test_name }}</td>
+                                        <td>{{ $config->boardCandidate->board_name }}</td>
+                                        <td>{{ $config->exam_date }}</td>
+                                        <td>{{ $config->exam_duration }}</td>
+                                        <td>{{ $config->boardCandidate->total_candidate }}</td>
+                                        <td> <a href="{{ route('examConfig.show', [$config->id]).'?status=0' }}"><b>Activate</b> </a>   </td>
+                                        <td class="text-center">
+                                        <a href="{{ url('examPreview?examId='.$config->id) }}" target="_blank" class="btn btn-sm btn-primary">Preview Exam</a>
 
-                                    @if ($config->exam_status == 2)
+                                        @if ($config->exam_status == 2)
                                         <a href="#" class="btn btn-sm btn-success" disabled>Exam Completed</a>
-                                    @else
+                                        @else
                                         @if($config->preview_status == 1)
                                         <a href="{{ route('examInstruction', ['examId'=>$config->id]) }}" class="btn btn-sm btn-primary">Show Introduction</a>
                                         @endif
-                                    @endif
+                                        @endif
 
-                                </td>
-                            </tr>
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
                             </tbody>
-                            @if (!empty($examConfig))
-                            {{ $examConfigs->links() }}
-                            @endif
+
+
+
                         </table>
+                        @if(count($examConfigs)>0)
+                            {{ $examConfigs->links() }}
+                        @endif
                     </div>
+
+                    {{--<div class="panel-body">--}}
+                        {{--<table id="example" class="display nowrap" style="width:100%">--}}
+                            {{--<thead>--}}
+                            {{--<tr>--}}
+                                {{--<th>Sl No</th>--}}
+                                {{--<th>Test Name</th>--}}
+                                {{--<th>Assessment Date</th>--}}
+                                {{--<th>Duration</th>--}}
+                                {{--<th>Status</th>--}}
+                                {{--<th class="text-center">Action</th>--}}
+                            {{--</tr>--}}
+                            {{--</thead>--}}
+                            {{--<tbody>--}}
+                            {{--@foreach($examConfigs as $key => $config)--}}
+                            {{--<tr @if ($config->exam_status == 1) class="color-full" @endif>--}}
+                                {{--<td @if ($config->exam_status == 1) class="color-full" @endif>{{ ++$key }}</td>--}}
+                                {{--<td>{{ $config->test_name }}</td>--}}
+                                {{--<td>{{ $config->exam_date }}</td>--}}
+                                {{--<td>{{ $config->exam_duration }} Minutes</td>--}}
+                                {{--<td>@if($config->preview_status == 0) Pending @else Activated @endif</td>--}}
+                                {{--<td class="text-center">--}}
+                                    {{--<a href="{{ url('examPreview?examId='.$config->id) }}" target="_blank" class="btn btn-sm btn-primary">Preview Exam</a>--}}
+
+                                    {{--@if ($config->exam_status == 2)--}}
+                                        {{--<a href="#" class="btn btn-sm btn-success" disabled>Exam Completed</a>--}}
+                                    {{--@else--}}
+                                        {{--@if($config->preview_status == 1)--}}
+                                        {{--<a href="{{ route('examInstruction', ['examId'=>$config->id]) }}" class="btn btn-sm btn-primary">Show Introduction</a>--}}
+                                        {{--@endif--}}
+                                    {{--@endif--}}
+
+                                {{--</td>--}}
+                            {{--</tr>--}}
+                            {{--@endforeach--}}
+                            {{--</tbody>--}}
+                            {{--@if (!empty($examConfig))--}}
+                            {{--{{ $examConfigs->links() }}--}}
+                            {{--@endif--}}
+                        {{--</table>--}}
+                    {{--</div>--}}
                 </div>
             </div>
         </div>
