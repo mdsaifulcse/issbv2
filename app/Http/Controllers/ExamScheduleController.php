@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ItemBank;
 use DateTime;
 use Auth;
 use DateTimeZone;
@@ -37,7 +38,7 @@ class ExamScheduleController extends Controller
 
             // FOR CHECKING NEXT INSTRUCTION
             $isNextConfigInstruction = ConfigInstruction::where('test_config_id', $examConfig->test_config_id)
-                ->where('id', '>', $configInstruction->id)
+                ->where('id', '>=', $configInstruction->id)
                 ->orderBy('id', 'ASC')
                 ->count();
             // dd($isNextConfigInstruction);
@@ -70,7 +71,7 @@ class ExamScheduleController extends Controller
             ->orderBy('id', 'ASC')
             ->count();
 
-        if ($isNextConfigInstruction >= 0) {
+        if ($isNextConfigInstruction <= 0) {
             $data['instructionEndStatus']  = 0;
         } else {
             $data['instructionEndStatus']  = 1;
@@ -82,11 +83,62 @@ class ExamScheduleController extends Controller
         }
         return response()->json($data);
     }
+
+    public function examDemoItemPreview(Request $request)
+    {
+        $data['examId'] = $request->examId;
+        $nextDemoQuestionId = $request->next_demo_question_id;
+
+        $examConfig = ExamConfig::with('testConfig')->find($request->examId);
+
+//        $totalDemoQuestion = ItemBank::where(['item_for'=>$examConfig->testConfig->test_for,'item_status'=>5])
+//            ->where('id', '>', $nextDemoQuestionId)->orderBy('id','ASC')->first();
+
+        $skip=1;
+        if ($request->next_demo_question_id){
+            $skip=$skip+1;
+             $itemDetails = ItemBank::where(['item_for'=>$examConfig->testConfig->test_for,'item_status'=>5]);
+
+            $itemDetails=$itemDetails->where('id',$request->next_demo_question_id);
+
+            $itemDetails=$itemDetails->orderBy('id','ASC')->first();
+
+        }else{
+            $data['itemDetails'] = $itemDetails = ItemBank::where(['item_for'=>$examConfig->testConfig->test_for,'item_status'=>5])
+                ->orderBy('id','ASC')->first(); // item_status =5 (Demo test)
+        }
+
+        $data['itemDetails']=$itemDetails;
+        
+
+        $nextDemoQuestion=ItemBank::where(['item_for'=>$examConfig->testConfig->test_for,'item_status'=>5])
+            ->skip($skip)->orderBy('id','ASC')->first();
+
+        if (empty($itemDetails)){
+            $data['messege'] = 'There is no demo question ';
+            $data['msgType'] = 'error';
+            return back()->with($data);
+        }
+
+        if (empty($nextDemoQuestion)) {
+            $data['next_demo_question_id']  = 0;
+        } else {
+            $data['next_demo_question_id'] = $nextDemoQuestion->id;
+        }
+
+
+
+        $data['status'] = $itemDetails->item_status;
+
+        return view('conductOfficer.examSchedule.demo_item_preview', $data);
+    }
+
     public function examDemoQOne(Request $request)
     {
         $data['examId'] = $request->examId;
         return view('conductOfficer.examSchedule.examDemoQOne', $data);
     }
+
     public function examDemoQTwo(Request $request)
     {
         $data['examId'] = $request->examId;

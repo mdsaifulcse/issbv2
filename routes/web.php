@@ -415,6 +415,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/examScheduleList', 'ExamScheduleController@index')->name('examScheduleList');
     Route::get('/examInstruction', 'ExamScheduleController@examInstruction')->name('examInstruction');
     Route::get('/nextInstruction', 'ExamScheduleController@nextInstruction')->name('nextInstruction');
+
+    Route::get('/examDemoItemPreview', 'ExamScheduleController@examDemoItemPreview')->name('examDemoItemPreview');
+
     Route::get('/examDemoQOne', 'ExamScheduleController@examDemoQOne')->name('examDemoQOne');
     Route::get('/examDemoQTwo', 'ExamScheduleController@examDemoQTwo')->name('examDemoQTwo');
     Route::get('/examDemoQThree', 'ExamScheduleController@examDemoQThree')->name('examDemoQThree');

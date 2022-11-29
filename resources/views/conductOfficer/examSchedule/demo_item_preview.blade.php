@@ -57,57 +57,27 @@ Test
 
 {{-- Page content --}}
 @section('content')
-<section class="content-header">
-    <!--section starts-->
-    <h1>
-        @if($status == 1)
-        Active Item
-        @elseif($status == 2)
-        Inactive Item
-        @else
-        Test Item
-        @endif
-    </h1>
-    <ol class="breadcrumb">
-        <li>
-            <a href="{{ URL::to('/') }}">Dashboard</a>
-        </li>
-        <li>
-            @if($status == 1)
-            <a href="{{ URL::to('/item-bank/active') }}"> Active </a>
-            @elseif($status == 2)
-            <a href="{{ URL::to('/item-bank/inactive') }}"> Inactive Item Bank </a>
-            @else
-            <a href="{{ URL::to('/item-bank/test') }}"> Test Item Bank </a>
-            @endif
-        </li>
-        <li class="active">
-            @if($status == 1)
-            Active Item
-            @elseif($status == 2)
-            Inactive Item
-            @else
-            Test Item
-            @endif
-        </li>
-    </ol>
-</section>
+    <section class="content-header">
+        <!--section starts-->
+        <h5>Assessment</h5>
+        <ol class="breadcrumb">
+            <li>
+                <div id="examTimeCountDown"></div>
+            </li>
+            <li>
+                Running Question: <span class="runningQuestionsShow">1</span>|
+            </li>
+            <li>
+                Total Questions: <span class="totalQuestionsShow">3</span>
+            </li>
+        </ol>
+    </section>
 <section class="content">
     <div class="row">
 
         <div class="col-lg-12">
             <div class="panel panel-info">
-                <div class="panel-heading clearfix">
-                    <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        @if($itemDetails->item_type==1)
-                        <?php echo $itemDetails->item?>
-                        @elseif($itemDetails->item_type==2)
-                            <img src="{{ asset('assets/uploads/questions/images/'.$itemDetails->item) }}" alt="..." style="width: 40px; height: auto;" title="This image is the question">
-                        @endif
-
-                        <!-- {{ ($itemDetails->sub_question_status==1)? $itemDetails->sub_question:$itemDetails->item }} -->
-                    </h3>
-                </div>
+                {{----}}
                 <div class="panel-body">
 
                     @php
@@ -134,7 +104,7 @@ Test
                             <div class="col-md-12 col-xl-12 col-xs-12">
                                 <div class="question">
                                     @if($itemType == 1)
-                                        <h3 class="question-heading text-dark">Question: &nbsp; <?php echo $item?> </h3>
+                                        <h3 class="question-heading text-dark">Question: &nbsp; <?php echo $item?></h3>
                                     @elseif($itemType == 2)
                                         <strong>Question: </strong> <img src="{{ asset('assets/uploads/questions/images/'.$item) }}" alt="..." style="width: 180px; height: 113px;" title="This image is the question">
                                     @elseif($itemType == 3)
@@ -291,14 +261,27 @@ Test
 
                         @endforeach
                     @endif
+
+                    <br>
+                    <div class="">
+                    <button class="btn btn-success btn-sm pull-left" onclick="history.go(-1)">Previous</button>
+                     {{--<a href="">--}}
+                        {{--<button class="btn btn-success btn-sm pull-left">Previous</button>--}}
+                    {{--</a>--}}
+                    @if($next_demo_question_id==0)
+
+                        <a href="{{url('/examDemoFinish'."?examId=$examId")}}">
+                            <button class="btn btn-success btn-sm pull-right">Next 1</button>
+                        </a>
+                    @else
+                    <a href="{{url('/examDemoItemPreview'."?examId=$examId"."&next_demo_question_id=$next_demo_question_id")}}">
+                        <button class="btn btn-success btn-sm pull-right">Next 2</button>
+                    </a>
+                @endif
+                </div>
                 </div>
 
-                <div class="panel-footer">
-                    <button onclick="history.go(-1)">Back to List</button>
-                    {{-- <a href="@if($status == 1) {{ URL::to('/item-bank/active') }} @elseif($status == 2) {{ URL::to('/item-bank/inactive') }} @else {{ URL::to('/item-bank/test') }} @endif">
-                        <button class="btn btn-default btn-sm">Back to List</button>
-                    </a> --}}
-                </div>
+
             </div>
         </div>
     </div>
@@ -321,6 +304,15 @@ Test
 @endif
 
 <script>
+    $(document).ready(function(){
+        @if (session('msgType'))
+        toastr.success('{{ session("messege") }}', 'You Got Error', {timeOut: 5000});
+        @endif
+    });
+</script>
+
+<script>
+
     $(document).ready(function() {
         if (sessionStorage.getItem('activation') == 'success') {
             toastr.success('Item has been successfully activated', 'Success Alert', {

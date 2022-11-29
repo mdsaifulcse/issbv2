@@ -61,6 +61,7 @@
                             @if ($instructionEndStatus == 0)
                                 <a class="btn btn-lg btn-primary pull-right" href="{{route('examDemoQOne', ['examId'=>$examId])}}" role="button">Next</a>
                             @else
+                                <a class="btn btn-lg btn-primary pull-left" href="{{route('examScheduleList')}}" role="button">Back</a>
                                 <button class="btn btn-lg btn-primary pull-right" id="nextInst" examId="{{$examId}}" role="button">Next</button>
                             @endif
                         </div>
@@ -109,6 +110,7 @@
                     type: "GET",
                     dataType: "json",
                     success: function (response) {
+                        console.log(response)
                         if (parseInt(response) === 0) {
                             $('.page_loader').show();
                         } else {
@@ -128,7 +130,8 @@
                             $('.load_content').html(html);
                             if (response.instructionEndStatus == 0) {
                                 $('#nextInst').remove();
-                                $('.action-btn').html(`<a class="btn btn-lg btn-primary pull-right" href="{{route('examDemoQOne', ['examId'=>$examId])}}" role="button">Next</a>`);
+                                $('.action-btn').html(`<a class="btn btn-lg btn-primary pull-right" href="{{route('examDemoItemPreview', ['examId'=>$examId])}}" role="button">Next</a>`);
+                                {{--$('.action-btn').html(`<a class="btn btn-lg btn-primary pull-right" href="{{route('examDemoQOne', ['examId'=>$examId])}}" role="button">Next</a>`);--}}
                             }
                             console.log(response.instructionEndStatus);
 

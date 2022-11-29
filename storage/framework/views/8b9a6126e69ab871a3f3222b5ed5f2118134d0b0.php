@@ -175,7 +175,7 @@
                             <?php if($config->status == 1 && $config->preview_status == 1): ?>
                                 <tr <?php if($config->exam_status == 1): ?> class="bg" <?php endif; ?>>
                                     <td <?php if($config->exam_status == 1): ?> class="color-full1" <?php endif; ?>><?php echo e(++$key); ?></td>
-                                    <td><?php echo e($config->testConfig->testFor->name); ?></td>
+                                    <td><?php echo e($config->testConfig->testFor?$config->testConfig->testFor->name:'N/A'); ?></td>
                                     <td><?php echo e($config->testConfig->test_name); ?></td>
                                     <td><?php echo e($config->boardCandidate->board_name); ?></td>
                                     <td><?php echo e($config->exam_date); ?></td>
@@ -192,7 +192,7 @@
                                             <i class="livicon" data-name="eye" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Preview"></i>
                                         </a>
                                             <?php
-                                                $test_for=$config->testConfig->testFor->id;
+                                                $test_for=$config->testConfig->testFor?$config->testConfig->testFor->id:0;
                                             ?>
                                         <a href="<?php echo e(route('examConfig.edit', [$config->id])."?test_for=$test_for"); ?>"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
                                         <a href="javascript:void(0)"><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete(<?php echo e($config->id); ?>);></i></a>

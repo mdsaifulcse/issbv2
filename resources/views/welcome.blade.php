@@ -178,7 +178,7 @@
                             @if($config->status == 1 && $config->preview_status == 1)
                                 <tr @if ($config->exam_status == 1) class="bg" @endif>
                                     <td @if ($config->exam_status == 1) class="color-full1" @endif>{{ ++$key }}</td>
-                                    <td>{{ $config->testConfig->testFor->name }}</td>
+                                    <td>{{ $config->testConfig->testFor?$config->testConfig->testFor->name:'N/A' }}</td>
                                     <td>{{ $config->testConfig->test_name }}</td>
                                     <td>{{ $config->boardCandidate->board_name }}</td>
                                     <td>{{ $config->exam_date }}</td>
@@ -195,7 +195,7 @@
                                             <i class="livicon" data-name="eye" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Preview"></i>
                                         </a>
                                             <?php
-                                                $test_for=$config->testConfig->testFor->id;
+                                                $test_for=$config->testConfig->testFor?$config->testConfig->testFor->id:0;
                                             ?>
                                         <a href="{{ route('examConfig.edit', [$config->id])."?test_for=$test_for" }}"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
                                         <a href="javascript:void(0)"><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete({{ $config->id }});></i></a>

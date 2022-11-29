@@ -54,59 +54,29 @@ Test
 
 
 <?php $__env->startSection('content'); ?>
-<section class="content-header">
-    <!--section starts-->
-    <h1>
-        <?php if($status == 1): ?>
-        Active Item
-        <?php elseif($status == 2): ?>
-        Inactive Item
-        <?php else: ?>
-        Test Item
-        <?php endif; ?>
-    </h1>
-    <ol class="breadcrumb">
-        <li>
-            <a href="<?php echo e(URL::to('/')); ?>">Dashboard</a>
-        </li>
-        <li>
-            <?php if($status == 1): ?>
-            <a href="<?php echo e(URL::to('/item-bank/active')); ?>"> Active </a>
-            <?php elseif($status == 2): ?>
-            <a href="<?php echo e(URL::to('/item-bank/inactive')); ?>"> Inactive Item Bank </a>
-            <?php else: ?>
-            <a href="<?php echo e(URL::to('/item-bank/test')); ?>"> Test Item Bank </a>
-            <?php endif; ?>
-        </li>
-        <li class="active">
-            <?php if($status == 1): ?>
-            Active Item
-            <?php elseif($status == 2): ?>
-            Inactive Item
-            <?php else: ?>
-            Test Item
-            <?php endif; ?>
-        </li>
-    </ol>
-</section>
+    <section class="content-header">
+        <!--section starts-->
+        <h5>Assessment</h5>
+        <ol class="breadcrumb">
+            <li>
+                <div id="examTimeCountDown"></div>
+            </li>
+            <li>
+                Running Question: <span class="runningQuestionsShow">1</span>|
+            </li>
+            <li>
+                Total Questions: <span class="totalQuestionsShow">3</span>
+            </li>
+        </ol>
+    </section>
 <section class="content">
     <div class="row">
 
         <div class="col-lg-12">
             <div class="panel panel-info">
-                <div class="panel-heading clearfix">
-                    <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        <?php if($itemDetails->item_type==1): ?>
-                        <?php echo $itemDetails->item?>
-                        <?php elseif($itemDetails->item_type==2): ?>
-                            <img src="<?php echo e(asset('assets/uploads/questions/images/'.$itemDetails->item)); ?>" alt="..." style="width: 40px; height: auto;" title="This image is the question">
-                        <?php endif; ?>
-
-                        <!-- <?php echo e(($itemDetails->sub_question_status==1)? $itemDetails->sub_question:$itemDetails->item); ?> -->
-                    </h3>
-                </div>
+                
                 <div class="panel-body">
-                    
+
                     <?php
                         if ($itemDetails->sub_question_status==1){
                             $itemType   = $itemDetails->sub_question_type;
@@ -131,7 +101,7 @@ Test
                             <div class="col-md-12 col-xl-12 col-xs-12">
                                 <div class="question">
                                     <?php if($itemType == 1): ?>
-                                        <h3 class="question-heading text-dark"> &nbsp; <?php echo $item?> </h3>
+                                        <h3 class="question-heading text-dark">Question: &nbsp; <?php echo $item?></h3>
                                     <?php elseif($itemType == 2): ?>
                                         <strong>Question: </strong> <img src="<?php echo e(asset('assets/uploads/questions/images/'.$item)); ?>" alt="..." style="width: 180px; height: 113px;" title="This image is the question">
                                     <?php elseif($itemType == 3): ?>
@@ -288,12 +258,27 @@ Test
 
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <?php endif; ?>
+
+                    <br>
+                    <div class="">
+                    <button class="btn btn-success btn-sm pull-left" onclick="history.go(-1)">Previous</button>
+                     
+                        
+                    
+                    <?php if($next_demo_question_id==0): ?>
+
+                        <a href="<?php echo e(url('/examDemoFinish'."?examId=$examId")); ?>">
+                            <button class="btn btn-success btn-sm pull-right">Next 1</button>
+                        </a>
+                    <?php else: ?>
+                    <a href="<?php echo e(url('/examDemoItemPreview'."?examId=$examId"."&next_demo_question_id=$next_demo_question_id")); ?>">
+                        <button class="btn btn-success btn-sm pull-right">Next 2</button>
+                    </a>
+                <?php endif; ?>
+                </div>
                 </div>
 
-                <div class="panel-footer">
-                    <button onclick="history.go(-1)">Back to List</button>
-                    
-                </div>
+
             </div>
         </div>
     </div>
@@ -316,6 +301,15 @@ Test
 <?php endif; ?>
 
 <script>
+    $(document).ready(function(){
+        <?php if(session('msgType')): ?>
+        toastr.success('<?php echo e(session("messege")); ?>', 'You Got Error', {timeOut: 5000});
+        <?php endif; ?>
+    });
+</script>
+
+<script>
+
     $(document).ready(function() {
         if (sessionStorage.getItem('activation') == 'success') {
             toastr.success('Item has been successfully activated', 'Success Alert', {
@@ -391,4 +385,4 @@ Test
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/item_preview.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/conductOfficer/examSchedule/demo_item_preview.blade.php ENDPATH**/ ?>
