@@ -109,7 +109,7 @@ class ExamScheduleController extends Controller
         }
 
         $data['itemDetails']=$itemDetails;
-        
+
 
         $nextDemoQuestion=ItemBank::where(['item_for'=>$examConfig->testConfig->test_for,'item_status'=>5])
             ->skip($skip)->orderBy('id','ASC')->first();

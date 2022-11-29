@@ -2,18 +2,70 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07010477-de66-4e78-b0e3-a6e8e562d29f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/c4OjGkB3trUFbNYVkmPEGUgCLHSiVZHdk1QE8flC" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/eMCE5rtQg1bSDzNVzNPM6NQe9yZ8LmgEkNj28iq6" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/SMQgQONABJ9MDQdSdQ9KWx4PczdnO69y9alcjwkE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/027ddefa7f0e4c41aba97121239cc4e934d4b7d2.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/0571bc457750bde37c5edd2ba2105c1c13477fcc.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/09a8e7df7e0531ef53edf1ce0f03c32d73667cfb.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/12d84764745691564f2216da4d78a7f5fbabac06.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/12ec024d133c861a6e4b3dfe11c4f48d44338b94.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/1b66d26cb88a9cccaacb367940606997959d643c.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/1ca20806e72089f06b2f3cf3082f7c3884546829.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/2033de58a39ba270cdb0de8916677e5d39515976.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/2862c02f34ac78fa8b3c95001dfb003f4f10793a.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/30fe5d83384f6fe8bb7a21724164ee3115eb0b20.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/3278e5f6971c42eb782f850993b9ad272b386d82.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/36c5817971909655e9bf9f121cdd2c3d1adc6abf.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/460fa5f28e2e9f0d812bfcc4470583120f598710.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/4eaaad9593e365721207af4246f8e61283e64a99.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/5377d6fc2c02ce424a911b593a34046d5b7b7183.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/576658f8b49dd5e47564dbec3c6ce91e1835b593.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/5dace5ac0bfe3331db5bfc598ce71f5b1bb8479f.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/632315d9214afa772fb29b7d3862383bbe4a104b.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/7cb3b315d4874514a0da54380dd737e1f7c29567.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/83b53c111131c3d28de5c71ec368038f51e3eb62.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/887589a1acf69d49d5bd9588ec41ce80216d4467.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/8b9a6126e69ab871a3f3222b5ed5f2118134d0b0.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/8d90e29e33a396ce8cefaa8b73d67bcca21286d4.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/9508020c44db4be71b4fc8e5446614e5b38ec553.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/9d8a974848b67718f511a3dcc539409cd38569b0.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/a52956cc48458737b65ae2901a6f31355cd3f06d.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/a73243f7f29d3367fea1b5404ae6daf97ebc594f.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/a75cc0863f76efafcce97eed77416b035655a858.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/b3db5dc98d035a1030d043a8be97e11b39e2fb7a.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/b9109fd38637378642a04787a50d0a4873220900.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/bce99373cbec7a17b6f24ed7f005a0e29008c581.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/c63fe3bcd20d12888b501c6016521163c26ae729.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/cac5da17771426f800b737cb83e453b12a728ca9.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/cc986fe6243ab09a1726c7711608b9a166e888f1.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/cdd2c676d840ab42710bed90bf350061e6fbafe1.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/cf2cb916d4e4f1fac4c1a0ed084ca102d97c9701.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/cf385b5c8160275cf9cb07b3582f63523fe043d4.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/cf4ec4862b74623bbcbbdb18effbdda805a3c243.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/d0a8fca4d6dac8eb7b43a64dd3943eb1db85ee9a.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/d1f967fdf69cf78b7c4a052d661f1a50c171fb09.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/d40de95c09b8fdaba4955c4eb7555157dbf55a10.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/d67c7114b03cefb232782719af6a91597bc4da73.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/d7f1dd20bacbea6b01b08a37a8d6eca2fa533f3b.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/dc3da021aa8f0a0194e6ae594974953437caa955.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/f7a903d6bafcc0c024e2c84ecfbaef03947fc40b.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/f9efa08fd8481b40e529bda12bf2cd1ffc1f3fea.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/fb6f8b9e27398075771aed9cf0f5c6ed020fb870.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/laravel-2022-11-08.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/laravel-2022-11-09.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/laravel-2022-11-10.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/laravel-2022-11-14.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/laravel-2022-11-16.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/laravel-2022-11-17.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/laravel-2022-11-19.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/laravel-2022-11-20.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/laravel-2022-11-21.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/laravel-2022-11-22.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/laravel-2022-11-23.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/laravel-2022-11-27.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/laravel-2022-11-28.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/laravel-2022-11-29.log" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ExamScheduleController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExamScheduleController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/conductOfficer/examSchedule/instruction.blade.php" afterPath="$PROJECT_DIR$/resources/views/conductOfficer/examSchedule/instruction.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/item_preview.blade.php" afterPath="$PROJECT_DIR$/resources/views/item_preview.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/632315d9214afa772fb29b7d3862383bbe4a104b.php" afterPath="$PROJECT_DIR$/storage/framework/views/632315d9214afa772fb29b7d3862383bbe4a104b.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/8b9a6126e69ab871a3f3222b5ed5f2118134d0b0.php" afterPath="$PROJECT_DIR$/storage/framework/views/8b9a6126e69ab871a3f3222b5ed5f2118134d0b0.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/9508020c44db4be71b4fc8e5446614e5b38ec553.php" afterPath="$PROJECT_DIR$/storage/framework/views/9508020c44db4be71b4fc8e5446614e5b38ec553.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,8 +79,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="418" column="36" lean-forward="false" selection-start-line="418" selection-start-column="17" selection-end-line="418" selection-end-column="36" />
+            <state relative-caret-position="250">
+              <caret line="418" column="82" lean-forward="false" selection-start-line="418" selection-start-column="63" selection-end-line="418" selection-end-column="82" />
               <folding />
             </state>
           </provider>
@@ -37,8 +89,8 @@
       <file leaf-file-name="ExamScheduleController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ExamScheduleController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="111" column="8" lean-forward="false" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
+            <state relative-caret-position="360">
+              <caret line="96" column="16" lean-forward="true" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
               <folding>
                 <element signature="e#40#57#0#PHP" expanded="true" />
               </folding>
@@ -49,7 +101,7 @@
       <file leaf-file-name="demo_item_preview.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/conductOfficer/examSchedule/demo_item_preview.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
+            <state relative-caret-position="6900">
               <caret line="276" column="56" lean-forward="false" selection-start-line="276" selection-start-column="56" selection-end-line="276" selection-end-column="56" />
               <folding>
                 <marker date="1669689737325" expanded="true" signature="2172:3015" ph="..." />
@@ -76,8 +128,8 @@
       <file leaf-file-name="instruction.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/conductOfficer/examSchedule/instruction.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1398">
-              <caret line="57" column="30" lean-forward="true" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
+            <state relative-caret-position="1425">
+              <caret line="57" column="30" lean-forward="false" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
               <folding>
                 <marker date="1669686887936" expanded="true" signature="4316:4468" ph="..." />
               </folding>
@@ -88,8 +140,8 @@
       <file leaf-file-name="examDemoQOne.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/conductOfficer/examSchedule/examDemoQOne.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="81" column="14" lean-forward="true" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
+            <state relative-caret-position="2025">
+              <caret line="81" column="14" lean-forward="false" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -98,7 +150,7 @@
       <file leaf-file-name="item_preview.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/item_preview.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
+            <state relative-caret-position="3400">
               <caret line="136" column="88" lean-forward="false" selection-start-line="136" selection-start-column="88" selection-end-line="136" selection-end-column="88" />
               <folding>
                 <marker date="1669687165371" expanded="true" signature="3385:4228" ph="..." />
@@ -115,7 +167,7 @@
       <file leaf-file-name="examDemoQThree.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/conductOfficer/examSchedule/examDemoQThree.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3348">
+            <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -125,8 +177,8 @@
       <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="782" column="38" lean-forward="true" selection-start-line="782" selection-start-column="38" selection-end-line="782" selection-end-column="38" />
+            <state relative-caret-position="18825">
+              <caret line="782" column="38" lean-forward="false" selection-start-line="782" selection-start-column="38" selection-end-line="782" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -348,12 +400,13 @@
       <workItem from="1669567635020" duration="3100000" />
       <workItem from="1669642346419" duration="687000" />
       <workItem from="1669649264628" duration="8316000" />
-      <workItem from="1669684645157" duration="5208000" />
+      <workItem from="1669684645157" duration="5336000" />
+      <workItem from="1669737048436" duration="349000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108442000" />
+    <option name="totallyTimeSpent" value="108919000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -618,7 +671,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -661,15 +713,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="339" column="5" lean-forward="true" selection-start-line="339" selection-start-column="5" selection-end-line="339" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/app/ItemBank.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="418" column="36" lean-forward="false" selection-start-line="418" selection-start-column="17" selection-end-line="418" selection-end-column="36" />
-          <folding />
+        <state relative-caret-position="150">
+          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="183" column="69" lean-forward="true" selection-start-line="183" selection-start-column="69" selection-end-line="183" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="723">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/conductOfficer/examSchedule/demo_item_preview.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6900">
+          <caret line="276" column="56" lean-forward="false" selection-start-line="276" selection-start-column="56" selection-end-line="276" selection-end-column="56" />
+          <folding>
+            <marker date="1669689737325" expanded="true" signature="2172:3015" ph="..." />
+            <marker date="1669689737325" expanded="true" signature="2214:2632" ph="..." />
+            <marker date="1669689737325" expanded="true" signature="2639:3014" ph="..." />
+            <marker date="1669689737325" expanded="true" signature="4809:5011" ph="..." />
+            <marker date="1669689737325" expanded="true" signature="7638:7791" ph="..." />
+            <marker date="1669689737325" expanded="true" signature="9569:9701" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -681,49 +760,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/ItemBank.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/conductOfficer/examSchedule/instruction.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="183" column="69" lean-forward="true" selection-start-line="183" selection-start-column="69" selection-end-line="183" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="723">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="782" column="38" lean-forward="true" selection-start-line="782" selection-start-column="38" selection-end-line="782" selection-end-column="38" />
-          <folding />
+        <state relative-caret-position="1425">
+          <caret line="57" column="30" lean-forward="false" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
+          <folding>
+            <marker date="1669686887936" expanded="true" signature="4316:4468" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/conductOfficer/examSchedule/examDemoQOne.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="81" column="14" lean-forward="true" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
+        <state relative-caret-position="2025">
+          <caret line="81" column="14" lean-forward="false" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/item_preview.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
+        <state relative-caret-position="3400">
           <caret line="136" column="88" lean-forward="false" selection-start-line="136" selection-start-column="88" selection-end-line="136" selection-end-column="88" />
           <folding>
             <marker date="1669687165371" expanded="true" signature="3385:4228" ph="..." />
@@ -738,41 +795,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/conductOfficer/examSchedule/examDemoQThree.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3348">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/conductOfficer/examSchedule/instruction.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1398">
-          <caret line="57" column="30" lean-forward="true" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
-          <folding>
-            <marker date="1669686887936" expanded="true" signature="4316:4468" ph="..." />
-          </folding>
+        <state relative-caret-position="18825">
+          <caret line="782" column="38" lean-forward="false" selection-start-line="782" selection-start-column="38" selection-end-line="782" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/conductOfficer/examSchedule/demo_item_preview.blade.php">
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="276" column="56" lean-forward="false" selection-start-line="276" selection-start-column="56" selection-end-line="276" selection-end-column="56" />
-          <folding>
-            <marker date="1669689737325" expanded="true" signature="2172:3015" ph="..." />
-            <marker date="1669689737325" expanded="true" signature="2214:2632" ph="..." />
-            <marker date="1669689737325" expanded="true" signature="2639:3014" ph="..." />
-            <marker date="1669689737325" expanded="true" signature="4809:5011" ph="..." />
-            <marker date="1669689737325" expanded="true" signature="7638:7791" ph="..." />
-            <marker date="1669689737325" expanded="true" signature="9569:9701" ph="..." />
-          </folding>
+        <state relative-caret-position="250">
+          <caret line="418" column="82" lean-forward="false" selection-start-line="418" selection-start-column="63" selection-end-line="418" selection-end-column="82" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ExamScheduleController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="111" column="8" lean-forward="false" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
+        <state relative-caret-position="360">
+          <caret line="96" column="16" lean-forward="true" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
           <folding>
             <element signature="e#40#57#0#PHP" expanded="true" />
           </folding>
