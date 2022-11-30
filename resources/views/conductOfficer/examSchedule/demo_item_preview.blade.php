@@ -271,11 +271,11 @@ Test
                     @if($next_demo_question_id==0)
 
                         <a href="{{url('/examDemoFinish'."?examId=$examId")}}">
-                            <button class="btn btn-success btn-sm pull-right">Next 1</button>
+                            <button class="btn btn-success btn-sm pull-right">Next</button>
                         </a>
                     @else
-                    <a href="{{url('/examDemoItemPreview'."?examId=$examId"."&next_demo_question_id=$next_demo_question_id")}}">
-                        <button class="btn btn-success btn-sm pull-right">Next 2</button>
+                    <a href="{{url('/examDemoItemPreview'."?examId=$examId"."&next_demo_question_id=$next_demo_question_id"."&skip=$skip")}}">
+                        <button class="btn btn-success btn-sm pull-right">Next</button>
                     </a>
                 @endif
                 </div>

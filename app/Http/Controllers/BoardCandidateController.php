@@ -15,7 +15,7 @@ class BoardCandidateController extends Controller
      */
     public function index()
     {
-        $data['boardCandidates'] = BoardCandidate::paginate(10);
+        $data['boardCandidates'] = BoardCandidate::latest('id')->paginate(100);
         return view('testingOfficer.boardCandidate.listData', $data);
     }
 

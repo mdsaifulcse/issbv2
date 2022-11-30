@@ -2362,7 +2362,7 @@ class AdminController extends Controller
 
             $counts = [];
             foreach ($item_levels as $level) {
-                $count = ItemBank::Where('level', $level->id)->Where('item_for', $item_set_for)->WhereIn('item_status', [1,3])->count();
+                $count = ItemBank::Where('level', $level->id)->Where('item_for', $item_set_for)->WhereIn('item_status', [1,3,4])->count();
                 if ($count != 0) {
 
                     $counts = $this->array_push_assoc($counts, $level->name, $count);
@@ -2371,7 +2371,7 @@ class AdminController extends Controller
             return view('create_random_item_set', compact('item_set_for', 'test_list', 'candidate_type', 'item_set_name', 'counts', 'total_item'));
         } elseif ($item_configuration_type == 2) {
 
-            $item_bank = ItemBank::WhereIn('item_status', [1,3])->Where('item_for', $item_set_for)->paginate(10);
+            $item_bank = ItemBank::WhereIn('item_status', [1,3,4])->Where('item_for', $item_set_for)->paginate(10);
             return view('create_static_item_set', compact('item_set_for', 'test_list', 'candidate_type', 'item_set_name', 'item_bank', 'item_levels', 'total_item'));
         } else {
             return redirect('/create-set')->with('choose', 'Please fill this form.');
