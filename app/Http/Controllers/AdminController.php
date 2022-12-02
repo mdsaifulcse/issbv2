@@ -2479,7 +2479,7 @@ class AdminController extends Controller
         if ($item_set->set_configuration_type == 1) {
             $counts = [];
             foreach ($item_levels as $level) {
-                $count = ItemBank::Where('level', $level->id)->Where('item_for', $item_set_for)->WhereIn('item_status', [1,3])->count();
+                $count = ItemBank::Where('level', $level->id)->Where('item_for', $item_set_for)->WhereIn('item_status', [1,3,4])->count();
                 if ($count != 0) {
                     $counts = $this->array_push_assoc($counts, $level->name, $count);
                 }

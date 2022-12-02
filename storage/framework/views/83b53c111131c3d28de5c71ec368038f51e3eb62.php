@@ -1,18 +1,15 @@
-@extends('admin/layouts/default')
-
-{{-- Page title --}}
-@section('title')
+<?php $__env->startSection('title'); ?>
     Test Instruction
-    @parent
-@stop
+    ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
+<?php $__env->stopSection(); ?>
 
-{{-- page level styles --}}
-@section('header_styles')
-    <link href="{{ asset('DataTables/datatables.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/image_viewer_css/lc_lightbox.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/image_viewer_css/skins/minimal.css') }}" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/jasny-bootstrap.css')}}">
+<?php $__env->startSection('header_styles'); ?>
+    <link href="<?php echo e(asset('DataTables/datatables.min.css')); ?>" rel="stylesheet" />
+    <link href="<?php echo e(asset('css/image_viewer_css/lc_lightbox.css')); ?>" rel="stylesheet" />
+    <link href="<?php echo e(asset('css/image_viewer_css/skins/minimal.css')); ?>" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/jasny-bootstrap.css')); ?>">
 
     <style>
         .pagination {
@@ -70,10 +67,10 @@
         }
 
     </style>
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- Page content --}}
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <section class="content-header">
         <!--section starts-->
         <h1>Test Instruction Slider</h1>
@@ -98,8 +95,8 @@
                         </div>
                         <div class="panel-body">
                             <div class="form">
-                                <form action="{{route('configInstruction.store',['configId'=>$configId])}}" method="post" enctype="multipart/form-data" class="needs-validation form-horizontal">
-                                    @csrf
+                                <form action="<?php echo e(route('configInstruction.store',['configId'=>$configId])); ?>" method="post" enctype="multipart/form-data" class="needs-validation form-horizontal">
+                                    <?php echo csrf_field(); ?>
                                     <div class="row">
 
                                         <div class="col-lg-5">
@@ -110,10 +107,10 @@
                                         </div>
 
                                         <div class="col-lg-4">
-                                                {{--<label class="control-label">File Input</label>--}}
+                                                
                                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                                 <div class="fileinput-new thumbnail">
-                                                    <img src="{{ asset('assets/img/authors/no_avatar.jpg') }}" alt="..." class="img-responsive" style="width: 300px; height: 130px;"/>
+                                                    <img src="<?php echo e(asset('assets/img/authors/no_avatar.jpg')); ?>" alt="..." class="img-responsive" style="width: 300px; height: 130px;"/>
                                                 </div>
                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 130px;"></div>
 
@@ -137,7 +134,7 @@
                                                 <div>
                                                     <button type="submit" class="btn btn-success">Submit  <i class="icon-arrow-right14 position-right"></i></button>
                                                 </div>
-                                                {{--<a href="{{route('configInstruction.index', ['configId'=>$configId])}}" class="btn btn-default">Back To List <i class="icon-backward2 position-right"></i></a>--}}
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -160,8 +157,8 @@
                             Test Instructions Slider list
                         </h3>
                         <div class="pull-right">
-                            {{--<button class="btn btn-sm btn-default" onclick="history.go(-1)">Back To List</button>--}}
-                            {{--<a href="{{ route('configInstruction.create', ['configId'=>$configId]) }}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span>Add Slide</a>--}}
+                            
+                            
 
                         </div>
                     </div>
@@ -176,27 +173,28 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($configInstructions as $key => $instruction)
+                            <?php $__currentLoopData = $configInstructions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $instruction): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td>{{ ++$key }}</td>
-                                <td>{{ $instruction->text }}</td>
+                                <td><?php echo e(++$key); ?></td>
+                                <td><?php echo e($instruction->text); ?></td>
                                 <td>
-                                    {{-- <img height="44px" width="44px" src="{{ asset('uploads/instruction/'.$instruction->image) }}" alt=""> --}}
-                                    <a class="elem" href="{{ asset('uploads/instruction/'.$instruction->image) }}" title="image {{ $key++ }}" data-lcl-txt="lorem ipsum dolor sit amet" data-lcl-author="someone" data-lcl-thumb="{{ asset('uploads/instruction/'.$instruction->image) }}">
-                                        <span style="background-image: url({{ asset('uploads/instruction/'.$instruction->image) }});"></span>
+                                    
+                                    <a class="elem" href="<?php echo e(asset('uploads/instruction/'.$instruction->image)); ?>" title="image <?php echo e($key++); ?>" data-lcl-txt="lorem ipsum dolor sit amet" data-lcl-author="someone" data-lcl-thumb="<?php echo e(asset('uploads/instruction/'.$instruction->image)); ?>">
+                                        <span style="background-image: url(<?php echo e(asset('uploads/instruction/'.$instruction->image)); ?>);"></span>
                                     </a>
                                 </td>
                                 <td class="text-center">
-                                    {{-- <a href="{{ route('configInstruction.edit', [$instruction->id]) }}"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14" title="Update data" ></i></a> --}}
+                                    
                                     <a><i class="livicon" data-name="trash" data-size="20" data-loop="true"  data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete('<?php echo $instruction->id ?>'); ></i></a>
 
                                 </td>
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
-                            @if (!empty($configInstructions))
-                            {{ $configInstructions->links() }}
-                            @endif
+                            <?php if(!empty($configInstructions)): ?>
+                            <?php echo e($configInstructions->links()); ?>
+
+                            <?php endif; ?>
                         </table>
                     </div>
                 </div>
@@ -205,17 +203,17 @@
 
     </section>
     <!-- content -->
-    @stop
+    <?php $__env->stopSection(); ?>
 
-    {{-- page level scripts --}}
-    @section('footer_scripts')
+    
+    <?php $__env->startSection('footer_scripts'); ?>
 
-    <script language="javascript" type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
-    <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
+    <script language="javascript" type="text/javascript" src="<?php echo e(asset('DataTables/datatables.min.js')); ?>"></script>
+    <script language="javascript" type="text/javascript" src="<?php echo e(asset('assets/vendors/select2/js/select2.js')); ?>"></script>
 
-    <script language="javascript" type="text/javascript" src="{{ asset('js/image_viewer_js/lc_lightbox.lite.js') }}"></script>
-    <script language="javascript" type="text/javascript" src="{{ asset('js/image_viewer_js/lib/AlloyFinger/alloy_finger.min.js') }}"></script>
-    <script src="{{asset('assets/js/jasny-bootstrap.js')}}"></script>
+    <script language="javascript" type="text/javascript" src="<?php echo e(asset('js/image_viewer_js/lc_lightbox.lite.js')); ?>"></script>
+    <script language="javascript" type="text/javascript" src="<?php echo e(asset('js/image_viewer_js/lib/AlloyFinger/alloy_finger.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/jasny-bootstrap.js')); ?>"></script>
 
     <script>
         $(document).ready(function() {
@@ -292,4 +290,6 @@
             });
         }
     </script>
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/configInstruction/listData.blade.php ENDPATH**/ ?>

@@ -1,29 +1,27 @@
-@extends('admin/layouts/default')
-
-{{-- Page title --}}
-@section('title')
+<?php $__env->startSection('title'); ?>
     Create
-    @foreach($test_list as $test)
-        @if($test->id == $item_set_for)
-            {{ $test->name }}
-        @endif
-    @endforeach
-    Question Set
-    @parent
-@stop
+    <?php $__currentLoopData = $test_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $test): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <?php if($test->id == $item_set_for): ?>
+            <?php echo e($test->name); ?>
 
-{{-- page level styles --}}
-@section('header_styles')
+        <?php endif; ?>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    Question Set
+    ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('header_styles'); ?>
     <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
     <style>
         .lowercase {
            text-transform: lowercase;
         }
     </style>
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- Page content --}}
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <section class="content-header">
         <!--section starts-->
         <h5>Welcome to Psychometrics Test</h5>
@@ -32,11 +30,12 @@
                 <a href="#">Admin</a>
             </li>
             <li class="active">Create
-                @foreach($test_list as $test)
-                    @if($test->id == $item_set_for)
-                        {{ $test->name }}
-                    @endif
-                @endforeach
+                <?php $__currentLoopData = $test_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $test): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php if($test->id == $item_set_for): ?>
+                        <?php echo e($test->name); ?>
+
+                    <?php endif; ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 Question Set
             </li>
         </ol>
@@ -51,11 +50,12 @@
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"><i class="livicon" data-name="doc-portrait" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                             Create
-                            @foreach($test_list as $test)
-                                @if($test->id == $item_set_for)
-                                    {{ $test->name }}
-                                @endif
-                            @endforeach
+                            <?php $__currentLoopData = $test_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $test): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php if($test->id == $item_set_for): ?>
+                                    <?php echo e($test->name); ?>
+
+                                <?php endif; ?>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             Question Set
                         </h3>
                     </div>
@@ -64,16 +64,16 @@
                         <div class="form">
                             <form method="POST" id="create_qusetion_set">
 
-                                <input type="hidden" name="item_set_for" id="item_set_for" value="{{ $item_set_for }}">
+                                <input type="hidden" name="item_set_for" id="item_set_for" value="<?php echo e($item_set_for); ?>">
                                 <input type="hidden" name="set_configuration_type" id="set_configuration_type" value="1">
                                 <div class="form-group">
                                     <label for="total_question">Item Set Name</label>
-                                    <input type="text" name="item_set_name" id="item_set_name" value="{{ $item_set_name }}" class="form-control" placeholder="Item Set Name" required/>
+                                    <input type="text" name="item_set_name" id="item_set_name" value="<?php echo e($item_set_name); ?>" class="form-control" placeholder="Item Set Name" required/>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="total_question">Total Item</label>
-                                    <input type="number" name="total_item" id="total_question" value="{{ $total_item }}" class="form-control" placeholder="Total Item" required/>
+                                    <input type="number" name="total_item" id="total_question" value="<?php echo e($total_item); ?>" class="form-control" placeholder="Total Item" required/>
                                 </div>
 
                                 <div class="form-group">
@@ -85,22 +85,22 @@
                                     <label for="candidate_type">Select Candidate Type</label>
                                     <select name="candidate_type" id="candidate_type" class="form-control" required>
                                         <option value=""> Choose one </option>
-                                        @foreach($candidate_type as $value)
-                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $candidate_type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($value->id); ?>"><?php echo e($value->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
 
                                 <label for="">Item Level</label>
                                 <div class="row">
-                                @foreach($counts as $key => $count)
+                                <?php $__currentLoopData = $counts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $count): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="{{ $key }}_level">{{ $key }}</label> ({{ $count }})
-                                            <input type="text" name="{{ $key }}" id="{{ $key }}_level" class="form-control item_type" min="1" max="{{ $count }}" placeholder="{{ $key }} level"  onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
+                                            <label for="<?php echo e($key); ?>_level"><?php echo e($key); ?></label> (<?php echo e($count); ?>)
+                                            <input type="text" name="<?php echo e($key); ?>" id="<?php echo e($key); ?>_level" class="form-control item_type" min="1" max="<?php echo e($count); ?>" placeholder="<?php echo e($key); ?> level"  onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
                                         </div>
                                     </div>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
 
                                 <div class="form-group">
@@ -110,11 +110,11 @@
                                         <option value="Active">Active</option>
                                         <option value="Practice">Practice</option>
                                     </select>
-                                    {{-- <input type="text" name="set_type" id="set_type" class="form-control lowercase" placeholder="Set Type" required/> --}}
+                                    
                                 </div>
 
                                 <button class="btn btn-success create_set">Submit</button>
-                                <a class="btn btn-danger" href="{{ URL::to('/create-set') }}">Back</a>
+                                <a class="btn btn-danger" href="<?php echo e(URL::to('/create-set')); ?>">Back</a>
                             </form>
                         </div>
                     </div>
@@ -124,12 +124,12 @@
         <!--/row-->
     </section>
 
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- page level scripts --}}
-@section('footer_scripts')
-    <script src="{{asset('js/jequery-validation.js')}}"></script>
-    <script src="{{ asset('js/create-random-item-set-validation.js') }}"></script>
+
+<?php $__env->startSection('footer_scripts'); ?>
+    <script src="<?php echo e(asset('js/jequery-validation.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/create-random-item-set-validation.js')); ?>"></script>
     <script>
         $(document).ready(function(){
             $('.item_type').on('keyup', function(){
@@ -141,4 +141,6 @@
             });
         });
     </script>
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/create_random_item_set.blade.php ENDPATH**/ ?>

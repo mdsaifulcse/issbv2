@@ -51,7 +51,7 @@
                                 @endforeach
                             @endif
 
-                            <form action="{{route('saveGenarateToken')}}" method="post" class="needs-validation form-horizontal" novalidate enctype="multipart/form-data">
+                            <form action="{{route('saveGenarateToken')}}" method="GET" class="needs-validation form-horizontal" novalidate enctype="multipart/form-data">
                                 @csrf
 
                                 <div id="export_div">

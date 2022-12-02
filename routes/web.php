@@ -266,7 +266,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/create-question-set', 'AdminController@createItemSet');
     Route::post('/storeItemSet', 'AdminController@storeItemSet');
     Route::get('/edit-item-set/{id}', 'AdminController@editItemSet');
-    Route::post('/updateItemSet/{id}', 'AdminController@updateItemSet');
+    Route::post('/updateItemSet/{id}', 'AdminController@editItemSet');
     Route::delete('/destroyItemSet/{id}', 'AdminController@destroyItemSet');
 
     // memory item
@@ -407,7 +407,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/examPreview', 'ExamConfigController@examPreview')->name('examPreview');
     Route::get('/activateExam', 'ExamConfigController@activateExam')->name('activateExam');
     Route::get('genarateToken', 'GenarateTokenController@genarateToken')->name('genarateToken');
-    Route::post('savegenarateToken', 'GenarateTokenController@savegenarateToken')->name('saveGenarateToken');
+    Route::get('savegenarateToken', 'GenarateTokenController@savegenarateToken')->name('saveGenarateToken');
     Route::get('/assessment-status-update', 'ExamConfigController@assessmentStatusUpdate')->name('assessmentStatusUpdate');
 
     // CONDUCTING OFFICER

@@ -38,7 +38,7 @@
                             Board & Candidates
                         </h3>
                         <div class="pull-right">
-                            
+                            <a href="<?php echo e(url('savegenarateToken')); ?>" class="btn btn-sm btn-primary" title="Click here to generate token and download user"><span class="glyphicon glyphicon-download"></span></a>
                         </div>
                     </div>
                     <div class="panel-body">

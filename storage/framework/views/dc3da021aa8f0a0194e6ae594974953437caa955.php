@@ -49,7 +49,7 @@
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php endif; ?>
 
-                            <form action="<?php echo e(route('saveGenarateToken')); ?>" method="post" class="needs-validation form-horizontal" novalidate enctype="multipart/form-data">
+                            <form action="<?php echo e(route('saveGenarateToken')); ?>" method="GET" class="needs-validation form-horizontal" novalidate enctype="multipart/form-data">
                                 <?php echo csrf_field(); ?>
 
                                 <div id="export_div">

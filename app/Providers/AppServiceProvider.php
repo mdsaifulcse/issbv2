@@ -31,8 +31,8 @@ class AppServiceProvider extends ServiceProvider
             function ($view)
             {
                 $testLists=TestList::join('test_config','test_lists.id','test_config.test_for')
-                    ->select('test_lists.*')
-                    ->where('test_lists.status',1)->latest('test_lists.id')->get();
+                    ->select('test_config.id as test_config_id','test_lists.*')
+                    ->where('test_lists.status',1)->groupBy('test_lists.id')->latest('test_lists.id')->get();
                 $view->with(['testLists'=>$testLists]);
             }
         );

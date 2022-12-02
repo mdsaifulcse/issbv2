@@ -34,7 +34,7 @@ class StdSeatPlanController extends Controller
         foreach ($candidates as $key => $candidate) {
             $data["candidate_$candidate->seat_no"] = $candidate->is_logged_in;
         }
-        $data['total_live'] = Candidates::where('seat_no', '!=', 0)->where(['is_logged_in'=> 1,'board_no'=>101])->count();
+        $data['total_live'] = Candidates::where('seat_no', '!=', 0)->where(['is_logged_in'=> 1,'board_no'=>$activeBoard->board_name])->count();
 
 
         // dd($data);

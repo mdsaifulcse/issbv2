@@ -44,6 +44,22 @@ class HomeController extends Controller
             ->where(['exam_configs.status'=>1,'exam_configs.preview_status'=>1])
             ->latest()->paginate(20);
 
+
+        // ------
+
+        //$data = array();
+
+        $candidates = Candidates::where('seat_no', '!=', 0)->where('board_no',$activeBoard->board_name)->get();
+
+        $data['total_candidate'] = $activeBoard->total_candidate;
+
+
+        // where('board_no', 'one')
+        foreach ($candidates as $key => $candidate) {
+            $data["candidate_$candidate->seat_no"] = $candidate->is_logged_in;
+        }
+
+
         return view('welcome',compact('activeBoard','activeTest','data','examConfigs'));
 
     }

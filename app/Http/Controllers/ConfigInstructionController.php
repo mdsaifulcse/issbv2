@@ -16,7 +16,7 @@ class ConfigInstructionController extends Controller
     public function index(Request $request)
     {
         $data['configId'] = $configId = $request->configId;
-        $data['configInstructions'] = ConfigInstruction::where('test_config_id', $configId)->paginate(10);
+        $data['configInstructions'] = ConfigInstruction::where('test_config_id', $configId)->paginate(15);
         return view('configInstruction.listData', $data);
     }
 

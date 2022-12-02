@@ -65,7 +65,7 @@ $("#edit_qusetion_set").validate(
                         if (data)
                         {
                             sessionStorage.setItem("update_success", "success");
-                            window.location.href = "/question-set/"+data;
+                            window.location.href = "/question-set";
                         }
                     },
                     error: function (e) {

@@ -41,7 +41,7 @@
                             Board & Candidates
                         </h3>
                         <div class="pull-right">
-                            {{--<a href="{{ route('boardCandidate.create') }}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span>Create</a>--}}
+                            <a href="{{ url('savegenarateToken') }}" class="btn btn-sm btn-primary" title="Click here to generate token and download user"><span class="glyphicon glyphicon-download"></span></a>
                         </div>
                     </div>
                     <div class="panel-body">

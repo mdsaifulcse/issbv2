@@ -460,6 +460,14 @@
                     </a>
                 </li>
 
+                {{--<li>--}}
+                    {{--<a href="{{ route('configInstruction.create',['configId'=>$testList->test_config_id])}}">--}}
+                        {{--<i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>--}}
+                        {{--<span class="title">{{$testList->name}} Create Instruction Slider</span>--}}
+                       {{----}}
+                    {{--</a>--}}
+                {{--</li>--}}
+
             </ul>
 
 
@@ -529,6 +537,12 @@
 
             {{--</li>--}}
     <!--  Testing list End -->
+    <li>
+        <a href="{{ URL::to('/test-configuration-list') }}">
+            <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
+            <span class="title">Instruction Sliders</span>
+        </a>
+    </li>
 
     <li>
         <a href="javascript:void(0)">
@@ -642,13 +656,6 @@
     </li>
 
 
-    <li>
-        <a href="{{ URL::to('/test-configuration-list') }}">
-            <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
-            <span class="title">Instruction Sliders</span>
-        </a>
-    </li>
-
 
 
 
@@ -659,37 +666,37 @@
         {{--</a>--}}
     {{--</li>--}}
 
-    <li>
-        <a href="{{ route('stdSeatPlan') }}">
-            <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
-            <span class="title">Seat Plan</span>
-        </a>
-    </li>
+    {{--<li>--}}
+        {{--<a href="{{ route('stdSeatPlan') }}">--}}
+            {{--<i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>--}}
+            {{--<span class="title">Seat Plan</span>--}}
+        {{--</a>--}}
+    {{--</li>--}}
 
     {{-- START REPORTS --}}
-    <li>
-        <a href="#">
-            <i class="livicon" data-name="doc-portrait" data-c="#67C5DF" data-hc="#67C5DF" data-size="18" data-loop="true"></i>
-            <span class="title">Reports</span>
-            <span class="fa fa-angle-right"></span>
-        </a>
-        <ul class="sub-menu">
-            <li>
-                <a href="{{ URL::to('/exam-wise-result') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Assessment Wise Report
-                </a>
-            </li>
-        </ul>
-    </li>
+    {{--<li>--}}
+        {{--<a href="#">--}}
+            {{--<i class="livicon" data-name="doc-portrait" data-c="#67C5DF" data-hc="#67C5DF" data-size="18" data-loop="true"></i>--}}
+            {{--<span class="title">Reports</span>--}}
+            {{--<span class="fa fa-angle-right"></span>--}}
+        {{--</a>--}}
+        {{--<ul class="sub-menu">--}}
+            {{--<li>--}}
+                {{--<a href="{{ URL::to('/exam-wise-result') }}">--}}
+                    {{--<i class="fa fa-angle-double-right"></i>--}}
+                    {{--Assessment Wise Report--}}
+                {{--</a>--}}
+            {{--</li>--}}
+        {{--</ul>--}}
+    {{--</li>--}}
     {{-- END REPORTS --}}
 
-    <li>
-        <a href="{{ route('genarateToken') }}">
-            <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
-            <span class="title">Genarate Token</span>
-        </a>
-    </li>
+    {{--<li>--}}
+        {{--<a href="{{ route('genarateToken') }}">--}}
+            {{--<i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>--}}
+            {{--<span class="title">Genarate Token</span>--}}
+        {{--</a>--}}
+    {{--</li>--}}
 
     {{-- <li>
         <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('frm-logout').submit();">
