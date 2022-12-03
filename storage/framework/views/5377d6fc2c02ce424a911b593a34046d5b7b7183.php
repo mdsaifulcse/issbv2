@@ -141,14 +141,14 @@ Test
                                                
 
                                             <?php elseif($optionType == 2): ?>
-                                                <?php if($itemCorAns==$key+1): ?>
-                                                    <div class="answer-option"> <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="..." >
-                                                    <i class="fa fa-check" title="This image is the correct answer"> </i></div>
-                                                <?php else: ?>
+                                                
                                                 <div class="answer-option">
-                                                    <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="...">
+                                                    <input type="radio" id="<?php echo e($key); ?>i" name="imgOption">
+                                                    <label for="<?php echo e($key); ?>i">
+                                                        <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="...">
+                                                    </label>
                                                 </div>
-                                                <?php endif; ?>
+                                              
                                                 
                                             <?php elseif($optionType == 3): ?>
                                                 Option <?php echo e($key+1); ?>: <audio controls>
@@ -224,16 +224,16 @@ Test
 
                                         <?php elseif($optionType == 2): ?>
 
-                                            <?php if($corAns==$j+1): ?>
-                                                <div class="answer-option"> 
-                                                    <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="..." >
-                                                <i class="fa fa-check" title="This image is the correct answer"> </i>
-                                                </div>
-                                            <?php else: ?>
-                                                <div class="answer-option"> 
+                                            
+                                                <div class="answer-option">
+                                                   
+                                                    <input type="radio" id="<?php echo e($j); ?>o" name="imgOption">
+
+                                                    <label for="">
                                                     <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="...">
+                                                </label>
                                                 </div>
-                                            <?php endif; ?>
+                                            
                                     
 
                                         <?php elseif($optionType == 3): ?>

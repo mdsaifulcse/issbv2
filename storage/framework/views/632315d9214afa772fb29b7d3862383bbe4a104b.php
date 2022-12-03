@@ -5,6 +5,17 @@
 
 
 <?php $__env->startSection('header_styles'); ?>
+    <style>
+        .instruction-image{
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+        }
+    </style>
     <link href="<?php echo e(asset('assets/css/toastr.css')); ?>" rel="stylesheet">
 <?php $__env->stopSection(); ?>
 
@@ -26,13 +37,13 @@
 
             <div class="col-lg-12">
                 
-                <div class="panel panel-info">
-                    <div class="panel-heading clearfix">
-                        <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Instruction
-                        </h3>
-                    </div>
-                    <div class="panel-body">
+                
+                    
+                        
+                            
+                        
+                    
+                    
                         <div class="load_content">
                             <div class="page_loader">
                                 <div class="text-center"><h4>Loading...</h4><div class="loader"></div></div>
@@ -44,7 +55,7 @@
                                         <?php echo e($configInstruction->text); ?>
 
                                         <?php endif; ?></p>
-                                    <img src="<?php echo e(asset('uploads/instruction/'.$configInstruction->image)); ?>" alt="" class="instruction-image" style="max-width: 1000px;">
+                                    <img src="<?php echo e(asset('uploads/instruction/'.$configInstruction->image)); ?>" alt="" class="instruction-image">
                                     <input type="hidden" name="" id="instrucId" value="<?php echo e($configInstruction->id); ?>">
                                 </div>
                             <?php else: ?>
@@ -64,8 +75,8 @@
                         </div>
                         <?php endif; ?>
 
-                    </div>
-                </div>
+                    
+                
                 
             </div>
 

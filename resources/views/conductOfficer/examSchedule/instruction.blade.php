@@ -8,6 +8,17 @@
 
 {{-- page level styles --}}
 @section('header_styles')
+    <style>
+        .instruction-image{
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+        }
+    </style>
     <link href="{{ asset('assets/css/toastr.css') }}" rel="stylesheet">
 @stop
 
@@ -30,13 +41,13 @@
             <div class="col-lg-12">
                 {{-- <div class="text-center"><a class="btn btn-lg btn-success" href="#" role="button">Refresh</a></div>
                 <br> --}}
-                <div class="panel panel-info">
-                    <div class="panel-heading clearfix">
-                        <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Instruction
-                        </h3>
-                    </div>
-                    <div class="panel-body">
+                {{--<div class="panel panel-info">--}}
+                    {{--<div class="panel-heading clearfix">--}}
+                        {{--<h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>--}}
+                            {{--Instruction--}}
+                        {{--</h3>--}}
+                    {{--</div>--}}
+                    {{--<div class="panel-body">--}}
                         <div class="load_content">
                             <div class="page_loader">
                                 <div class="text-center"><h4>Loading...</h4><div class="loader"></div></div>
@@ -47,7 +58,7 @@
                                         @if ($configInstruction->text != NULL || $configInstruction->text != '')
                                         {{ $configInstruction->text }}
                                         @endif</p>
-                                    <img src="{{ asset('uploads/instruction/'.$configInstruction->image) }}" alt="" class="instruction-image" style="max-width: 1000px;">
+                                    <img src="{{ asset('uploads/instruction/'.$configInstruction->image) }}" alt="" class="instruction-image">
                                     <input type="hidden" name="" id="instrucId" value="{{$configInstruction->id}}">
                                 </div>
                             @else
@@ -67,8 +78,8 @@
                         </div>
                         @endif
 
-                    </div>
-                </div>
+                    {{--</div>--}}
+                {{--</div>--}}
                 {{-- <br>
                 <div class="text-center"><a class="btn btn-lg btn-primary" href="{{route('examDemoQOne', ['examId'=>$examId])}}" role="button">Sample Test</a></div>
                 <br> --}}
