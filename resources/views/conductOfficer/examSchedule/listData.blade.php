@@ -62,8 +62,8 @@
                                 @if($config->status == 1 && $config->preview_status == 1)
                                     <tr @if ($config->exam_status == 1) class="bg" @endif>
                                         <td @if ($config->exam_status == 1) class="color-full1" @endif>{{ ++$key }}</td>
-                                        <td>{{ $config->testConfig->testFor->name }}</td>
-                                        <td>{{ $config->testConfig->test_name }}</td>
+                                        <td>{{ $config->testConfig?$config->testConfig->testFor->name:"N/A" }}</td>
+                                        <td>{{ $config->testConfig?$config->testConfig->test_name:'N/A' }}</td>
                                         <td>{{ $config->boardCandidate->board_name }}</td>
                                         <td>{{ $config->exam_date }}</td>
                                         <td>{{ $config->exam_duration }}</td>

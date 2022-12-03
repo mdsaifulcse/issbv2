@@ -16,8 +16,6 @@ class ExamScheduleController extends Controller
 {
     public function index()
     {
-
-
         $data['examConfigs']=ExamConfig::with('boardCandidate','testConfig','testConfig.testFor')
             ->where(['exam_configs.status'=>1,'exam_configs.preview_status'=>1])
             ->latest()->paginate(20);

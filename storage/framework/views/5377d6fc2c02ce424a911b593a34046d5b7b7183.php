@@ -1,27 +1,24 @@
-@extends('admin/layouts/default')
-
-{{-- Page title --}}
-@section('title')
-@if($status == 1)
+<?php $__env->startSection('title'); ?>
+<?php if($status == 1): ?>
 Active
-@elseif($status == 2)
+<?php elseif($status == 2): ?>
 Inactive
-@else
+<?php else: ?>
 Test
-@endif
+<?php endif; ?>
 
-@parent
-@stop
+##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
+<?php $__env->stopSection(); ?>
 
-{{-- page level styles --}}
-@section('header_styles')
+
+<?php $__env->startSection('header_styles'); ?>
 <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 
 <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
 
 <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" /> -->
-<link href="{{ asset('DataTables/datatables.min.css') }}" rel="stylesheet" />
+<link href="<?php echo e(asset('DataTables/datatables.min.css')); ?>" rel="stylesheet" />
 <style>
     .single-question-answer{
         border: 1px dashed #c4b9d5;
@@ -53,10 +50,10 @@ Test
     }
 
 </style>
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- Page content --}}
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <section class="content-header">
         <!--section starts-->
         <h5>Assessment</h5>
@@ -77,10 +74,10 @@ Test
 
         <div class="col-lg-12">
             <div class="panel panel-info">
-                {{----}}
+                
                 <div class="panel-body">
 
-                    @php
+                    <?php
                         if ($itemDetails->sub_question_status==1){
                             $itemType   = $itemDetails->sub_question_type;
                             $items      = explode('||', $itemDetails->sub_question);
@@ -94,28 +91,28 @@ Test
                             $imagePath  = 'assets/uploads/options/images/';
                             $soundPath  = 'assets/uploads/options/sounds/';
                         }
-                    @endphp
+                    ?>
 
-                    @if ($itemDetails->sub_question_status !=1)
+                    <?php if($itemDetails->sub_question_status !=1): ?>
 
                     <div class="single-question-answer">
 
                         <div class="row">
                             <div class="col-md-12 col-xl-12 col-xs-12">
                                 <div class="question">
-                                    @if($itemType == 1)
+                                    <?php if($itemType == 1): ?>
                                         <h3 class="question-heading text-dark">Question: &nbsp; <?php echo $item?></h3>
-                                    @elseif($itemType == 2)
-                                        <strong>Question: </strong> <img src="{{ asset('assets/uploads/questions/images/'.$item) }}" alt="..." style="width: 180px; height: 113px;" title="This image is the question">
-                                    @elseif($itemType == 3)
+                                    <?php elseif($itemType == 2): ?>
+                                        <strong>Question: </strong> <img src="<?php echo e(asset('assets/uploads/questions/images/'.$item)); ?>" alt="..." style="width: 180px; height: 113px;" title="This image is the question">
+                                    <?php elseif($itemType == 3): ?>
                                     <h3>Question : </h3>
                                     <audio controls>
-                                            <source src="{{ asset('assets/uploads/questions/sounds/'.$item) }}" type="audio/ogg">
-                                            <source src="{{ asset('assets/uploads/questions/sounds/'.$item) }}" type="audio/mpeg">
+                                            <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$item)); ?>" type="audio/ogg">
+                                            <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$item)); ?>" type="audio/mpeg">
                                             Your browser does not support the audio element.
                                         </audio>
                                       
-                                    @endif
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -125,44 +122,44 @@ Test
                         <div class="row">
                             <div class="col-md-12 col-xl-12 col-xs-12">
                                 <div class="question-answer">
-                                    @php
+                                    <?php
                                         $options = $itemDetails->options;
                                         $itemCorAns = $itemDetails->correct_answer;
 
                                         $questionOptions = explode('||', $options);
-                                    @endphp
+                                    ?>
 
 
-                                    @if (count($questionOptions)>0)
-                                        @foreach ($questionOptions as $key=>$questionOption)
+                                    <?php if(count($questionOptions)>0): ?>
+                                        <?php $__currentLoopData = $questionOptions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$questionOption): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                                            @if($optionType == 1)
+                                            <?php if($optionType == 1): ?>
 
-                                            <input type="radio" id="{{$key}}o" name="options">
+                                            <input type="radio" id="<?php echo e($key); ?>o" name="options">
                                                 
-                                            <label for="{{$key}}o" class="btn btn-info"> {{ $questionOption }} </label>
+                                            <label for="<?php echo e($key); ?>o" class="btn btn-info"> <?php echo e($questionOption); ?> </label>
                                                
 
-                                            @elseif($optionType == 2)
-                                                
+                                            <?php elseif($optionType == 2): ?>
+                                                <?php if($itemCorAns==$key+1): ?>
+                                                    <div class="answer-option"> <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="..." >
+                                                    <i class="fa fa-check" title="This image is the correct answer"> </i></div>
+                                                <?php else: ?>
                                                 <div class="answer-option">
-                                                    <input type="radio" id="{{$key}}i" name="imgOption">
-                                                    <label for="{{$key}}i">
-                                                        <img src="{{ asset($imagePath.$questionOption) }}" alt="...">
-                                                    </label>
+                                                    <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="...">
                                                 </div>
-                                              
+                                                <?php endif; ?>
                                                 
-                                            @elseif($optionType == 3)
-                                                Option {{$key+1}}: <audio controls>
-                                                    <source src="{{ asset($soundPath.$questionOption) }}" type="audio/ogg">
-                                                    <source src="{{ asset($soundPath.$questionOption) }}" type="audio/mpeg">
+                                            <?php elseif($optionType == 3): ?>
+                                                Option <?php echo e($key+1); ?>: <audio controls>
+                                                    <source src="<?php echo e(asset($soundPath.$questionOption)); ?>" type="audio/ogg">
+                                                    <source src="<?php echo e(asset($soundPath.$questionOption)); ?>" type="audio/mpeg">
                                                     Your browser does not support the audio element.
                                                 </audio>
-                                            @endif
+                                            <?php endif; ?>
 
-                                        @endforeach
-                                    @endif
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php endif; ?>
 
 
                                 </div>
@@ -173,32 +170,32 @@ Test
 
 
 
-                    @else
+                    <?php else: ?>
                          <!-- ------------------ For Sub Question and Option --------------------- -->
-                        @php
+                        <?php
                             $optionsAll    = explode('~~', $itemDetails->sub_options);
                             $corAnswers     = explode('||', $itemDetails->sub_correct_answer);
-                        @endphp
-                        @foreach ($items as $key=>$item)
+                        ?>
+                        <?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                     <div class="single-question-answer">
                         <div class="row">
                             <div class="col-md-12 col-xl-12 col-xs-12">
                                 <div class="question">
-                                    @if($itemType == 1)
-                                        <h3 class="question-heading text-dark">{{$key+1}}. &nbsp; <?php echo $item?> </h3>
-                                    @elseif($itemType == 2)
+                                    <?php if($itemType == 1): ?>
+                                        <h3 class="question-heading text-dark"><?php echo e($key+1); ?>. &nbsp; <?php echo $item?> </h3>
+                                    <?php elseif($itemType == 2): ?>
 
-                                    <strong> Question {{$key+1}}: &nbsp; &nbsp;</strong> <img src="{{ asset('assets/uploads/sub_questions/images/'.$item) }}" alt="..." style="width: 180px; height: 113px;" title="This image is the question">
+                                    <strong> Question <?php echo e($key+1); ?>: &nbsp; &nbsp;</strong> <img src="<?php echo e(asset('assets/uploads/sub_questions/images/'.$item)); ?>" alt="..." style="width: 180px; height: 113px;" title="This image is the question">
 
-                                    @elseif($itemType == 3)
-                                    <h3>{{$key+1}}. Question : </h3>
+                                    <?php elseif($itemType == 3): ?>
+                                    <h3><?php echo e($key+1); ?>. Question : </h3>
                                         <audio controls>
-                                            <source src="{{ asset('assets/uploads/questions/sounds/'.$item) }}" type="audio/ogg">
-                                            <source src="{{ asset('assets/uploads/questions/sounds/'.$item) }}" type="audio/mpeg">
+                                            <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$item)); ?>" type="audio/ogg">
+                                            <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$item)); ?>" type="audio/mpeg">
                                             Your browser does not support the audio element.
                                         </audio>
-                                    @endif
+                                    <?php endif; ?>
 
                                 </div>
                             </div>
@@ -210,72 +207,72 @@ Test
                     <div class="row">
                         <div class="col-md-12 col-xl-12 col-xs-12">
                             <div class="question-answer">
-                                @php
+                                <?php
                                     $questionOptions    = explode('||', $optionsAll[$key]);
                                     $corAns             = $corAnswers[$key];
-                                @endphp
+                                ?>
 
-                                @if (count($questionOptions)>0)
-                                    @foreach ($questionOptions as $j=>$questionOption)
+                                <?php if(count($questionOptions)>0): ?>
+                                    <?php $__currentLoopData = $questionOptions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $j=>$questionOption): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                                        @if($optionType == 1)
+                                        <?php if($optionType == 1): ?>
                                            
-                                           <input type="radio" id="{{$key}}o" name="options">
-                                           <label for="{{$key}}o" class="btn btn-info">{{ $questionOption }} </label>
+                                           <input type="radio" id="<?php echo e($key); ?>o" name="options">
+                                           <label for="<?php echo e($key); ?>o" class="btn btn-info"><?php echo e($questionOption); ?> </label>
                                         
 
 
-                                        @elseif($optionType == 2)
+                                        <?php elseif($optionType == 2): ?>
 
-                                            
-                                                <div class="answer-option">
-                                                   
-                                                    <input type="radio" id="{{$j}}o" name="imgOption">
-
-                                                    <label for="">
-                                                    <img src="{{ asset($imagePath.$questionOption) }}" alt="...">
-                                                </label>
+                                            <?php if($corAns==$j+1): ?>
+                                                <div class="answer-option"> 
+                                                    <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="..." >
+                                                <i class="fa fa-check" title="This image is the correct answer"> </i>
                                                 </div>
-                                            
+                                            <?php else: ?>
+                                                <div class="answer-option"> 
+                                                    <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="...">
+                                                </div>
+                                            <?php endif; ?>
                                     
 
-                                        @elseif($optionType == 3)
-                                        Option {{$j+1}}:
+                                        <?php elseif($optionType == 3): ?>
+                                        Option <?php echo e($j+1); ?>:
                                             <audio controls>
-                                                <source src="{{ asset($soundPath.$questionOption) }}" type="audio/ogg">
-                                                <source src="{{ asset($soundPath.$questionOption) }}" type="audio/mpeg">
+                                                <source src="<?php echo e(asset($soundPath.$questionOption)); ?>" type="audio/ogg">
+                                                <source src="<?php echo e(asset($soundPath.$questionOption)); ?>" type="audio/mpeg">
                                                 Your browser does not support the audio element.
                                             </audio>
-                                        @endif
+                                        <?php endif; ?>
 
 
-                                    @endforeach
-                                @endif
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endif; ?>
                             </div>
                         </div>
 
                     </div>
                 </div>
 
-                        @endforeach
-                    @endif
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <?php endif; ?>
 
                     <br>
                     <div class="">
                     <button class="btn btn-success btn-sm pull-left" onclick="history.go(-1)">Previous</button>
-                     {{--<a href="">--}}
-                        {{--<button class="btn btn-success btn-sm pull-left">Previous</button>--}}
-                    {{--</a>--}}
-                    @if($next_demo_question_id==0)
+                     
+                        
+                    
+                    <?php if($next_demo_question_id==0): ?>
 
-                        <a href="{{url('/examDemoFinish'."?examId=$examId")}}">
+                        <a href="<?php echo e(url('/examDemoFinish'."?examId=$examId")); ?>">
                             <button class="btn btn-success btn-sm pull-right">Next</button>
                         </a>
-                    @else
-                    <a href="{{url('/examDemoItemPreview'."?examId=$examId"."&next_demo_question_id=$next_demo_question_id"."&skip=$skip")}}">
+                    <?php else: ?>
+                    <a href="<?php echo e(url('/examDemoItemPreview'."?examId=$examId"."&next_demo_question_id=$next_demo_question_id"."&skip=$skip")); ?>">
                         <button class="btn btn-success btn-sm pull-right">Next</button>
                     </a>
-                @endif
+                <?php endif; ?>
                 </div>
                 </div>
 
@@ -287,25 +284,25 @@ Test
 </section>
 <!-- content -->
 
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- page level scripts --}}
-@section('footer_scripts')
+
+<?php $__env->startSection('footer_scripts'); ?>
 <!-- For Editors -->
 <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script> -->
-<script language="javascript" type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
-<script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
-@if($status == 2)
-<script src="{{ asset('js/activate.js') }}"></script>
-@endif
+<script language="javascript" type="text/javascript" src="<?php echo e(asset('DataTables/datatables.min.js')); ?>"></script>
+<script language="javascript" type="text/javascript" src="<?php echo e(asset('assets/vendors/select2/js/select2.js')); ?>"></script>
+<?php if($status == 2): ?>
+<script src="<?php echo e(asset('js/activate.js')); ?>"></script>
+<?php endif; ?>
 
 <script>
     $(document).ready(function(){
-        @if (session('msgType'))
-        toastr.success('{{ session("messege") }}', 'You Got Error', {timeOut: 5000});
-        @endif
+        <?php if(session('msgType')): ?>
+        toastr.success('<?php echo e(session("messege")); ?>', 'You Got Error', {timeOut: 5000});
+        <?php endif; ?>
     });
 </script>
 
@@ -331,11 +328,11 @@ Test
             }]
         });
 
-        @if($message = Session::get('success'))
-        toastr.success('{{ $message }}', 'Success Alert', {
+        <?php if($message = Session::get('success')): ?>
+        toastr.success('<?php echo e($message); ?>', 'Success Alert', {
             timeOut: 5000
         });
-        @endif
+        <?php endif; ?>
     });
 
     function QuestionDelete(id) {
@@ -382,5 +379,8 @@ Test
             });
     }
 </script>
-{{ session()->forget('success') }}
-@stop
+<?php echo e(session()->forget('success')); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/conductOfficer/examSchedule/demo_item_preview.blade.php ENDPATH**/ ?>

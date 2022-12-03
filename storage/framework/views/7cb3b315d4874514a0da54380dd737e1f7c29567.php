@@ -59,8 +59,8 @@
                                 <?php if($config->status == 1 && $config->preview_status == 1): ?>
                                     <tr <?php if($config->exam_status == 1): ?> class="bg" <?php endif; ?>>
                                         <td <?php if($config->exam_status == 1): ?> class="color-full1" <?php endif; ?>><?php echo e(++$key); ?></td>
-                                        <td><?php echo e($config->testConfig->testFor->name); ?></td>
-                                        <td><?php echo e($config->testConfig->test_name); ?></td>
+                                        <td><?php echo e($config->testConfig?$config->testConfig->testFor->name:"N/A"); ?></td>
+                                        <td><?php echo e($config->testConfig?$config->testConfig->test_name:'N/A'); ?></td>
                                         <td><?php echo e($config->boardCandidate->board_name); ?></td>
                                         <td><?php echo e($config->exam_date); ?></td>
                                         <td><?php echo e($config->exam_duration); ?></td>
