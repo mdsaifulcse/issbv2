@@ -206,6 +206,7 @@ class CandidateExamController extends Controller
     //START CANDIDATE EXAM INSTRUCTION
     public function examInstruction(Request $request)
     {
+
         $data['examId']             = $examId = $request->examId;
         $data['step_id']            = $step_id = $request->step_id;
         $authId                     = Auth::guard('candAuth')->id();
@@ -216,7 +217,9 @@ class CandidateExamController extends Controller
         $currentTime                = $cTime->format( 'H:i:s' );
         $examConfigDetails          = ExamConfig::find($examId);
 
-        $candidateExamInfo          = CandidateExam::where('candidate_id', $authId)->where('exam_config_id', $examConfigDetails->id)->where('exam_date', $examConfigDetails->exam_date)->first();
+        $candidateExamInfo          = CandidateExam::where('candidate_id', $authId)->where('exam_config_id', $examConfigDetails->id)
+           //->where('exam_date', $examConfigDetails->exam_date)
+           ->latest()->first(); // latest() added by Md.Saiful Islam
         $data['configInstruction']  = $configInstruction= ConfigInstruction::where('test_config_id', $examConfigDetails->test_config_id)->first();
 
         // FOR CHECKING NEXT INSTRUCTION
@@ -255,7 +258,9 @@ class CandidateExamController extends Controller
         } else {
             self::examConfigStartFun($examConfigDetails, $step_id);
 
-            $candidateExamInfo  = CandidateExam::where('candidate_id', $authId)->where('exam_config_id', $examConfigDetails->id)->where('exam_date', $examConfigDetails->exam_date)->first();
+            $candidateExamInfo  = CandidateExam::where('candidate_id', $authId)->where('exam_config_id', $examConfigDetails->id)
+                //->where('exam_date', $examConfigDetails->exam_date)
+                ->latest()->first(); // latest() added by Md.Saiful Islam
 
             if ($authBoard != 'preview') {
                 $candidateExamInfo->update([

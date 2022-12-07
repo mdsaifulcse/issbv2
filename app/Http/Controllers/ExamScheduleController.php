@@ -50,6 +50,7 @@ class ExamScheduleController extends Controller
     }
     public function nextInstruction(Request $request)
     {
+        return $request;
         $data['examId'] = $request->examId;
         $instrucId = $request->instrucId;
         $examConfig = ExamConfig::find($request->examId);

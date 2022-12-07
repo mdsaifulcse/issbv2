@@ -53,7 +53,6 @@
                                 <th width="15%">Test Date</th>
                                 <th width="15%">Duration</th>
                                 <th width="10%">Total Candidate</th>
-                                <th width="10%">Status</th>
                                 <th width="20%" class="text-center">Action</th>
                             </tr>
                             </thead>
@@ -68,17 +67,37 @@
                                         <td>{{ $config->exam_date }}</td>
                                         <td>{{ $config->exam_duration }}</td>
                                         <td>{{ $config->boardCandidate->total_candidate }}</td>
-                                        <td> <a href="{{ route('examConfig.show', [$config->id]).'?status=0' }}"><b>Activate</b> </a>   </td>
+
                                         <td class="text-center">
                                         <a href="{{ url('examPreview?examId='.$config->id) }}" target="_blank" class="btn btn-sm btn-primary">Preview Exam</a>
 
-                                        @if ($config->exam_status == 2)
-                                        <a href="#" class="btn btn-sm btn-success" disabled>Exam Completed</a>
+                                        @if ($config->preview_status == 1 && $config->exam_status==0)
+
+                                            <a href="{{ route('examInstruction', ['examId'=>$config->id]) }}" class="btn btn-sm btn-primary">Show Introduction</a>
+
+                                        @elseif($config->preview_status == 1 && $config->exam_status==1)
+
+                                            <a href="{{ url('startMainExam'."?examId=$config->id") }}" class="btn btn-sm btn-success">Running</a>
+
+                                        @elseif($config->preview_status == 1 && $config->exam_status==2)
+
+                                                <a href="javascript:void(0)" class="btn btn-sm btn-success" disabled>Competed</a>
+
+                                        @elseif($config->preview_status == 1 && $config->exam_status==3)
+
+                                            <a href="javascript:void(0)" class="btn btn-sm btn-success" disabled>Cancel</a>
+
+                                        @elseif($config->preview_status == 1 && $config->exam_status==4)
+
+                                            <a href="{{ url('examDemoFinish'."?examId=$config->id") }}" class="btn btn-sm btn-success">Prestart</a>
+
                                         @else
-                                        @if($config->preview_status == 1)
-                                        <a href="{{ route('examInstruction', ['examId'=>$config->id]) }}" class="btn btn-sm btn-primary">Show Introduction</a>
+                                            <a href="javascript:void(0)" class="btn btn-sm btn-success" disabled>Upcoming</a>
                                         @endif
-                                        @endif
+
+                                        {{--@if($config->preview_status == 1)--}}
+                                            {{--<a href="{{ route('examInstruction', ['examId'=>$config->id]) }}" class="btn btn-sm btn-primary">Show Introduction</a>--}}
+                                        {{--@endif--}}
 
                                         </td>
                                     </tr>

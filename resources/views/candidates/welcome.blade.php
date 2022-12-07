@@ -3,30 +3,30 @@
 
 @section('content')
 
-{{-- <div class="page-header">
-    <div class="page-header-content">
-        <div class="page-title">
-            <h4><span class="text-semibold">Selection Board</h4>
-        </div>
+ {{--<div class="page-header">--}}
+    {{--<div class="page-header-content">--}}
+        {{--<div class="page-title">--}}
+            {{--<h4><span class="text-semibold">Selection Board</span></h4>--}}
+        {{--</div>--}}
 
-        <div class="heading-elements">
-            <div class="heading-btn-group">
-                <a href="#" class="btn btn-link btn-float has-text">
-                    <img class="img-circle img-sm" src="{{ asset('backend/assets/images/placeholder.jpg') }}" alt="ProfileImage">
-                </a>
-            </div>
-        </div>
+        {{--<div class="heading-elements">--}}
+            {{--<div class="heading-btn-group">--}}
+                {{--<a href="#" class="btn btn-link btn-float has-text">--}}
+                    {{--<img class="img-circle img-sm" src="{{ asset('backend/assets/images/placeholder.jpg') }}" alt="ProfileImage">--}}
+                {{--</a>--}}
+            {{--</div>--}}
+        {{--</div>--}}
 
-        <div class="text-center">
-            <div style="border-bottom: 1px solid #dddddd;">
-                <span style="font-size: 18px;">Welcome! <strong style="font-size: 24px; letter-spacing: 2px;">{{$userInfo->name}} Chest no: {{$userInfo->chest_no}}</strong></span>
-            </div>
-        </div>
-        <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
-    </div>
+        {{--<div class="text-center">--}}
+            {{--<div style="border-bottom: 1px solid #dddddd;">--}}
+                {{--<span style="font-size: 18px;">Welcome! <strong style="font-size: 24px; letter-spacing: 2px;">{{$userInfo->name}} Chest no: {{$userInfo->chest_no}}</strong></span>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--<a class="heading-elements-toggle"><i class="icon-menu"></i></a>--}}
+    {{--</div>--}}
 
-    <div class="breadcrumb-line"></div>
-</div> --}}
+    {{--<div class="breadcrumb-line"></div>--}}
+{{--</div>--}}
 
 
 <!-- Content area -->

@@ -138,11 +138,13 @@
                                     <td>{{ $data->exam_date }}</td>
                                     <td>{{ $data->exam_duration }}</td>
                                     <td>{{ $data->boardCandidate->total_candidate }}</td>
-                                    <td>@if($data->status == 1 && $data->preview_status == 1)
+                                    <td>
+                                        @if($data->status == 1 && $data->preview_status == 1)
                                             <a href="{{ route('examConfig.show', [$data->id]).'?status=0' }}"><b>Activate</b> </a>
                                         @else
                                             <a href="{{ route('examConfig.show', [$data->id]).'?status=1' }}"><b class="text-danger">In-Active</b></a>
-                                        @endif</td>
+                                        @endif
+                                    </td>
                                     <td class="text-center">
                                         @if ($data->exam_status == 1)
                                         <a href="{{ route('runningExamTimeRemain', ['examId'=>$data->id]) }}">

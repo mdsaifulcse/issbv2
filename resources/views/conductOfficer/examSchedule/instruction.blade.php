@@ -147,7 +147,8 @@
                             console.log(response.instructionEndStatus);
 
                         }
-                    }
+                    },
+                    e
                 });
             })
         });

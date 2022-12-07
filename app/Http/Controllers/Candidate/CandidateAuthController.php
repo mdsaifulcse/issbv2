@@ -60,6 +60,7 @@ class CandidateAuthController extends Controller
 
     public function postLogin(Request $request)
     {
+
         $this->validate($request, [
             'candidate_id'      => 'required',
             'secret_key'        => 'required',
@@ -67,7 +68,8 @@ class CandidateAuthController extends Controller
 
         $data['candidate_id']   = $candidate_id = $request->candidate_id;
         $data['secret_key']     = $secret_key = $request->secret_key;
-        $isExist = Candidates::where('secret_key', $secret_key)->find($candidate_id);
+        $activeBoard=BoardCandidate::where('status', 1)->first();
+        $isExist = Candidates::where(['secret_key'=>$secret_key,'board_no'=>$activeBoard->board_name])->find($candidate_id);
 
         if (!empty($isExist)) {
             $isExist->update([
@@ -90,26 +92,26 @@ class CandidateAuthController extends Controller
 
     public function dashboard(Request $request)
     {
-
         if(Auth::guard('candAuth')->check()){
-            $currentDate            = date('Y-m-d');
-            $currentTime            = date('h:i:s');
+
+//            $currentDate            = date('Y-m-d');
+//            $currentTime            = date('h:i:s');
             $data['authId']         = $authId = Auth::guard('candAuth')->id();
             $data['userInfo']       = Candidates::find($authId);
+
             $data['configuredExam'] = $configuredExam = ExamConfig::whereIn('exam_status', [1,4])
-                ->where('exam_date', $currentDate)
-                ->where('status', 1)
-                ->first();
+                //->where('exam_date', $currentDate)
+                ->latest()->where('status', 1)->first(); // latest() added by Md.Saiful Islam
 
             if (!empty($configuredExam)) {
-                $data['candidateExamInfo'] = CandidateExam::where('candidate_id', $authId)
-                    ->where('exam_config_id', $configuredExam->id)
-                    ->first();
+                $data['candidateExamInfo'] = CandidateExam::where(['candidate_id'=>$authId,'exam_config_id'=>$configuredExam->id])
+                  ->latest()->first(); // latest() added by Md.Saiful Islam
                 $data['upcomingExamStatus'] = 1;
             } else {
                 $data['candidateExamInfo'] = '';
                 $data['upcomingExamStatus'] = 0;
             }
+
 
             return view('candidates.welcome', $data);
         } else {
@@ -150,8 +152,10 @@ class CandidateAuthController extends Controller
 
     public function verifyUser(Request $request)
     {
+
+        $activeBoard=BoardCandidate::where('status', 1)->first();
         $c_chest_no = $request->c_chest_no;
-        $userInfo = Candidates::where('chest_no', $c_chest_no)->first();
+        $userInfo = Candidates::where(['chest_no'=>$c_chest_no,'board_no'=>$activeBoard->board_name])->first();
 
         if (!empty($userInfo)) {
             $output['userInfo'] = $userInfo;
