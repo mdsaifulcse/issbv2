@@ -238,6 +238,7 @@ class CandidateExamController extends Controller
             } else {
                 $data['instructionEndStatus']  = 0;
             }
+
         if($candidateExamInfo){
             if ($candidateExamInfo->instruction_seen_status==0) {
                 // $candidateExamInfo->update([
@@ -306,7 +307,9 @@ class CandidateExamController extends Controller
                 } else {
                     $data['instructionEndStatus']  = 1;
 
-                    $candidateExamInfo  = CandidateExam::where('candidate_id', $authId)->where('exam_config_id', $examId)->where('exam_date', $examConfigDetails->exam_date)->first();
+                    $candidateExamInfo  = CandidateExam::where('candidate_id', $authId)->where('exam_config_id', $examId)
+                        //->where('exam_date', $examConfigDetails->exam_date)
+                        ->first();
                     $candidateExamInfo->update([
                         'instruction_seen_status' => 1,
                     ]);
@@ -371,7 +374,9 @@ class CandidateExamController extends Controller
         $end_time           = $examConfigDetails->exam_end_time;
 
         $testConfigId       = $examConfigDetails->test_config_id;
-        $data['candidateExamInfo'] = $candidateExamInfo  = CandidateExam::where('candidate_id', $candidate_id)->where('exam_config_id', $examConfigDetails->id)->where('exam_date', $examConfigDetails->exam_date)->first();
+        $data['candidateExamInfo'] = $candidateExamInfo  = CandidateExam::where('candidate_id', $candidate_id)->where('exam_config_id', $examConfigDetails->id)
+            ->where('exam_date', $examConfigDetails->exam_date)
+            ->first();
 
 
         if (empty($candidateExamInfo)) {

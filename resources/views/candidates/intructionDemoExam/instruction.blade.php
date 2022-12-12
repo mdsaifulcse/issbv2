@@ -78,9 +78,9 @@
             let examId = $(this).attr('examId');
 
 
-            $('.load_content').html(`<div class="page_loader">
-                                <div class="text-center"><h4>Loading...</h4><div class="loader"></div></div>
-                            </div>`);
+//            $('.load_content').html(`<div class="page_loader">
+//                                <div class="text-center"><h4>Loading...0</h4><div class="loader"></div></div>
+//                            </div>`);
 
             $.ajax({
                 mimeType: 'text/html; charset=utf-8', // ! Need set mimeType only when run from local file
@@ -89,6 +89,7 @@
                 type: "GET",
                 dataType: "json",
                 success: function (response) {
+                   return console.log(response)
                     if (parseInt(response) === 0) {
                         $('.page_loader').show();
                     } else {

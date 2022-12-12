@@ -150,12 +150,15 @@ Item Bank
                                     @if($value->item_status == 1)
                                     <span class="label label-success">Active</span>
                                     @elseif ($value->item_status == 2)
-                                    <span class="label label-danger">Inactive
+                                        <span class="label label-danger">Inactive</span>
                                     @elseif ($value->item_status == 3)
-                                    <span class="label label-danger">Test
+                                            <span class="label label-danger">Test</span>
+                                    @elseif ($value->item_status == 4)
+                                        <span class="label label-danger">No-Answer</span>
                                     @else
-                                    <span class="label label-primary">No-Answer
-                                    @endif</span></td>
+                                    <span class="label label-primary">Demo Question
+                                    @endif</span>
+                                </td>
                                 <td class="text-center">
                                     <a href="{{ URL::to('/edit-items/'.$value->id) }}"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14" title="Update data"></i></a>
                                     <a><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=QuestionDelete('<?php echo $value->id ?>');></i></a>

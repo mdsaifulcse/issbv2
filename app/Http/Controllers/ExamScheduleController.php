@@ -18,7 +18,7 @@ class ExamScheduleController extends Controller
     {
         $data['examConfigs']=ExamConfig::with('boardCandidate','testConfig','testConfig.testFor')
             ->where(['exam_configs.status'=>1,'exam_configs.preview_status'=>1])
-            ->latest()->paginate(20);
+            ->latest()->paginate(25);
 
         return view('conductOfficer.examSchedule.listData', $data);
     }
@@ -50,7 +50,7 @@ class ExamScheduleController extends Controller
     }
     public function nextInstruction(Request $request)
     {
-        return $request;
+
         $data['examId'] = $request->examId;
         $instrucId = $request->instrucId;
         $examConfig = ExamConfig::find($request->examId);
