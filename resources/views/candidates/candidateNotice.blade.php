@@ -4,7 +4,7 @@
 <div class="page-header">
     <div class="page-header-content">
         <div class="page-title">
-            <h4><span class="text-semibold">Assessment Notice</h4>
+            <h4><span class="text-semibold">Assessment Notice</span> </h4>
         </div>
 
         <div class="text-center">

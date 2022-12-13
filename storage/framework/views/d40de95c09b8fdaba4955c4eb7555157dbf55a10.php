@@ -44,7 +44,7 @@
                         <?php if($candidateExamInfo->instruction_seen_status == 0): ?>
                             <a class="btn btn-default btn-sm mt-10" href="<?php echo e(route('candidate.examInstruction', ['examId'=>$configuredExam->id,'step_id'=>''])); ?>" style="padding: 5%;">Instruction & Demo 1<i class="icon-play3 position-right"></i></a>
                         <?php elseif($candidateExamInfo->instruction_seen_status == 1 && $candidateExamInfo->demo_exam_status == 0): ?>
-                            <a class="btn btn-default btn-sm mt-10" href="<?php echo e(route('candidate.examDemoQOne', ['examId'=>$configuredExam->id])); ?>" style="padding: 5%;">Demo Assessment<i class="icon-play3 position-right"></i></a>
+                            <a class="btn btn-default btn-sm mt-10" href="<?php echo e(route('candidate.examDemoItemPreview', ['examId'=>$configuredExam->id])); ?>" style="padding: 5%;">Demo Assessment<i class="icon-play3 position-right"></i></a>
                         <?php elseif($configuredExam->exam_status == 1): ?>
                             <a class="btn btn-default btn-sm mt-10" href="<?php echo e(route('candidate.candidateExamStart', ['examId'=>$configuredExam->id])); ?>" style="padding: 5%;">Start Final Assessment<i class="icon-play3 position-right"></i></a>
                         <?php else: ?>

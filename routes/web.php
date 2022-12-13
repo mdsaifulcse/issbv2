@@ -45,10 +45,14 @@ Route::group(['namespace' => 'Candidate', 'prefix' => 'candidate', 'as'=>'candid
 
         Route::get('/examInstruction', 'CandidateExamController@examInstruction')->name('examInstruction');
         Route::get('/getInstruction', 'CandidateExamController@getInstruction')->name('getInstruction');
+
+        // Md.Saiful Islam (Saif)
+        Route::get('/examDemoItemPreview', 'CandidateExamController@examDemoItemPreview')->name('examDemoItemPreview');
+        Route::get('/examDemoFinish', 'CandidateExamController@examDemoFinish')->name('examDemoFinish');
+
         Route::get('/examDemoQOne', 'CandidateExamController@examDemoQOne')->name('examDemoQOne');
         Route::get('/examDemoQTwo', 'CandidateExamController@examDemoQTwo')->name('examDemoQTwo');
         Route::get('/examDemoQThree', 'CandidateExamController@examDemoQThree')->name('examDemoQThree');
-        Route::get('/examDemoFinish', 'CandidateExamController@examDemoFinish')->name('examDemoFinish');
         Route::post('/can_exam_info_update', 'CandidateExamController@canExamInfoUpdate')->name('canExamInfoUpdate');
         Route::get('/autoCandidateExamSubmit', 'CandidateExamController@autoCandidateExamSubmit')->name('autoCandidateExamSubmit');
 

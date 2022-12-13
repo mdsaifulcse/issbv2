@@ -60,7 +60,7 @@ Test
     <section class="content-header">
         <!--section starts-->
         <h5>Assessment</h5>
-        <ol class="breadcrumb">
+        <!-- <ol class="breadcrumb">
             <li>
                 <div id="examTimeCountDown"></div>
             </li>
@@ -70,7 +70,7 @@ Test
             <li>
                 Total Questions: <span class="totalQuestionsShow">3</span>
             </li>
-        </ol>
+        </ol> -->
     </section>
 <section class="content">
     <div class="row">

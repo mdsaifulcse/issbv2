@@ -64,7 +64,7 @@
                 type: "GET",
                 dataType: "json",
                 success: function (response) {
-                   return console.log(response)
+                    console.log(response)
                     if (parseInt(response) === 0) {
                         $('.page_loader').show();
                     } else {
@@ -79,7 +79,7 @@
                         $('.load_content').html(html);
                         if (response.instructionEndStatus == 0) {
                             $('#nextInst').remove();
-                            $('.action-btn').html(`<a class="btn btn-lg btn-primary pull-right" href="<?php echo e(route('candidate.examDemoQOne', ['examId'=>$examId])); ?>" role="button">Next</a>`);
+                            $('.action-btn').html(`<a class="btn btn-lg btn-primary pull-right" href="<?php echo e(route('candidate.examDemoItemPreview', ['examId'=>$examId])); ?>" role="button">Next</a>`);
                         }
                     }
                 }

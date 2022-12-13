@@ -12,12 +12,6 @@ Test
 
 
 <?php $__env->startSection('header_styles'); ?>
-<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-
-<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
-
-<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" /> -->
 <link href="<?php echo e(asset('DataTables/datatables.min.css')); ?>" rel="stylesheet" />
 <style>
     .single-question-answer{
@@ -32,7 +26,7 @@ Test
         float: right;
     }
     .question-heading, .answer-option{
-        display: inline-flex;
+        display: inline-flex !important;
     }
     .question-answer{
         text-indent: 20px;
@@ -101,7 +95,7 @@ Test
                             <div class="col-md-12 col-xl-12 col-xs-12">
                                 <div class="question">
                                     <?php if($itemType == 1): ?>
-                                        <h3 class="question-heading text-dark">Question: &nbsp; <?php echo $item?></h3>
+                                        <h3 class="question-heading text-dark" style="display:inline-flex;">Question: &nbsp; <?php echo $item?></h3>
                                     <?php elseif($itemType == 2): ?>
                                         <strong>Question: </strong> <img src="<?php echo e(asset('assets/uploads/questions/images/'.$item)); ?>" alt="..." style="width: 180px; height: 113px;" title="This image is the question">
                                     <?php elseif($itemType == 3): ?>
@@ -183,7 +177,7 @@ Test
                             <div class="col-md-12 col-xl-12 col-xs-12">
                                 <div class="question">
                                     <?php if($itemType == 1): ?>
-                                        <h3 class="question-heading text-dark"><?php echo e($key+1); ?>. &nbsp; <?php echo $item?> </h3>
+                                        <h3 class="question-heading text-dark" style="display:inline-flex;"><?php echo e($key+1); ?>. &nbsp; <?php echo $item?> </h3>
                                     <?php elseif($itemType == 2): ?>
 
                                     <strong> Question <?php echo e($key+1); ?>: &nbsp; &nbsp;</strong> <img src="<?php echo e(asset('assets/uploads/sub_questions/images/'.$item)); ?>" alt="..." style="width: 180px; height: 113px;" title="This image is the question">
@@ -265,11 +259,11 @@ Test
                     
                     <?php if($next_demo_question_id==0): ?>
 
-                        <a href="<?php echo e(url('/examDemoFinish'."?examId=$examId")); ?>">
+                        <a href="<?php echo e(route('candidate.examDemoFinish', ['examId'=>$examId])); ?>">
                             <button class="btn btn-success btn-sm pull-right">Next</button>
                         </a>
                     <?php else: ?>
-                    <a href="<?php echo e(url('/examDemoItemPreview'."?examId=$examId"."&next_demo_question_id=$next_demo_question_id"."&skip=$skip")); ?>">
+                    <a href="<?php echo e(url('/candidate/examDemoItemPreview'."?examId=$examId"."&next_demo_question_id=$next_demo_question_id"."&skip=$skip")); ?>">
                         <button class="btn btn-success btn-sm pull-right">Next</button>
                     </a>
                 <?php endif; ?>
@@ -383,4 +377,4 @@ Test
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/conductOfficer/examSchedule/demo_item_preview.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('candidates.layouts.default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/candidates/intructionDemoExam/demo_item_preview.blade.php ENDPATH**/ ?>

@@ -163,7 +163,7 @@ class ExamScheduleController extends Controller
                 'updated_at'        => date('Y-m-d H:i:s'),
                 'updated_by'        => Auth::id(),
             ]);
-        }        
+        }
 
         $updateExamConfigInfo   = ExamConfig::find($request->examId);
         $updateExamConfigInfo->update([

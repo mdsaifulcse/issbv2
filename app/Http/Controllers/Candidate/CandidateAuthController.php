@@ -112,6 +112,8 @@ class CandidateAuthController extends Controller
                 $data['upcomingExamStatus'] = 0;
             }
 
+            //return $data;
+
 
             return view('candidates.welcome', $data);
         } else {
