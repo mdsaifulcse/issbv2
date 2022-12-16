@@ -47,8 +47,8 @@ class CandidateExamController extends Controller
         $currentTime                = $cTime->format( 'H:i:s' );
         $examConfigDetails          = ExamConfig::find($examId);
 
-        $data['candidateExam']      = $candidateExam = CandidateExam::where('candidate_id', $candidate_id)->where('exam_config_id', $examConfigDetails->id)
-            ->where('exam_status', '!=', 2)->first();
+        $data['candidateExam']      = $candidateExam = CandidateExam::where('candidate_id', $candidate_id)
+                                    ->where('exam_config_id', $examConfigDetails->id)->where('exam_status', '!=', 2)->first();
 
         if($candidateExam){
             $data['examQuestions'] = CandidateExamDetail::where('candidate_exam_id', $candidateExam->id)->get()->pluck('id');
@@ -69,7 +69,8 @@ class CandidateExamController extends Controller
             }
         } else {
             $data['examConfigureStatus'] = 0; //0=No, 1=Yes
-            $data['configuredExam'] = $configuredExam = ExamConfig::whereIn('exam_status', [1,4])->where('exam_date', $currentDate)
+            $data['configuredExam'] = $configuredExam = ExamConfig::whereIn('exam_status', [1,4])
+                //->where('exam_date', $currentDate)
                 ->where('status', 1)->first();
 
             $data['upcomingExamStatus'] = 0;
@@ -105,7 +106,8 @@ class CandidateExamController extends Controller
 
         if ($submittedQuestion->sl_no==$request->total_questions) {
                 $data['sl_no'] = $submittedQuestion->sl_no==$request->total_questions? $submittedQuestion->sl_no:1;
-                $nextQuestion = CandidateExamDetail::where('candidate_exam_id', $submittedQuestion->candidate_exam_id)->where('sl_no', $submittedQuestion->sl_no)->first();
+                $nextQuestion = CandidateExamDetail::where('candidate_exam_id', $submittedQuestion->candidate_exam_id)
+                    ->where('sl_no', $submittedQuestion->sl_no)->first();
 
                 $submittedQuestion->update([
                     'running_question_status'   => 1,
@@ -427,9 +429,10 @@ class CandidateExamController extends Controller
         $end_time           = $examConfigDetails->exam_end_time;
 
         $testConfigId       = $examConfigDetails->test_config_id;
-        $data['candidateExamInfo'] = $candidateExamInfo  = CandidateExam::where('candidate_id', $candidate_id)->where('exam_config_id', $examConfigDetails->id)
-            ->where('exam_date', $examConfigDetails->exam_date)
-            ->first();
+        $data['candidateExamInfo'] = $candidateExamInfo  = CandidateExam::where('candidate_id', $candidate_id)
+            ->where('exam_config_id', $examConfigDetails->id)->latest()->first();
+            //->where('exam_date', $examConfigDetails->exam_date)
+
 
 
         if (empty($candidateExamInfo)) {
@@ -541,14 +544,19 @@ class CandidateExamController extends Controller
                 $data['status'] = 2;
                 $data['message'] = "Your exam already finished!";
             } else {
-                $examStepQuestion = CandidateExamDetail::where('candidate_exam_id', $candidateExamInfo->id)->where('running_question_status', 1)->orderBy('id', 'asc')->first();
+                $examStepQuestion = CandidateExamDetail::where('candidate_exam_id', $candidateExamInfo->id)->where('running_question_status', 1)
+                    ->orderBy('id', 'asc')->first();
                 // dd($examStepQuestion);
+
+
                 if ($step_id) {
                     $examStepQuestion->update([
                         'running_question_status'=> 0,
                     ]);
 
-                    $examQuestion = CandidateExamDetail::where('candidate_exam_id', $candidateExamInfo->id)->find($step_id);
+                    $examQuestion = CandidateExamDetail::where('candidate_exam_id', $candidateExamInfo->id)
+                        ->where(['sl_no'=>$step_id])->first();
+                        //->find($step_id);
 
                     $examQuestion->update([
                         'running_question_status'=> 1,

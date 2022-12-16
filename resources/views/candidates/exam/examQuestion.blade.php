@@ -52,6 +52,15 @@
         line-height: 1.428571429;
         border-radius: 15px;
         }
+        .option_show{
+            display: flex;
+        }
+        .option_show .radio{
+            padding-right:12px;
+        }
+        .option_show .radio label{
+            padding-left:17px;
+        }
     </style>
 @endpush
 
@@ -152,6 +161,7 @@
             let htmlOptions             = '';
             let exam_id                 = $('.exam_id').val();
             let exam_remaining_time     = $('.exam_remaining_time').val();
+            console.log(exam_remaining_time)
             let exam_config_status      = $('.exam_config_status').val();
             let step_id                 = '';
             $('.question_area').find('.question').text('');
@@ -217,7 +227,7 @@
                 $('.exam_remaining_time').val(temp);
             }
 
-            //updae exam info
+            //update exam info
             setInterval(function() {
                 let exam_id                 = $('.exam_id').val();
                 let exam_remaining_time     = $('.exam_remaining_time').val();
@@ -236,7 +246,7 @@
                             }
                         }
                     });
-            }, 5000);
+            }, 500000);
 
             //step
             $('.stepBtn').on('click', function(){
@@ -250,6 +260,7 @@
             });
 
             $('.nextBtn').on('click', function(){
+                console.log('sdf23')
                 var stepId              = Number($('.sl_no').val()) + 1;
                 var quesId              = $('.question_id').val();
                 var formSubmitStatus    = 1;
@@ -276,6 +287,7 @@
                     type: 'GET',
                     dataType: "json",
                     success: function(response) {
+                        console.log(response)
 
                         if (response.status==1) {
                             $('.page_loader').hide();
@@ -312,7 +324,7 @@
                                 if (response.item_type == 1) {
                                     $('.question_area .question').text(`${response.sl_no}) ${question_title}`);
                                 } else if (response.item_type == 2) {
-                                    $('.question_area .question').html(`<img src="{{ asset('assets/uploads/questions/images/${question_title}') }}" alt="questionImage">`);
+                                    $('.question_area .question').html(`Question :<br/> <img src="{{ asset('assets/uploads/questions/images/${question_title}') }}" alt="Question Image" class="img-responsive img-thumbnail">`);
                                 } else {
                                     let audio_name_arr = question_title.split(".", 2);
                                     let audio_ogg = `${audio_name_arr[0]}.ogg`;
@@ -326,7 +338,7 @@
                                 if (response.item_type == 1) {
                                     $('.question_area .question').text(`${response.sl_no}) ${question_title}`);
                                 } else if (response.item_type == 2) {
-                                    $('.question_area .question').html(`<img src="{{ asset('assets/uploads/sub_questions/images/${question_title}') }}" alt="questionImage">`);
+                                    $('.question_area .question').html(`Question:<br/> <img src="{{ asset('assets/uploads/sub_questions/images/${question_title}') }}" alt="Question Image" class="img-responsive img-thumbnail">`);
                                 } else {
                                     let audio_name_arr = question_title.split(".", 2);
                                     let audio_ogg = `${audio_name_arr[0]}.ogg`;
@@ -350,7 +362,7 @@
                                         let htmlOptions = $('.option_show').append('<div class="radio"><label><input option_shownput type="radio" name="answer" class="styled" value='+i+'>'+question_option+'</label></div>');
 
                                     } else if (response.option_type == 2) {
-                                        let htmlOptions = $('.option_show').append(`<div class="radio"><label><input option_shownput type="radio" name="answer" class="styled" value="${i}"><img src="{{ asset('assets/uploads/options/images/${question_option}') }}" alt="questionImage"></label></div>`);
+                                        let htmlOptions = $('.option_show').append(`<div class="radio"><label> <b> Option ${i+1}</b> <input option_shownput type="radio" name="answer" class="styled" value="${i}"><img src="{{ asset('assets/uploads/options/images/${question_option}') }}" alt="Question Image" class="img-responsive img-thumbnail"></label></div>`);
                                     } else {
                                         let audio_name_arr = question_option.split(".", 2);
                                         let audio_ogg = `${audio_name_arr[0]}.ogg`;
@@ -360,7 +372,7 @@
                                                             Your browser does not support the audio element.
                                                         </audio>`);
 
-                                        let htmlOptions = $('.option_show').append(`<div class="radio"><label><input option_shownput type="radio" name="answer" class="styled" value="${i}"><audio controls>
+                                        let htmlOptions = $('.option_show').append(`<div class="radio"><label><b> Option ${i+1}</b><input option_shownput type="radio" name="answer" class="styled" value="${i}"><audio controls>
                                                             <source src="${audio_ogg}" type="audio/ogg">
                                                             <source src="{{ asset('assets/uploads/options/sounds/${question_option}') }}" type="audio/mpeg">
                                                             Your browser does not support the audio element.
@@ -370,10 +382,11 @@
                                     if (response.option_type == 1) {
                                         // $('.question_area .question').text(`${i}) ${question_option}`);
 
-                                        let htmlOptions = $('.option_show').append('<div class="radio"><label><input option_shownput type="radio" name="answer" class="styled" value='+i+'>'+question_option+'</label></div>');
+                                        let htmlOptions = $('.option_show').append('<div class="radio"><label><b> Option ${i+1}</b><input option_shownput type="radio" name="answer" class="styled" value='+i+'>'+question_option+'</label></div>');
 
                                     } else if (response.option_type == 2) {
-                                        let htmlOptions = $('.option_show').append(`<div class="radio"><label><input option_shownput type="radio" name="answer" class="styled" value="${i}"><img src="{{ asset('assets/uploads/sub_options/images/${question_option}') }}" alt="questionImage"></label></div>`);
+                                        let htmlOptions = $('.option_show').append(`<div class="radio"> <label> <b> Option ${i+1}</b><input option_shownput type="radio" name="answer" class="styled" value="${i}">
+                                        <img src="{{ asset('assets/uploads/sub_options/images/${question_option}') }}" alt="Question Image" class="img-responsive img-thumbnail"></label></div>`);
                                     } else {
                                         let audio_name_arr = question_option.split(".", 2);
                                         let audio_ogg = `${audio_name_arr[0]}.ogg`;
@@ -383,7 +396,7 @@
                                                             Your browser does not support the audio element.
                                                         </audio>`);
 
-                                        let htmlOptions = $('.option_show').append(`<div class="radio"><label><input option_shownput type="radio" name="answer" class="styled" value="${i}"><audio controls>
+                                        let htmlOptions = $('.option_show').append(`<div class="radio"><label><b> Option ${i+1}</b><input option_shownput type="radio" name="answer" class="styled" value="${i}"><audio controls>
                                                             <source src="${audio_ogg}" type="audio/ogg">
                                                             <source src="{{ asset('assets/uploads/sub_options/sounds/${question_option}') }}" type="audio/mpeg">
                                                             Your browser does not support the audio element.
