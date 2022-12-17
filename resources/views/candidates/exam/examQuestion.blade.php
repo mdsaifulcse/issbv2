@@ -246,7 +246,7 @@
                             }
                         }
                     });
-            }, 500000);
+            }, 5000);
 
             //step
             $('.stepBtn').on('click', function(){
