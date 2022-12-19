@@ -3,6 +3,14 @@
     ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
 <?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('header_styles'); ?>
+    <style>
+        .answer-section .single-answer{
+            display: table-cell !important;
+        }
+    </style>
+    <?php $__env->stopSection(); ?>
+
 
 <?php $__env->startSection('content'); ?>
     <section class="content-header">
@@ -29,58 +37,62 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 
-                                <label>
-                                    <b style="font-size: 18px">
-                                        Q<?php echo e($sl); ?>.
-                                        <?php if($question->item_type == 1): ?>
-                                            <?php echo $question->question_title; ?>
+                                <div class="question-section">
+                                    <label>
+                                        <b style="font-size: 18px">
+                                            Q<?php echo e($sl); ?>.
+                                            <?php if($question->item_type == 1): ?>
+                                                <?php echo $question->question_title; ?>
 
-                                        <?php elseif($question->item_type == 2): ?>
-                                            <img src="<?php echo e(asset('assets/uploads/questions/images/'.$question->question_title)); ?>" alt="questionImage">
-                                        <?php else: ?>
-                                            <?php
-                                                $audio_name_arr = explode('.', $question->question_title, 2);
-                                                $audio_ogg = $audio_name_arr[0].'.ogg';
-                                            ?>
-                                            <audio controls>
-                                                <source src="<?php echo e($audio_ogg); ?>" type="audio/ogg">
-                                                <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$question->question_title)); ?>" type="audio/mpeg">
-                                                Your browser does not support the audio element.
-                                            </audio>
-                                        <?php endif; ?>
-                                    </b>
-                                </label>
+                                            <?php elseif($question->item_type == 2): ?>
+                                                <img src="<?php echo e(asset('assets/uploads/questions/images/'.$question->question_title)); ?>" alt="Question Image"  class="img-responsive img-thumbnail">
+                                            <?php else: ?>
+                                                <?php
+                                                    $audio_name_arr = explode('.', $question->question_title, 2);
+                                                    $audio_ogg = $audio_name_arr[0].'.ogg';
+                                                ?>
+                                                <audio controls>
+                                                    <source src="<?php echo e($audio_ogg); ?>" type="audio/ogg">
+                                                    <source src="<?php echo e(asset('assets/uploads/questions/sounds/'.$question->question_title)); ?>" type="audio/mpeg">
+                                                    Your browser does not support the audio element.
+                                                </audio>
+                                            <?php endif; ?>
+                                        </b>
+                                    </label>
+                                </div>
                                 
                                 <?php
                                     $labelClass = 'radio';
                                     $labelType = 'radio';
                                 ?>
-                                <?php $__currentLoopData = $question->answerSet; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ansKey => $answer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <div class="<?php echo e($labelClass); ?>">
-                                    <label class="<?php if($question->true_answer == $ansKey): ?><?php echo e('text-success'); ?><?php else: ?><?php echo e('text-danger'); ?><?php endif; ?>" for="ans-<?php echo e($ansKey); ?>">
-                                        <input type="<?php echo e($labelType); ?>" name="answer_<?php echo e($question->id); ?>" id="ans-<?php echo e($ansKey); ?>" class="styled">
-                                        <span class="text-danger">
+                                <div class="answer-section">
+                                    <?php $__currentLoopData = $question->answerSet; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ansKey => $answer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <div class="<?php echo e($labelClass); ?> single-answer">
+                                            <label class="<?php if($question->true_answer == $ansKey): ?><?php echo e('text-success'); ?><?php else: ?><?php echo e('text-danger'); ?><?php endif; ?>" for="ans-<?php echo e($ansKey); ?>">
+                                                <input type="<?php echo e($labelType); ?>" name="answer_<?php echo e($question->id); ?>" id="ans-<?php echo e($ansKey); ?>" class="styled">
+                                                <span class="text-danger">
                                             <?php if($question->option_type == 1): ?>
-                                                <?php echo e($answer); ?>
+                                                        <?php echo e($answer); ?>
 
-                                            <?php elseif($question->option_type == 2): ?>
-                                                <img src="<?php echo e(asset('assets/uploads/options/images/'.$answer)); ?>" alt="questionImage">
-                                            <?php else: ?>
-                                                <?php
-                                                    $audio_name_arr = explode('.', $answer, 2);
-                                                    $audio_ogg = $audio_name_arr[0].'.ogg';
-                                                ?>
-                                                <audio controls>
+                                                    <?php elseif($question->option_type == 2): ?>
+                                                        <img src="<?php echo e(asset('assets/uploads/options/images/'.$answer)); ?>" alt="Question Image"  class="img-responsive img-thumbnail">
+                                                    <?php else: ?>
+                                                        <?php
+                                                            $audio_name_arr = explode('.', $answer, 2);
+                                                            $audio_ogg = $audio_name_arr[0].'.ogg';
+                                                        ?>
+                                                        <audio controls>
                                                     <source src="<?php echo e($audio_ogg); ?>" type="audio/ogg">
                                                     <source src="<?php echo e(asset('assets/uploads/options/sounds/'.$answer)); ?>" type="audio/mpeg">
                                                     Your browser does not support the audio element.
                                                 </audio>
-                                            <?php endif; ?>
+                                                    <?php endif; ?>
                                         </span>
-                                        
-                                    </label>
+                                                
+                                            </label>
+                                        </div>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </div>
                             <legend class="text-bold"></legend>
                         </div>
@@ -102,7 +114,7 @@
                                                 <?php echo $sub_q; ?>
 
                                             <?php elseif($question->sub_question_type == 2): ?>
-                                                <img src="<?php echo e(asset('assets/uploads/sub_questions/images/'.$sub_q)); ?>" alt="questionImage">
+                                                <img src="<?php echo e(asset('assets/uploads/sub_questions/images/'.$sub_q)); ?>" alt="Question Image"  class="img-responsive img-thumbnail">
                                             <?php else: ?>
                                                 <?php
                                                     $audio_name_arr = explode($sub_q, 2);
@@ -150,7 +162,7 @@
 
             <?php if(Auth::user()->hasRole('testing')): ?>
             <div class="pull-right">
-                <a class="btn btn-primary" <?php if($preview_status == 0): ?> href="<?php echo e(route('activateExam', ['examId' => $examId])); ?>" <?php else: ?> href="#" <?php endif; ?> role="button"><?php if($preview_status == 0): ?> Activate <?php else: ?> Activated <?php endif; ?></a>
+                
                 <a href="<?php echo e(route('examConfig.index')); ?>" class="btn btn-default">Back To List <i class="icon-backward2 position-right"></i></a>
             </div>
             <?php endif; ?>

@@ -8,8 +8,8 @@
 
 @section('header_styles')
     <style>
-        .answer-section .single-answer{
-            display: table-cell !important;
+        .form-group > .radio{
+            display: inline-block !important;
         }
     </style>
     @endsection
@@ -40,28 +40,26 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 {{-- <label><b style="font-size: 18px">Q{{$sl}}. {!! $question->question_title !!}</b></label> --}}
-                                <div class="question-section">
-                                    <label>
-                                        <b style="font-size: 18px">
-                                            Q{{$sl}}.
-                                            @if ($question->item_type == 1)
-                                                {!! $question->question_title !!}
-                                            @elseif($question->item_type == 2)
-                                                <img src="{{ asset('assets/uploads/questions/images/'.$question->question_title) }}" alt="Question Image"  class="img-responsive img-thumbnail">
-                                            @else
-                                                @php
-                                                    $audio_name_arr = explode('.', $question->question_title, 2);
-                                                    $audio_ogg = $audio_name_arr[0].'.ogg';
-                                                @endphp
-                                                <audio controls>
-                                                    <source src="{{$audio_ogg}}" type="audio/ogg">
-                                                    <source src="{{ asset('assets/uploads/questions/sounds/'.$question->question_title) }}" type="audio/mpeg">
-                                                    Your browser does not support the audio element.
-                                                </audio>
-                                            @endif
-                                        </b>
-                                    </label>
-                                </div>
+                                <label>
+                                    <b style="font-size: 18px">
+                                        Q{{$sl}}.
+                                        @if ($question->item_type == 1)
+                                            {!! $question->question_title !!}
+                                        @elseif($question->item_type == 2)
+                                            <img src="{{ asset('assets/uploads/questions/images/'.$question->question_title) }}" alt="Question Image"  class="img-responsive img-thumbnail">
+                                        @else
+                                            @php
+                                                $audio_name_arr = explode('.', $question->question_title, 2);
+                                                $audio_ogg = $audio_name_arr[0].'.ogg';
+                                            @endphp
+                                            <audio controls>
+                                                <source src="{{$audio_ogg}}" type="audio/ogg">
+                                                <source src="{{ asset('assets/uploads/questions/sounds/'.$question->question_title) }}" type="audio/mpeg">
+                                                Your browser does not support the audio element.
+                                            </audio>
+                                        @endif
+                                    </b>
+                                </label>
                                 {{-- assets/uploads/questions/
                                 assets/uploads/options/
                                 assets/uploads/sub_questions/
@@ -70,35 +68,33 @@
                                     $labelClass = 'radio';
                                     $labelType = 'radio';
                                 @endphp
-                                <div class="answer-section">
-                                    @foreach($question->answerSet as $ansKey => $answer)
-                                        <div class="{{$labelClass}} single-answer">
-                                            <label class="@if($question->true_answer == $ansKey){{'text-success'}}@else{{'text-danger'}}@endif" for="ans-{{$ansKey}}">
-                                                <input type="{{$labelType}}" name="answer_{{$question->id}}" id="ans-{{$ansKey}}" class="styled">
-                                                <span class="text-danger">
+                                @foreach($question->answerSet as $ansKey => $answer)
+                                <div class="{{$labelClass}}">
+                                    <label class="@if($question->true_answer == $ansKey){{'text-success'}}@else{{'text-danger'}}@endif" for="ans-{{$ansKey}}">
+                                        <input type="{{$labelType}}" name="answer_{{$question->id}}" id="ans-{{$ansKey}}" class="styled">
+                                        <span class="text-danger">
                                             @if ($question->option_type == 1)
-                                                        {{$answer}}
-                                                    @elseif ($question->option_type == 2)
-                                                        <img src="{{ asset('assets/uploads/options/images/'.$answer) }}" alt="Question Image"  class="img-responsive img-thumbnail">
-                                                    @else
-                                                        @php
-                                                            $audio_name_arr = explode('.', $answer, 2);
-                                                            $audio_ogg = $audio_name_arr[0].'.ogg';
-                                                        @endphp
-                                                        <audio controls>
+                                                {{$answer}}
+                                            @elseif ($question->option_type == 2)
+                                                <img src="{{ asset('assets/uploads/options/images/'.$answer) }}" alt="Question Image"  class="img-responsive img-thumbnail">
+                                            @else
+                                                @php
+                                                    $audio_name_arr = explode('.', $answer, 2);
+                                                    $audio_ogg = $audio_name_arr[0].'.ogg';
+                                                @endphp
+                                                <audio controls>
                                                     <source src="{{$audio_ogg}}" type="audio/ogg">
                                                     <source src="{{ asset('assets/uploads/options/sounds/'.$answer) }}" type="audio/mpeg">
                                                     Your browser does not support the audio element.
                                                 </audio>
-                                                    @endif
+                                            @endif
                                         </span>
-                                                {{-- @if($question->true_answer == $ansKey) |
-                                                    <span class="text-success"><i class="icon-checkmark4"></i> Correct</span>
-                                                @endif --}}
-                                            </label>
-                                        </div>
-                                    @endforeach
+                                        {{-- @if($question->true_answer == $ansKey) |
+                                            <span class="text-success"><i class="icon-checkmark4"></i> Correct</span>
+                                        @endif --}}
+                                    </label>
                                 </div>
+                                @endforeach
                             </div>
                             <legend class="text-bold"></legend>
                         </div>

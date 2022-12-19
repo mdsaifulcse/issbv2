@@ -62,8 +62,8 @@
                                 <?php if($config->status == 1 && $config->preview_status == 1): ?>
                                 <tr <?php if($config->exam_status == 1): ?> class="bg" <?php endif; ?>>
                                     <td <?php if($config->exam_status == 1): ?> class="color-full1" <?php endif; ?>><?php echo e(++$key); ?></td>
-                                    <td><?php echo e($config->testConfig->testFor->name); ?></td>
-                                    <td><?php echo e($config->testConfig->test_name); ?></td>
+                                    <td><?php echo e($config->testConfig?$config->testConfig->testFor->name:'N/A'); ?></td>
+                                    <td><?php echo e($config->testConfig?$config->testConfig->test_name:'N/A'); ?></td>
                                     <td><?php echo e($config->boardCandidate->board_name); ?></td>
                                     <td><?php echo e($config->exam_date); ?></td>
                                     <td><?php echo e($config->exam_duration); ?></td>
@@ -130,17 +130,19 @@
                                 <?php if($data->status != 1 && $data->preview_status != 1): ?>
                                 <tr <?php if($data->exam_status == 1): ?> class="color-full1" <?php endif; ?>>
                                     <td <?php if($data->exam_status == 1): ?> class="color-full1" <?php endif; ?>><?php echo e(++$key); ?></td>
-                                    <td><?php echo e($data->testConfig->testFor->name); ?></td>
+                                    <td><?php echo e($data->testConfig?$data->testConfig->testFor->name:'N/A'); ?></td>
                                     <td><?php echo e($data->testConfig->test_name); ?></td>
                                     <td><?php echo e($data->boardCandidate->board_name); ?></td>
                                     <td><?php echo e($data->exam_date); ?></td>
                                     <td><?php echo e($data->exam_duration); ?></td>
                                     <td><?php echo e($data->boardCandidate->total_candidate); ?></td>
-                                    <td><?php if($data->status == 1 && $data->preview_status == 1): ?>
+                                    <td>
+                                        <?php if($data->status == 1 && $data->preview_status == 1): ?>
                                             <a href="<?php echo e(route('examConfig.show', [$data->id]).'?status=0'); ?>"><b>Activate</b> </a>
                                         <?php else: ?>
                                             <a href="<?php echo e(route('examConfig.show', [$data->id]).'?status=1'); ?>"><b class="text-danger">In-Active</b></a>
-                                        <?php endif; ?></td>
+                                        <?php endif; ?>
+                                    </td>
                                     <td class="text-center">
                                         <?php if($data->exam_status == 1): ?>
                                         <a href="<?php echo e(route('runningExamTimeRemain', ['examId'=>$data->id])); ?>">
