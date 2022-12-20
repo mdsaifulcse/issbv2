@@ -24,19 +24,11 @@
 
 {{-- Page content --}}
 @section('content')
-    <section class="content-header">
-        <!--section starts-->
-        <h5>Assessment Configuration</h5>
-        <ol class="breadcrumb">
-            <li>
-                <a href="#">Admin</a>
-            </li>
-            <li class="active">Instruction</li>
-        </ol>
-    </section>
+
 
     <section class="content">
         <div class="row">
+            <br>
 
             <div class="col-lg-12">
                 {{-- <div class="text-center"><a class="btn btn-lg btn-success" href="#" role="button">Refresh</a></div>

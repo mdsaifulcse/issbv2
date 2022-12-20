@@ -2,9 +2,9 @@
     <section class="content">
         <div class="panel panel-white">
             <div class="panel panel-white">
-                <div class="panel-heading">
-                    <h6 class="panel-title">Assessment </h6>
-                </div>
+                
+                    
+                
             </div>
             <div class="panel-body">
                 <h2 class="text-center">Please wait for the Next Instruction!</h2>

@@ -112,7 +112,7 @@
                         <div class="col-xs-12">
                             <div class="col-md-12">
                                 <div class="page_loader">
-                                    <div class="text-center"><h4>Your Assessment Congiguring...</h4><div class="loader"></div></div>
+                                    <div class="text-center"><h4>Your Assessment Configuring...</h4><div class="loader"></div></div>
                                 </div>
                                 <div class="form-group question_area" style="display: none">
                                     <label><b style="font-size: 18px" class="question">Questions</b></label>
@@ -242,7 +242,7 @@
                             }
                         }
                     });
-            }, 500000);
+            }, 5000);
 
             //step
             $('.stepBtn').on('click', function(){

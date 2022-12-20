@@ -245,9 +245,7 @@ class CandidateExamController extends Controller
         if($candidateExamInfo){
 
             if ($candidateExamInfo->instruction_seen_status==0) {
-                // $candidateExamInfo->update([
-                //     'instruction_seen_status' => 1,
-                // ]);
+                 $candidateExamInfo->update(['instruction_seen_status' => 1]);
 
                 return view('candidates.intructionDemoExam.instruction', $data);
             } elseif ($candidateExamInfo->instruction_seen_status==1 && $candidateExamInfo->demo_exam_status==0) {

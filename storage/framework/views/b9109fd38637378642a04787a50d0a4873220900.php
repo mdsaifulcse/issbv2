@@ -10,27 +10,27 @@
 
 
 <?php $__env->startSection('content'); ?>
-    <section class="content-header">
-        <!--section starts-->
-        <h1>Assessment</h1>
-        <ol class="breadcrumb">
-            <li>
-                <a href="#">Admin</a>
-            </li>
-            <li class="active">Assessment</li>
-        </ol>
-    </section>
+    
+        
+        
+        
+            
+                
+            
+            
+        
+    
     <section class="content">
         <div class="row">
 
             <div class="col-lg-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading clearfix">
-                        <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Assessment
-                        </h3>
-                    </div>
-                </div>
+                
+                    
+                        
+                            
+                        
+                    
+                
                 <div class="panel-body" style="margin-bottom: 150px;">
                     <h3 class="text-center" style="font-size: 20px">On Going Assessment</h3>
                     <h2 class="text-center" style="font-size: 25px"><?php echo e($exam_name); ?></h2>

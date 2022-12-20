@@ -6,7 +6,7 @@
 <div class="page-header">
     <div class="page-header-content">
         <div class="page-title">
-            <h4><span class="text-semibold">Selection Board</h4>
+            <h4><span class="text-semibold">Selection Board</span></h4>
         </div>
 
         <div class="heading-elements">

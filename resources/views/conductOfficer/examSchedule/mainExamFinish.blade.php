@@ -13,16 +13,16 @@
 
 {{-- Page content --}}
 @section('content')
-    <section class="content-header">
-        <!--section starts-->
-        <h1>Assessment</h1>
-        <ol class="breadcrumb">
-            <li>
-                <a href="#">Admin</a>
-            </li>
-            <li class="active">Assessment</li>
-        </ol>
-    </section>
+    {{--<section class="content-header">--}}
+        {{--<!--section starts-->--}}
+        {{--<h1>Assessment</h1>--}}
+        {{--<ol class="breadcrumb">--}}
+            {{--<li>--}}
+                {{--<a href="#">Admin</a>--}}
+            {{--</li>--}}
+            {{--<li class="active">Assessment</li>--}}
+        {{--</ol>--}}
+    {{--</section>--}}
     <section class="content">
         <div class="row">
 

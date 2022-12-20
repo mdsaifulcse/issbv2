@@ -21,19 +21,11 @@
 
 
 <?php $__env->startSection('content'); ?>
-    <section class="content-header">
-        <!--section starts-->
-        <h5>Assessment Configuration</h5>
-        <ol class="breadcrumb">
-            <li>
-                <a href="#">Admin</a>
-            </li>
-            <li class="active">Instruction</li>
-        </ol>
-    </section>
+
 
     <section class="content">
         <div class="row">
+            <br>
 
             <div class="col-lg-12">
                 

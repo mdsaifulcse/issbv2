@@ -31,18 +31,18 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-info">
-                    <div class="panel-heading clearfix">
-                        <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Instruction
-                        </h3>
-                    </div>
+                    {{--<div class="panel-heading clearfix">--}}
+                        {{--<h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>--}}
+                            {{--Instruction--}}
+                        {{--</h3>--}}
+                    {{--</div>--}}
                     <div class="panel-body">
                         <div class="load_content">
                             <div class="page_loader">
                                 <div class="text-center"><h4>Loading...</h4><div class="loader"></div></div>
                             </div>
                             <div class="inst_content">
-                                <p class="instruction-text">{{$configInstruction->text}}</p>
+                                <p class="instruction-text">{{$configInstruction->text?$configInstruction->text:''}}</p>
                                 <hr>
                                 <img src="{{ asset('uploads/instruction/'.$configInstruction->image) }}" alt="" class="instruction-image img-fluid img-thumbnail" height="auto" width="50%">
                                 <input type="hidden" name="" id="instrucId" value="{{$configInstruction->id}}">

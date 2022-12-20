@@ -10,32 +10,32 @@
 
 
 <?php $__env->startSection('content'); ?>
-    <section class="content-header">
-        <!--section starts-->
-        <h1>Assessment</h1>
-        <ol class="breadcrumb">
-            <li>
-                <a href="#">Admin</a>
-            </li>
-            <li class="active">Assessment</li>
-        </ol>
-    </section>
+    
+        
+        
+        
+            
+                
+            
+            
+        
+    
     <section class="content">
         <div class="row">
 
             <div class="col-lg-12">
                 <div class="panel panel-info">
-                    <div class="panel-heading clearfix">
-                        <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Assessment
-                        </h3>
-                    </div>
+                    
+                        
+                            
+                        
+                    
                 </div>
                 <div class="panel-body">
                     <h2 class="text-center">Ready to launch Assessment</h2>
                     <hr>
                     <div class="text-center" style="margin-top: 20px; margin-bottom: 100px;">
-                        <a class="btn btn-lg btn-primary" href="<?php echo e(route('startMainExam', ['examId' => $examId])); ?>" role="button">Start Assessment</a>
+                        <a class="btn btn-lg btn-primary" href="<?php echo e(route('startMainExam', ['examId' => $examId])); ?>" role="button" target="_blank">Start Assessment</a>
                     </div>
                 </div>
             </div>
