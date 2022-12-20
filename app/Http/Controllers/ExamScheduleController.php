@@ -89,16 +89,18 @@ class ExamScheduleController extends Controller
 
         $examConfig = ExamConfig::with('testConfig')->find($request->examId);
 
+        $itemFor=$examConfig->testConfig?$examConfig->testConfig->test_for:null;
+
         $skip=$request->skip?$request->skip:1;
         // item_status =5 (Demo test)
         if ($request->next_demo_question_id && $request->skip){
             $skip=$skip+1;
-            $itemDetails = ItemBank::where(['item_for'=>$examConfig->testConfig->test_for,'item_status'=>5]);
+            $itemDetails = ItemBank::where(['item_for'=>$itemFor,'item_status'=>5]);
 
             $itemDetails=$itemDetails->where('id',$request->next_demo_question_id);
             $itemDetails=$itemDetails->orderBy('id','ASC')->first();
         }else{
-            $data['itemDetails'] = $itemDetails = ItemBank::where(['item_for'=>$examConfig->testConfig->test_for,'item_status'=>5])
+            $data['itemDetails'] = $itemDetails = ItemBank::where(['item_for'=>$itemFor,'item_status'=>5])
                 ->orderBy('id','ASC')->first();
         }
 
@@ -106,7 +108,7 @@ class ExamScheduleController extends Controller
         $data['itemDetails']=$itemDetails;
 
         // Identify the next question ------ skip the previous question by skip -----
-        $nextDemoQuestion=ItemBank::where(['item_for'=>$examConfig->testConfig->test_for,'item_status'=>5])
+        $nextDemoQuestion=ItemBank::where(['item_for'=>$itemFor,'item_status'=>5])
             ->skip($skip)->orderBy('id','ASC')->first();
 
         if (empty($itemDetails)){

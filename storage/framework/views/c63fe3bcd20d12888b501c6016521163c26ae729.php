@@ -273,4 +273,13 @@ ol {
 
 <?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('footer_scripts'); ?>
+<script>
+    setInterval(function () {
+        location.reload();
+    },10000)
+
+</script>
+    <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/conductOfficer/seatPlan/list.blade.php ENDPATH**/ ?>

@@ -278,3 +278,12 @@ ol {
 </section>
 
 @stop
+
+@section('footer_scripts')
+<script>
+    setInterval(function () {
+        location.reload();
+    },10000)
+
+</script>
+    @endsection

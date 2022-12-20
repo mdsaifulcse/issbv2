@@ -210,7 +210,6 @@ class CandidateExamController extends Controller
     //START CANDIDATE EXAM INSTRUCTION
     public function examInstruction(Request $request)
     {
-
         $data['examId']             = $examId = $request->examId;
         $data['step_id']            = $step_id = $request->step_id;
         $authId                     = Auth::guard('candAuth')->id();
@@ -244,6 +243,7 @@ class CandidateExamController extends Controller
             }
 
         if($candidateExamInfo){
+
             if ($candidateExamInfo->instruction_seen_status==0) {
                 // $candidateExamInfo->update([
                 //     'instruction_seen_status' => 1,
@@ -252,7 +252,8 @@ class CandidateExamController extends Controller
                 return view('candidates.intructionDemoExam.instruction', $data);
             } elseif ($candidateExamInfo->instruction_seen_status==1 && $candidateExamInfo->demo_exam_status==0) {
 
-                return view('candidates.intructionDemoExam.examDemoQOne', $data);
+               return redirect( route('candidate.examDemoItemPreview', ['examId'=>$examId]));
+                return view('candidates.intructionDemoExam.demo_item_preview', $data);
             } else {
                 $output['messege'] = 'Exam has been start';
                 $output['msgType'] = 'success';
@@ -422,7 +423,7 @@ class CandidateExamController extends Controller
         $currentDate        = date('Y-m-d');
         $cTime              = new DateTime( "now", new DateTimeZone( "Asia/Dhaka" ) );
         $currentTime        = $cTime->format( 'H:i:s' );
-        $board_id           = 0;
+        $board_id           = $examConfigDetails->board_candidate_id;
         $examConfigId       = $examConfigDetails->id;
         $exam_duration      = $examConfigDetails->exam_duration; //By Minutes;
         $start_time         = $examConfigDetails->exam_start_time;

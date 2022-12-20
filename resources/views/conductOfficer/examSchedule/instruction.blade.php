@@ -31,7 +31,7 @@
             <li>
                 <a href="#">Admin</a>
             </li>
-            <li class="active">Create Assessment Configuration</li>
+            <li class="active">Instruction</li>
         </ol>
     </section>
 

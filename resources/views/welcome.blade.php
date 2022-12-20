@@ -180,7 +180,7 @@
                     <b>Seat plan</b>
                 </div>
                 <div class="panel-body panel-primary">
-                    <b>{{$data['total_live']}}/{{$activeBoard?$activeBoard->total_candidate:'N/A'}}</b>
+                    <b>{{$total_live}}/{{$activeBoard?$activeBoard->total_candidate:'N/A'}}</b>
                 </div>
             </div>
             </a>
@@ -264,7 +264,7 @@
     </div>
 
     <div class="row text-center">
-        <h3><span>Initial Login Status</span>   <span class="live-div-right">{{$data['total_live']}}/{{$activeBoard?$activeBoard->total_candidate:'N/A'}} [ Till logged in {{$data['total_live']}} out of {{$activeBoard?$activeBoard->total_candidate:'N/A'}} ]</span></h3>
+        <h3><span>Initial Login Status</span>   <span class="live-div-right">{{$total_live}}/{{$activeBoard?$activeBoard->total_candidate:'N/A'}} [ Till logged in {{$total_live}} out of {{$activeBoard?$activeBoard->total_candidate:'N/A'}} ]</span></h3>
     </div>
     <div class="row">
         <div class="col-md-4">
@@ -530,5 +530,13 @@
     document.getElementById("MyTime").innerHTML = d.toLocaleTimeString();
     }
 </script>
+
+
+{{--<script>--}}
+    {{--setInterval(function () {--}}
+        {{--location.reload();--}}
+    {{--},10000)--}}
+
+{{--</script>--}}
 
 @stop
