@@ -42,7 +42,7 @@
             @if (!empty($configuredExam))
                 @if (!empty($candidateExamInfo))
                     @if ($candidateExamInfo->exam_status==2)
-                        <h2 class="text-danger">Assessment Completed</h2>
+                        <h2 class="text-danger">You have already attempted for this test!</h2>
                     @else
                         @if ($candidateExamInfo->instruction_seen_status == 0)
                             <a class="btn btn-default btn-sm mt-10" href="{{ route('candidate.examInstruction', ['examId'=>$configuredExam->id,'step_id'=>'']) }}" style="padding: 5%;">Instruction & Demo 1<i class="icon-play3 position-right"></i></a>

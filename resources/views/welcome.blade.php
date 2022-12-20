@@ -112,9 +112,10 @@
 
 {{-- Page content --}}
 @section('content')
+@if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('testing'))
 <section class="content-header">
     <!--section starts-->
-    <h4>Welcome to Psychometric Dimension</h4>
+    <h4>Welcome to Psychometric Dimension dd</h4>
     <ol class="breadcrumb">
         <li>
             <a href="#">Admin</a>
@@ -123,7 +124,7 @@
     </ol>
 </section>
 
-@if(Auth::user()->hasRole('admin'))
+
 <section class="content">
     <h1 class="text-center" style="color: #515763;">Welcome to Admin</h1>
 </section>

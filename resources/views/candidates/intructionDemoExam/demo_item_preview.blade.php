@@ -99,7 +99,7 @@ Test
                                     @if($itemType == 1)
                                         <h3 class="question-heading text-dark" style="display:inline-flex;">Question: &nbsp; <?php echo $item?></h3>
                                     @elseif($itemType == 2)
-                                        <strong>Question: </strong> <img src="{{ asset('assets/uploads/questions/images/'.$item) }}" alt="..." style="width: 180px; height: 113px;" title="This image is the question">
+                                        <strong>Question: </strong> <img src="{{ asset('assets/uploads/questions/images/'.$item) }}" alt="..." style="width: 180px; height: 113px;" title="This image is the question" class="img-responsive img-thumbnail">
                                     @elseif($itemType == 3)
                                     <h3>Question : </h3>
                                     <audio controls>
@@ -141,7 +141,7 @@ Test
                                                 <div class="answer-option">
                                                     <input type="radio" id="{{$key}}i" name="imgOption">
                                                     <label for="{{$key}}i">
-                                                        <img src="{{ asset($imagePath.$questionOption) }}" alt="...">
+                                                        <img src="{{ asset($imagePath.$questionOption) }}" alt="..." class="img-responsive img-thumbnail">
                                                     </label>
                                                 </div>
                                               
@@ -226,7 +226,7 @@ Test
                                                     <input type="radio" id="{{$j}}o" name="imgOption">
 
                                                     <label for="">
-                                                    <img src="{{ asset($imagePath.$questionOption) }}" alt="...">
+                                                    <img src="{{ asset($imagePath.$questionOption) }}" alt="..." class="img-responsive img-thumbnail">
                                                 </label>
                                                 </div>
                                             

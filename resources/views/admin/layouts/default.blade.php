@@ -146,11 +146,11 @@
             </div>--}}
             </aside>
             <!-- /* right-side -->
-            <footer class="footer">
-                <strong>Powered by <a href="https://silvereagle.com.bd" target="_blank">Silvereagle</a>.</strong>
-                <div class="hidden-xs">
-                </div>
-            </footer>
+            {{--<footer class="footer">--}}
+                {{--<strong>Powered by dd <a href="https://silvereagle.com.bd" target="_blank">Silvereagle</a>.</strong>--}}
+                {{--<div class="hidden-xs">--}}
+                {{--</div>--}}
+            {{--</footer>--}}
         </div>
     </div>
 

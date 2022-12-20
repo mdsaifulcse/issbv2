@@ -96,7 +96,7 @@ Test
                                     <?php if($itemType == 1): ?>
                                         <h3 class="question-heading text-dark" style="display:inline-flex;">Question: &nbsp; <?php echo $item?></h3>
                                     <?php elseif($itemType == 2): ?>
-                                        <strong>Question: </strong> <img src="<?php echo e(asset('assets/uploads/questions/images/'.$item)); ?>" alt="..." style="width: 180px; height: 113px;" title="This image is the question">
+                                        <strong>Question: </strong> <img src="<?php echo e(asset('assets/uploads/questions/images/'.$item)); ?>" alt="..." style="width: 180px; height: 113px;" title="This image is the question" class="img-responsive img-thumbnail">
                                     <?php elseif($itemType == 3): ?>
                                     <h3>Question : </h3>
                                     <audio controls>
@@ -138,7 +138,7 @@ Test
                                                 <div class="answer-option">
                                                     <input type="radio" id="<?php echo e($key); ?>i" name="imgOption">
                                                     <label for="<?php echo e($key); ?>i">
-                                                        <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="...">
+                                                        <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="..." class="img-responsive img-thumbnail">
                                                     </label>
                                                 </div>
                                               
@@ -223,7 +223,7 @@ Test
                                                     <input type="radio" id="<?php echo e($j); ?>o" name="imgOption">
 
                                                     <label for="">
-                                                    <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="...">
+                                                    <img src="<?php echo e(asset($imagePath.$questionOption)); ?>" alt="..." class="img-responsive img-thumbnail">
                                                 </label>
                                                 </div>
                                             

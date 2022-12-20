@@ -98,7 +98,7 @@
                         let html =
                         `<div class="inst_content">
                             <p class="instruction-text">${response.text}</p><hr>
-                            <img src="{{ asset('uploads/instruction/${response.image}') }}" alt="" class="instruction-image img-fluid img-thumbnail">
+                            <img src="{{ asset('uploads/instruction/${response.image}') }}" alt="" class="center-block instruction-image img-fluid img-thumbnail">
                             <input type="hidden" id="instrucId" value="${response.instrucId}">
                         </div>`;
                         $('.load_content').html(html);
