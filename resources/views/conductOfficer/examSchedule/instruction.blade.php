@@ -50,7 +50,7 @@
                                         @if ($configInstruction->text != NULL || $configInstruction->text != '')
                                         {{ $configInstruction->text }}
                                         @endif</p>
-                                    <img src="{{ asset('uploads/instruction/'.$configInstruction->image) }}" alt="" class="instruction-image">
+                                    <img src="{{ asset('uploads/instruction/'.$configInstruction->image) }}" alt="" class="instruction-image center-block">
                                     <input type="hidden" name="" id="instrucId" value="{{$configInstruction->id}}">
                                 </div>
                             @else
@@ -127,7 +127,7 @@
                             let html =
                             `<div class="inst_content">
                                 <p class="instruction-text">${title}</p>
-                                <img src="{{ asset('uploads/instruction/${response.image}') }}" alt="" class="instruction-image">
+                                <img src="{{ asset('uploads/instruction/${response.image}') }}" alt="" class="instruction-image center-block">
                                 <input type="hidden" id="instrucId" value="${response.instrucId}">
                             </div>`;
                             $('.load_content').html(html);

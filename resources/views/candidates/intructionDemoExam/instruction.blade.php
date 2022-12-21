@@ -44,7 +44,7 @@
                             <div class="inst_content">
                                 <p class="instruction-text">{{$configInstruction->text?$configInstruction->text:''}}</p>
                                 <hr>
-                                <img src="{{ asset('uploads/instruction/'.$configInstruction->image) }}" alt="" class="instruction-image img-fluid img-thumbnail" height="auto" width="50%">
+                                <img src="{{ asset('uploads/instruction/'.$configInstruction->image) }}" alt="" class="instruction-image img-fluid img-thumbnail center-block" height="auto" width="50%">
                                 <input type="hidden" name="" id="instrucId" value="{{$configInstruction->id}}">
                             </div>
                         </div>
