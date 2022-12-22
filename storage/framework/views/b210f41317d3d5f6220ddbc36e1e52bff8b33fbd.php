@@ -19,7 +19,7 @@
                             <div class="inst_content">
                                 <p class="instruction-text"><?php echo e($configInstruction->text?$configInstruction->text:''); ?></p>
                                 <hr>
-                                <img src="<?php echo e(asset('uploads/instruction/'.$configInstruction->image)); ?>" alt="" class="instruction-image img-fluid img-thumbnail" height="auto" width="50%">
+                                <img src="<?php echo e(asset('uploads/instruction/'.$configInstruction->image)); ?>" alt="" class="instruction-image img-fluid img-thumbnail center-block" height="auto" width="50%">
                                 <input type="hidden" name="" id="instrucId" value="<?php echo e($configInstruction->id); ?>">
                             </div>
                         </div>

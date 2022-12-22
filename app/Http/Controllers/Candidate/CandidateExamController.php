@@ -51,6 +51,7 @@ class CandidateExamController extends Controller
                                     ->where('exam_config_id', $examConfigDetails->id)->where('exam_status', '!=', 2)->first();
 
         if($candidateExam){
+
             $data['examQuestions'] = CandidateExamDetail::where('candidate_exam_id', $candidateExam->id)->get()->pluck('id');
             $data['examConfigureStatus'] = 1; //0=No, 1=Yes
 
@@ -68,6 +69,7 @@ class CandidateExamController extends Controller
                 return view('candidates.exam.examQuestion', $data);
             }
         } else {
+
             $data['examConfigureStatus'] = 0; //0=No, 1=Yes
             $data['configuredExam'] = $configuredExam = ExamConfig::whereIn('exam_status', [1,4])
                 //->where('exam_date', $currentDate)

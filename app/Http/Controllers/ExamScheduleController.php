@@ -159,6 +159,7 @@ class ExamScheduleController extends Controller
         $currentTime        = $time->format('H:i:s');
 
         if ($examConfig->exam_start_time==null) {
+
             $examConfig->update([
                 'exam_status'       => 1, // 1= Running
                 'exam_start_time'   => $currentTime,

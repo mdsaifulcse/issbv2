@@ -216,7 +216,7 @@ class ExamConfigController extends Controller
         return view('testingOfficer.examConfig.runningExamTime', $data);
     }
 
-    public function examPreview(Request $request)
+    public function examPreviewOld(Request $request) // Saif
     {
         if (Auth::user()->hasRole('conductingOfficer')) {
             $previewCandidate = Candidates::where('board_no', 'preview')->first();
@@ -230,6 +230,7 @@ class ExamConfigController extends Controller
                 return redirect()->back()->with($output);
             }
         } else {
+
             $data['examId'] = $request->examId;
             $examConfig = ExamConfig::find($request->examId);
             $testConfig = TestConfiguration::find($examConfig->test_config_id);
@@ -265,40 +266,46 @@ class ExamConfigController extends Controller
         }
     }
 
-    // public function examPreview(Request $request)
-    // {
-    //     $data['examId'] = $request->examId;
-    //     $examConfig = ExamConfig::find($request->examId);
-    //     $testConfig = TestConfiguration::find($examConfig->test_config_id);
+     public function examPreview(Request $request) // uncomment Saif
+     {
+         $data['examId'] = $request->examId;
+         $examConfig = ExamConfig::find($request->examId);
+         $testConfig = TestConfiguration::find($examConfig->test_config_id);
 
-    //     if ($testConfig->set_id =='' || $testConfig->set_id==NULL) {
-    //         $questionIds = explode('||', $testConfig->item_id);
-    //         $data['examQuestions'] = $examQuestions = ItemBank::whereIn('id', $questionIds)->select('id', 'sub_question_status', 'item', 'item_type', 'options', 'option_type', 'correct_answer', 'sub_question', 'sub_question_type', 'sub_correct_answer', 'sub_options', 'sub_option_type')->get();
-    //     } else {
-    //         $questionIds = explode('||', QuestionSet::find($testConfig->set_id)->questions_id);
-    //         $data['examQuestions'] = $examQuestions = ItemBank::whereIn('id', $questionIds)->select('id', 'sub_question_status', 'item', 'item_type', 'options', 'option_type', 'correct_answer', 'sub_question', 'sub_question_type', 'sub_correct_answer', 'sub_options', 'sub_option_type')->get();
-    //     }
+         if ($testConfig->set_id =='' || $testConfig->set_id==NULL) {
+             $questionIds = explode('||', $testConfig->item_id);
+             $data['examQuestions'] = $examQuestions = ItemBank::whereIn('id', $questionIds)->select('id', 'sub_question_status', 'item', 'item_type', 'options', 'option_type', 'correct_answer', 'sub_question', 'sub_question_type', 'sub_correct_answer', 'sub_options', 'sub_option_type')->get();
+         } else {
+             $questionIds = explode('||', QuestionSet::find($testConfig->set_id)->questions_id);
+             $data['examQuestions'] = $examQuestions = ItemBank::whereIn('id', $questionIds)->select('id', 'sub_question_status', 'item', 'item_type', 'options', 'option_type', 'correct_answer', 'sub_question', 'sub_question_type', 'sub_correct_answer', 'sub_options', 'sub_option_type')->get();
+         }
 
-    //     if (!empty($examQuestions)) {
-    //         foreach ($examQuestions as $key => $question) {
+         if (!empty($examQuestions)) {
+             foreach ($examQuestions as $key => $question) {
 
-    //             if ($question->sub_question_status=='' || $question->sub_question_status==NULL) {
-    //                 $question->question_title = $question->item;
-    //                 $question->answerSet = explode('||', $question->options);
-    //                 $question->true_answer = $question->correct_answer;
+                 if ($question->sub_question_status=='' || $question->sub_question_status==NULL) {
+                     $question->question_title = $question->item;
+                     $question->answerSet = explode('||', $question->options);
+                     $question->true_answer = $question->correct_answer;
 
-    //             } else {
-    //                 $question->sub_questions = $subQuestions        = explode('||', $question->sub_question);
-    //                 // $subOptions          = explode('~~', $question->sub_options);
-    //                 // $sub_correct_answers = explode('||', $question->sub_correct_answer);
-    //             }
+                 } else {
+                     $question->sub_questions = $subQuestions        = explode('||', $question->sub_question);
+                     // $subOptions          = explode('~~', $question->sub_options);
+                     // $sub_correct_answers = explode('||', $question->sub_correct_answer);
+                 }
 
-    //         }
-    //     }
-    //     $data['exam_name'] = $testConfig->test_name;
-    //     $data['preview_status'] = $examConfig->preview_status;
-    //     return view('testingOfficer.examConfig.previewExamQ', $data);
-    // }
+             }
+         }
+         $data['exam_name'] = $testConfig->test_name;
+         $data['preview_status'] = $examConfig->preview_status;
+
+         if (Auth::user()->hasRole('conductingOfficer')) {
+             return view('conductOfficer.examSchedule.previewExamQ', $data);
+         }else{ // For testing Officer
+             return view('testingOfficer.examConfig.previewExamQ', $data);
+         }
+
+     }
 
     public function activateExam(Request $request)
     {

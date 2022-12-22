@@ -47,7 +47,7 @@
                                         <?php echo e($configInstruction->text); ?>
 
                                         <?php endif; ?></p>
-                                    <img src="<?php echo e(asset('uploads/instruction/'.$configInstruction->image)); ?>" alt="" class="instruction-image">
+                                    <img src="<?php echo e(asset('uploads/instruction/'.$configInstruction->image)); ?>" alt="" class="instruction-image center-block">
                                     <input type="hidden" name="" id="instrucId" value="<?php echo e($configInstruction->id); ?>">
                                 </div>
                             <?php else: ?>
@@ -122,7 +122,7 @@
                             let html =
                             `<div class="inst_content">
                                 <p class="instruction-text">${title}</p>
-                                <img src="<?php echo e(asset('uploads/instruction/${response.image}')); ?>" alt="" class="instruction-image">
+                                <img src="<?php echo e(asset('uploads/instruction/${response.image}')); ?>" alt="" class="instruction-image center-block">
                                 <input type="hidden" id="instrucId" value="${response.instrucId}">
                             </div>`;
                             $('.load_content').html(html);
