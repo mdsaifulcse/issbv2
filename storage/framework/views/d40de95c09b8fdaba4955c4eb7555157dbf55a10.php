@@ -82,10 +82,30 @@
         $('#refresh').on('click', function() {
             location.reload();            
         });
-
         
+    </script>
+    <script>
+        $(document).ready(function(){
+            <?php if(session('msgType')): ?>
+            toastr.success('<?php echo e(session("messege")); ?>', 'You Got Error', {timeOut: 5000});
+            <?php endif; ?>
+        });
 
-        
+        $(document).ready(function() {
+            if (sessionStorage.getItem('activation') == 'success') {
+                toastr.success('Item has been successfully activated', 'Success Alert', {
+                    timeOut: 5000
+                });
+                sessionStorage.removeItem("activation");
+            }
+            
+
+            <?php if($message = Session::get('success')): ?>
+            toastr.success('<?php echo e($message); ?>', 'Success Alert', {
+                timeOut: 5000
+            });
+            <?php endif; ?>
+        });
     </script>
 <?php $__env->stopPush(); ?>
 

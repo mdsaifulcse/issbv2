@@ -36,8 +36,8 @@ class CandidateAuthController extends Controller
             'chest_no'          => 'required',
         ]);
 
-        $canExist       = Candidates::where('chest_no', $request->chest_no)->first();
         $boardInfo      = BoardCandidate::where('status', 1)->first();
+        $canExist       = Candidates::where(['chest_no'=>$request->chest_no,'board_no'=>$boardInfo->board_name])->first();
 
         if (!empty($canExist)) {
             $canExist->update([

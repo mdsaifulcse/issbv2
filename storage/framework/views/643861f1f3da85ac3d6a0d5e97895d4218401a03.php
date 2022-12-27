@@ -40,7 +40,8 @@
                                 <div class="question-section">
                                     <label>
                                         <b style="font-size: 18px">
-                                            Q<?php echo e($sl); ?>.
+                                            Q.
+                                            
                                             <?php if($question->item_type == 1): ?>
                                                 <?php echo $question->question_title; ?>
 
@@ -109,7 +110,8 @@
 
                                     <label>
                                         <b style="font-size: 18px">
-                                            Q<?php echo e($sl); ?>.
+                                            Q.
+                                            
                                             <?php if($question->sub_question_type == 1): ?>
                                                 <?php echo $sub_q; ?>
 
@@ -161,9 +163,15 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
-            <div class="pull-right">
+            <div class="">
                 
-                <a href="<?php echo e(url('examScheduleList')); ?>" class="btn btn-info">Back To List <i class="icon-backward2 position-right"></i></a>
+                <?php if($nextIndex>1): ?>
+                <a href="<?php echo e(url('examPreview?'."examId=$examId&index=$previousIndex")); ?>" class="btn btn-info pull-left">Previous <i class="icon-backward2 position-left"></i></a>
+                    <?php endif; ?>
+
+                <?php if($nextButton!=0): ?>
+                <a href="<?php echo e(url('examPreview?'."examId=$examId&index=$nextIndex")); ?>" class="btn btn-success pull-right">Next <i class="icon-backward2 position-right"></i></a>
+                    <?php endif; ?>
             </div>
 
         </div>

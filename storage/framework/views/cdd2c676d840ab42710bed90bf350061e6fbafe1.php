@@ -95,6 +95,12 @@
 
     </style>
     <?php echo $__env->yieldPushContent('styles'); ?>
+    
+        
+            
+            
+        
+    
 </head>
 <body class="navbar-top-md-xs sidebar-xs has-detached-left" id="full-screen-area">
     <div id="app">
@@ -185,6 +191,8 @@
 
     <!-- /Custom JS files -->
     <script type="text/javascript" src="<?php echo e(asset('backend/assets/js/custom_frame.js')); ?>"></script>
+
+
 
     <!-- Per Page JS files -->
     <?php echo $__env->yieldPushContent('javascript'); ?>

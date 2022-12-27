@@ -12,7 +12,7 @@
             display: table-cell !important;
         }
     </style>
-    @endsection
+@endsection
 
 {{-- Page content --}}
 @section('content')
@@ -43,7 +43,8 @@
                                 <div class="question-section">
                                     <label>
                                         <b style="font-size: 18px">
-                                            Q{{$sl}}.
+                                            Q.
+                                            {{--Q{{$sl}}.--}}
                                             @if ($question->item_type == 1)
                                                 {!! $question->question_title !!}
                                             @elseif($question->item_type == 2)
@@ -115,7 +116,8 @@
 
                                     <label>
                                         <b style="font-size: 18px">
-                                            Q{{$sl}}.
+                                            Q.
+                                            {{--Q{{$sl}}.--}}
                                             @if ($question->sub_question_type == 1)
                                                 {!! $sub_q !!}
                                             @elseif($question->sub_question_type == 2)
@@ -143,18 +145,18 @@
                                         $sub_correct_answers = explode('||', $question->sub_correct_answer);
                                     @endphp
                                     @foreach($answerSet as $subAnsKey => $answer)
-                                    @php
-                                        ++$subAnsKey;
-                                    @endphp
-                                    <div class="{{$labelClass}}">
-                                        <label class="@if($sub_correct_answers[$subKey] == $subAnsKey){{'text-success'}}@else{{'text-danger'}}@endif" for="ans-{{$subAnsKey}}">
-                                            <input type="{{$labelType}}" name="answer_{{$sub_q}}" id="ans-{{$subAnsKey}}" class="styled">
-                                            <span class="text-danger">{{$answer}}</span>
-                                            {{-- @if($sub_correct_answers[$subKey] == $subAnsKey) |
-                                                <span class="text-success"><i class="icon-checkmark4"></i> Correct</span>
-                                            @endif --}}
-                                        </label>
-                                    </div>
+                                        @php
+                                            ++$subAnsKey;
+                                        @endphp
+                                        <div class="{{$labelClass}}">
+                                            <label class="@if($sub_correct_answers[$subKey] == $subAnsKey){{'text-success'}}@else{{'text-danger'}}@endif" for="ans-{{$subAnsKey}}">
+                                                <input type="{{$labelType}}" name="answer_{{$sub_q}}" id="ans-{{$subAnsKey}}" class="styled">
+                                                <span class="text-danger">{{$answer}}</span>
+                                                {{-- @if($sub_correct_answers[$subKey] == $subAnsKey) |
+                                                    <span class="text-success"><i class="icon-checkmark4"></i> Correct</span>
+                                                @endif --}}
+                                            </label>
+                                        </div>
                                     @endforeach
                                 </div>
                                 <legend class="text-bold"></legend>
@@ -167,12 +169,18 @@
                 @endif
             @endforeach
 
-            @if(Auth::user()->hasRole('testing'))
-            <div class="pull-right">
+
+            <div class="">
                 {{--<a class="btn btn-primary" @if($preview_status == 0) href="{{route('activateExam', ['examId' => $examId])}}" @else href="#" @endif role="button">@if($preview_status == 0) Activate @else Activated @endif</a>--}}
-                <a href="{{route('examConfig.index')}}" class="btn btn-default">Back To List <i class="icon-backward2 position-right"></i></a>
+                @if($nextIndex>1)
+                    <a href="{{url('examPreview?'."examId=$examId&index=$previousIndex")}}" class="btn btn-info pull-left">Previous <i class="icon-backward2 position-left"></i></a>
+                @endif
+
+                @if($nextButton!=0)
+                    <a href="{{url('examPreview?'."examId=$examId&index=$nextIndex")}}" class="btn btn-success pull-right">Next <i class="icon-backward2 position-right"></i></a>
+                @endif
             </div>
-            @endif
+
         </div>
     </div>
     <!-- /content area -->

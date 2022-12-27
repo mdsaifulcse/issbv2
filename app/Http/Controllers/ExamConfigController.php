@@ -268,17 +268,45 @@ class ExamConfigController extends Controller
 
      public function examPreview(Request $request) // uncomment Saif
      {
+
          $data['examId'] = $request->examId;
          $examConfig = ExamConfig::find($request->examId);
          $testConfig = TestConfiguration::find($examConfig->test_config_id);
 
+
+         $nextIndex=$request->index?$request->index:0;
+         $previousIndex=0;
          if ($testConfig->set_id =='' || $testConfig->set_id==NULL) {
              $questionIds = explode('||', $testConfig->item_id);
-             $data['examQuestions'] = $examQuestions = ItemBank::whereIn('id', $questionIds)->select('id', 'sub_question_status', 'item', 'item_type', 'options', 'option_type', 'correct_answer', 'sub_question', 'sub_question_type', 'sub_correct_answer', 'sub_options', 'sub_option_type')->get();
+
+             $totalQuestionId= count($questionIds)-1;
+             $data['examQuestions'] = $examQuestions = ItemBank::where('id', $questionIds[$nextIndex])
+                 ->select('id', 'sub_question_status', 'item', 'item_type', 'options', 'option_type', 'correct_answer', 'sub_question',
+                     'sub_question_type', 'sub_correct_answer', 'sub_options', 'sub_option_type')->get();
+
+//             $data['examQuestions'] = $examQuestions = ItemBank::whereIn('id', $questionIds)
+//                 ->select('id', 'sub_question_status', 'item', 'item_type', 'options', 'option_type', 'correct_answer', 'sub_question',
+//                     'sub_question_type', 'sub_correct_answer', 'sub_options', 'sub_option_type')->get();
          } else {
+
              $questionIds = explode('||', QuestionSet::find($testConfig->set_id)->questions_id);
-             $data['examQuestions'] = $examQuestions = ItemBank::whereIn('id', $questionIds)->select('id', 'sub_question_status', 'item', 'item_type', 'options', 'option_type', 'correct_answer', 'sub_question', 'sub_question_type', 'sub_correct_answer', 'sub_options', 'sub_option_type')->get();
+             $totalQuestionId= count($questionIds)-1;
+             $data['examQuestions'] = $examQuestions = ItemBank::where('id', $questionIds[$nextIndex])
+                 ->select('id', 'sub_question_status', 'item', 'item_type', 'options', 'option_type', 'correct_answer', 'sub_question',
+                     'sub_question_type', 'sub_correct_answer', 'sub_options', 'sub_option_type')->get();
          }
+
+         $nextButton=1;
+         if ($totalQuestionId==$nextIndex){
+             $nextButton=0;
+         }
+         $data['nextButton']=$nextButton;
+
+         $data['previousIndex']=$nextIndex-1;
+         $data['nextIndex']=$nextIndex+=1;
+
+         //return $data;
+
 
          if (!empty($examQuestions)) {
              foreach ($examQuestions as $key => $question) {

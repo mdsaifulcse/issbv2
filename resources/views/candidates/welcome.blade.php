@@ -85,9 +85,29 @@
         $('#refresh').on('click', function() {
             location.reload();            
         });
-
         
+    </script>
+    <script>
+        $(document).ready(function(){
+            @if (session('msgType'))
+            toastr.success('{{ session("messege") }}', 'You Got Error', {timeOut: 5000});
+            @endif
+        });
 
-        
+        $(document).ready(function() {
+            if (sessionStorage.getItem('activation') == 'success') {
+                toastr.success('Item has been successfully activated', 'Success Alert', {
+                    timeOut: 5000
+                });
+                sessionStorage.removeItem("activation");
+            }
+
+
+            @if($message = Session::get('success'))
+            toastr.success('{{ $message }}', 'Success Alert', {
+                timeOut: 5000
+            });
+            @endif
+        });
     </script>
 @endpush

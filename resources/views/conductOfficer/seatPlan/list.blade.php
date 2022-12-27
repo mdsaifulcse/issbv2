@@ -135,12 +135,12 @@ ol {
     <h5>Welcome to Psychometrics Test</h5>
     <ol class="breadcrumb">
         <li>
-            <a href="#">Admin</a>
+            <a href="#">Conducting Officer</a>
         </li>
-        <li><a href="{{ URL::to('/') }}">Dashboard</a></li>
-        <li class="active">
-            Test Config
-        </li>
+        <li><a href="{{ URL::to('/') }}">Set Plan</a></li>
+        {{--<li class="active">--}}
+
+        {{--</li>--}}
     </ol>
 </section>
 

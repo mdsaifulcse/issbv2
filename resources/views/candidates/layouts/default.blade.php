@@ -95,6 +95,12 @@
 
     </style>
     @stack('styles')
+    {{--<script>--}}
+        {{--window.addEventListener('beforeunload', function (e) {--}}
+            {{--e.preventDefault();--}}
+            {{--e.returnValue = '';--}}
+        {{--});--}}
+    {{--</script>--}}
 </head>
 <body class="navbar-top-md-xs sidebar-xs has-detached-left" id="full-screen-area">
     <div id="app">
@@ -212,6 +218,8 @@
 
     <!-- /Custom JS files -->
     <script type="text/javascript" src="{{ asset('backend/assets/js/custom_frame.js') }}"></script>
+
+
 
     <!-- Per Page JS files -->
     @stack('javascript')

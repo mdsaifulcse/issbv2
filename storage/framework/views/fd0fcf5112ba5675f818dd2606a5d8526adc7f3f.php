@@ -9,7 +9,7 @@
             display: table-cell !important;
         }
     </style>
-    <?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
 
 
 <?php $__env->startSection('content'); ?>
@@ -40,7 +40,8 @@
                                 <div class="question-section">
                                     <label>
                                         <b style="font-size: 18px">
-                                            Q<?php echo e($sl); ?>.
+                                            Q.
+                                            
                                             <?php if($question->item_type == 1): ?>
                                                 <?php echo $question->question_title; ?>
 
@@ -109,7 +110,8 @@
 
                                     <label>
                                         <b style="font-size: 18px">
-                                            Q<?php echo e($sl); ?>.
+                                            Q.
+                                            
                                             <?php if($question->sub_question_type == 1): ?>
                                                 <?php echo $sub_q; ?>
 
@@ -138,16 +140,16 @@
                                         $sub_correct_answers = explode('||', $question->sub_correct_answer);
                                     ?>
                                     <?php $__currentLoopData = $answerSet; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subAnsKey => $answer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php
-                                        ++$subAnsKey;
-                                    ?>
-                                    <div class="<?php echo e($labelClass); ?>">
-                                        <label class="<?php if($sub_correct_answers[$subKey] == $subAnsKey): ?><?php echo e('text-success'); ?><?php else: ?><?php echo e('text-danger'); ?><?php endif; ?>" for="ans-<?php echo e($subAnsKey); ?>">
-                                            <input type="<?php echo e($labelType); ?>" name="answer_<?php echo e($sub_q); ?>" id="ans-<?php echo e($subAnsKey); ?>" class="styled">
-                                            <span class="text-danger"><?php echo e($answer); ?></span>
-                                            
-                                        </label>
-                                    </div>
+                                        <?php
+                                            ++$subAnsKey;
+                                        ?>
+                                        <div class="<?php echo e($labelClass); ?>">
+                                            <label class="<?php if($sub_correct_answers[$subKey] == $subAnsKey): ?><?php echo e('text-success'); ?><?php else: ?><?php echo e('text-danger'); ?><?php endif; ?>" for="ans-<?php echo e($subAnsKey); ?>">
+                                                <input type="<?php echo e($labelType); ?>" name="answer_<?php echo e($sub_q); ?>" id="ans-<?php echo e($subAnsKey); ?>" class="styled">
+                                                <span class="text-danger"><?php echo e($answer); ?></span>
+                                                
+                                            </label>
+                                        </div>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
                                 <legend class="text-bold"></legend>
@@ -160,12 +162,18 @@
                 <?php endif; ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-            <?php if(Auth::user()->hasRole('testing')): ?>
-            <div class="pull-right">
+
+            <div class="">
                 
-                <a href="<?php echo e(route('examConfig.index')); ?>" class="btn btn-default">Back To List <i class="icon-backward2 position-right"></i></a>
+                <?php if($nextIndex>1): ?>
+                    <a href="<?php echo e(url('examPreview?'."examId=$examId&index=$previousIndex")); ?>" class="btn btn-info pull-left">Previous <i class="icon-backward2 position-left"></i></a>
+                <?php endif; ?>
+
+                <?php if($nextButton!=0): ?>
+                    <a href="<?php echo e(url('examPreview?'."examId=$examId&index=$nextIndex")); ?>" class="btn btn-success pull-right">Next <i class="icon-backward2 position-right"></i></a>
+                <?php endif; ?>
             </div>
-            <?php endif; ?>
+
         </div>
     </div>
     <!-- /content area -->
