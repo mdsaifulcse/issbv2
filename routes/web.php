@@ -25,6 +25,7 @@ Route::group(['namespace' => 'Candidate', 'prefix' => 'candidate', 'as'=>'candid
 
     Route::group(['middleware' => 'candAuth'], function (){
         Route::get('dashboard', 'CandidateAuthController@dashboard')->name('dashboard');
+        Route::get('candidate-last-action', 'CandidateAuthController@tractCandidateLastAction')->name('tractCandidateLastAction');
         // Route::get('examInstruction', 'CandidateAuthController@examInstruction')->name('examInstruction');
         // Route::get('examDemoQOne', 'CandidateAuthController@examDemoQOne')->name('examDemoQOne');
         // Route::get('examDemoQTwo', 'CandidateAuthController@examDemoQTwo')->name('examDemoQTwo');
@@ -70,6 +71,7 @@ Route::get('/candidate/sample-test', 'ExamController@sampleTest');
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/', 'HomeController@dashboard');
+
 
 //    Route::get('/', function () {
 //        return view('welcome');

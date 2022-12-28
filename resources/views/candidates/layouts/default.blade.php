@@ -95,12 +95,7 @@
 
     </style>
     @stack('styles')
-    {{--<script>--}}
-        {{--window.addEventListener('beforeunload', function (e) {--}}
-            {{--e.preventDefault();--}}
-            {{--e.returnValue = '';--}}
-        {{--});--}}
-    {{--</script>--}}
+
 </head>
 <body class="navbar-top-md-xs sidebar-xs has-detached-left" id="full-screen-area">
     <div id="app">
@@ -242,6 +237,23 @@
             openFullscreen();
         });         
     </script> -->
+
+    <script>
+
+        setInterval(function () {
+            $.ajax({
+                url : '{{route("candidate.tractCandidateLastAction")}}',
+                data: '',
+                type: 'GET',
+                dataType: "json",
+                success: function(response)
+                {
+                   console.log(response)
+                }
+            });
+        },10000)
+
+    </script>
 
 </body>
 </html>

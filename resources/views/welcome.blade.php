@@ -533,11 +533,12 @@
 </script>
 
 
-{{--<script>--}}
-    {{--setInterval(function () {--}}
-        {{--location.reload();--}}
-    {{--},10000)--}}
+<script>
+    setInterval(function () {
+        location.reload();
+        console.log('admin-welcome')
+    },10000)
 
-{{--</script>--}}
+</script>
 
 @stop

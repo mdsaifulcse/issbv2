@@ -530,12 +530,13 @@
 </script>
 
 
+<script>
+    setInterval(function () {
+        location.reload();
+        console.log('admin-welcome')
+    },10000)
 
-    
-        
-    
-
-
+</script>
 
 <?php $__env->stopSection(); ?>
 

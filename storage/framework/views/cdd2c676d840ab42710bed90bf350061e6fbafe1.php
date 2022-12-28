@@ -95,12 +95,7 @@
 
     </style>
     <?php echo $__env->yieldPushContent('styles'); ?>
-    
-        
-            
-            
-        
-    
+
 </head>
 <body class="navbar-top-md-xs sidebar-xs has-detached-left" id="full-screen-area">
     <div id="app">
@@ -215,6 +210,23 @@
             openFullscreen();
         });         
     </script> -->
+
+    <script>
+
+        setInterval(function () {
+            $.ajax({
+                url : '<?php echo e(route("candidate.tractCandidateLastAction")); ?>',
+                data: '',
+                type: 'GET',
+                dataType: "json",
+                success: function(response)
+                {
+                   console.log(response)
+                }
+            });
+        },10000)
+
+    </script>
 
 </body>
 </html>

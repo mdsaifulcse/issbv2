@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Candidate;
 
+use Carbon\Carbon;
 use Session;
 use App\ItemBank;
 use App\Candidates;
@@ -196,5 +197,12 @@ class CandidateAuthController extends Controller
         } else {
             return redirect()->route('candidate.login');
         }
+    }
+
+    public function tractCandidateLastAction(){
+        $authCandidate= Auth::guard('candAuth')->user();
+
+        $authCandidate->update(['updated_at'=>Carbon::now()]);
+        return Carbon::now();
     }
 }

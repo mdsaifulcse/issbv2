@@ -98,7 +98,7 @@
                 });
                 sessionStorage.removeItem("activation");
             }
-            
+
 
             <?php if($message = Session::get('success')): ?>
             toastr.success('<?php echo e($message); ?>', 'Success Alert', {

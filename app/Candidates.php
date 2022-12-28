@@ -10,7 +10,8 @@ class Candidates extends Authenticatable
 {
     use EntrustUserTrait;
     protected $table = 'candidates';
-    protected $fillable = ['id', 'chest_no', 'secret_key', 'roll_no', 'course', 'board_no', 'name', 'password', 'image', 'gender', 'dob', 'father_name', 'mother_name', 'valid', 'is_logged_in', 'seat_no'];
+    protected $fillable = ['id', 'chest_no', 'secret_key', 'roll_no', 'course', 'board_no', 'name', 'password', 'image',
+        'gender', 'dob', 'father_name', 'mother_name', 'valid', 'is_logged_in', 'seat_no','updated_at'];
     protected $hidden = [
         'password',
     ];
