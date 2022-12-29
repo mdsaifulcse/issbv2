@@ -277,6 +277,7 @@ ol {
 <script>
     setInterval(function () {
         location.reload();
+        console.log('conduct-seatplan')
     },10000)
 
 </script>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use DB;
 use Redirect;
 use App\Candidates;
@@ -26,7 +27,7 @@ class StdSeatPlanController extends Controller
         $data = array();
 
       // Detect users whose close browser or logout  AND change is_logged_in value
-        $loginCandidates = Candidates::where('seat_no', '!=', 0)->where('board_no',$data['activeBoard']->board_name)->get();
+        $loginCandidates = Candidates::where('seat_no', '!=', 0)->where('board_no',$activeBoard->board_name)->get();
 
         foreach ($loginCandidates as $loginCandidate){
             $currentTime=Carbon::now();
@@ -35,7 +36,7 @@ class StdSeatPlanController extends Controller
             //return date('Y-m-d h:i:s',strtotime($candidateUpdatedTime));
             $differentTime=$candidateUpdatedTime->diffInSeconds($currentTime);
 
-            if ($differentTime>10){
+            if ($differentTime>12){
                 $loginCandidate->update(['is_logged_in'=>0,'seat_no'=>0]);
             }
         }

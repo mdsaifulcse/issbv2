@@ -61,7 +61,7 @@ class HomeController extends Controller
             //return date('Y-m-d h:i:s',strtotime($candidateUpdatedTime));
             $differentTime=$candidateUpdatedTime->diffInSeconds($currentTime);
 
-            if ($differentTime>10){
+            if ($differentTime>12){
                 $loginCandidate->update(['is_logged_in'=>0,'seat_no'=>0]);
             }
         }
