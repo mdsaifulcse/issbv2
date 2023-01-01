@@ -36,8 +36,8 @@ class StdSeatPlanController extends Controller
             //return date('Y-m-d h:i:s',strtotime($candidateUpdatedTime));
             $differentTime=$candidateUpdatedTime->diffInSeconds($currentTime);
 
-            if ($differentTime>12){
-                $loginCandidate->update(['is_logged_in'=>0,'seat_no'=>0]);
+            if ($differentTime>15){
+                $loginCandidate->update(['is_logged_in'=>0,'seat_no'=>0,'exam_start'=>0]);
             }
         }
 
@@ -49,6 +49,7 @@ class StdSeatPlanController extends Controller
         // where('board_no', 'one')
         foreach ($candidates as $key => $candidate) {
             $data["candidate_$candidate->seat_no"] = $candidate->is_logged_in;
+            $data["exam_start_$candidate->seat_no"] = $candidate->exam_start;
         }
         $data['total_live'] = Candidates::where('seat_no', '!=', 0)->where(['is_logged_in'=> 1,'board_no'=>$activeBoard->board_name])->count();
 

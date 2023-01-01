@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\BoardCandidate;
+use App\Candidates;
 use App\ItemBank;
 use DateTime;
 use Auth;
@@ -18,7 +20,11 @@ class ExamScheduleController extends Controller
     {
         $data['examConfigs']=ExamConfig::with('boardCandidate','testConfig','testConfig.testFor')
             ->where(['exam_configs.status'=>1,'exam_configs.preview_status'=>1])
-            ->latest()->paginate(25);
+            ->latest()->paginate(50);
+
+        $activeBoard = BoardCandidate::where('status', 1)->first();
+        $data['total_candidate'] = $activeBoard->total_candidate;
+        $data['total_live'] = Candidates::where('seat_no', '!=', 0)->where(['is_logged_in'=> 1,'board_no'=>$activeBoard->board_name])->count();
 
         return view('conductOfficer.examSchedule.listData', $data);
     }
@@ -147,6 +153,9 @@ class ExamScheduleController extends Controller
     public function examDemoFinish(Request $request)
     {
         $data['examId'] = $request->examId;
+        $activeBoard = BoardCandidate::where('status', 1)->first();
+        $data['total_candidate'] = $activeBoard->total_candidate;
+        $data['total_live'] = Candidates::where('seat_no', '!=', 0)->where(['is_logged_in'=> 1,'board_no'=>$activeBoard->board_name])->count();
         return view('conductOfficer.examSchedule.examDemoFinish', $data);
     }
 
@@ -157,6 +166,15 @@ class ExamScheduleController extends Controller
         $examConfig         = ExamConfig::find($request->examId);
         $time               = new DateTime();
         $currentTime        = $time->format('H:i:s');
+
+        // Make Running exam complete before making another exam running
+        $runningExam=ExamConfig::where(['exam_status'=>1,'status'=>1])->first();
+        if (!empty($runningExam)){
+            $runningExam->update(['exam_status' => 2,
+                'updated_at'  => date('Y-m-d H:i:s'),
+                'updated_by'  => Auth::id()]); // 2= Complete
+        }
+
 
         if ($examConfig->exam_start_time==null) {
 

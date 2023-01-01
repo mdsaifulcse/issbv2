@@ -71,6 +71,10 @@
                                         <td class="text-center">
                                         <a href="{{ url('examPreview?examId='.$config->id) }}" target="_blank" class="btn btn-sm btn-primary">Preview Exam</a>
 
+                                        @if ($config->preview_status == 1 && $config->exam_status!=0)
+                                            <a href="{{ route('examInstruction', ['examId'=>$config->id]) }}" class="btn btn-sm btn-primary" target="_blank">Show Introduction</a>
+                                        @endif
+
                                         @if ($config->preview_status == 1 && $config->exam_status==0)
 
                                             <a href="{{ route('examInstruction', ['examId'=>$config->id]) }}" class="btn btn-sm btn-primary">Show Introduction</a>
@@ -89,7 +93,12 @@
 
                                         @elseif($config->preview_status == 1 && $config->exam_status==4)
 
+                                            {{--Can not see this option until all candidate login--}}
+                                            @if($total_candidate==$total_live)
                                             <a href="{{ url('examDemoFinish'."?examId=$config->id") }}" class="btn btn-sm btn-success">Prestart</a>
+                                                @else
+                                                    <a href="{{ url('examScheduleList') }}" class="btn btn-sm btn-warning" title="Wait for all candidate login">Wait & Refresh </a>
+                                                @endif
 
                                         @else
                                             <a href="javascript:void(0)" class="btn btn-sm btn-success" disabled>Upcoming</a>

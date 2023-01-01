@@ -62,7 +62,11 @@ class CandidateExamController extends Controller
             ]);
 
             $data['examRemainingTime']             = self::examRemainingTime($candidateExam->exam_config_id);
-            // dd($data);
+
+            $userInfo->update([
+                'exam_start' => 1
+            ]);
+
             if ($candidateExam->exam_status==2) {
                 return view('candidates.candidateNotice', $data);
             } else {

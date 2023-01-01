@@ -95,6 +95,7 @@
         background: #F42536;
         border-radius: 5px;
     }
+    .bg-blue { background: #0000FF !important; color: white !important; }
     .bg-green { background: green!important; color: white !important; }
     .bg-red { background: red!important; }
     .mr-20 { margin-right: 20px; }
@@ -295,9 +296,13 @@
                                 @foreach ($lRow as $lCol)
                                     @php
                                         $candidate = 'candidate_'.$lCol;
+                                        $examStart = 'exam_start_'.$lCol;
                                     @endphp
                                     <li class="seat">
-                                        @if($lCol != '')<span class="bg-@if(@$$candidate == 1)green @else red @endif">{{$lCol}}</span>@endif
+                                        @if($lCol != '')
+                                            <span class="bg-@if(@$$candidate == 1 & @$$examStart==0)green @elseif(@$$candidate == 1 & @$$examStart==1)blue @else red @endif">{{$lCol}}</span>
+                                            {{--<<span class="bg-@if(@$$candidate == 1 & @$$examStart==0)green @elseif(@$$candidate == 1 & @$$examStart==1)blue @else red @endif">{{$lCol}}</span>span class="bg-@if(@$$candidate == 1)green @else red @endif">{{$lCol}}</span>--}}
+                                        @endif
                                     </li>
                                 @endforeach
                             </ol>
@@ -336,9 +341,11 @@
                                 @foreach ($mRow as $mCol)
                                     @php
                                         $candidate = 'candidate_'.$mCol;
+                                        $examStart = 'exam_start_'.$mCol;
                                     @endphp
                                     <li class="seat">
-                                        <span class="bg-@if(@$$candidate == 1)green @else red @endif">{{$mCol}}</span>
+                                        {{--<span class="bg-@if(@$$candidate == 1)green @else red @endif">{{$mCol}}</span>--}}
+                                        <span class="bg-@if(@$$candidate == 1 & @$$examStart==0)green @elseif(@$$candidate == 1 & @$$examStart==1)blue @else red @endif">{{$mCol}}</span>
                                     </li>
                                 @endforeach
                             </ol>
@@ -377,9 +384,13 @@
                                 @foreach ($rRow as $rCol)
                                     @php
                                         $candidate = 'candidate_'.$rCol;
+                                        $examStart = 'exam_start_'.$rCol;
                                     @endphp
                                     <li class="seat">
-                                        @if($rCol != '')<span class="bg-@if(@$$candidate == 1)green @else red @endif">{{$rCol}}</span>@endif
+                                        @if($rCol != '')
+                                            <span class="bg-@if(@$$candidate == 1 & @$$examStart==0)green @elseif(@$$candidate == 1 & @$$examStart==1)blue @else red @endif">{{$rCol}}</span>
+                                            {{--<span class="bg-@if(@$$candidate == 1)green @else red @endif">{{$rCol}}</span>--}}
+                                        @endif
                                     </li>
                                 @endforeach
                             </ol>

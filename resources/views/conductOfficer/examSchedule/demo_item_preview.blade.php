@@ -319,17 +319,6 @@ Test
             sessionStorage.removeItem("activation");
         }
 
-        $('#example').DataTable({
-            "searching": false,
-            "paging": false,
-            "info": false,
-            "lengthChange": false,
-            responsive: true,
-            "columnDefs": [{
-                "orderable": false,
-                "targets": 2
-            }]
-        });
 
         @if($message = Session::get('success'))
         toastr.success('{{ $message }}', 'Success Alert', {

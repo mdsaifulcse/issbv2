@@ -113,6 +113,7 @@ ol {
     background: #F42536;
     border-radius: 5px;
 }
+.bg-blue { background: #0000FF !important; color: white !important; }
 .bg-green { background: green!important; color: white !important; }
 .bg-red { background: red!important; }
 .mr-20 { margin-right: 20px; }
@@ -174,9 +175,13 @@ ol {
                                 <?php $__currentLoopData = $lRow; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lCol): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php
                                         $candidate = 'candidate_'.$lCol;
+                                        $examStart = 'exam_start_'.$lCol;
                                     ?>
                                     <li class="seat">
-                                        <?php if($lCol != ''): ?><span class="bg-<?php if(@$$candidate == 1): ?>green <?php else: ?> red <?php endif; ?>"><?php echo e($lCol); ?></span><?php endif; ?>
+                                        <?php if($lCol != ''): ?>
+                                            <span class="bg-<?php if(@$$candidate == 1 & @$$examStart==0): ?>green <?php elseif(@$$candidate == 1 & @$$examStart==1): ?>blue <?php else: ?> red <?php endif; ?>"><?php echo e($lCol); ?></span>
+                                            
+                                        <?php endif; ?>
                                     </li>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ol>
@@ -215,9 +220,11 @@ ol {
                                 <?php $__currentLoopData = $mRow; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mCol): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php
                                         $candidate = 'candidate_'.$mCol;
+                                        $examStart = 'exam_start_'.$mCol;
                                     ?>
                                     <li class="seat">
-                                        <span class="bg-<?php if(@$$candidate == 1): ?>green <?php else: ?> red <?php endif; ?>"><?php echo e($mCol); ?></span>
+                                        
+                                        <span class="bg-<?php if(@$$candidate == 1 & @$$examStart==0): ?>green <?php elseif(@$$candidate == 1 & @$$examStart==1): ?>blue <?php else: ?> red <?php endif; ?>"><?php echo e($mCol); ?></span>
                                     </li>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ol>
@@ -256,9 +263,13 @@ ol {
                                 <?php $__currentLoopData = $rRow; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rCol): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php
                                         $candidate = 'candidate_'.$rCol;
+                                        $examStart = 'exam_start_'.$rCol;
                                     ?>
                                     <li class="seat">
-                                        <?php if($rCol != ''): ?><span class="bg-<?php if(@$$candidate == 1): ?>green <?php else: ?> red <?php endif; ?>"><?php echo e($rCol); ?></span><?php endif; ?>
+                                        <?php if($rCol != ''): ?>
+                                            <span class="bg-<?php if(@$$candidate == 1 & @$$examStart==0): ?>green <?php elseif(@$$candidate == 1 & @$$examStart==1): ?>blue <?php else: ?> red <?php endif; ?>"><?php echo e($rCol); ?></span>
+                                            
+                                        <?php endif; ?>
                                     </li>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ol>
