@@ -29,6 +29,7 @@ Test Config
 
     .palebluecolorbg {
         background: #01AEF0;
+
     }
 
     .goldbg {
@@ -113,8 +114,8 @@ ol {
     background: #F42536;
     border-radius: 5px;
 }
-.bg-blue { background: #0000FF !important; color: white !important; }
-.bg-green { background: green!important; color: white !important; }
+.bg-blue { background: #0000FF !important; color: white !important;cursor: pointer }
+.bg-green { background: green!important; color: white !important;; }
 .bg-red { background: red!important; }
 .mr-20 { margin-right: 20px; }
 
@@ -176,10 +177,18 @@ ol {
                                     <?php
                                         $candidate = 'candidate_'.$lCol;
                                         $examStart = 'exam_start_'.$lCol;
+                                        $candidateId = 'candiate_id_'.$lCol;
                                     ?>
                                     <li class="seat">
                                         <?php if($lCol != ''): ?>
+
+                                        <?php if(@$$candidate == 1 & @$$examStart==1): ?>
+                                            <span class="bg-<?php if(@$$candidate == 1 & @$$examStart==0): ?>green <?php elseif(@$$candidate == 1 & @$$examStart==1): ?>blue <?php else: ?> red <?php endif; ?>" onclick="openConfirmModal(<?php echo e($$candidateId); ?>)"><?php echo e($lCol); ?></span>
+                                            <?php else: ?>
                                             <span class="bg-<?php if(@$$candidate == 1 & @$$examStart==0): ?>green <?php elseif(@$$candidate == 1 & @$$examStart==1): ?>blue <?php else: ?> red <?php endif; ?>"><?php echo e($lCol); ?></span>
+                                            <?php endif; ?>
+
+
                                             
                                         <?php endif; ?>
                                     </li>
@@ -221,10 +230,18 @@ ol {
                                     <?php
                                         $candidate = 'candidate_'.$mCol;
                                         $examStart = 'exam_start_'.$mCol;
+                                        $candidateId = 'candiate_id_'.$mCol;
                                     ?>
                                     <li class="seat">
                                         
-                                        <span class="bg-<?php if(@$$candidate == 1 & @$$examStart==0): ?>green <?php elseif(@$$candidate == 1 & @$$examStart==1): ?>blue <?php else: ?> red <?php endif; ?>"><?php echo e($mCol); ?></span>
+
+                                        <?php if(@$$candidate == 1 & @$$examStart==1): ?>
+                                            <span class="bg-<?php if(@$$candidate == 1 & @$$examStart==0): ?>green <?php elseif(@$$candidate == 1 & @$$examStart==1): ?>blue <?php else: ?> red <?php endif; ?>" onclick="openConfirmModal(<?php echo e($$candidateId); ?>)"><?php echo e($mCol); ?></span>
+                                            <?php else: ?>
+                                            <span class="bg-<?php if(@$$candidate == 1 & @$$examStart==0): ?>green <?php elseif(@$$candidate == 1 & @$$examStart==1): ?>blue <?php else: ?> red <?php endif; ?>"><?php echo e($mCol); ?></span>
+                                            <?php endif; ?>
+
+
                                     </li>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ol>
@@ -264,10 +281,18 @@ ol {
                                     <?php
                                         $candidate = 'candidate_'.$rCol;
                                         $examStart = 'exam_start_'.$rCol;
+                                        $candidateId = 'candiate_id_'.$rCol;
                                     ?>
                                     <li class="seat">
                                         <?php if($rCol != ''): ?>
+
+                                        <?php if(@$$candidate == 1 & @$$examStart==1): ?>
+                                            <span class="bg-<?php if(@$$candidate == 1 & @$$examStart==0): ?>green <?php elseif(@$$candidate == 1 & @$$examStart==1): ?>blue <?php else: ?> red <?php endif; ?>" onclick="openConfirmModal(<?php echo e($$candidateId); ?>)"><?php echo e($rCol); ?></span>
+                                            <?php else: ?>
                                             <span class="bg-<?php if(@$$candidate == 1 & @$$examStart==0): ?>green <?php elseif(@$$candidate == 1 & @$$examStart==1): ?>blue <?php else: ?> red <?php endif; ?>"><?php echo e($rCol); ?></span>
+                                            <?php endif; ?>
+
+
                                             
                                         <?php endif; ?>
                                     </li>
@@ -280,18 +305,57 @@ ol {
         </div>
     </div>
     
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Do you realy want to stop exam?</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-4">
+                            <form action="">
+                                <?php echo e(@csrf_field()); ?>
+
+                                <input name="candidate_id" type="hidden" id="candidate_id"/>
+                                <button class="btn btn-warning text-center">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </section>
 
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('footer_scripts'); ?>
-<script>
-    setInterval(function () {
-        location.reload();
-        console.log('conduct-seatplan')
-    },10000)
 
-</script>
+    <script>
+        function openConfirmModal (candidateId) {
+
+            $('#candidate_id').val(candidateId)
+            $('#myModal').modal('show');
+        }
+    </script>
+
+    <script>
+        setInterval(function () {
+            location.reload();
+            console.log('conduct-seatplan')
+        },100000)
+
+    </script>
     <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/conductOfficer/seatPlan/list.blade.php ENDPATH**/ ?>

@@ -16,7 +16,7 @@
                         @csrf
 
                         <input type="hidden" name="candidate_id" value="{{ $userInfo->id }}">
-                        <h1>Please verify the secret key</h1>
+                    <h1>Please verify the secret key (<b>{{$secret_key}}</b>)</h1>
                         <div class="form-group row">
                             <div class="col-md-3"></div>
                             <div class="col-md-6">

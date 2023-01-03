@@ -32,6 +32,7 @@ Test Config
 
     .palebluecolorbg {
         background: #01AEF0;
+
     }
 
     .goldbg {
@@ -116,8 +117,8 @@ ol {
     background: #F42536;
     border-radius: 5px;
 }
-.bg-blue { background: #0000FF !important; color: white !important; }
-.bg-green { background: green!important; color: white !important; }
+.bg-blue { background: #0000FF !important; color: white !important;cursor: pointer }
+.bg-green { background: green!important; color: white !important;; }
 .bg-red { background: red!important; }
 .mr-20 { margin-right: 20px; }
 
@@ -179,10 +180,18 @@ ol {
                                     @php
                                         $candidate = 'candidate_'.$lCol;
                                         $examStart = 'exam_start_'.$lCol;
+                                        $candidateId = 'candiate_id_'.$lCol;
                                     @endphp
                                     <li class="seat">
                                         @if($lCol != '')
+
+                                        @if(@$$candidate == 1 & @$$examStart==1)
+                                            <span class="bg-@if(@$$candidate == 1 & @$$examStart==0)green @elseif(@$$candidate == 1 & @$$examStart==1)blue @else red @endif" onclick="openConfirmModal({{$$candidateId}})">{{$lCol}}</span>
+                                            @else
                                             <span class="bg-@if(@$$candidate == 1 & @$$examStart==0)green @elseif(@$$candidate == 1 & @$$examStart==1)blue @else red @endif">{{$lCol}}</span>
+                                            @endif
+
+
                                             {{--<<span class="bg-@if(@$$candidate == 1 & @$$examStart==0)green @elseif(@$$candidate == 1 & @$$examStart==1)blue @else red @endif">{{$lCol}}</span>span class="bg-@if(@$$candidate == 1)green @else red @endif">{{$lCol}}</span>--}}
                                         @endif
                                     </li>
@@ -224,10 +233,18 @@ ol {
                                     @php
                                         $candidate = 'candidate_'.$mCol;
                                         $examStart = 'exam_start_'.$mCol;
+                                        $candidateId = 'candiate_id_'.$mCol;
                                     @endphp
                                     <li class="seat">
                                         {{--<span class="bg-@if(@$$candidate == 1)green @else red @endif">{{$mCol}}</span>--}}
-                                        <span class="bg-@if(@$$candidate == 1 & @$$examStart==0)green @elseif(@$$candidate == 1 & @$$examStart==1)blue @else red @endif">{{$mCol}}</span>
+
+                                        @if(@$$candidate == 1 & @$$examStart==1)
+                                            <span class="bg-@if(@$$candidate == 1 & @$$examStart==0)green @elseif(@$$candidate == 1 & @$$examStart==1)blue @else red @endif" onclick="openConfirmModal({{$$candidateId}})">{{$mCol}}</span>
+                                            @else
+                                            <span class="bg-@if(@$$candidate == 1 & @$$examStart==0)green @elseif(@$$candidate == 1 & @$$examStart==1)blue @else red @endif">{{$mCol}}</span>
+                                            @endif
+
+
                                     </li>
                                 @endforeach
                             </ol>
@@ -267,10 +284,18 @@ ol {
                                     @php
                                         $candidate = 'candidate_'.$rCol;
                                         $examStart = 'exam_start_'.$rCol;
+                                        $candidateId = 'candiate_id_'.$rCol;
                                     @endphp
                                     <li class="seat">
                                         @if($rCol != '')
+
+                                        @if(@$$candidate == 1 & @$$examStart==1)
+                                            <span class="bg-@if(@$$candidate == 1 & @$$examStart==0)green @elseif(@$$candidate == 1 & @$$examStart==1)blue @else red @endif" onclick="openConfirmModal({{$$candidateId}})">{{$rCol}}</span>
+                                            @else
                                             <span class="bg-@if(@$$candidate == 1 & @$$examStart==0)green @elseif(@$$candidate == 1 & @$$examStart==1)blue @else red @endif">{{$rCol}}</span>
+                                            @endif
+
+
                                             {{--<span class="bg-@if(@$$candidate == 1)green @else red @endif">{{$rCol}}</span>--}}
                                         @endif
                                     </li>
@@ -286,16 +311,54 @@ ol {
         <hr>
         <a href="#" class="btn btn-primary pull-right mr-20">Next</a>
     </div> --}}
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Do you realy want to stop exam?</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-4">
+                            <form action="">
+                                {{@csrf_field()}}
+                                <input name="candidate_id" type="hidden" id="candidate_id"/>
+                                <button class="btn btn-warning text-center">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </section>
 
 @stop
 
 @section('footer_scripts')
-<script>
-    setInterval(function () {
-        location.reload();
-        console.log('conduct-seatplan')
-    },10000)
 
-</script>
+    <script>
+        function openConfirmModal (candidateId) {
+
+            $('#candidate_id').val(candidateId)
+            $('#myModal').modal('show');
+        }
+    </script>
+
+    <script>
+        setInterval(function () {
+            location.reload();
+            console.log('conduct-seatplan')
+        },100000)
+
+    </script>
     @endsection

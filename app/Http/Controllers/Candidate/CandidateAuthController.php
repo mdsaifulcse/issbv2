@@ -50,6 +50,7 @@ class CandidateAuthController extends Controller
 
             $data['userInfo'] = Candidates::find($canExist->id);
             $data['status'] = 1;
+            $data['secret_key'] =$canExist->secret_key;
 
             return view('candidates.candidate_verify', $data);
         } else {
@@ -172,11 +173,11 @@ class CandidateAuthController extends Controller
 
     public function startMainExam(Request $request)
     {
-        ExamConfig::find($request->examId)->update([
-            'exam_status' => 1, // 1= Running
-            'updated_at'  => date('Y-m-d H:i:s'),
-            'updated_by'  => Auth::id(),
-        ]);
+//        ExamConfig::find($request->examId)->update([
+//            'exam_status' => 1, // 1= Running
+//            'updated_at'  => date('Y-m-d H:i:s'),
+//            'updated_by'  => Auth::id(),
+//        ]);
 
         $output['messege'] = 'Exam has been start';
         $output['msgType'] = 'success';
