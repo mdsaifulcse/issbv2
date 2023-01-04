@@ -649,6 +649,10 @@ class CandidateExamController extends Controller
         $candidateExam          = CandidateExam::where('candidate_id', $authId)->find($exam_id);
         $output['examStatus']   = ExamConfig::find($candidateExam->exam_config_id)->status;
 
+        if ($userInfo->is_logged_in==0){ // if exam force stop by conducting officer
+            $output['examStatus'];
+        }
+
         if ($candidateExam) {
             if ($authBoard != 'preview') {
                 $updateInfo = $candidateExam->update([

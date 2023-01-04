@@ -318,7 +318,7 @@ ol {
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-4">
-                            <form action="">
+                            <form action="<?php echo e(url('candidateExamStop')); ?>" method="POST">
                                 <?php echo e(@csrf_field()); ?>
 
                                 <input name="candidate_id" type="hidden" id="candidate_id"/>
@@ -353,7 +353,7 @@ ol {
         setInterval(function () {
             location.reload();
             console.log('conduct-seatplan')
-        },100000)
+        },10000)
 
     </script>
     <?php $__env->stopSection(); ?>

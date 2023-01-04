@@ -284,4 +284,13 @@ class ExamScheduleController extends Controller
 
         return $remaining_seconds;
     }
+
+    public function candidateExamStopByConductionOfficer(Request $request){
+
+        $candidate=Candidates::find($request->candidate_id);
+
+        $candidate->update(['is_logged_in'=>0,'seat_no'=>0,'exam_start'=>0]);
+        return redirect('/stdSeatPlan');
+
+    }
 }

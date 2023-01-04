@@ -101,6 +101,11 @@ class CandidateAuthController extends Controller
             $data['authId']         = $authId = Auth::guard('candAuth')->id();
             $data['userInfo']       = Candidates::find($authId);
 
+            if ($data['userInfo']->is_logged_in==0){ // if exam force stop by conducting officer
+                $this->logout();
+                //return redirect()->route('candidate.login');
+            }
+
             $data['configuredExam'] = $configuredExam = ExamConfig::whereIn('exam_status', [1,4])
                 //->where('exam_date', $currentDate)
                 ->latest()->where('status', 1)->first(); // latest() added by Md.Saiful Islam
@@ -191,6 +196,8 @@ class CandidateAuthController extends Controller
             $id = Auth::guard('candAuth')->id();
             $authInfo = Candidates::find($id);
             $authInfo->is_logged_in = 0;
+            $authInfo->seat_no = 0;
+            $authInfo->exam_start = 0;
             $authInfo->save();
             Session::flush();
             Auth::guard('candAuth')->logout();

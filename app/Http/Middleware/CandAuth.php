@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Candidates;
 use Closure;
 use Auth;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class CandAuth
     public function handle(Request $request, Closure $next)
     {
         if((Auth::guard('candAuth')->check())) {
+
             return $next($request);
         } else {
             if($request->ajax()) {
