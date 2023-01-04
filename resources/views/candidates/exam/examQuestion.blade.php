@@ -231,7 +231,7 @@
             setInterval(function() {
                 let exam_id                 = $('.exam_id').val();
                 let exam_remaining_time     = $('.exam_remaining_time').val();
-                let redirect_url            = '/candidate/dashboard';
+                let redirect_url            = '/candidate/login';
                 $.ajax({
                         url : '{{route("candidate.canExamInfoUpdate")}}',
                         data: {exam_id:exam_id,exam_remaining_time:exam_remaining_time, "_token": "{{ csrf_token() }}"},
