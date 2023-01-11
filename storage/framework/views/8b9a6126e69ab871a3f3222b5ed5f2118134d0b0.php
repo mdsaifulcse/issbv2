@@ -110,10 +110,12 @@
 
 
 <?php $__env->startSection('content'); ?>
-<?php if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('testing')): ?>
+
+
+<?php if(Auth::user()->hasRole('admin')): ?>
 <section class="content-header">
     <!--section starts-->
-    <h4>Welcome to Psychometric Dimension dd</h4>
+    
     <ol class="breadcrumb">
         <li>
             <a href="#">Admin</a>
@@ -124,7 +126,7 @@
 
 
 <section class="content">
-    <h1 class="text-center" style="color: #515763;">Welcome to Admin</h1>
+    <h1 class="text-center" style="color: #3bafcb;">Welcome to Admin</h1>
 </section>
 <?php endif; ?>
 
@@ -136,7 +138,7 @@
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
                     <a class="view-details" href="#">
-                        <b>Current Board Number</b>
+                        <b>Current Board</b>
                     </a>
                 </div>
                 <div class="panel-body">
@@ -149,7 +151,7 @@
 
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <a class="view-details" href="#"><b>Total Number of Candidate</b></a>
+                    <a class="view-details" href="#"><b>Total Candidates</b></a>
                 </div>
                 <div class="panel-body">
                     <b><?php echo e($activeBoard?$activeBoard->total_candidate:'N/A'); ?></b>
@@ -162,10 +164,10 @@
             
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <b>Active Tests</b>
+                    <b>Active Test</b>
                 </div>
                 <div class="panel-body">
-                    <b><?php echo e($activeTest); ?></b>
+                    <span style="font-size: 20px;"><?php echo e($activeTest?$activeTest->testConfig->test_name:'N/A'); ?></span>
                 </div>
             </div>
             
@@ -176,7 +178,7 @@
             <a class="view-details" href="<?php echo e(url('/stdSeatPlan')); ?>">
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <b>Seat plan</b>
+                    <b>Login Status</b>
                 </div>
                 <div class="panel-body panel-primary">
                     <b><?php echo e($total_live); ?>/<?php echo e($activeBoard?$activeBoard->total_candidate:'N/A'); ?></b>
@@ -192,10 +194,10 @@
     <div class="row">
 
         <div class="col-lg-12" style="">
-            <div class="panel panel-primary " style="border: 1px solid red; margin-bottom: 50px;">
+            <div class="panel panel-primary " style="border: 1px solid red; margin-bottom: 0px;">
                 <div class="panel-heading clearfix">
                     <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        All Active Test List
+                        Test List
                     </h3>
                     <div class="pull-right">
                         
@@ -264,7 +266,7 @@
     </div>
 
     <div class="row text-center">
-        <h3><span>Initial Login Status</span>   <span class="live-div-right"><?php echo e($total_live); ?>/<?php echo e($activeBoard?$activeBoard->total_candidate:'N/A'); ?> [ Till logged in <?php echo e($total_live); ?> out of <?php echo e($activeBoard?$activeBoard->total_candidate:'N/A'); ?> ]</span></h3>
+        <h4><span>Initial Login Status</span>   <span class="live-div-right"><?php echo e($total_live); ?>/<?php echo e($activeBoard?$activeBoard->total_candidate:'N/A'); ?> [ Till logged in <?php echo e($total_live); ?> out of <?php echo e($activeBoard?$activeBoard->total_candidate:'N/A'); ?> ]</span></h4>
     </div>
     <div class="row">
         <div class="col-md-4">
@@ -521,7 +523,7 @@
     });
 
     $('#activeTest').DataTable( {
-        "searching": true,
+        "searching": false,
         "paging": false,
         "info": false,
         "lengthChange":false,
@@ -541,6 +543,7 @@
 </script>
 
 
+<?php if(!Auth::user()->hasRole('admin')): ?>
 <script>
     setInterval(function () {
         location.reload();
@@ -548,6 +551,7 @@
     },10000)
 
 </script>
+    <?php endif; ?>
 
 <?php $__env->stopSection(); ?>
 

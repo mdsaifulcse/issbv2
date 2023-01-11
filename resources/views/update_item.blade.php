@@ -50,7 +50,7 @@
 @section('content')
     <section class="content-header">
         <!--section starts-->
-        <h5>Welcome to Psychometrics Test</h5>
+        <h5></h5>
         <ol class="breadcrumb">
             <li>
                 <a href="{{ URL::to('/') }}">Admin</a>

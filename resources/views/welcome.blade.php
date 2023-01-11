@@ -113,10 +113,12 @@
 
 {{-- Page content --}}
 @section('content')
-@if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('testing'))
+{{--@if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('testing'))--}}
+
+@if(Auth::user()->hasRole('admin'))
 <section class="content-header">
     <!--section starts-->
-    <h4>Welcome to Psychometric Dimension dd</h4>
+    {{--<h4>Welcome to Psychometric Dimension</h4>--}}
     <ol class="breadcrumb">
         <li>
             <a href="#">Admin</a>
@@ -127,7 +129,7 @@
 
 
 <section class="content">
-    <h1 class="text-center" style="color: #515763;">Welcome to Admin</h1>
+    <h1 class="text-center" style="color: #3bafcb;">Welcome to Admin</h1>
 </section>
 @endif
 
@@ -139,7 +141,7 @@
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
                     <a class="view-details" href="#">
-                        <b>Current Board Number</b>
+                        <b>Current Board</b>
                     </a>
                 </div>
                 <div class="panel-body">
@@ -152,7 +154,7 @@
 
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <a class="view-details" href="#"><b>Total Number of Candidate</b></a>
+                    <a class="view-details" href="#"><b>Total Candidates</b></a>
                 </div>
                 <div class="panel-body">
                     <b>{{$activeBoard?$activeBoard->total_candidate:'N/A'}}</b>
@@ -165,10 +167,10 @@
             {{--<a class="view-details" href="{{url('/examConfig?all_active=1')}}">--}}
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <b>Active Tests</b>
+                    <b>Active Test</b>
                 </div>
                 <div class="panel-body">
-                    <b>{{$activeTest}}</b>
+                    <span style="font-size: 20px;">{{$activeTest?$activeTest->testConfig->test_name:'N/A'}}</span>
                 </div>
             </div>
             {{--</a>--}}
@@ -179,7 +181,7 @@
             <a class="view-details" href="{{url('/stdSeatPlan')}}">
             <div class="panel panel-primary lightbluebg text-center">
                 <div class="panel-heading">
-                    <b>Seat plan</b>
+                    <b>Login Status</b>
                 </div>
                 <div class="panel-body panel-primary">
                     <b>{{$total_live}}/{{$activeBoard?$activeBoard->total_candidate:'N/A'}}</b>
@@ -195,10 +197,10 @@
     <div class="row">
 
         <div class="col-lg-12" style="">
-            <div class="panel panel-primary " style="border: 1px solid red; margin-bottom: 50px;">
+            <div class="panel panel-primary " style="border: 1px solid red; margin-bottom: 0px;">
                 <div class="panel-heading clearfix">
                     <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        All Active Test List
+                        Test List
                     </h3>
                     <div class="pull-right">
                         {{--<a href="{{ route('examConfig.create') }}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span>Create Test</a>--}}
@@ -266,7 +268,7 @@
     </div>
 
     <div class="row text-center">
-        <h3><span>Initial Login Status</span>   <span class="live-div-right">{{$total_live}}/{{$activeBoard?$activeBoard->total_candidate:'N/A'}} [ Till logged in {{$total_live}} out of {{$activeBoard?$activeBoard->total_candidate:'N/A'}} ]</span></h3>
+        <h4><span>Initial Login Status</span>   <span class="live-div-right">{{$total_live}}/{{$activeBoard?$activeBoard->total_candidate:'N/A'}} [ Till logged in {{$total_live}} out of {{$activeBoard?$activeBoard->total_candidate:'N/A'}} ]</span></h4>
     </div>
     <div class="row">
         <div class="col-md-4">
@@ -524,7 +526,7 @@
     });
 
     $('#activeTest').DataTable( {
-        "searching": true,
+        "searching": false,
         "paging": false,
         "info": false,
         "lengthChange":false,
@@ -544,6 +546,7 @@
 </script>
 
 
+@if(!Auth::user()->hasRole('admin'))
 <script>
     setInterval(function () {
         location.reload();
@@ -551,5 +554,6 @@
     },10000)
 
 </script>
+    @endif
 
 @stop

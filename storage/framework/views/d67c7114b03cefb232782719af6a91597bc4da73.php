@@ -46,6 +46,12 @@
         .right-side {
             padding-bottom: 25px !important;
         }
+        body > .header .navbar .sidebar-toggle{
+            background-color: unset;
+            padding: 0px;
+            margin: 0px;
+            color: #fff;
+        }
     </style>
 
 <body class="skin-josh">
@@ -54,11 +60,14 @@
             <img src="<?php echo e(asset('assets/images/issb-logo.png')); ?>" height="50" width="50" alt="logo" style="border-radius: 50%;">
         </a>
         <nav class="navbar navbar-static-top" role="navigation">
+
             <!-- Sidebar toggle button-->
-            <div>
-                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+            <div class="sidebar-toggle">
+                <h4>Welcome to Psychologists Dimension</h4>
+                <a href="#" class="navbar-btn " data-toggle="offcanvas" role="button">
                     <div class="responsive_nav"></div>
                 </a>
+
             </div>
             <div class="navbar-right">
                 <ul class="nav navbar-nav">

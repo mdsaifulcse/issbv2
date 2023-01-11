@@ -39,7 +39,7 @@ class HomeController extends Controller
         }
 
 
-        $data['activeTest'] = ExamConfig::where(['exam_configs.status'=>1,'exam_configs.preview_status'=>1])->count();
+        $data['activeTest'] = ExamConfig::with('testConfig')->where(['exam_configs.status'=>1,'exam_configs.exam_status'=>1])->latest()->first();
 
 
         $data['total_live'] = Candidates::where('seat_no', '!=', 0)->where(['is_logged_in'=>1,'board_no'=>$data['activeBoard']->board_name])->count();

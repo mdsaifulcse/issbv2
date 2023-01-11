@@ -1346,6 +1346,7 @@ class AdminController extends Controller
         $item_tag7          = ItemTag7::get();
         $test_list          = TestList::get();
         $item_statuses      = ItemStatus::orderBy('sl_no', 'asc')->get();
+
         return view('create_new_item', compact('item_levels', 'item_categories', 'test_list','item_tag1','item_tag2','item_tag3','item_tag4','item_tag5','item_tag6','item_tag7', 'item_statuses'));
     }
 
@@ -1545,8 +1546,10 @@ class AdminController extends Controller
         $testData = TestList::find($item_for);
 
         $insert_data->save();
+        //session()->flash('success', 'Post successfully updated.');
 
-        return redirect('/items/' . $item_for . '/' . $status)->with('success', $testData->name . ' Item has been successfully created.');
+        return redirect('/create-new-item/')->with('success', $testData->name . ' Item has been successfully created.');
+        //return redirect('/items/' . $item_for . '/' . $status)->with('success', $testData->name . ' Item has been successfully created.');
     }
 
     public function editItems($id)

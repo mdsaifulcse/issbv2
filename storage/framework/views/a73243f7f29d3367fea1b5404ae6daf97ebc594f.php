@@ -1,17 +1,14 @@
-@extends('admin/layouts/default')
-
-{{-- Page title --}}
-@section('title')
+<?php $__env->startSection('title'); ?>
     Create Item
-    @parent
-@stop
+    ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
+<?php $__env->stopSection(); ?>
 
-{{-- page level styles --}}
-@section('header_styles')
-    <link href="{{ asset('css/form-check.css') }}" rel="stylesheet">
+
+<?php $__env->startSection('header_styles'); ?>
+    <link href="<?php echo e(asset('css/form-check.css')); ?>" rel="stylesheet">
     <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/jasny-bootstrap.css')}}">
-    <link href="{{ asset('assets/css/toastr.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/jasny-bootstrap.css')); ?>">
+    <link href="<?php echo e(asset('assets/css/toastr.css')); ?>" rel="stylesheet">
     <style>
         span.btn.btn-primary.btn-file.btn-sm {
             margin: 0px 2px;
@@ -47,16 +44,16 @@
             display: none;
         }
     </style>
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- Page content --}}
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <section class="content-header">
         <!--section starts-->
-        <h5>{{session('success')}}</h5>
+        <h5><?php echo e(session('success')); ?></h5>
         <ol class="breadcrumb">
             <li>
-                <a href="{{ URL::to('/') }}">Admin </a>
+                <a href="<?php echo e(URL::to('/')); ?>">Admin </a>
             </li>
             <li class="active">Create Item</li>
         </ol>
@@ -76,25 +73,26 @@
                     <div class="panel-body">
 
                         <div class="form">
-                            <form id="create_item" method="post" action="{{ URL::to('/storeNewItem') }}" enctype="multipart/form-data"  class="needs-validation" novalidate>
+                            <form id="create_item" method="post" action="<?php echo e(URL::to('/storeNewItem')); ?>" enctype="multipart/form-data"  class="needs-validation" novalidate>
 
-                                {{ csrf_field() }}
+                                <?php echo e(csrf_field()); ?>
+
 
                                 <input type="hidden" class="text_options_list" name="options_list"/>
                                 <div class="form-group">
                                     <label for="question_for">Select Item For</label>
                                     <select name="item_for" id="question_for" class="form-control" required>
                                         <option value="">Choose one</option>
-                                        @foreach($test_list as $value)
-                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $test_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($value->id); ?>"><?php echo e($value->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <div class="invalid-feedback">This field is required.</div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="question_name">Item Name</label>
-                                    {{--<textarea class="tinymce-editor form-control" name="question_name" id="question_name" placeholder="Item Name" required></textarea>--}}
+                                    
 
                                     <input type="text" class="form-control" name="question_name" id="question_name" placeholder="Item Name" required/>
                                     <div class="invalid-feedback">This field is required.</div>
@@ -104,9 +102,9 @@
                                     <label for="question_level">Difficulty Level</label>
                                     <select name="question_level" id="question_level" class="form-control" required>
                                         <option value="">Choose one</option>
-                                        @foreach($item_levels as $level)
-                                            <option value="{{$level->id}}">{{$level->name}}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $item_levels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $level): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($level->id); ?>"><?php echo e($level->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <div class="invalid-feedback">This field is required.</div>
                                 </div>
@@ -118,12 +116,12 @@
                                     else{ $t0mnu ='Tag 0'; }
                                 ?>
                                 <div class="form-group">
-                                    <label for="question_category">{{$t0mnu}}</label>
+                                    <label for="question_category"><?php echo e($t0mnu); ?></label>
                                     <select name="question_category" id="question_category" class="form-control" >
                                         <option value="">Choose one</option>
-                                        @foreach($item_categories as $category)
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $item_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <div class="invalid-feedback">This field is required.</div>
                                 </div>
@@ -134,18 +132,18 @@
                                         { $t1mnu = DB::table('item_tag_maps')->where('tag', 'tag1')->value('name'); }
                                     else{ $t1mnu ='Tag 1'; }
                                 ?>
-                                @if(count($item_tag1)>0)
+                                <?php if(count($item_tag1)>0): ?>
                                 <div class="form-group">
-                                    <label for="question_tag1">{{$t1mnu}}</label>
+                                    <label for="question_tag1"><?php echo e($t1mnu); ?></label>
                                     <select name="question_tag1" id="question_tag1" class="form-control" >
                                         <option value="">Choose one</option>
-                                        @foreach($item_tag1 as $tag1)
-                                            <option value="{{$tag1->id}}">{{$tag1->name}}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $item_tag1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($tag1->id); ?>"><?php echo e($tag1->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <div class="invalid-feedback">This field is required.</div>
                                 </div>
-                                @endif
+                                <?php endif; ?>
 
                                 <?php
                                     $menu = DB::table('item_tag_maps')->where('tag', 'tag2')->count();
@@ -153,18 +151,18 @@
                                         { $t2mnu = DB::table('item_tag_maps')->where('tag', 'tag2')->value('name'); }
                                     else{ $t2mnu ='Tag 2'; }
                                 ?>
-                                @if(count($item_tag2)>0)
+                                <?php if(count($item_tag2)>0): ?>
                                 <div class="form-group">
-                                    <label for="question_tag2">{{$t2mnu}}</label>
+                                    <label for="question_tag2"><?php echo e($t2mnu); ?></label>
                                     <select name="question_tag2" id="question_tag2" class="form-control" >
                                         <option value="">Choose one</option>
-                                        @foreach($item_tag2 as $tag2)
-                                            <option value="{{$tag2->id}}">{{$tag2->name}}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $item_tag2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($tag2->id); ?>"><?php echo e($tag2->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <div class="invalid-feedback">This field is required.</div>
                                 </div>
-                                @endif
+                                <?php endif; ?>
 
                                 <?php
                                     $menu = DB::table('item_tag_maps')->where('tag', 'tag3')->count();
@@ -172,18 +170,18 @@
                                         { $t3mnu = DB::table('item_tag_maps')->where('tag', 'tag3')->value('name'); }
                                     else{ $t3mnu ='Tag 3'; }
                                 ?>
-                                @if(count($item_tag3)>0)
+                                <?php if(count($item_tag3)>0): ?>
                                 <div class="form-group">
-                                    <label for="question_tag3">{{$t3mnu}}</label>
+                                    <label for="question_tag3"><?php echo e($t3mnu); ?></label>
                                     <select name="question_tag3" id="question_tag3" class="form-control" >
                                         <option value="">Choose one</option>
-                                        @foreach($item_tag3 as $tag3)
-                                            <option value="{{$tag3->id}}">{{$tag3->name}}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $item_tag3; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag3): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($tag3->id); ?>"><?php echo e($tag3->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <div class="invalid-feedback">This field is required.</div>
                                 </div>
-                                @endif
+                                <?php endif; ?>
 
                                 <?php
                                     $menu = DB::table('item_tag_maps')->where('tag', 'tag4')->count();
@@ -191,18 +189,18 @@
                                         { $t4mnu = DB::table('item_tag_maps')->where('tag', 'tag4')->value('name'); }
                                     else{ $t4mnu ='Tag 4'; }
                                 ?>
-                                @if(count($item_tag4)>0)
+                                <?php if(count($item_tag4)>0): ?>
                                 <div class="form-group">
-                                    <label for="question_tag4">{{$t4mnu}}</label>
+                                    <label for="question_tag4"><?php echo e($t4mnu); ?></label>
                                     <select name="question_tag4" id="question_tag4" class="form-control" >
                                         <option value="">Choose one</option>
-                                        @foreach($item_tag4 as $tag4)
-                                            <option value="{{$tag4->id}}">{{$tag4->name}}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $item_tag4; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag4): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($tag4->id); ?>"><?php echo e($tag4->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <div class="invalid-feedback">This field is required.</div>
                                 </div>
-                                @endif
+                                <?php endif; ?>
 
                                 <?php
                                     $menu = DB::table('item_tag_maps')->where('tag', 'tag5')->count();
@@ -210,18 +208,18 @@
                                         { $t5mnu = DB::table('item_tag_maps')->where('tag', 'tag5')->value('name'); }
                                     else{ $t5mnu ='Tag 5'; }
                                 ?>
-                                @if(count($item_tag5)>0)
+                                <?php if(count($item_tag5)>0): ?>
                                 <div class="form-group">
-                                    <label for="question_tag5">{{$t5mnu}}</label>
+                                    <label for="question_tag5"><?php echo e($t5mnu); ?></label>
                                     <select name="question_tag5" id="question_tag5" class="form-control" >
                                         <option value="">Choose one</option>
-                                        @foreach($item_tag5 as $tag5)
-                                            <option value="{{$tag5->id}}">{{$tag5->name}}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $item_tag5; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag5): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($tag5->id); ?>"><?php echo e($tag5->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <div class="invalid-feedback">This field is required.</div>
                                 </div>
-                                @endif
+                                <?php endif; ?>
 
                                 <?php
                                     $menu = DB::table('item_tag_maps')->where('tag', 'tag6')->count();
@@ -229,18 +227,18 @@
                                         { $t6mnu = DB::table('item_tag_maps')->where('tag', 'tag6')->value('name'); }
                                     else{ $t6mnu ='Tag 6'; }
                                 ?>
-                                @if(count($item_tag6)>0)
+                                <?php if(count($item_tag6)>0): ?>
                                 <div class="form-group">
-                                    <label for="question_tag6">{{$t6mnu}}</label>
+                                    <label for="question_tag6"><?php echo e($t6mnu); ?></label>
                                     <select name="question_tag6" id="question_tag6" class="form-control" >
                                         <option value="">Choose one</option>
-                                        @foreach($item_tag6 as $tag6)
-                                            <option value="{{$tag6->id}}">{{$tag6->name}}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $item_tag6; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag6): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($tag6->id); ?>"><?php echo e($tag6->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <div class="invalid-feedback">This field is required.</div>
                                 </div>
-                                @endif
+                                <?php endif; ?>
 
                                 <?php
                                     $menu = DB::table('item_tag_maps')->where('tag', 'tag7')->count();
@@ -248,18 +246,18 @@
                                         { $t7mnu = DB::table('item_tag_maps')->where('tag', 'tag7')->value('name'); }
                                     else{ $t7mnu ='Tag 7'; }
                                 ?>
-                                @if(count($item_tag7)>0)
+                                <?php if(count($item_tag7)>0): ?>
                                 <div class="form-group">
-                                    <label for="question_tag7">{{$t7mnu}}</label>
+                                    <label for="question_tag7"><?php echo e($t7mnu); ?></label>
                                     <select name="question_tag7" id="question_tag7" class="form-control" >
                                         <option value="">Choose one</option>
-                                        @foreach($item_tag7 as $tag7)
-                                            <option value="{{$tag7->id}}">{{$tag7->name}}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $item_tag7; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag7): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($tag7->id); ?>"><?php echo e($tag7->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <div class="invalid-feedback">This field is required.</div>
                                 </div>
-                                @endif
+                                <?php endif; ?>
 
                                 <div class="form-group">
                                     <label for="top_text">Top Text</label>
@@ -302,7 +300,7 @@
                                     <div class="form-group">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
                                             <div class="fileinput-new thumbnail">
-                                                <img src="{{ asset('assets/img/authors/no_avatar.jpg') }}" alt="..." class="img-responsive" style="width: 400px; height: 175px;"/>
+                                                <img src="<?php echo e(asset('assets/img/authors/no_avatar.jpg')); ?>" alt="..." class="img-responsive" style="width: 400px; height: 175px;"/>
                                             </div>
                                             <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 400px; max-height: 175px;"></div>
                                             <div>
@@ -365,7 +363,7 @@
                                                         <label for="sub_question">Sub Item</label>
                                                         <div class="fileinput fileinput-new" data-provides="fileinput">
                                                             <div class="fileinput-new thumbnail">
-                                                                <img src="{{ asset('assets/img/authors/no_avatar.jpg') }}" alt="..." class="img-responsive" style="width: 180px; height: 100px;"/>
+                                                                <img src="<?php echo e(asset('assets/img/authors/no_avatar.jpg')); ?>" alt="..." class="img-responsive" style="width: 180px; height: 100px;"/>
                                                             </div>
                                                             <div class="fileinput-preview fileinput-exists thumbnail" style="width: 80px; height: 80px;"></div>
                                                             <div>
@@ -432,7 +430,7 @@
                                                         <div class="form-group">
                                                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                                                 <div class="fileinput-new thumbnail">
-                                                                    <img src="{{ asset('assets/img/authors/no_avatar.jpg') }}" alt="..." class="img-responsive" style="width: 80px; height: 80px;"/>
+                                                                    <img src="<?php echo e(asset('assets/img/authors/no_avatar.jpg')); ?>" alt="..." class="img-responsive" style="width: 80px; height: 80px;"/>
                                                                 </div>
                                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="width: 80px; height: 80px;"></div>
                                                                 <div>
@@ -508,7 +506,7 @@
                                             <div class="form-group">
                                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                                     <div class="fileinput-new thumbnail">
-                                                        <img src="{{ asset('assets/img/authors/no_avatar.jpg') }}" alt="..." class="img-responsive" style="width: 80px; height: 80px;"/>
+                                                        <img src="<?php echo e(asset('assets/img/authors/no_avatar.jpg')); ?>" alt="..." class="img-responsive" style="width: 80px; height: 80px;"/>
                                                     </div>
                                                     <div class="fileinput-preview fileinput-exists thumbnail" style="width: 80px; height: 80px;"></div>
                                                     <div>
@@ -551,9 +549,9 @@
                                     <label for="publish_test">Item Status</label>
                                     <select name="publish_test" id="publish_test" class="form-control item_status" required>
                                         <option value="">Choose one</option>
-                                        @foreach ($item_statuses as $item_status)
-                                        <option value="{{ $item_status->id }}">{{ $item_status->item_status }}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $item_statuses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_status): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($item_status->id); ?>"><?php echo e($item_status->item_status); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <div class="invalid-feedback">This field is required.</div>
                                 </div>
@@ -568,16 +566,16 @@
         <!--/row-->
     </section>
 
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- page level scripts --}}
-@section('footer_scripts')
-    <script src="{{asset('assets/js/jasny-bootstrap.js')}}"></script>
-    <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
-    <script src="{{asset('js/jequery-validation.js')}}"></script>
-    <script src="{{ asset('js/create-new-item.js') }}"></script>
-    <script src="{{ asset('assets/tinymce/tinymce.min.js') }}"></script>
-    {{--<script src="{{ asset('js/create-item-validation.js') }}"></script>--}}
+
+<?php $__env->startSection('footer_scripts'); ?>
+    <script src="<?php echo e(asset('assets/js/jasny-bootstrap.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/toastr.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/jequery-validation.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/create-new-item.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/tinymce/tinymce.min.js')); ?>"></script>
+    
     
 
     <script>
@@ -602,13 +600,13 @@
 
     <script>
         $(document).ready(function(){
-            @if (session('success') == 'success')
-            toastr.success('{{ session("success") }}', 'Success', {timeOut: 5000});
-            @endif
+            <?php if(session('success') == 'success'): ?>
+            toastr.success('<?php echo e(session("success")); ?>', 'Success', {timeOut: 5000});
+            <?php endif; ?>
 
-            @if (session('msgType') == 'danger')
-            toastr.warning('{{ session("messege") }}', 'Warning', {timeOut: 5000});
-            @endif
+            <?php if(session('msgType') == 'danger'): ?>
+            toastr.warning('<?php echo e(session("messege")); ?>', 'Warning', {timeOut: 5000});
+            <?php endif; ?>
         });
     </script>
 
@@ -660,4 +658,6 @@
         });
     </script>
 
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/create_new_item.blade.php ENDPATH**/ ?>
