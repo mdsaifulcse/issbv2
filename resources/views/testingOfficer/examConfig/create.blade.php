@@ -52,7 +52,7 @@
                                 <div class="row">
                                     <div class="form-group">
                                         <label class="control-label col-lg-3" for="test_config_id">Select Test</label>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <select name="test_config_id" id="test_config_id" class="form-control" required>
                                                 <option value="">Select Test</option>
                                                 @foreach ($testConfigs as $test)
@@ -65,14 +65,14 @@
                                 <div class="row">
                                     <div class="form-group">
                                         <label class="control-label col-lg-3">Test Date</label>
-                                        <div class="col-lg-6">
-                                            <input type="date" class="form-control" name="exam_date" required="">
+                                        <div class="col-lg-4">
+                                            <input type="date" class="form-control" name="exam_date" required="" value="{{date('Y-m-d')}}">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row text-right">
-                                    <div class="col-md-9 offset-md-3">
+                                    <div class="col-md-7 offset-md-3">
                                         <button type="submit" class="btn btn-primary">Generate Question <i class="icon-arrow-right14 position-right"></i></button>
                                         <a href="{{route('examConfig.index')."?test_for=$request->test_for"}}" class="btn btn-default">Back To List <i class="icon-backward2 position-right"></i></a>
                                     </div>

@@ -62,6 +62,15 @@ class ExamConfigController extends Controller
             $test=TestList::find($request->test_for);
         }
         $testConfigs = $testConfigs->get();
+        $activeBoard = BoardCandidate::where('status', 1)->first();
+
+        if (!empty($activeBoard) && count($testConfigs)>0){
+
+            foreach ($testConfigs as $testConfig){
+                $testConfig['test_name']=$activeBoard->board_name.$testConfig->test_name;
+            }
+
+        }
 
 
 //        $examConfigs = ExamConfig::join('test_config', 'test_config.id', '=', 'exam_configs.test_config_id')
