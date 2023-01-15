@@ -30,8 +30,25 @@ class ExamScheduleController extends Controller
     }
     public function examInstruction(Request $request)
     {
+
         $data['examId'] = $request->examId;
         $examConfig = ExamConfig::find($request->examId);
+
+        if($request->prestart==1){
+
+            // Make Prestart exam Upcoming before making another exam running
+            $preStartExam=ExamConfig::where(['exam_status'=>4,'preview_status'=>1,'status'=>1])->first();
+            if (!empty($preStartExam)){
+                $preStartExam->update([
+                    'exam_status' => 0, // Upcoming -------
+                    'updated_at'  => date('Y-m-d H:i:s'),
+                    'updated_by'  => Auth::id()]);
+            }
+
+        }
+
+
+
         $data['configInstruction'] = $configInstruction = ConfigInstruction::where('test_config_id', $examConfig->test_config_id)->first();
         if (!empty($configInstruction)) {
             $examConfig->update([
@@ -152,6 +169,7 @@ class ExamScheduleController extends Controller
     }
     public function examDemoFinish(Request $request)
     {
+        $examConfig=ExamConfig::find($request->examId);
         $data['examId'] = $request->examId;
         $activeBoard = BoardCandidate::where('status', 1)->first();
         $data['total_candidate'] = $activeBoard->total_candidate;
@@ -168,9 +186,9 @@ class ExamScheduleController extends Controller
         $currentTime        = $time->format('H:i:s');
 
         // Make Running exam complete before making another exam running
-        $runningExam=ExamConfig::where(['exam_status'=>1,'status'=>1])->first();
+        $runningExam=ExamConfig::where(['exam_status'=>1,'preview_status'=>1,'status'=>1])->first();
         if (!empty($runningExam)){
-            $runningExam->update(['exam_status' => 2,
+            $runningExam->update(['exam_status' => 2, //  Complete ----
                 'updated_at'  => date('Y-m-d H:i:s'),
                 'updated_by'  => Auth::id()]); // 2= Complete
         }

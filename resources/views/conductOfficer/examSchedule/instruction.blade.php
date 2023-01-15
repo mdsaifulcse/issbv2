@@ -110,7 +110,6 @@
                     mimeType: 'text/html; charset=utf-8', // ! Need set mimeType only when run from local file
                     url: "{{ route('nextInstruction') }}",
                     data: {'examId': examId, 'instrucId': instrucId},
-                    type: "GET",
                     dataType: "json",
                     success: function (response) {
                         console.log(response)
