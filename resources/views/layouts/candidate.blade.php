@@ -135,6 +135,22 @@
     <!-- end of global js -->
     <!-- begin page level js -->
     @show
+    <script>
+
+        setInterval(function () {
+            $.ajax({
+                url : '{{route("candidate.tractCandidateLastAction")}}',
+                data: '',
+                type: 'GET',
+                dataType: "json",
+                success: function(response)
+                {
+                    console.log(response)
+                }
+            });
+        },10000)
+
+    </script>
 
 </body>
 

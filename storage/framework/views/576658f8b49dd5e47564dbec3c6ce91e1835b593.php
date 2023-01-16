@@ -176,21 +176,7 @@
         </ul>
     </li>
 
-    <li class="">
-        <a href="#">
-            <i class="livicon" data-name="doc-portrait" data-size="18" data-c="#EF6F6C" data-hc="#EF6F6C"
-            data-loop="true"></i>
-            Result Config
-        </a>
-    </li>
-
-    <li class="">
-        <a href="#">
-            <i class="livicon" data-name="doc-portrait" data-size="18" data-c="#EF6F6C" data-hc="#EF6F6C"
-            data-loop="true"></i>
-            Practice Set Config
-        </a>
-    </li>
+    
 
     <li>
         <a href="#">
@@ -276,7 +262,13 @@
             </li>
         </ul>
     </li>
-
+    <li class="">
+            <a href="#">
+                <i class="livicon" data-name="doc-portrait" data-size="18" data-c="#EF6F6C" data-hc="#EF6F6C"
+                data-loop="true"></i>
+                Practice Set Config
+            </a>
+        </li>
     <li>
         <a href="#">
             <i class="livicon" data-name="settings" data-c="#67C5DF" data-hc="#67C5DF" data-size="18" data-loop="true"></i>
@@ -304,6 +296,13 @@
                 </a>
             </li>
         </ul>
+    </li>
+    <li class="">
+        <a href="#">
+            <i class="livicon" data-name="doc-portrait" data-size="18" data-c="#EF6F6C" data-hc="#EF6F6C"
+            data-loop="true"></i>
+            Result Config
+        </a>
     </li>
 
     <!-- <li>

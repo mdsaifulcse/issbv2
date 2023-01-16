@@ -15,6 +15,7 @@
 
     <div class="breadcrumb-line"></div>
 </div>
+    @endsection
 
 
 
