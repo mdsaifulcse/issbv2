@@ -38,6 +38,7 @@
                     <h2 class="text-center">Ready to launch Assessment</h2>
                     <hr>
                     <div class="text-center" style="margin-top: 20px; margin-bottom: 100px;">
+                        {{--<a class="btn btn-lg btn-primary" href="{{route('startMainExam', ['examId' => $examId])}}" role="button" target="_blank">Start Assessment</a>--}}
                         @if($total_candidate==$total_live)
                         <a class="btn btn-lg btn-primary" href="{{route('startMainExam', ['examId' => $examId])}}" role="button" target="_blank">Start Assessment</a>
                             @else

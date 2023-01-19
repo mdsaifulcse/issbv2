@@ -41,14 +41,13 @@
                         {{--</h3>--}}
                     {{--</div>--}}
                 {{--</div>--}}
-                <div class="panel-body" style="margin-bottom: 150px;">
-                    <h3 class="text-center" style="font-size: 20px">On Going Assessment</h3>
-                    <h2 class="text-center" style="font-size: 25px">{{$exam_name}}</h2>
-                    <hr>
+                <div class="panel-body" style="margin-bottom: 10px;padding: 5px">
+                    <h3 class="text-center" style="font-size: 20px;margin: 0px;">On Going Assessment</h3>
+                    <h2 class="text-center" style="font-size: 25px;margin: 0px;">{{$exam_name}}</h2>
 
-                    <h2 class="text-center" style="font-size: 20px; color: red;">Time Remaining</h2>
-                    <h2 class="text-center">
-                        <div id="examTimeCountDown" style="font-size: 72px;"></div>
+                    <h2 class="text-center" style="font-size: 20px; color: red;margin: 0px;">Time Remaining</h2>
+                    <h2 class="text-center" style="margin:5px;">
+                        <div id="examTimeCountDown" style="font-size: 52px;"></div>
                         <input type="hidden" id="current_time" name="current_time" value="" />
                         <input type="hidden" class="exam_id" name="exam_id" value="{{$examId}}">
 
@@ -58,6 +57,7 @@
                         <a class="btn btn-lg btn-primary" href="{{route('completeMainExam', ['examId' => $examId])}}" role="button">Complete Assessment</a>
                     </div> --}}
                 </div>
+                <iframe width="100%" height="800px" src="{{url('ifream-stdSeatPlan')}}"></iframe>
             </div>
         </div>
 

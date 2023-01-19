@@ -418,6 +418,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // CONDUCTING OFFICER
     Route::get('/stdSeatPlan', 'StdSeatPlanController@index')->name('stdSeatPlan');
+    Route::get('/ifream-stdSeatPlan', 'StdSeatPlanController@ifreamStdSeatPlan');
     Route::get('/examScheduleList', 'ExamScheduleController@index')->name('examScheduleList');
     Route::get('/examInstruction', 'ExamScheduleController@examInstruction')->name('examInstruction');
     Route::get('/nextInstruction', 'ExamScheduleController@nextInstruction')->name('nextInstruction');
