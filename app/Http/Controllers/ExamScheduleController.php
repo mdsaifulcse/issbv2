@@ -31,7 +31,7 @@ class ExamScheduleController extends Controller
     public function examInstruction(Request $request)
     {
 
-        $data['examId'] = $request->examId;
+         $data['examId'] = $request->examId;
         $examConfig = ExamConfig::find($request->examId);
 
         if($request->prestart==1){
@@ -47,10 +47,16 @@ class ExamScheduleController extends Controller
 
         }
 
+        // find instruction which candidate can see
+        $instruction = ConfigInstruction::where(['test_config_id'=>$examConfig->test_config_id,'can_candidate_see'=>1])->orderBy('sequence','ASC')->latest()->first();
 
 
-        $data['configInstruction'] = $configInstruction = ConfigInstruction::where('test_config_id', $examConfig->test_config_id)->first();
+        // find instruction to make it visible to candidate ------
+        $data['configInstruction'] = $configInstruction = ConfigInstruction::where(['test_config_id'=>$examConfig->test_config_id,'can_candidate_see'=>0])->orderBy('sequence','ASC')->latest()->first();
         if (!empty($configInstruction)) {
+            // Make candidate see ---------------------
+            $configInstruction->update(['can_candidate_see'=>1,'updated_by'  => Auth::id(),'updated_at'=>date('Y-m-d H:i:s')]);
+            // make exam config prestart state --------
             $examConfig->update([
                 'exam_status' => 4, // 4= PreStart
                 'updated_at'  => date('Y-m-d H:i:s'),
@@ -69,6 +75,10 @@ class ExamScheduleController extends Controller
                 $data['instructionEndStatus']  = 1;
             }
         }
+        //  make it invisible to candidate ------
+        if (!empty($instruction)){
+            $instruction->update(['can_candidate_see'=>0,'updated_by'  => Auth::id(),'updated_at'=>date('Y-m-d H:i:s')]);
+        }
         return view('conductOfficer.examSchedule.instruction', $data);
     }
     public function nextInstruction(Request $request)
@@ -78,10 +88,18 @@ class ExamScheduleController extends Controller
         $instrucId = $request->instrucId;
         $examConfig = ExamConfig::find($request->examId);
 
-        $configInstruction = ConfigInstruction::where('test_config_id', $examConfig->test_config_id)
+        // find instruction which candidate can see
+        $instruction = ConfigInstruction::where(['test_config_id'=>$examConfig->test_config_id,'can_candidate_see'=>1])->orderBy('sequence','ASC')->latest()->first();
+
+
+        $configInstruction = ConfigInstruction::where(['test_config_id'=>$examConfig->test_config_id,'can_candidate_see'=>0])
             ->where('id', '>', $instrucId)
             ->orderBy('id', 'ASC')
             ->first();
+        if (!empty($configInstruction)){
+
+            $configInstruction->update(['can_candidate_see'=>1,'updated_by'  => Auth::id(),'updated_at'=>date('Y-m-d H:i:s')]);
+        }
 
         $data['instrucId']  = $configInstruction->id;
         $data['text']  = $configInstruction->text;
@@ -102,6 +120,11 @@ class ExamScheduleController extends Controller
             //     'updated_at'  => date('Y-m-d H:i:s'),
             //     'updated_by'  => Auth::id(),
             // ]);
+        }
+
+        //  make it invisible to candidate ------
+        if (!empty($instruction)){
+            $instruction->update(['can_candidate_see'=>0,'updated_by'  => Auth::id(),'updated_at'=>date('Y-m-d H:i:s')]);
         }
         return response()->json($data);
     }

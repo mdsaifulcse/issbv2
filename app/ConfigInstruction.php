@@ -13,7 +13,7 @@ class ConfigInstruction extends Model
     const START='Start';
 
     protected $table = 'test_config_instructions';
-    protected $fillable = ['id', 'test_config_id', 'text', 'image','instruction_type', 'created_by', 'created_at','updated_at', 'updated_by', 'deleted_at', 'deleted_by'];
+    protected $fillable = ['id', 'test_config_id', 'text', 'image','instruction_type','sequence','can_candidate_see', 'created_by', 'created_at','updated_at', 'updated_by', 'deleted_at', 'deleted_by'];
 
     static public function instructionTypes(){
         return [
@@ -25,4 +25,13 @@ class ConfigInstruction extends Model
         ];
     }
 
+    static public function typeSerial(){
+        return [
+            'Login'=>1,
+            'Test'=>2,
+            'Practice'=>3,
+            'General'=>4,
+            'Start'=>5,
+        ];
+    }
 }

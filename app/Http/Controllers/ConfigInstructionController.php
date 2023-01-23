@@ -17,9 +17,9 @@ class ConfigInstructionController extends Controller
     {
         $data['instructionTypes']= ConfigInstruction::instructionTypes();
         $data['configId'] = $configId = $request->configId;
-        $data['configInstructions'] = ConfigInstruction::where('test_config_id', $configId)->latest()->paginate(20);
+        $data['configInstructions'] = ConfigInstruction::where('test_config_id', $configId)->orderBy('sequence','ASC')->latest()->paginate(20);
         return view('configInstruction.listData', $data);
-        
+
     }
 
     /**
@@ -46,6 +46,7 @@ class ConfigInstructionController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
+            $sequence= ConfigInstruction::typeSerial();
             $file = $request->file('image');
             $file_name = time().'.'.$file->extension();
             $destinationPath = public_path('uploads/instruction/');
@@ -53,7 +54,8 @@ class ConfigInstructionController extends Controller
 
             $insert             = new ConfigInstruction();
             $insert->test_config_id       = $request->configId;
-            $insert->instruction_type       = $request->instruction_type;
+            $insert->instruction_type       =$request->instruction_type;
+            $insert->sequence       = $sequence[$request->instruction_type];
             $insert->text       = $request->text;
             $insert->image      = $file_name;
             $insert->created_by = Auth::id(); // 1=Active
