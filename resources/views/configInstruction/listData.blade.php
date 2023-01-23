@@ -101,19 +101,31 @@
                                 <form action="{{route('configInstruction.store',['configId'=>$configId])}}" method="post" enctype="multipart/form-data" class="needs-validation form-horizontal">
                                     @csrf
                                     <div class="row">
+                                        <div class="col-lg-2">
+                                            <div class="form-group">
 
-                                        <div class="col-lg-5">
+                                                <select name="instruction_type" id="instructionTypes" class="form-control" required>
+                                                    <option value="">Choose one</option>
+                                                    @foreach($instructionTypes as $value)
+                                                        <option value="{{ $value }}">{{ $value }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <label for="instructionTypes">Select Type</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
                                             <div class="">
-                                                <textarea class="form-control" name="text" id="" cols="10" rows="6" placeholder="Type Instruction here"></textarea>
+                                                <textarea class="form-control" name="text" id="" cols="10" rows="4" placeholder="Type Instruction here"></textarea>
                                             </div>
                                             <label class="control-label">Text</label>
                                         </div>
 
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                                 {{--<label class="control-label">File Input</label>--}}
                                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                                 <div class="fileinput-new thumbnail">
-                                                    <img src="{{ asset('assets/img/authors/no_avatar.jpg') }}" alt="..." class="img-responsive" style="width: 300px; height: 130px;"/>
+                                                    <img src="{{ asset('assets/img/authors/no_avatar.jpg') }}" alt="..." class="img-responsive" style="width: 300px; height: 90px;"/>
                                                 </div>
                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 130px;"></div>
 
@@ -127,10 +139,12 @@
 
                                                 <label id="image-error" class="error" for="image" hidden></label>
                                             </div>
-
                                         </div>
+
+
+
                                         <div class="col-lg-3">
-                                            <div class="text-left">
+                                            <div class="text-center">
                                                 <label class="control-label"></label>
                                                 <br>
                                                 <br>
@@ -170,6 +184,7 @@
                             <thead>
                             <tr>
                                 <th>Sl No</th>
+                                <th>Type</th>
                                 <th>Text</th>
                                 <th>Image</th>
                                 <th class="text-center">Action</th>
@@ -179,6 +194,7 @@
                             @foreach($configInstructions as $key => $instruction)
                             <tr>
                                 <td>{{ ++$key }}</td>
+                                <td>{{ $instruction->instruction_type?$instruction->instruction_type:"N/A" }}</td>
                                 <td>{{ $instruction->text }}</td>
                                 <td>
                                     {{-- <img height="44px" width="44px" src="{{ asset('uploads/instruction/'.$instruction->image) }}" alt=""> --}}
@@ -264,7 +280,7 @@
             },
             function () {
                 $.ajax({
-                    url: '/configInstruction/' + id,
+                    url:" {{url('configInstruction')}}"+"/" + id,
                     method: 'DELETE',
                     headers:
                     {

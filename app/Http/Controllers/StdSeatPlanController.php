@@ -36,7 +36,7 @@ class StdSeatPlanController extends Controller
             //return date('Y-m-d h:i:s',strtotime($candidateUpdatedTime));
             $differentTime=$candidateUpdatedTime->diffInSeconds($currentTime);
 
-            if ($differentTime>60){
+            if ($differentTime>30){
                 $loginCandidate->update(['is_logged_in'=>0,'seat_no'=>0,'exam_start'=>0]);
             }
         }
@@ -82,7 +82,7 @@ class StdSeatPlanController extends Controller
             //return date('Y-m-d h:i:s',strtotime($candidateUpdatedTime));
             $differentTime=$candidateUpdatedTime->diffInSeconds($currentTime);
 
-            if ($differentTime>60){
+            if ($differentTime>30){
                 $loginCandidate->update(['is_logged_in'=>0,'seat_no'=>0,'exam_start'=>0]);
             }
         }

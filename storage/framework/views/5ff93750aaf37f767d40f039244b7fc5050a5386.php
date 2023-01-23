@@ -355,7 +355,7 @@ ol {
         setInterval(function () {
             location.reload();
             console.log('conduct-seatplan')
-        },1000000)
+        },10000)
 
     </script>
     <?php $__env->stopSection(); ?>

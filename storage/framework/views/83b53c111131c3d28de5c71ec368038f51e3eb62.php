@@ -98,19 +98,31 @@
                                 <form action="<?php echo e(route('configInstruction.store',['configId'=>$configId])); ?>" method="post" enctype="multipart/form-data" class="needs-validation form-horizontal">
                                     <?php echo csrf_field(); ?>
                                     <div class="row">
+                                        <div class="col-lg-2">
+                                            <div class="form-group">
 
-                                        <div class="col-lg-5">
+                                                <select name="instruction_type" id="instructionTypes" class="form-control" required>
+                                                    <option value="">Choose one</option>
+                                                    <?php $__currentLoopData = $instructionTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <option value="<?php echo e($value); ?>"><?php echo e($value); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                </select>
+                                                <label for="instructionTypes">Select Type</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
                                             <div class="">
-                                                <textarea class="form-control" name="text" id="" cols="10" rows="6" placeholder="Type Instruction here"></textarea>
+                                                <textarea class="form-control" name="text" id="" cols="10" rows="4" placeholder="Type Instruction here"></textarea>
                                             </div>
                                             <label class="control-label">Text</label>
                                         </div>
 
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                                 
                                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                                 <div class="fileinput-new thumbnail">
-                                                    <img src="<?php echo e(asset('assets/img/authors/no_avatar.jpg')); ?>" alt="..." class="img-responsive" style="width: 300px; height: 130px;"/>
+                                                    <img src="<?php echo e(asset('assets/img/authors/no_avatar.jpg')); ?>" alt="..." class="img-responsive" style="width: 300px; height: 90px;"/>
                                                 </div>
                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 300px; max-height: 130px;"></div>
 
@@ -124,10 +136,12 @@
 
                                                 <label id="image-error" class="error" for="image" hidden></label>
                                             </div>
-
                                         </div>
+
+
+
                                         <div class="col-lg-3">
-                                            <div class="text-left">
+                                            <div class="text-center">
                                                 <label class="control-label"></label>
                                                 <br>
                                                 <br>
@@ -167,6 +181,7 @@
                             <thead>
                             <tr>
                                 <th>Sl No</th>
+                                <th>Type</th>
                                 <th>Text</th>
                                 <th>Image</th>
                                 <th class="text-center">Action</th>
@@ -176,6 +191,7 @@
                             <?php $__currentLoopData = $configInstructions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $instruction): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
                                 <td><?php echo e(++$key); ?></td>
+                                <td><?php echo e($instruction->instruction_type?$instruction->instruction_type:"N/A"); ?></td>
                                 <td><?php echo e($instruction->text); ?></td>
                                 <td>
                                     
@@ -262,7 +278,7 @@
             },
             function () {
                 $.ajax({
-                    url: '/configInstruction/' + id,
+                    url:" <?php echo e(url('configInstruction')); ?>"+"/" + id,
                     method: 'DELETE',
                     headers:
                     {

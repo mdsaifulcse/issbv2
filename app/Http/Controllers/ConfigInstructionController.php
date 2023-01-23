@@ -15,9 +15,11 @@ class ConfigInstructionController extends Controller
      */
     public function index(Request $request)
     {
+        $data['instructionTypes']= ConfigInstruction::instructionTypes();
         $data['configId'] = $configId = $request->configId;
-        $data['configInstructions'] = ConfigInstruction::where('test_config_id', $configId)->paginate(15);
+        $data['configInstructions'] = ConfigInstruction::where('test_config_id', $configId)->latest()->paginate(20);
         return view('configInstruction.listData', $data);
+        
     }
 
     /**
@@ -51,6 +53,7 @@ class ConfigInstructionController extends Controller
 
             $insert             = new ConfigInstruction();
             $insert->test_config_id       = $request->configId;
+            $insert->instruction_type       = $request->instruction_type;
             $insert->text       = $request->text;
             $insert->image      = $file_name;
             $insert->created_by = Auth::id(); // 1=Active
