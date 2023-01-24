@@ -35,16 +35,14 @@ class ExamScheduleController extends Controller
         $examConfig = ExamConfig::find($request->examId);
 
         if($request->prestart==1){
-
-            // Make Prestart exam Upcoming before making another exam running
+            // Make Prestart exam Upcoming before making another exam running----------------------------
             $preStartExam=ExamConfig::where(['exam_status'=>4,'preview_status'=>1,'status'=>1])->first();
             if (!empty($preStartExam)){
                 $preStartExam->update([
-                    'exam_status' => 0, // Upcoming -------
+                    'exam_status' => 0, // Upcoming ----------
                     'updated_at'  => date('Y-m-d H:i:s'),
                     'updated_by'  => Auth::id()]);
             }
-
         }
 
         // find instruction which candidate can see
@@ -131,9 +129,16 @@ class ExamScheduleController extends Controller
 
     public function examDemoItemPreview(Request $request)
     {
-        $data['examId'] = $request->examId;
-
         $examConfig = ExamConfig::with('testConfig')->find($request->examId);
+        // Find visible instruction and make it invisible to candidate -------
+        $instruction = ConfigInstruction::where(['test_config_id'=>$examConfig->test_config_id,'can_candidate_see'=>1])->first();
+
+        if (!empty($instruction)){
+            $instruction->update(['can_candidate_see'=>0,'updated_by'  => Auth::id(),'updated_at'=>date('Y-m-d H:i:s')]);
+        }
+
+
+        $data['examId'] = $request->examId;
 
         $itemFor=$examConfig->testConfig?$examConfig->testConfig->test_for:null;
 

@@ -227,19 +227,17 @@ class CandidateExamController extends Controller
         $examConfigDetails          = ExamConfig::find($examId);
 
         $candidateExamInfo          = CandidateExam::where('candidate_id', $authId)->where('exam_config_id', $examConfigDetails->id)
-           //->where('exam_date', $examConfigDetails->exam_date)
            ->latest()->first(); // latest() added by Md.Saiful Islam
-        $data['configInstruction']  = $configInstruction= ConfigInstruction::where('test_config_id', $examConfigDetails->test_config_id)->first();
+        $data['configInstruction']  = $configInstruction= ConfigInstruction::where(['test_config_id'=>$examConfigDetails->test_config_id,'can_candidate_see'=>1])->first();
 
         // FOR CHECKING NEXT INSTRUCTION
-        $isNextConfigInstruction = ConfigInstruction::where('test_config_id', $examConfigDetails->test_config_id)
-            ->where('id', '>', $configInstruction->id)
-            ->orderBy('id', 'ASC')
-            ->count();
-            // dd($isNextConfigInstruction);
+//        $isNextConfigInstruction = ConfigInstruction::where(['test_config_id'=>$examConfigDetails->test_config_id])
+//            ->where('id', '>', $configInstruction->id)
+//            ->orderBy('id', 'ASC')
+//            ->count();
 
             if ($authBoard != 'preview') {
-                if ($isNextConfigInstruction == 0) {
+                if (empty($configInstruction)) {
                     $data['instructionEndStatus']  = 0;
                 } else {
                     $data['instructionEndStatus']  = 1;
@@ -249,21 +247,30 @@ class CandidateExamController extends Controller
             }
 
         if($candidateExamInfo){
-
-            if ($candidateExamInfo->instruction_seen_status==0) {
-                 $candidateExamInfo->update(['instruction_seen_status' => 1]);
+            if (!empty($configInstruction)) {
 
                 return view('candidates.intructionDemoExam.instruction', $data);
-            } elseif ($candidateExamInfo->instruction_seen_status==1 && $candidateExamInfo->demo_exam_status==0) {
+            } else {
+                $candidateExamInfo->update(['instruction_seen_status' => 1]);
 
                return redirect( route('candidate.examDemoItemPreview', ['examId'=>$examId]));
-                return view('candidates.intructionDemoExam.demo_item_preview', $data);
-            } else {
-                $output['messege'] = 'Exam has been start';
-                $output['msgType'] = 'success';
-
-                return view('candidates.intructionDemoExam.startMainExam', $output);
+               //return view('candidates.intructionDemoExam.demo_item_preview', $data);
             }
+
+//            if (!empty($configInstruction)) {
+//
+//                return view('candidates.intructionDemoExam.instruction', $data);
+//            } elseif ($candidateExamInfo->instruction_seen_status==0 && $candidateExamInfo->demo_exam_status==0) {
+//                $candidateExamInfo->update(['instruction_seen_status' => 1]);
+//
+//               return redirect( route('candidate.examDemoItemPreview', ['examId'=>$examId]));
+//               //return view('candidates.intructionDemoExam.demo_item_preview', $data);
+//            } else {
+//                $output['messege'] = 'Exam has been start';
+//                $output['msgType'] = 'success';
+//
+//                return view('candidates.intructionDemoExam.startMainExam', $output);
+//            }
 
         } else {
             self::examConfigStartFun($examConfigDetails, $step_id);

@@ -48,7 +48,7 @@
                         </h2>
                     @else
                         @if ($candidateExamInfo->instruction_seen_status == 0)
-                            <a class="btn btn-default btn-sm mt-10" href="{{ route('candidate.examInstruction', ['examId'=>$configuredExam->id,'step_id'=>'']) }}" style="padding: 5%;">Instruction & Demo 1<i class="icon-play3 position-right"></i></a>
+                            <a class="btn btn-default btn-sm mt-10" href="{{ route('candidate.examInstruction', ['examId'=>$configuredExam->id,'step_id'=>'']) }}" style="padding: 5%;">Instruction & Demo <i class="icon-play3 position-right"></i></a>
                         @elseif($candidateExamInfo->instruction_seen_status == 1 && $candidateExamInfo->demo_exam_status == 0)
                             <a class="btn btn-default btn-sm mt-10" href="{{ route('candidate.examDemoItemPreview', ['examId'=>$configuredExam->id]) }}" style="padding: 5%;">Demo Assessment<i class="icon-play3 position-right"></i></a>
                         @elseif($configuredExam->exam_status == 1)

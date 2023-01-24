@@ -42,7 +42,7 @@
                                 <div class="text-center"><h4>Loading...</h4><div class="loader"></div></div>
                             </div>
                             <div class="inst_content">
-                                <p class="instruction-text">{{$configInstruction->text?$configInstruction->text:''}}</p>
+                                <p class="instruction-text"> {{$configInstruction->text?$configInstruction->text:''}}</p>
                                 <hr>
                                 <img src="{{ asset('uploads/instruction/'.$configInstruction->image) }}" alt="" class="instruction-image img-fluid img-thumbnail center-block" height="auto" width="50%">
                                 <input type="hidden" name="" id="instrucId" value="{{$configInstruction->id}}">
@@ -50,9 +50,12 @@
                         </div>
                         <div class="action-btn">
                             @if ($instructionEndStatus == 0)
-                                <a class="btn btn-lg btn-primary pull-right" href="{{route('candidate.examDemoQOne', ['examId'=>$examId])}}" role="button">Next</a>
+                                {{--<a class="btn btn-lg btn-primary pull-right" href="{{route('candidate.examDemoQOne', ['examId'=>$examId])}}" role="button">Next</a>--}}
+                                <a class="btn btn-lg btn-primary pull-right" href="{{route('candidate.examDemoItemPreview', ['examId'=>$examId])}}" role="button">Next</a>
                             @else
-                                <button class="btn btn-lg btn-primary pull-right" id="nextInst" examId="{{$examId}}" role="button">Next</button>
+                                {{--<button class="btn btn-lg btn-primary pull-right" id="nextInst" examId="{{$examId}}" role="button">Next</button>--}}
+                                {{--<button class="btn btn-lg btn-primary pull-right" id="nextInst" examId="{{$examId}}" role="button">Next</button>--}}
+                                <a href="{{ route('candidate.examInstruction', ['examId'=>$examId]) }}" class="btn btn-lg btn-primary pull-right">Next</a>
                             @endif
                         </div>
 
