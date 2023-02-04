@@ -2866,7 +2866,6 @@ class AdminController extends Controller
 
     public function testConfig()
     {
-        return 'sdf';
         // $test_config = TestConfiguration::select('test_for')->get();
         // foreach ($test_config as $config) {
         //     $test_for[] = $config->test_for;
@@ -3118,6 +3117,7 @@ class AdminController extends Controller
         foreach ($test_groups as $key => $value) {
             $explode_test_config_id[] = explode('||', $value->test_config_id);
         }
+
         if (isset($explode_test_config_id)) {
             $merged_test_config_id = array_merge(...$explode_test_config_id);
             $unique_test_config_id = array_unique($merged_test_config_id);
