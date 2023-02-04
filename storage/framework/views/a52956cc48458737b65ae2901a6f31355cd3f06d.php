@@ -1,21 +1,18 @@
-@extends('admin/layouts/default')
-
-{{-- Page title --}}
-@section('title')
+<?php $__env->startSection('title'); ?>
     Test Group
-    @parent
-@stop
+    ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
+<?php $__env->stopSection(); ?>
 
-{{-- page level styles --}}
-@section('header_styles')
+
+<?php $__env->startSection('header_styles'); ?>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
 
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/vendors/select2/css/select2.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/vendors/select2/css/select2-bootstrap.css') }}" rel="stylesheet" />
+    <link href="<?php echo e(asset('assets/vendors/select2/css/select2.min.css')); ?>" rel="stylesheet" />
+    <link href="<?php echo e(asset('assets/vendors/select2/css/select2-bootstrap.css')); ?>" rel="stylesheet" />
     <style>
         .pagination {
             float: right;
@@ -24,10 +21,10 @@
              text-transform: lowercase;
          }
     </style>
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- Page content --}}
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <section class="content-header">
         <!--section starts-->
         <h1>Test Group</h1>
@@ -52,43 +49,43 @@
                         <div class="row">
                             <div class="col-md-6 col-md-offset-3">
                                 <form id="create_test_group">
-                                    @foreach($test_groups as $groups)
-                                        @if($groups->groups == 1)
+                                    <?php $__currentLoopData = $test_groups; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $groups): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php if($groups->groups == 1): ?>
                                             <?php $intelligence_test = 1;?>
-                                        @endif
-                                        @if($groups->groups == 2)
+                                        <?php endif; ?>
+                                        <?php if($groups->groups == 2): ?>
                                             <?php $personality_test = 1;?>
-                                        @endif
-                                        @if($groups->groups == 3)
+                                        <?php endif; ?>
+                                        <?php if($groups->groups == 3): ?>
                                             <?php $psym_test = 1;?>
-                                        @endif
-                                    @endforeach
+                                        <?php endif; ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     <div class="form-group">
                                         <label for="test_group">Test Group</label>
                                         <select name="test_group"  id="test_group" class="form-control" required>
                                             <option value="">Choose one</option>
-                                            @if(!isset($intelligence_test))
+                                            <?php if(!isset($intelligence_test)): ?>
                                                 <option value="1">Intelligence Test</option>
-                                            @endif
-                                            @if(!isset($personality_test))
+                                            <?php endif; ?>
+                                            <?php if(!isset($personality_test)): ?>
                                                 <option value="2">Personality Test</option>
-                                            @endif
-                                            @if(!isset($psym_test))
+                                            <?php endif; ?>
+                                            <?php if(!isset($psym_test)): ?>
                                                 <option value="3">PSYM Test</option>
-                                            @endif
+                                            <?php endif; ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="test_config">Select Test </label>
                                         <select name="test_config[]" id="test_config1" class="form-control select23" multiple="multiple" required>
                                             <option value="">Choose one </option>
-                                            @if(isset($test_list))
-                                                @foreach($test_list as $key => $value)
-                                                    @if(isset($value[0]))
-                                                        <option value="{{ $value[0]->id }}">{{ $value[0]->name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            @endif
+                                            <?php if(isset($test_list)): ?>
+                                                <?php $__currentLoopData = $test_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if(isset($value[0])): ?>
+                                                        <option value="<?php echo e($value[0]->id); ?>"><?php echo e($value[0]->name); ?></option>
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php endif; ?>
                                         </select>
                                         <label id="test_config-error" class="error" for="test_config" hidden></label>
                                     </div>
@@ -99,7 +96,7 @@
                             </div>
                         </div>
 
-                        @if($count >=1)
+                        <?php if($count >=1): ?>
                             <br>
                             <table id="example" class="display nowrap" style="width:100%;">
                                 <thead>
@@ -111,36 +108,36 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($test_groups as $key => $value)
+                                <?php $__currentLoopData = $test_groups; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
-                                        <td>{{ ++$key }}</td>
+                                        <td><?php echo e(++$key); ?></td>
                                         <td>
-                                            @if($value->groups == 1)
+                                            <?php if($value->groups == 1): ?>
                                                 Intelligence Test
-                                            @elseif($value->groups == 2)
+                                            <?php elseif($value->groups == 2): ?>
                                                 Personality Test
-                                            @elseif($value->groups == 3)
+                                            <?php elseif($value->groups == 3): ?>
                                                 PSYM Test
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
                                         <?php $explode_test_list = explode('||', $value->test_config_id);?>
                                         <td>
-                                            @foreach($explode_test_list as $explode_test)
-                                                @foreach($test_list_show as $config)
-                                                    @if($config->id == $explode_test)
-                                                        <span class="badge badge-info">{{ $config->name }}</span>
-                                                    @endif
-                                                @endforeach
-                                            @endforeach
+                                            <?php $__currentLoopData = $explode_test_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $explode_test): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php $__currentLoopData = $test_list_show; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $config): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if($config->id == $explode_test): ?>
+                                                        <span class="badge badge-info"><?php echo e($config->name); ?></span>
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </td>
                                         <td class="text-center">
                                             <a><i class="livicon" data-name="trash" data-size="20" data-loop="true"  data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=TestGroupDelete('<?php echo $value->id ?>');></i></a>
                                         </td>
                                     </tr>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                         </table>
-                        @endif
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -148,17 +145,17 @@
     </section>
     <!-- content -->
 
-    @stop
+    <?php $__env->stopSection(); ?>
 
-    {{-- page level scripts --}}
-    @section('footer_scripts')
+    
+    <?php $__env->startSection('footer_scripts'); ?>
 
             <!-- For Editors -->
 
 
-    <script language="javascript" type="text/javascript" src="{{ asset('DataTables/jquery.dataTables.min.js') }}"></script>
-    <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
-    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+    <script language="javascript" type="text/javascript" src="<?php echo e(asset('DataTables/jquery.dataTables.min.js')); ?>"></script>
+    <script language="javascript" type="text/javascript" src="<?php echo e(asset('assets/vendors/select2/js/select2.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/jquery.validate.min.js')); ?>"></script>
     <script>
         $(document).ready(function() {
             $(".select2").select2({
@@ -196,7 +193,7 @@
                             var formData = new FormData($(form)[0]);
                             $.ajax({
                                 type: "POST",
-                                url: "{{url('/')}}"+'/storeTestGroup',
+                                url: "<?php echo e(url('/')); ?>"+'/storeTestGroup',
                                 data:formData,
                                 processData: false,
                                 contentType: false,
@@ -239,7 +236,7 @@
                     },
                     function () {
                         $.ajax({
-                            url: "{{url('/')}}"+'/destroyTestGroup/' + id,
+                            url: "<?php echo e(url('/')); ?>"+'/destroyTestGroup/' + id,
                             method: 'DELETE',
                             headers:
                             {
@@ -270,4 +267,6 @@
         }
     </script>
 
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/test_group.blade.php ENDPATH**/ ?>

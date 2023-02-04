@@ -2,40 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07010477-de66-4e78-b0e3-a6e8e562d29f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/hFVzDslZmzj1KWChGd0E6xNVV2tDZgqAO6Ilyv40" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/rg3Iezk3pWgC2XZuwMFFMWhBb5MiOWgbciCVwiaq" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/027ddefa7f0e4c41aba97121239cc4e934d4b7d2.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/0500d7754743e72aec3c99a945651ac047d8ecbd.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/0571bc457750bde37c5edd2ba2105c1c13477fcc.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/09a8e7df7e0531ef53edf1ce0f03c32d73667cfb.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/12ec024d133c861a6e4b3dfe11c4f48d44338b94.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/1ca20806e72089f06b2f3cf3082f7c3884546829.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/4233739699ae94a7e2e0a066c9e4fdd8c55bffdb.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/5377d6fc2c02ce424a911b593a34046d5b7b7183.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/5ff93750aaf37f767d40f039244b7fc5050a5386.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/632315d9214afa772fb29b7d3862383bbe4a104b.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/786c891e29ff9fca49969c3f75a2ecf8145158a9.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/7cb3b315d4874514a0da54380dd737e1f7c29567.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/7f5c8f46c5307c017741a8520a84c23e7ad51025.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/83b53c111131c3d28de5c71ec368038f51e3eb62.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/84db9b9c4c31bb414645b0c5e78a77b10853ead1.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/887589a1acf69d49d5bd9588ec41ce80216d4467.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/8b9a6126e69ab871a3f3222b5ed5f2118134d0b0.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/a73243f7f29d3367fea1b5404ae6daf97ebc594f.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/b210f41317d3d5f6220ddbc36e1e52bff8b33fbd.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/b9109fd38637378642a04787a50d0a4873220900.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/c63fe3bcd20d12888b501c6016521163c26ae729.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/cdd2c676d840ab42710bed90bf350061e6fbafe1.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/cf385b5c8160275cf9cb07b3582f63523fe043d4.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/d40de95c09b8fdaba4955c4eb7555157dbf55a10.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/dcd8130b26c9bc780152fead331ebf930e430ee7.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/de688396a3a4d5182cef64e360597f8cf9e0de8a.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/ecf7b75cb920e2919d4f93d65bc59f92fa5cd18f.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ExamConfig.php" afterPath="$PROJECT_DIR$/app/ExamConfig.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ExamConfigController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExamConfigController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/create_random_test.blade.php" afterPath="$PROJECT_DIR$/resources/views/create_random_test.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/test_group.blade.php" afterPath="$PROJECT_DIR$/resources/views/test_group.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/sessions/7fIYcEpsbKKkzGHm26RxOmnk0lUBSysJYRGc4aGR" afterPath="$PROJECT_DIR$/storage/framework/sessions/7fIYcEpsbKKkzGHm26RxOmnk0lUBSysJYRGc4aGR" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,8 +17,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="296" column="78" lean-forward="false" selection-start-line="296" selection-start-column="62" selection-end-line="296" selection-end-column="78" />
+            <state relative-caret-position="185">
+              <caret line="302" column="17" lean-forward="true" selection-start-line="302" selection-start-column="17" selection-end-line="302" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -59,8 +27,8 @@
       <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="2918" column="13" lean-forward="false" selection-start-line="2918" selection-start-column="13" selection-end-line="2918" selection-end-column="13" />
+            <state relative-caret-position="285">
+              <caret line="3150" column="5" lean-forward="true" selection-start-line="3150" selection-start-column="5" selection-end-line="3150" selection-end-column="5" />
               <folding>
                 <element signature="e#40#57#0#PHP" expanded="true" />
               </folding>
@@ -68,11 +36,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create_random_test.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="create_random_test.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/create_random_test.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="510">
               <caret line="111" column="0" lean-forward="true" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_group.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/test_group.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-40">
+              <caret line="198" column="46" lean-forward="false" selection-start-line="198" selection-start-column="46" selection-end-line="198" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -134,8 +112,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>gt</find>
-      <find>carbon</find>
       <find>$differentTime</find>
       <find>setInterval</find>
       <find>/'</find>
@@ -164,6 +140,8 @@
       <find>testConfig()</find>
       <find>create-test-configuration</find>
       <find>createTestConfig</find>
+      <find>total</find>
+      <find>destroyTestGroup</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,7 +150,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/item_bank_inactive.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/item_bank_no_answer.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/item_bank_test.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/item_create.blade.php" />
@@ -223,6 +200,7 @@
         <option value="$PROJECT_DIR$/resources/views/create_test_config.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
         <option value="$PROJECT_DIR$/resources/views/create_random_test.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/test_group.blade.php" />
       </list>
     </option>
   </component>
@@ -382,12 +360,12 @@
       <workItem from="1675130382234" duration="34000" />
       <workItem from="1675182912346" duration="594000" />
       <workItem from="1675214952154" duration="147000" />
-      <workItem from="1675523953888" duration="1997000" />
+      <workItem from="1675523953888" duration="2788000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="315736000" />
+    <option name="totallyTimeSpent" value="316527000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -424,13 +402,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/testingOfficer/boardCandidate/listData.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="33" column="8" lean-forward="false" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BoardCandidateController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -772,28 +743,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/create_random_test.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="296" column="78" lean-forward="false" selection-start-line="296" selection-start-column="62" selection-end-line="296" selection-end-column="78" />
+        <state relative-caret-position="510">
+          <caret line="111" column="0" lean-forward="true" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="2918" column="13" lean-forward="false" selection-start-line="2918" selection-start-column="13" selection-end-line="2918" selection-end-column="13" />
+        <state relative-caret-position="285">
+          <caret line="3150" column="5" lean-forward="true" selection-start-line="3150" selection-start-column="5" selection-end-line="3150" selection-end-column="5" />
           <folding>
             <element signature="e#40#57#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/create_random_test.blade.php">
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="111" column="0" lean-forward="true" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+        <state relative-caret-position="185">
+          <caret line="302" column="17" lean-forward="true" selection-start-line="302" selection-start-column="17" selection-end-line="302" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/test_group.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-40">
+          <caret line="198" column="46" lean-forward="false" selection-start-line="198" selection-start-column="46" selection-end-line="198" selection-end-column="46" />
           <folding />
         </state>
       </provider>
