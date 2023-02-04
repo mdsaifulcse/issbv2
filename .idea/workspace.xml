@@ -2,14 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07010477-de66-4e78-b0e3-a6e8e562d29f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/FoFNxlH4g3h4qHKCcMIYG3fe3q88ttHIZ84YYdDT" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/laravel-2022-12-19.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/hFVzDslZmzj1KWChGd0E6xNVV2tDZgqAO6Ilyv40" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/sessions/rg3Iezk3pWgC2XZuwMFFMWhBb5MiOWgbciCVwiaq" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/027ddefa7f0e4c41aba97121239cc4e934d4b7d2.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/0500d7754743e72aec3c99a945651ac047d8ecbd.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/0571bc457750bde37c5edd2ba2105c1c13477fcc.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/09a8e7df7e0531ef53edf1ce0f03c32d73667cfb.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/12ec024d133c861a6e4b3dfe11c4f48d44338b94.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/1ca20806e72089f06b2f3cf3082f7c3884546829.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/4233739699ae94a7e2e0a066c9e4fdd8c55bffdb.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/5377d6fc2c02ce424a911b593a34046d5b7b7183.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/5ff93750aaf37f767d40f039244b7fc5050a5386.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/632315d9214afa772fb29b7d3862383bbe4a104b.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/786c891e29ff9fca49969c3f75a2ecf8145158a9.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/7cb3b315d4874514a0da54380dd737e1f7c29567.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/7f5c8f46c5307c017741a8520a84c23e7ad51025.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/83b53c111131c3d28de5c71ec368038f51e3eb62.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/84db9b9c4c31bb414645b0c5e78a77b10853ead1.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/887589a1acf69d49d5bd9588ec41ce80216d4467.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/8b9a6126e69ab871a3f3222b5ed5f2118134d0b0.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/a73243f7f29d3367fea1b5404ae6daf97ebc594f.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/b210f41317d3d5f6220ddbc36e1e52bff8b33fbd.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/b9109fd38637378642a04787a50d0a4873220900.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/c63fe3bcd20d12888b501c6016521163c26ae729.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/cdd2c676d840ab42710bed90bf350061e6fbafe1.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/cf385b5c8160275cf9cb07b3582f63523fe043d4.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/d40de95c09b8fdaba4955c4eb7555157dbf55a10.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/dcd8130b26c9bc780152fead331ebf930e430ee7.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/de688396a3a4d5182cef64e360597f8cf9e0de8a.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/framework/views/ecf7b75cb920e2919d4f93d65bc59f92fa5cd18f.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Candidate/CandidateExamController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Candidate/CandidateExamController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ExamScheduleController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExamScheduleController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/candidates/intructionDemoExam/instruction.blade.php" afterPath="$PROJECT_DIR$/resources/views/candidates/intructionDemoExam/instruction.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/candidates/welcome.blade.php" afterPath="$PROJECT_DIR$/resources/views/candidates/welcome.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/d40de95c09b8fdaba4955c4eb7555157dbf55a10.php" afterPath="$PROJECT_DIR$/storage/framework/views/d40de95c09b8fdaba4955c4eb7555157dbf55a10.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ExamConfig.php" afterPath="$PROJECT_DIR$/app/ExamConfig.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ExamConfigController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExamConfigController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/create_random_test.blade.php" afterPath="$PROJECT_DIR$/resources/views/create_random_test.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,91 +49,82 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="426" column="0" lean-forward="true" selection-start-line="426" selection-start-column="0" selection-end-line="426" selection-end-column="0" />
+            <state relative-caret-position="260">
+              <caret line="296" column="78" lean-forward="false" selection-start-line="296" selection-start-column="62" selection-end-line="296" selection-end-column="78" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CandidateExamController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Candidate/CandidateExamController.php">
+      <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="252" column="18" lean-forward="false" selection-start-line="252" selection-start-column="18" selection-end-line="252" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="instruction.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/candidates/intructionDemoExam/instruction.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="50" column="48" lean-forward="true" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="welcome.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/candidates/welcome.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="43" column="60" lean-forward="true" selection-start-line="43" selection-start-column="60" selection-end-line="43" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExamScheduleController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ExamScheduleController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="139" column="0" lean-forward="true" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+            <state relative-caret-position="460">
+              <caret line="2918" column="13" lean-forward="false" selection-start-line="2918" selection-start-column="13" selection-end-line="2918" selection-end-column="13" />
               <folding>
-                <element signature="e#7405#7579#0#PHP" expanded="false" />
-                <element signature="e#7764#7942#0#PHP" expanded="false" />
+                <element signature="e#40#57#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="instruction.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/conductOfficer/examSchedule/instruction.blade.php">
+      <file leaf-file-name="create_random_test.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/create_random_test.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2675">
-              <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+            <state relative-caret-position="510">
+              <caret line="111" column="0" lean-forward="true" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConfigInstruction.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/ConfigInstruction.php">
+      <file leaf-file-name="create_test_config.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/create_test_config.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="18" column="16" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+            <state relative-caret-position="-765">
+              <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="examDemoFinish.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/conductOfficer/examSchedule/examDemoFinish.blade.php">
+      <file leaf-file-name="edit_random_test.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/edit_random_test.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1000">
-              <caret line="40" column="24" lean-forward="false" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="169" />
+            <state relative-caret-position="100">
+              <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConfigInstructionController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ConfigInstructionController.php">
+      <file leaf-file-name="create_static_test.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/create_static_test.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="19" column="91" lean-forward="false" selection-start-line="19" selection-start-column="91" selection-end-line="19" selection-end-column="128" />
+            <state relative-caret-position="100">
+              <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExamConfigController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ExamConfigController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="625">
+              <caret line="118" column="38" lean-forward="false" selection-start-line="118" selection-start-column="38" selection-end-line="118" selection-end-column="38" />
+              <folding>
+                <element signature="e#2162#2272#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExamConfig.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/ExamConfig.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="9" column="43" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -117,13 +134,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>examConfig</find>
-      <find>boardCandidate</find>
-      <find>board</find>
-      <find>start</find>
-      <find>$runnin</find>
-      <find>next_demo_question_id</find>
-      <find>1000</find>
       <find>gt</find>
       <find>carbon</find>
       <find>$differentTime</find>
@@ -147,6 +157,13 @@
       <find>instructionEndStatus</find>
       <find>examInstruction</find>
       <find>intructionDemoExam.startMainExam</find>
+      <find>examConfig</find>
+      <find>test_config_id</find>
+      <find>new-test-configuration</find>
+      <find>Total Time</find>
+      <find>testConfig()</find>
+      <find>create-test-configuration</find>
+      <find>createTestConfig</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -155,12 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/edit_tagmap.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/image-options.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/iq_item_create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/item_bank.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/item_bank_active.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/item_bank_demo.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/item_bank_inactive.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/item_bank_no_answer.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/item_bank_test.blade.php" />
@@ -187,8 +198,6 @@
         <option value="$PROJECT_DIR$/resources/views/board_config.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/testingOfficer/boardCandidate/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/testingOfficer/boardCandidate/listData.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ExamConfigController.php" />
-        <option value="$PROJECT_DIR$/app/ExamConfig.php" />
         <option value="$PROJECT_DIR$/resources/views/conductOfficer/examSchedule/instruction.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/candidates/candidateNotice.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/candidate.blade.php" />
@@ -206,6 +215,14 @@
         <option value="$PROJECT_DIR$/resources/views/candidates/intructionDemoExam/instruction.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ExamScheduleController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Candidate/CandidateExamController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ExamConfigController_Old.php" />
+        <option value="$PROJECT_DIR$/app/ExamConfig.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ExamConfigController.php" />
+        <option value="$PROJECT_DIR$/resources/views/create_static_test.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/edit_random_test.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/create_test_config.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
+        <option value="$PROJECT_DIR$/resources/views/create_random_test.blade.php" />
       </list>
     </option>
   </component>
@@ -252,11 +269,6 @@
             <path>
               <item name="issbv2" type="b2602c69:ProjectViewProjectNode" />
               <item name="issbv2" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="issbv2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="issbv2" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -264,13 +276,6 @@
               <item name="issbv2" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="issbv2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="issbv2" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="candidates" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -279,7 +284,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="CandidateExamController&#9;null&#9;null&#10;ExamScheduleController&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/ExamScheduleController.php&#10;ConfigInstructionController&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/ConfigInstructionController.php&#10;StdSeatPlanController&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/StdSeatPlanController.php&#10;HomeController&#9;null&#9;null&#10;BoardCandidateController&#9;null&#9;null&#10;ExamConfigController&#9;null&#9;null&#10;CandidateAuthController&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/Candidate/CandidateAuthController.php&#10;ExamContr&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/Candidate/CandidateExamController.php&#10;Can&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Candidates.php&#10;examConfi&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/ExamConfigController.php&#10;ExamSche&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/ExamScheduleController.php&#10;examDemoItemPreview&#9;null&#9;null&#10;toke&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/GenarateTokenController.php&#10;Admin&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/AdminController.php&#10;CandidateExam&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/Candidate/CandidateExamController.php&#10;candi&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/Candidate/CandidateAuthController.php&#10;Admi&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/AdminController.php&#10;App&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Providers/AppServiceProvider.php&#10;left&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/resources/views/admin/layouts/_left_menu.blade.php&#10;Home&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/HomeController.php&#10;SeatPlanController&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/StdSeatPlanController.php&#10;wel&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/resources/views/welcome.blade.php&#10;To&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/GenarateTokenController.php&#10;Left&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/resources/views/admin/layouts/_left_menu.blade.php" />
+    <property name="SearchEverywhereHistoryKey" value="AdminController&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/AdminController.php&#10;ExamConfigController&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/ExamConfigController.php&#10;CandidateExamController&#9;null&#9;null&#10;ExamScheduleController&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/ExamScheduleController.php&#10;ConfigInstructionController&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/ConfigInstructionController.php&#10;StdSeatPlanController&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/StdSeatPlanController.php&#10;HomeController&#9;null&#9;null&#10;BoardCandidateController&#9;null&#9;null&#10;CandidateAuthController&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/Candidate/CandidateAuthController.php&#10;ExamContr&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/Candidate/CandidateExamController.php&#10;Can&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Candidates.php&#10;examConfi&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/ExamConfigController.php&#10;ExamSche&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/ExamScheduleController.php&#10;examDemoItemPreview&#9;null&#9;null&#10;toke&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/GenarateTokenController.php&#10;Admin&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/AdminController.php&#10;CandidateExam&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/Candidate/CandidateExamController.php&#10;candi&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/Candidate/CandidateAuthController.php&#10;Admi&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/AdminController.php&#10;App&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Providers/AppServiceProvider.php&#10;left&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/resources/views/admin/layouts/_left_menu.blade.php&#10;Home&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/HomeController.php&#10;SeatPlanController&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/StdSeatPlanController.php&#10;wel&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/resources/views/welcome.blade.php&#10;To&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/app/Http/Controllers/GenarateTokenController.php&#10;Left&#9;FILE&#9;file://D:/xampp74/htdocs/issbv2/resources/views/admin/layouts/_left_menu.blade.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
   </component>
@@ -372,12 +377,17 @@
       <workItem from="1674092609234" duration="2099000" />
       <workItem from="1674315707721" duration="512000" />
       <workItem from="1674486508354" duration="10281000" />
-      <workItem from="1674575110823" duration="5449000" />
+      <workItem from="1674575110823" duration="7366000" />
+      <workItem from="1675128392743" duration="410000" />
+      <workItem from="1675130382234" duration="34000" />
+      <workItem from="1675182912346" duration="594000" />
+      <workItem from="1675214952154" duration="147000" />
+      <workItem from="1675523953888" duration="1997000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="310637000" />
+    <option name="totallyTimeSpent" value="315736000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -387,13 +397,13 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -414,41 +424,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/item_level_list.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-40">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/item_list.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-40">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/testingOfficer/examConfig/listData.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/board_config.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/testingOfficer/boardCandidate/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1475">
-          <caret line="59" column="62" lean-forward="false" selection-start-line="59" selection-start-column="62" selection-end-line="59" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/testingOfficer/boardCandidate/listData.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="825">
@@ -456,38 +431,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/ExamConfig.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="250" lean-forward="false" selection-start-line="9" selection-start-column="250" selection-end-line="9" selection-end-column="250" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="14" column="14" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BoardCandidateController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
           <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ExamConfigController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="758">
-          <caret line="69" column="89" lean-forward="false" selection-start-line="69" selection-start-column="89" selection-end-line="69" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ExamConfigController_Old.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -684,7 +631,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1000">
           <caret line="40" column="24" lean-forward="false" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="169" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -713,7 +659,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="18" column="16" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -721,7 +666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2675">
           <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -729,7 +673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="19" column="91" lean-forward="false" selection-start-line="19" selection-start-column="91" selection-end-line="19" selection-end-column="128" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -737,7 +680,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
           <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -745,15 +687,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="43" column="60" lean-forward="true" selection-start-line="43" selection-start-column="60" selection-end-line="43" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="426" column="0" lean-forward="true" selection-start-line="426" selection-start-column="0" selection-end-line="426" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -772,7 +705,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="310">
           <caret line="50" column="48" lean-forward="true" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -780,6 +712,88 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="252" column="18" lean-forward="false" selection-start-line="252" selection-start-column="18" selection-end-line="252" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ExamConfigController_Old.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/ExamConfig.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="43" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ExamConfigController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="118" column="38" lean-forward="false" selection-start-line="118" selection-start-column="38" selection-end-line="118" selection-end-column="38" />
+          <folding>
+            <element signature="e#2162#2272#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/create_static_test.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/edit_random_item_set.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/edit_random_test.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/create_test_config.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-765">
+          <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="296" column="78" lean-forward="false" selection-start-line="296" selection-start-column="62" selection-end-line="296" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="2918" column="13" lean-forward="false" selection-start-line="2918" selection-start-column="13" selection-end-line="2918" selection-end-column="13" />
+          <folding>
+            <element signature="e#40#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/create_random_test.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="111" column="0" lean-forward="true" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
           <folding />
         </state>
       </provider>

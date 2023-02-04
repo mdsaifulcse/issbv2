@@ -2866,6 +2866,7 @@ class AdminController extends Controller
 
     public function testConfig()
     {
+        return 'sdf';
         // $test_config = TestConfiguration::select('test_for')->get();
         // foreach ($test_config as $config) {
         //     $test_for[] = $config->test_for;
@@ -2907,6 +2908,7 @@ class AdminController extends Controller
         $item_levels = ItemLevel::select('id', 'name')->get();
 
         if ($test_configuration_type == 1) {
+
             $counts = [];
             foreach ($item_levels as $level) {
                 $count = ItemBank::Where('level', $level->id)->Where('item_for', $test_for)->WhereIn('item_status', [1,3])->count();
@@ -2918,8 +2920,10 @@ class AdminController extends Controller
             return view('create_random_test', compact('test_for', 'test_list', 'candidate_type', 'test_name', 'counts', 'total_item'));
         } elseif ($test_configuration_type == 2) {
             $question_set = QuestionSet::Where('item_set_for', $test_for)->paginate(10);
+
             return view('create_static_test', compact('test_for', 'test_list', 'candidate_type', 'test_name', 'question_set', 'item_levels', 'total_item'));
         } else {
+
             return redirect('/new-test-configuration')->with('choose', 'Please fill this form.');
         }
     }

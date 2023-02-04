@@ -98,6 +98,7 @@ class ExamConfigController extends Controller
         $testConfig = TestConfiguration::find($request->test_config_id);
 
         $insert = new ExamConfig();
+        $insert->exam_name      = $activeBoard->board_name.$testConfig->test_name;
         $insert->test_config_id      = $request->test_config_id;
         $insert->exam_duration       = $testConfig->total_time;
         $insert->exam_date           = $request->exam_date;

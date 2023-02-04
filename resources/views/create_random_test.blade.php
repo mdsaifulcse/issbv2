@@ -106,7 +106,8 @@
 
                                 <div class="form-group">
                                     <label for="total_time">Total Time</label>
-                                    <input type="number" name="total_time" id="total_time" class="form-control" min="1" placeholder="Total Time" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
+                                    <input type="number" step="any" name="total_time" id="total_time" class="form-control" min="1" placeholder="Total Time" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
+                                    {{--<input type="number" step="any" name="total_time" id="total_time" class="form-control" min="1" placeholder="Total Time" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>--}}
                                 </div>
 
                                 <div class="form-group">
