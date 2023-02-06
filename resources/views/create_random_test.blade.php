@@ -46,7 +46,7 @@
 
         <div class="row">
 
-            <div class="col-lg-12">
+            <div class="col-lg-10 col-md-offset-1">
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"><i class="livicon" data-name="doc-portrait" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
@@ -67,7 +67,7 @@
                                 <input type="hidden" name="test_for" id="item_set_for" value="{{ $test_for }}">
                                 <input type="hidden" name="test_type" id="set_configuration_type" value="1">
                                 <div class="form-group">
-                                    <label for="total_question">Test Name</label>
+                                    <label for="total_question">Test Name </label>
                                     <input type="text" name="test_name" id="item_set_name" value="{{ $test_name }}" class="form-control" placeholder="Item Set Name" required/>
                                 </div>
 
@@ -104,11 +104,34 @@
                                 @endforeach
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="total_time">Total Time</label>
-                                    <input type="number" step="any" name="total_time" id="total_time" class="form-control" min="1" placeholder="Total Time" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
-                                    {{--<input type="number" step="any" name="total_time" id="total_time" class="form-control" min="1" placeholder="Total Time" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>--}}
+                                <div class="row">
+                                    @if($noAnswerExist==0)
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="total_time">Total Time</label>
+                                            <input type="number" step="any" name="total_time" id="total_time" class="form-control" min="1" placeholder="Total Time" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
+                                            {{--<input type="number" step="any" name="total_time" id="total_time" class="form-control" min="1" placeholder="Total Time" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>--}}
+                                        </div>
+                                    </div>
+                                    @else
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="total_time_no_ans">Total Time In Second</label>
+                                            <input type="number" step="any" name="total_time_no_ans" id="total_time_no_ans" class="form-control" placeholder="Total Time In Second"  required/>
+                                            <input type="hidden" name="noAnswerExist" value="{{$noAnswerExist}}"/>
+                                        </div>
+                                    </div>    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="break_time">Break Time</label>
+                                            <input type="number" name="break_time" id="break_time" class="form-control" placeholder="Break Time in minute"  required/>
+                                        </div>
+                                    </div>
+
+                                        @endif
+
                                 </div>
+
 
                                 <div class="form-group">
                                     <label for="total_time">Pass Mark</label>
@@ -116,7 +139,7 @@
                                 </div>
 
                                 <button class="btn btn-success create_set">Submit</button>
-                                <a class="btn btn-danger" href="{{ URL::to('/new-test-configuration') }}">Back</a>
+                                <a class="btn btn-danger pull-right" href="{{ URL::to('/new-test-configuration') }}">Back</a>
                             </form>
                         </div>
                     </div>

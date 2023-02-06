@@ -2361,18 +2361,18 @@ class AdminController extends Controller
         $candidate_type = CandidateType::select('id', 'name')->get();
         $item_levels = ItemLevel::select('id', 'name')->get();
 
-        if ($item_configuration_type == 1) {
+        if ($item_configuration_type == 1) { // Random ------
 
             $counts = [];
             foreach ($item_levels as $level) {
-                $count = ItemBank::Where('level', $level->id)->Where('item_for', $item_set_for)->WhereIn('item_status', [1,3,4])->count();
+                $count = ItemBank::Where('level', $level->id)->Where('item_for', $item_set_for)->WhereIn('item_status', [1,3,4])->count(); // (4=No Answer)Saif
                 if ($count != 0) {
 
                     $counts = $this->array_push_assoc($counts, $level->name, $count);
                 }
             }
             return view('create_random_item_set', compact('item_set_for', 'test_list', 'candidate_type', 'item_set_name', 'counts', 'total_item'));
-        } elseif ($item_configuration_type == 2) {
+        } elseif ($item_configuration_type == 2) { // Static
 
             $item_bank = ItemBank::WhereIn('item_status', [1,3,4])->Where('item_for', $item_set_for)->paginate(10);
             return view('create_static_item_set', compact('item_set_for', 'test_list', 'candidate_type', 'item_set_name', 'item_bank', 'item_levels', 'total_item'));
@@ -2906,17 +2906,23 @@ class AdminController extends Controller
         $candidate_type = CandidateType::select('id', 'name')->get();
         $item_levels = ItemLevel::select('id', 'name')->get();
 
-        if ($test_configuration_type == 1) {
+        if ($test_configuration_type == 1) { // random -----
+            $noAnswerExist=0;
             $counts = [];
             foreach ($item_levels as $level) {
-                $count = ItemBank::Where('level', $level->id)->Where('item_for', $test_for)->WhereIn('item_status', [1,3,4])->count(); // 4(Saif)
+                $count = ItemBank::Where('level', $level->id)->Where('item_for', $test_for)->WhereIn('item_status', [1,3,4])->count(); // 4=NoAnswer (Saif)
                 if ($count != 0) {
 
                     $counts = $this->array_push_assoc($counts, $level->name, $count);
                 }
+                $countNoAnswerItem = ItemBank::Where('level', $level->id)->Where('item_for', $test_for)->WhereIn('item_status', [4])->count(); // 4=NoAnswer(Saif)
+                if ($countNoAnswerItem > 0) {
+                    $noAnswerExist=1;
+                }
+
             }
-            return view('create_random_test', compact('test_for', 'test_list', 'candidate_type', 'test_name', 'counts', 'total_item'));
-        } elseif ($test_configuration_type == 2) {
+            return view('create_random_test', compact('test_for', 'test_list', 'candidate_type', 'test_name', 'counts', 'total_item','noAnswerExist'));
+        } elseif ($test_configuration_type == 2) { // static -----
             $question_set = QuestionSet::Where('item_set_for', $test_for)->paginate(10);
 
             return view('create_static_test', compact('test_for', 'test_list', 'candidate_type', 'test_name', 'question_set', 'item_levels', 'total_item'));
@@ -2933,7 +2939,13 @@ class AdminController extends Controller
         $insert_data->test_for = $request->test_for;
         $insert_data->test_configuration_type = $request->test_type;
         $insert_data->candidate_type = $request->candidate_type;
-        $insert_data->total_time = $request->total_time;
+        if ($request->noAnswerExist==0){
+            $insert_data->total_time = $request->total_time;
+        }else{
+            $insert_data->total_time = 0;
+            $insert_data->total_time_no_ans = $request->total_time_no_ans;
+            $insert_data->break_time = $request->break_time;
+        }
         $insert_data->pass_mark = $request->pass_mark;
 
         // random questions id generate
@@ -2943,7 +2955,7 @@ class AdminController extends Controller
             $item_levels = ItemLevel::select('id', 'name')->get();
             $counts = [];
             foreach ($item_levels as $key => $level) {
-                $count = ItemBank::Where('item_for', $request->test_for)->WhereIn('item_status', [1,3])->Where('level', $level->id)->count();
+                $count = ItemBank::Where('item_for', $request->test_for)->WhereIn('item_status', [1,3,4])->Where('level', $level->id)->count(); // 4=NoAnswer (Saif)
 
                 if ($count != 0) {
                     $counts = $this->array_push_assoc($counts, $level->name, $count);
@@ -2956,7 +2968,7 @@ class AdminController extends Controller
                     if ($total_request != null) {
                         $question_levels[] = $level_id . '||' . $total_request;
                     }
-                    $questions[] = ItemBank::select('id')->where('item_for', $request->test_for)->WhereIn('item_status', [1,3])->where('level', $level->id)->inRandomOrder()->limit($total_request)->pluck('id')->toArray();
+                    $questions[] = ItemBank::select('id')->where('item_for', $request->test_for)->WhereIn('item_status', [1,3,4])->where('level', $level->id)->inRandomOrder()->limit($total_request)->pluck('id')->toArray();// 4=NoAnswer (Saif)
                 }
             }
 

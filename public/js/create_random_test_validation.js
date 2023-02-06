@@ -8,9 +8,9 @@ $("#create_random_test").validate(
                 required: true,
                 min: 1
             },
-            total_time:{
-                required: true
-            },
+            // total_time:{
+            //     required: true
+            // },
             pass_mark:{
                 required: true
             },
