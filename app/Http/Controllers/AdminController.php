@@ -2907,10 +2907,9 @@ class AdminController extends Controller
         $item_levels = ItemLevel::select('id', 'name')->get();
 
         if ($test_configuration_type == 1) {
-
             $counts = [];
             foreach ($item_levels as $level) {
-                $count = ItemBank::Where('level', $level->id)->Where('item_for', $test_for)->WhereIn('item_status', [1,3])->count();
+                $count = ItemBank::Where('level', $level->id)->Where('item_for', $test_for)->WhereIn('item_status', [1,3,4])->count(); // 4(Saif)
                 if ($count != 0) {
 
                     $counts = $this->array_push_assoc($counts, $level->name, $count);
