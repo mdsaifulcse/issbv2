@@ -119,11 +119,12 @@
                                         <div class="form-group">
                                             <label for="total_time_no_ans">Total Time In Second</label>
                                             <input type="number" step="any" name="total_time_no_ans" id="total_time_no_ans" class="form-control" placeholder="Total Time In Second"  required/>
+                                            <input type="hidden" name="noAnswerExist" value="<?php echo e($noAnswerExist); ?>"/>
                                         </div>
                                     </div>    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="break_time">Break Time</label>
-                                            <input type="number" step="any" name="break_time" id="break_time" class="form-control" placeholder="Break Time in minute"  required/>
+                                            <input type="number" name="break_time" id="break_time" class="form-control" placeholder="Break Time in minute"  required/>
                                         </div>
                                     </div>
 
@@ -135,6 +136,7 @@
                                 <div class="form-group">
                                     <label for="total_time">Pass Mark</label>
                                     <input type="number" name="pass_mark" id="pass_mark" class="form-control" min="1" placeholder="Candidate's pass mark" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
+                                    <input type="text" value="<?php echo e(url('/')); ?>" id="baseUrl"/>
                                 </div>
 
                                 <button class="btn btn-success create_set">Submit</button>

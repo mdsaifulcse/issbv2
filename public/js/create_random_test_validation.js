@@ -41,6 +41,7 @@ $("#create_random_test").validate(
             });
 
             var total_question = $("#total_question").val();
+            var baseUrl = $("#baseUrl").val();
 
             if(total_question != sum){
                 toastr.error('You Got Error', 'Invalid total item!', {timeOut: 5000});
@@ -52,8 +53,9 @@ $("#create_random_test").validate(
                 $('.create_set').prop('disabled', true);
                 $('.create_set').text('Sending...');
                 var formData = new FormData($(form)[0]);
+                console.log(formData)
                 $.ajax({
-                    url:"/storeTestConfig",
+                    url:baseUrl+"/storeTestConfig",
                     method:"POST",
                     data:formData,
                     contentType: false,
@@ -68,7 +70,7 @@ $("#create_random_test").validate(
                         }
                         else {
                             sessionStorage.setItem("new_success", "success");
-                            window.location.href = "/test-configuration-list";
+                            window.location.href = baseUrl+"/test-configuration-list";
                             //window.location.href = "/test-configuration-list/"+data;
                         }
                     },

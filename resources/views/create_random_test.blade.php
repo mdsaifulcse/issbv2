@@ -136,6 +136,7 @@
                                 <div class="form-group">
                                     <label for="total_time">Pass Mark</label>
                                     <input type="number" name="pass_mark" id="pass_mark" class="form-control" min="1" placeholder="Candidate's pass mark" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
+                                    <input type="hidden" value="{{url('/')}}" id="baseUrl"/>
                                 </div>
 
                                 <button class="btn btn-success create_set">Submit</button>
