@@ -65,6 +65,8 @@
                             <form method="POST" id="create_qusetion_set">
 
                                 <input type="hidden" name="item_set_for" id="item_set_for" value="<?php echo e($item_set_for); ?>">
+                                <input type="hidden" name="postUrl" id="postUrl" value="<?php echo e(url('/storeItemSet')); ?>">
+                                <input type="hidden" name="postUrl" id="redirectUrl" value="<?php echo e(url('/question-set')); ?>">
                                 <input type="hidden" name="set_configuration_type" id="set_configuration_type" value="1">
                                 <div class="form-group">
                                     <label for="total_question">Item Set Name</label>

@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    {{$test?$test->name:''}} : Create Test
+    {{$test?$test:''}} : Create Test
     @parent
 @stop
 @section('header_styles')
@@ -26,12 +26,12 @@
 @section('content')
     <section class="content-header">
         <!--section starts-->
-        <h5> {{$test?$test->name:''}} : Test Configuration</h5>
+        <h5> {{$test?$test:''}} : Test Configuration</h5>
         <ol class="breadcrumb">
             <li>
                 <a href="#">Admin</a>
             </li>
-            <li class="active">{{$test?$test->name:''}} : Create Test Configuration</li>
+            <li class="active">{{$test?$test:''}} : Create Test Configuration</li>
         </ol>
     </section>
 
@@ -42,7 +42,7 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"><i class="livicon" data-name="doc-portrait" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            {{$test?$test->name:''}} : Create Test Configuration
+                            {{$test?$test:''}} : Create Test Configuration
                         </h3>
                     </div>
                     <div class="panel-body">

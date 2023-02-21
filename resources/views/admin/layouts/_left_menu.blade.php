@@ -441,8 +441,50 @@
             <span class="title">Create new Board</span>
         </a>
     </li>
+    <!--  Test Group list Start -->
+    <!-- $testGroups comes from AppServiceProvider bia admin.layouts.default -->
+    @forelse($testGroups as $key=>$testGroup)
+    <li>
+        <a href="#">
+            <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
+            <span class="title">{{$testGroup->groupName}}</span>
+            <span class="fa fa-angle-right"></span>
+        </a>
+
+            <ul class="sub-menu">
+                <li>
+                    <a href="{{ URL::to('/examConfig/create?test_group='.$testGroup->id) }}">
+                        <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
+                        <span class="title">Create {{$testGroup->testName}}</span>
+                        {{--<span class="fa fa-angle-right"></span>--}}
+                    </a>
+
+                </li>
+                <li>
+                    <a href="{{ URL::to('/examConfig?test_group='.$testGroup->id) }}">
+                        <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
+                        <span class="title">{{$testGroup->testName}} List</span>
+                        {{--<span class="fa fa-angle-right"></span>--}}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ URL::to('/examConfig?test_group='.$testGroup->id) }}">
+                        <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
+                        <span class="title">{{$testGroup->testName}} Test Result</span>
+                        {{--<span class="fa fa-angle-right"></span>--}}
+                    </a>
+                </li>
+            </ul>
+
+    </li>
+    @empty
+
+    @endforelse
+
+    <!-- End Test Group -->
 
     <!--  Testing list Start -->
+    <!-- $testLists comes from AppServiceProvider bia admin.layouts.default -->
     @forelse($testLists as $key=>$testList)
     <li>
         <a href="#">

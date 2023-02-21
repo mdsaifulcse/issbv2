@@ -49,8 +49,11 @@ $("#create_qusetion_set").validate(
                 $('.create_set').prop('disabled', true);
                 $('.create_set').text('Sending...');
                 var formData = new FormData($(form)[0]);
+                var submitUrl=$('#postUrl').val();
+                var redirectUrl=$('#redirectUrl').val();
                 $.ajax({
-                    url:'/storeItemSet',
+                    url:submitUrl,
+                    //url:'/storeItemSet',
                     method:"POST",
                     data:formData,
                     contentType: false,
@@ -61,7 +64,8 @@ $("#create_qusetion_set").validate(
                         if (data)
                         {
                             sessionStorage.setItem("new_success", "success");
-                            window.location.href = "/question-set";
+                            window.location.href = redirectUrl;
+                            //window.location.href = "/question-set";
                         }
                     },
                     error: function (e) {

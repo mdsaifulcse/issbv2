@@ -136,7 +136,8 @@
                         <div class="clearfix"></div>
                         <!-- BEGIN SIDEBAR MENU -->
 
-                        @include('admin.layouts._left_menu',compact('testLists'))
+                        {{--Data Come from AppService Provider--}}
+                        @include('admin.layouts._left_menu',compact('testLists','testGroups'))
                         <!-- END SIDEBAR MENU -->
                     </div>
                 </section>

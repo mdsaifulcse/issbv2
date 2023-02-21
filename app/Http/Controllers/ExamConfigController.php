@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TestGroups;
 use App\TestList;
 use Auth;
 use App\User;
@@ -32,6 +33,12 @@ class ExamConfigController extends Controller
             $examConfigs=$examConfigs->whereHas('testConfig', function ($query) use($request) {
                 $query->where('test_config.test_for', $request->test_for);
             });
+        }elseif ($request->test_group){
+            $testGroup = TestGroups::where(['id'=>$request->test_group])->first();
+            $explode_test_config_id = explode('||', $testGroup->test_config_id);
+            $examConfigs=$examConfigs->whereHas('testConfig', function ($query) use($explode_test_config_id) {
+                $query->whereIn('test_config.test_for', $explode_test_config_id);
+            });
         }
 
         if ($request->all_active==1){
@@ -59,9 +66,29 @@ class ExamConfigController extends Controller
         if ($request->test_for){
             $testConfigs=$testConfigs->where('test_for',$request->test_for);
 
-            $test=TestList::find($request->test_for);
+            $test=TestList::find($request->test_for)->value('name');
+        }elseif ($request->test_group){
+            $testGroup = TestGroups::where(['id'=>$request->test_group])->first();
+            $explode_test_config_id = explode('||', $testGroup->test_config_id); //$explode_test_config_id==testList id
+            $testConfigs=$testConfigs->whereIn('test_for',$explode_test_config_id);
+
+            // Generate test name--------
+            $testListsData=TestList::select('id','name')->whereIN('id', $explode_test_config_id)->get();
+            $testName='';
+            foreach ($testListsData as $j=>$testList){
+                if($j==0){
+                    $testName.=''.$testList->name;
+                }else{
+                    $testName.='/'.$testList->name;
+                }
+
+            }
+            $test=$testName;
+
         }
+
         $testConfigs = $testConfigs->get();
+
         $activeBoard = BoardCandidate::where('status', 1)->first();
 
         if (!empty($activeBoard) && count($testConfigs)>0){
@@ -69,7 +96,6 @@ class ExamConfigController extends Controller
             foreach ($testConfigs as $testConfig){
                 $testConfig['test_name']=$activeBoard->board_name.$testConfig->test_name;
             }
-
         }
 
 

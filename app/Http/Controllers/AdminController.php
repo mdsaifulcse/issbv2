@@ -2351,7 +2351,6 @@ class AdminController extends Controller
 
     public function createItemSet()
     {
-
         $item_set_for = Session::get('item_set_for');
         $item_set_name = Session::get('item_set_name');
         $item_configuration_type = Session::get('item_configuration_type');
@@ -3124,6 +3123,31 @@ class AdminController extends Controller
 
     public function testGroup()
     {
+//        $testGroups = TestGroups::get();
+//        foreach ($testGroups as $key => $value) {
+//            $testIds=explode('||', $value->test_config_id);
+//
+//            $testLists=TestList::select('id','name')->whereIN('id', $testIds)->get();
+//            $value['groupName']=TestGroups::GROUPNAMES[$value->groups];
+//            $value['testLists']=$testLists;
+//
+//            // Generate test name--------
+//            $testName='';
+//            foreach ($testLists as $j=>$testList){
+//                if($j==0){
+//                    $testName.=''.$testList->name;
+//                }else{
+//                    $testName.='/'.$testList->name;
+//                }
+//
+//
+//            }
+//            $value['testName']=$testName;
+//
+//        }
+//        return $testGroups;
+        // -------------------
+
         $test_groups = TestGroups::get();
         foreach ($test_groups as $key => $value) {
             $explode_test_config_id[] = explode('||', $value->test_config_id);

@@ -394,8 +394,50 @@
             <span class="title">Create new Board</span>
         </a>
     </li>
+    <!--  Test Group list Start -->
+    <!-- $testGroups comes from AppServiceProvider bia admin.layouts.default -->
+    <?php $__empty_1 = true; $__currentLoopData = $testGroups; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$testGroup): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+    <li>
+        <a href="#">
+            <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
+            <span class="title"><?php echo e($testGroup->groupName); ?></span>
+            <span class="fa fa-angle-right"></span>
+        </a>
+
+            <ul class="sub-menu">
+                <li>
+                    <a href="<?php echo e(URL::to('/examConfig/create?test_group='.$testGroup->id)); ?>">
+                        <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
+                        <span class="title">Create <?php echo e($testGroup->testName); ?></span>
+                        
+                    </a>
+
+                </li>
+                <li>
+                    <a href="<?php echo e(URL::to('/examConfig?test_group='.$testGroup->id)); ?>">
+                        <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
+                        <span class="title"><?php echo e($testGroup->testName); ?> List</span>
+                        
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo e(URL::to('/examConfig?test_group='.$testGroup->id)); ?>">
+                        <i class="livicon" data-name="settings" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18" data-loop="true"></i>
+                        <span class="title"><?php echo e($testGroup->testName); ?> Test Result</span>
+                        
+                    </a>
+                </li>
+            </ul>
+
+    </li>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+
+    <?php endif; ?>
+
+    <!-- End Test Group -->
 
     <!--  Testing list Start -->
+    <!-- $testLists comes from AppServiceProvider bia admin.layouts.default -->
     <?php $__empty_1 = true; $__currentLoopData = $testLists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$testList): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
     <li>
         <a href="#">
