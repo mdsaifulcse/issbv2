@@ -51,4 +51,4 @@
 
 </body>
 </html>
-<?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/layouts/app.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\issbv2\resources\views/layouts/app.blade.php ENDPATH**/ ?>

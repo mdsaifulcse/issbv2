@@ -774,4 +774,4 @@
 
     
 </ul>
-<?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/admin/layouts/_left_menu.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\issbv2\resources\views/admin/layouts/_left_menu.blade.php ENDPATH**/ ?>

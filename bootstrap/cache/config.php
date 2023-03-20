@@ -195,7 +195,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'D:\\xampp74\\htdocs\\issbv2\\storage\\framework/cache/data',
+        'path' => 'C:\\laragon\\www\\issbv2\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -441,7 +441,7 @@
     ),
     'temporary_files' => 
     array (
-      'local_path' => 'D:\\xampp74\\htdocs\\issbv2\\storage\\framework/cache/laravel-excel',
+      'local_path' => 'C:\\laragon\\www\\issbv2\\storage\\framework/cache/laravel-excel',
       'remote_disk' => NULL,
       'remote_prefix' => NULL,
       'force_resync_remote' => NULL,
@@ -456,12 +456,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\xampp74\\htdocs\\issbv2\\storage\\app',
+        'root' => 'C:\\laragon\\www\\issbv2\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'D:\\xampp74\\htdocs\\issbv2\\storage\\app/public',
+        'root' => 'C:\\laragon\\www\\issbv2\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -507,13 +507,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\xampp74\\htdocs\\issbv2\\storage\\logs/laravel.log',
+        'path' => 'C:\\laragon\\www\\issbv2\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'D:\\xampp74\\htdocs\\issbv2\\storage\\logs/laravel.log',
+        'path' => 'C:\\laragon\\www\\issbv2\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -577,7 +577,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'D:\\xampp74\\htdocs\\issbv2\\resources\\views/vendor/mail',
+        0 => 'C:\\laragon\\www\\issbv2\\resources\\views/vendor/mail',
       ),
     ),
     'log_channel' => NULL,
@@ -659,7 +659,7 @@
     'lifetime' => '120',
     'expire_on_close' => true,
     'encrypt' => false,
-    'files' => 'D:\\xampp74\\htdocs\\issbv2\\storage\\framework/sessions',
+    'files' => 'C:\\laragon\\www\\issbv2\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -679,9 +679,9 @@
   array (
     'paths' => 
     array (
-      0 => 'D:\\xampp74\\htdocs\\issbv2\\resources\\views',
+      0 => 'C:\\laragon\\www\\issbv2\\resources\\views',
     ),
-    'compiled' => 'D:\\xampp74\\htdocs\\issbv2\\storage\\framework\\views',
+    'compiled' => 'C:\\laragon\\www\\issbv2\\storage\\framework\\views',
   ),
   'debug-server' => 
   array (
