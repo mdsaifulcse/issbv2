@@ -298,7 +298,7 @@
         </ul>
     </li>
     <li class="">
-        <a href="#">
+        <a href="<?php echo e(url('/result-config')); ?>">
             <i class="livicon" data-name="doc-portrait" data-size="18" data-c="#EF6F6C" data-hc="#EF6F6C"
             data-loop="true"></i>
             Result Config

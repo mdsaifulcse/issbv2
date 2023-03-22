@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    Create
+    Edit
     @foreach($test_list as $test)
         @if($test->id == $test_for)
             {{ $test->name }}
@@ -61,13 +61,18 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"><i class="livicon" data-name="doc-portrait" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Create
+                            Edit
                             @foreach($test_list as $test)
                                 @if($test->id == $test_for)
                                     {{ $test->name }}
                                 @endif
                             @endforeach
-                            Test Config
+                            Test Config 
+                            @if($test_config->test_configuration_type==1)
+                            <b class="text-success">(Random Item)</b>
+                            @else
+                            <b class="text-success">(Static Item)</b>
+                             @endif
                         </h3>
                     </div>
                     <div class="panel-body">
@@ -75,31 +80,42 @@
                         <div class="form">
                             <form method="POST" id="create_random_test">
                                 <input type="hidden" id="id" value="{{ $test_config->id }}">
-                                <div class="form-group">
-                                    <label for="total_question">Test Name</label>
-                                    <input type="text" name="test_name" id="item_set_name" value="{{ $test_config->test_name }}" class="form-control" placeholder="Item Set Name" required/>
-                                </div>
 
-                                <div class="form-group">
-                                    <label for="total_question">Total Item</label>
-                                    <input type="number" name="total_item" id="total_question" value="{{ $test_config->total_item }}" class="form-control" placeholder="Total Item" required/>
-                                    <label id="invalid_total_question" class="error" hidden></label>
-                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="total_question">Test Name</label>
+                                            <input type="text" name="test_name" id="item_set_name" value="{{ $test_config->test_name }}" class="form-control" placeholder="Item Set Name" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="total_question">Total Item</label>
+                                            <input type="number" name="total_item" id="total_question" value="{{ $test_config->total_item }}" class="form-control" placeholder="Total Item" required/>
+                                            <label id="invalid_total_question" class="error" hidden></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="total_question">Number of Selected Item</label>
+                                            <input type="number" name="number_of_selected_item_item" id="number_of_selected_item_item" value="{{ $test_config->total_item }}" class="form-control" readonly placeholder="Number of Selected Item" min="1" onkeydown="return false" onmousedown="return false" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="candidate_type">Select Candidate Type</label>
+                                            <select name="candidate_type" id="candidate_type" class="form-control" required>
+                                                <option value=""> Choose one </option>
+                                                @foreach($candidate_type as $value)
+                                                    <option value="{{ $value->id }}" @if($test_config->candidate_type == $value->id) selected @endif>{{ $value->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="total_question">Number of Selected Item</label>
-                                    <input type="number" name="number_of_selected_item_item" id="number_of_selected_item_item" value="{{ $test_config->total_item }}" class="form-control" readonly placeholder="Number of Selected Item" min="1" onkeydown="return false" onmousedown="return false" required/>
-                                </div>
+                                </div> <!-- end row -->
 
-                                <div class="form-group">
-                                    <label for="candidate_type">Select Candidate Type</label>
-                                    <select name="candidate_type" id="candidate_type" class="form-control" required>
-                                        <option value=""> Choose one </option>
-                                        @foreach($candidate_type as $value)
-                                            <option value="{{ $value->id }}" @if($test_config->candidate_type == $value->id) selected @endif>{{ $value->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                
 
                                 <label for="">Item Level</label>
                                 <div class="row">
@@ -111,16 +127,21 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                </div>
+                                </div> <!-- end row -->
 
-                                <div class="form-group">
-                                    <label for="total_time">Total Time</label>
-                                    <input type="number" name="total_time" id="total_time" class="form-control" value="{{ $test_config->total_time }}" min="1" placeholder="Total Time" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="total_time">Pass Mark</label>
-                                    <input type="number" name="pass_mark" id="pass_mark" class="form-control" min="1" value="{{ $test_config->pass_mark }}" placeholder="Candidate's pass mark" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="total_time">Total Time</label>
+                                            <input type="number" name="total_time" id="total_time" class="form-control" value="{{ $test_config->total_time }}" min="1" placeholder="Total Time" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="total_time">Pass Mark</label>
+                                            <input type="number" name="pass_mark" id="pass_mark" class="form-control" min="1" value="{{ $test_config->pass_mark }}" placeholder="Candidate's pass mark" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <button class="btn btn-success create_set">Submit</button>

@@ -90,6 +90,28 @@
 @section('footer_scripts')
     <script src="{{asset('js/jequery-validation.js')}}"></script>
     <script src="{{ asset('js/create-iq-question-set-validation.js') }}"></script>
+    {{-- <script>
+        $('.set_configuration_type').on('change',function(){
+            var item_set_for=$('#item_set_for').val()
+    
+            if(item_set_for===''){
+                $('.item_set_for_error').css('display','block')
+                return false;
+            }else{
+                $('.item_set_for_error').css('display','none')
+            }
+    
+            var set_configuration_type=$(this).val()
+            if(set_configuration_type==1){
+                $('form').attr('id','create_qusetion_set')
+            }else{
+                $('form').attr('id','create_numeric_question_set')
+                 $('form').attr('action','storeItemSet')
+            }
+
+            $('#questionSetDetails').html('<center><img src=" {{asset('images/default/loading.gif')}}"/></center>').load('{{URL::to("create-question-set")}}/'+item_set_for+'/'+set_configuration_type); 
+        })
+        </script> --}}
     <script>
         $(document).ready(function(){
             @if ($message = session()->get('choose'))

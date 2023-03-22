@@ -29,6 +29,7 @@ Item Bank
     .pagination {
         float: right;
     }
+    
 </style>
 @stop
 
@@ -116,6 +117,7 @@ Item Bank
                                 @endif
                                 <th>Name</th>
                                 <th>Item</th>
+                                <th>Level</th>
                                 <th>Status</th>
                                 <th class="text-center">Action</th>
                             </tr>
@@ -146,6 +148,7 @@ Item Bank
                                     </audio>
                                     @endif
                                 </td>
+                                <td>{{$value->itemLevel->name}}</td>
                                 <td>
                                     @if($value->item_status == 1)
                                     <span class="label label-success">Active</span>

@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    Edit
+    Edit 
     @foreach($test_list as $test)
         @if($test->id == $item_set_for)
             {{ $test->name }}
@@ -10,6 +10,7 @@
     @endforeach
     Question Set
     @parent
+    
 @stop
 
 {{-- page level styles --}}
@@ -69,7 +70,12 @@
                                     {{ $test->name }}
                                 @endif
                             @endforeach
-                            Question Set
+                            Question Set 
+                            @if($item_set->set_configuration_type==1)
+                            <b class="text-success">(Random Item)</b>
+                            @else
+                            <b class="text-success">(Static Item)</b>
+                             @endif
                         </h3>
                     </div>
                     <div class="panel-body">

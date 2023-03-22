@@ -8,7 +8,7 @@
             {{ $test->name }}
         @endif
     @endforeach
-    Question Set
+    Question Set -Static Item
     @parent
 @stop
 
@@ -70,7 +70,7 @@
                                     {{ $test->name }}
                                 @endif
                             @endforeach
-                            Question Set
+                            Question Set <b class="text-success">(Static Item)</b>
                         </h3>
                     </div>
                     <div class="panel-body">
@@ -130,10 +130,10 @@
                                                 <input type="checkbox" class="check" value="{{ $value->id }}||{{$value->level}}" id="check_{{$value->id}}"  name="checkbox[]"/>
                                             </div>
                                         </td>
-                                        <td>{{ $value->name }}</td>
+                                        <td> <?php echo $value->name;?> </td>
                                         <td>
                                             @if($value->item_type == 1)
-                                                {{ $value->item }}
+                                                <?php echo $value->item;?>
                                             @elseif($value->item_type == 2)
                                                 <img src="{{ asset('assets/uploads/questions/images/'.$value->item) }}" alt="..." style="width: 250px; height: 150px;">
                                             @elseif($value->item_type == 3)

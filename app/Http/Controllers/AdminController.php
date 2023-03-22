@@ -1320,8 +1320,9 @@ class AdminController extends Controller
 
     public function itemList($item_for, $status)
     {
+        
         $test_list = TestList::get();
-        $items = ItemBank::where('item_for', $item_for)->where('item_status', $status)->latest()->paginate(10);
+        $items = ItemBank::with('itemLevel')->where('item_for', $item_for)->where('item_status', $status)->latest('id','DESC')->paginate(10);
 
         return view('item_list', compact('items', 'test_list', 'item_for', 'status'));
     }
@@ -2348,8 +2349,43 @@ class AdminController extends Controller
 
         return redirect('/create-question-set');
     }
+    // public function createItemSet($item_set_for=null,$item_configuration_type=null)// Saif
+    // {
+    //     // $item_set_for = $item_set_for;
+    //     // $item_configuration_type = $item_configuration_type;
+    //     // $total_item = 23;
 
-    public function createItemSet()
+    //     $item_set_for = Session::get('item_set_for');
+    //     $item_set_name = Session::get('item_set_name');
+    //     $item_configuration_type = Session::get('item_configuration_type');
+    //     $total_item = Session::get('total_item');
+
+    //     $test_list = TestList::get();
+    //     $candidate_type = CandidateType::select('id', 'name')->get();
+    //     $item_levels = ItemLevel::select('id', 'name')->get();
+
+    //     if ($item_configuration_type == 1) { // Random ------
+
+    //         $counts = [];
+    //         foreach ($item_levels as $level) {
+    //             $count = ItemBank::Where('level', $level->id)->Where('item_for', $item_set_for)->WhereIn('item_status', [1,3,4])->count(); // (4=No Answer)Saif
+    //             if ($count != 0) {
+    //                 $counts = $this->array_push_assoc($counts, $level->name, $count);
+    //             }
+    //         }
+    //         //return view('create_random_item_set', compact('item_set_for', 'test_list', 'candidate_type', 'counts'));
+    //         return view('create_random_item_set', compact('item_set_for', 'test_list', 'candidate_type', 'item_set_name', 'counts', 'total_item'));
+    //     } elseif ($item_configuration_type == 2) { // Static
+
+    //         $item_bank = ItemBank::WhereIn('item_status', [1,3,4])->Where('item_for', $item_set_for)->paginate(10);
+    //         //return view('create_static_item_set', compact('item_set_for', 'test_list', 'candidate_type', 'item_bank', 'item_levels'));
+    //         return view('create_static_item_set', compact('item_set_for', 'test_list', 'candidate_type', 'item_set_name', 'item_bank', 'item_levels', 'total_item'));
+    //     } else {
+    //         return redirect('/create-set')->with('choose', 'Please fill this form.');
+    //     }
+    // }
+
+    public function createItemSet(Request $request)// old
     {
         $item_set_for = Session::get('item_set_for');
         $item_set_name = Session::get('item_set_name');
@@ -2366,7 +2402,6 @@ class AdminController extends Controller
             foreach ($item_levels as $level) {
                 $count = ItemBank::Where('level', $level->id)->Where('item_for', $item_set_for)->WhereIn('item_status', [1,3,4])->count(); // (4=No Answer)Saif
                 if ($count != 0) {
-
                     $counts = $this->array_push_assoc($counts, $level->name, $count);
                 }
             }
@@ -2419,6 +2454,7 @@ class AdminController extends Controller
             $questions_id = implode('||', $question_numbers);
             $item_level = implode('~~', array_filter($question_levels));
         } elseif ($request->set_configuration_type == 2) {
+            return $request;
             if ($request->data[0] == 'all') {
                 $item_number = ItemBank::Where('item_for', $request->item_set_for)->pluck('id')->toArray();
                 $total_items = ItemBank::Where('item_for', $request->item_set_for)->count();

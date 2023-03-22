@@ -70,7 +70,7 @@
                                     {{ $test->name }}
                                 @endif
                             @endforeach
-                            Test Config
+                            Test Config - (<b class="text-success">Static Item</b>)
                         </h3>
                     </div>
                     <div class="panel-body">
@@ -108,17 +108,18 @@
                               </div>
                           </div>
                           <div class="row" style="margin-bottom: 25px;">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Type</label><br>
-                                    <label for="random_set">
+                                    <label>Test Configuration Type : <input type="radio" name="set_type" class="set_type" id="static_set" value="2" checked required/> Static Set
+                                        &nbsp;&nbsp;&nbsp;</label>
+                                    {{-- <label for="random_set">
                                         <input type="radio" name="set_type" class="set_type" id="random_set" value="1" required/> Random Set
                                         &nbsp;&nbsp;&nbsp;
-                                    </label>
-                                    <label for="static_set">
-                                        <input type="radio" name="set_type" class="set_type" id="static_set" value="2" required/> Static Set
+                                    </label> --}}
+                                    {{-- <label for="static_set">
+                                        <input type="radio" name="set_type" class="set_type" id="static_set" value="2" checked required/> Static Set
                                         &nbsp;&nbsp;&nbsp;
-                                    </label><br>
+                                    </label> --}}
                                     <label id="set_type-error" class="error" for="set_type" hidden></label>
                                 </div>
                             </div>

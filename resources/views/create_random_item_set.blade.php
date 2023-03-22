@@ -8,7 +8,7 @@
             {{ $test->name }}
         @endif
     @endforeach
-    Question Set
+    Question Set -Random Item
     @parent
 @stop
 
@@ -37,7 +37,7 @@
                         {{ $test->name }}
                     @endif
                 @endforeach
-                Question Set
+                Question Set 
             </li>
         </ol>
     </section>
@@ -56,7 +56,7 @@
                                     {{ $test->name }}
                                 @endif
                             @endforeach
-                            Question Set
+                            Question Set <b class="text-success">(Random Item)</b>
                         </h3>
                     </div>
                     <div class="panel-body">
