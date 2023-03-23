@@ -14,4 +14,8 @@ class TestConfiguration extends Model
         return $this->belongsTo(\App\TestList::class,'test_for','id');
     }
 
+    public function resultConfigData(){
+        return $this->hasMany(ResultConfig::class,'test_config_id','id');
+    }
+
 }

@@ -1,14 +1,3 @@
-
-
-</styles>
-<div>
-<?php if($testConfigData): ?>
-    <h4>Test Config Name: <b><?php echo e($testConfigData->test_name); ?></b>, Total Item: <b><?php echo e($testConfigData->total_item); ?></b> 
-    <input type='hidden' name='test_config_id' value="<?php echo e($testConfigData->id); ?>" />
-    </h4>
-    <hr/>
-    <?php endif; ?>
-</div>
 <table class="table table-border table-hover table-striped">
     <thead>
         <tr>
@@ -33,4 +22,4 @@
         </tr>
         <?php endif; ?>
     </tbody>
-<table><?php /**PATH C:\laragon\www\issbv2\resources\views/load_test_config_data.blade.php ENDPATH**/ ?>
+</table><?php /**PATH C:\laragon\www\issbv2\resources\views/load_test_result_config.blade.php ENDPATH**/ ?>

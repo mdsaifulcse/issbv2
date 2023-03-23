@@ -302,6 +302,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/new-test-configuration', 'AdminController@testConfig');
     Route::post('/testRedirect', 'AdminController@testRedirect');
     Route::get('/create-test-configuration', 'AdminController@createTestConfig');
+    Route::get('/load-test-result-config/{totalItems}', 'AdminController@loadRestResultConfig');
     Route::post('/storeTestConfig', 'AdminController@storeTestConfig');
     Route::get('/update-test-configuration/{id}', 'AdminController@editTestConfig');
     Route::post('/updateTestConfig/{id}', 'AdminController@updateTestConfig');
