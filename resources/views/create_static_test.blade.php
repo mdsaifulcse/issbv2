@@ -110,13 +110,14 @@
                           <div class="row" style="margin-bottom: 25px;">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Test Configuration Type : <input type="radio" name="set_type" class="set_type" id="static_set" value="2" checked required/> Static Set
+                                    <label>Test Configuration Type :
+                                         <input type="radio" name="set_type" class="set_type" id="static_set" value="2" checked required/> Static Set
                                         &nbsp;&nbsp;&nbsp;</label>
                                     {{-- <label for="random_set">
                                         <input type="radio" name="set_type" class="set_type" id="random_set" value="1" required/> Random Set
                                         &nbsp;&nbsp;&nbsp;
-                                    </label> --}}
-                                    {{-- <label for="static_set">
+                                    </label> 
+                                    <label for="static_set">
                                         <input type="radio" name="set_type" class="set_type" id="static_set" value="2" checked required/> Static Set
                                         &nbsp;&nbsp;&nbsp;
                                     </label> --}}
@@ -130,6 +131,7 @@
                             <tr>
                                 <th width="100">Selection</th>
                                 <th>Set Name</th>
+                                <th>Total Items</th>
                                 <th>Set For</th>
                                 <th>Set Type</th>
                             </tr>
@@ -143,6 +145,7 @@
                                             </div>
                                         </td>
                                         <td>{{ $value->item_set_name }}</td>
+                                        <td>{{ $value->total_items }}</td>
                                         <td>
                                             @foreach($test_list as $test)
                                                 @if($test->id == $value->item_set_for)

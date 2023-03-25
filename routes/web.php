@@ -279,7 +279,7 @@ Route::group(['middleware' => ['auth']], function () {
     //Route::get('/create-question-set/{item_set_for?}/{item_configuration_type?}', 'AdminController@createItemSet'); //Saif
     Route::post('/storeItemSet', 'AdminController@storeItemSet');
     Route::get('/edit-item-set/{id}', 'AdminController@editItemSet');
-    Route::post('/updateItemSet/{id}', 'AdminController@editItemSet');
+    Route::post('/updateItemSet/{id}', 'AdminController@updateItemSet');
     Route::delete('/destroyItemSet/{id}', 'AdminController@destroyItemSet');
 
     // memory item

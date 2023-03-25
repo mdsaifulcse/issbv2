@@ -64,6 +64,7 @@
                                 <th width="35%">Item For</th>
                                 <th width="35%">Item Set Name</th>
                                 {{-- <th>Total Time</th> --}}
+                                <th width="15%">Total Item</th>
                                 <th width="15%">Item Set For</th>
                                 <th width="15%">Set</th>
                                 <th width="15%">Item Set Type</th>
@@ -76,7 +77,7 @@
                                     <td>{{ ++$key }}</td>
                                     <td>{{ $value->itemFor?$value->itemFor->name:'N/A' }}</td>
                                     <td>{{ $value->item_set_name }}</td>
-                                    {{-- <td>{{ $value->total_time }} min</td> --}}
+                                    <td>{{ $value->total_items }}</td>
                                     <td> {{$value->candidateType->name}} </td>
                                     <td>{{ ucfirst($value->set_type) }}</td>
                                     <td>
