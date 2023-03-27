@@ -46,7 +46,7 @@
 
         <div class="row">
 
-            <div class="col-lg-10 col-md-offset-1">
+            <div class="col-lg-12">
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"><i class="livicon" data-name="doc-portrait" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
@@ -56,7 +56,7 @@
                                     {{ $test->name }}
                                 @endif
                             @endforeach
-                            Test Config
+                            Test Config - (<b class="text-success">Random Item</b>)
                         </h3>
                     </div>
                     <div class="panel-body">
@@ -66,44 +66,54 @@
 
                                 <input type="hidden" name="test_for" id="item_set_for" value="{{ $test_for }}">
                                 <input type="hidden" name="test_type" id="set_configuration_type" value="1">
-                                <div class="form-group">
-                                    <label for="total_question">Test Name </label>
-                                    <input type="text" name="test_name" id="item_set_name" value="{{ $test_name }}" class="form-control" placeholder="Item Set Name" required/>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="total_question">Total Item</label>
-                                    <input type="number" name="total_item" id="total_question" value="{{ $total_item }}" class="form-control" placeholder="Total Item" required/>
-                                    <label id="invalid_total_question" class="error" idden></label>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="total_question">Number of Selected Item</label>
-                                    <input type="number" name="number_of_selected_item_item" id="number_of_selected_item_item" class="form-control" readonly placeholder="Number of Selected Item" min="1" onkeydown="return false" onmousedown="return false" required/>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="candidate_type">Select Candidate Type</label>
-                                    <select name="candidate_type" id="candidate_type" class="form-control" required>
-                                        <option value=""> Choose one </option>
-                                        @foreach($candidate_type as $value)
-                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <label for="">Item Level</label>
                                 <div class="row">
-                                @foreach($counts as $key => $count)
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="{{ $key }}_level">{{ $key }} </label> ({{ $count }})
-                                            <input type="number" name="{{ $key }}" id="{{ $key }}_level" class="form-control item_type" min="1" max="{{ $count }}" placeholder="{{ $key }} level"  onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
+                                    <div class="col-md-6">
+                                        <div class="">
+                                            <label for="total_question">Test Name </label>
+                                            <input type="text" name="test_name" id="item_set_name" value="{{ $test_name }}" class="form-control" placeholder="Item Set Name" required/>
                                         </div>
                                     </div>
-                                @endforeach
-                                </div>
 
+                                    <div class="col-md-6">
+                                        <div class="">
+                                            <label for="total_question">Total Item</label>
+                                            <input type="number" name="total_item" id="total_question" value="{{ $total_item }}" class="form-control" placeholder="Total Item" required/>
+                                            <label id="invalid_total_question" class="error" idden></label>
+                                            <span class="text-danger" id="totalItemError"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="">
+                                            <label for="candidate_type">Select Candidate Type</label>
+                                            <select name="candidate_type" id="candidate_type" class="form-control" required>
+                                                <option value=""> Choose one </option>
+                                                @foreach($candidate_type as $value)
+                                                    <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="">
+                                            <label for="total_question">Number of Selected Item</label>
+                                            <input type="number" name="number_of_selected_item_item" id="number_of_selected_item_item" class="form-control" readonly placeholder="Number of Selected Item" min="1" onkeydown="return false" onmousedown="return false" required/>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <br>
+                                <label for="">Item Level</label>
+                                <div class="row">
+                                    @foreach($counts as $key => $count)
+                                        <div class="col-md-3">
+                                            <div class="">
+                                                <label for="{{ $key }}_level">{{ $key }} </label> ({{ $count }})
+                                                <input type="number" name="{{ $key }}" id="{{ $key }}_level" class="form-control item_type" min="1" max="{{ $count }}" placeholder="{{ $key }} level"  onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <br/>
                                 <div class="row">
                                     @if($noAnswerExist==0)
                                     <div class="col-md-4">
@@ -121,7 +131,8 @@
                                             <input type="number" step="any" name="total_time_no_ans" id="total_time_no_ans" class="form-control" placeholder="Total Time In Second"  required/>
                                             <input type="hidden" name="noAnswerExist" value="{{$noAnswerExist}}"/>
                                         </div>
-                                    </div>    <div class="col-md-4">
+                                    </div>    
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="break_time">Break Time</label>
                                             <input type="number" name="break_time" id="break_time" class="form-control" placeholder="Break Time in minute"  required/>
@@ -130,14 +141,38 @@
 
                                         @endif
 
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="total_time">Pass Mark</label>
+                                                <input type="number" name="pass_mark" id="pass_mark" class="form-control" min="1" placeholder="Candidate's pass mark" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
+                                                <input type="hidden" value="{{url('/')}}" id="baseUrl"/>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Result Configuration? </label>
+                                                <br/>
+                                                 <label for="result_config_yes">
+                                                    <input type="radio" name="result_config" class="result_config" id="result_config_yes" value="1" required/> Yes
+                                                </label>
+                                                 <label for="result_config_no">
+                                                    <input type="radio" name="result_config" class="result_config" id="result_config_no" value="0" required/> No
+                                                </label>
+                                                <label id="set_type-error" class="error" for="set_type" hidden></label>
+                                            </div>
+                                        </div>    
+
                                 </div>
 
-
-                                <div class="form-group">
-                                    <label for="total_time">Pass Mark</label>
-                                    <input type="number" name="pass_mark" id="pass_mark" class="form-control" min="1" placeholder="Candidate's pass mark" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
-                                    <input type="hidden" value="{{url('/')}}" id="baseUrl"/>
-                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-12">
+                                        <div id="testConfigDetails">
+                                            
+                                        </div>
+                                    </div>
+                                </div><!-- end row -->
 
                                 <button class="btn btn-success create_set">Submit</button>
                                 <a class="btn btn-danger pull-right" href="{{ URL::to('/new-test-configuration') }}">Back</a>
@@ -156,6 +191,35 @@
 @section('footer_scripts')
     <script src="{{asset('js/jequery-validation.js')}}"></script>
     <script src="{{ asset('js/create_random_test_validation.js') }}"></script>
+
+    <script>
+        $('.result_config').on('change',function(){
+
+            var total_question=$('#total_question').val()
+
+            // Total Item / question Validation ------------
+            if(total_question==''){
+                $('#totalItemError').html('Total item is required')
+                $('#totalItemError').css('displey','block')
+                return false;
+            }else{
+                $('#totalItemError').html('')
+                $('#totalItemError').css('displey','none')
+            }
+
+            var item_set_for=$('#item_set_for').val()
+            var result_config=$(this).val()
+            
+            if(result_config==0){
+                $('#testConfigDetails').empty();
+            }else{
+                $('#testConfigDetails').html('<center><img src=" {{asset('images/default/loading.gif')}}"/></center>').load('{{URL::to("load-test-result-config")}}/'+total_question); 
+            }
+
+            
+        })
+    </script>
+
     <script>
         $(document).ready(function(){
             $('.item_type').on('keyup', function(){

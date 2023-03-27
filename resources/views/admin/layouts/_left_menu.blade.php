@@ -300,7 +300,7 @@
     <li>
         <a href="#">
             <i class="livicon" data-name="settings" data-c="#67C5DF" data-hc="#67C5DF" data-size="18" data-loop="true"></i>
-            <span class="title">Tests Configuration</span>
+            <span class="title">Tests & Result Config</span>
             <span class="fa fa-angle-right"></span>
         </a>
         <ul class="sub-menu">
@@ -308,7 +308,7 @@
             <li>
                 <a href="{{ URL::to('/new-test-configuration') }}">
                     <i class="fa fa-angle-double-right"></i>
-                    <span class="title">Create Test Config</span>
+                    <span class="title">Create Test & Result Config</span>
                 </a>
             </li>
             <li>
@@ -325,13 +325,11 @@
             </li>
         </ul>
     </li>
-    <li class="">
-        <a href="#">
+    {{-- <li class="">
+        <a href="{{url('/result-config')}}">
             <i class="livicon" data-name="doc-portrait" data-size="18" data-c="#EF6F6C" data-hc="#EF6F6C"
-            data-loop="true"></i>
-            Result Config
-        </a>
-    </li>
+            data-loop="true"></i> Result Config </a>
+    </li> --}}
 
     <!-- <li>
         <a href="#">

@@ -20,8 +20,8 @@ $("#create_random_test").validate(
         },
         messages: {
             total_item:{
-                required:"You must enter an Item type",
-                min : "You must enter an Item type"
+                required:"You must enter an Item type dd",
+                min : "You must enter an Item typevvv"
             },
             total_time:{
                 required:"This field is required"
@@ -55,7 +55,8 @@ $("#create_random_test").validate(
                 var formData = new FormData($(form)[0]);
                 console.log(formData)
                 $.ajax({
-                    url:baseUrl+"/storeTestConfig",
+                    //url:baseUrl+"/storeTestConfig",
+                    url:"/storeTestConfig",
                     method:"POST",
                     data:formData,
                     contentType: false,
@@ -70,8 +71,8 @@ $("#create_random_test").validate(
                         }
                         else {
                             sessionStorage.setItem("new_success", "success");
-                            window.location.href = baseUrl+"/test-configuration-list";
-                            //window.location.href = "/test-configuration-list/"+data;
+                            //window.location.href = baseUrl+"/test-configuration-list";
+                            window.location.href = "/test-configuration-list/"+data;
                         }
                     },
                     error: function (e) {

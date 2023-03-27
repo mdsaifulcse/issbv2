@@ -43,6 +43,11 @@
         label#-error {
             display: none;
         }
+        .content-header h5{
+        color: #3c763d !important;
+        font-size: 20px !important;
+        font-weight: 600 !important;
+        }
     </style>
 @stop
 
@@ -50,7 +55,7 @@
 @section('content')
     <section class="content-header">
         <!--section starts-->
-        <h5></h5>
+        <h5 style="color: #3c763d;font-size: 20px ;font-weight: 600;"></h5>
         <ol class="breadcrumb">
             <li>
                 <a href="{{ URL::to('/') }}">Admin</a>
@@ -411,6 +416,16 @@
     <script src="{{ asset('js/create-item.js') }}"></script>
     <script src="{{ asset('js/create-item-validation.js') }}"></script>
 
+    <script>
+    
+         @if ($message = Session::get('errors'))
+                toastr.error('{{ $message }}', 'Success Alert', {timeOut: 5000});
+        @endif
+
+         @if ($message = Session::get('success'))
+                toastr.success('{{ $message }}', 'Success Alert', {timeOut: 5000});
+        @endif
+    </script>
 
     <script>
 

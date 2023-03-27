@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    Edit
+    Edit 
     @foreach($test_list as $test)
         @if($test->id == $item_set_for)
             {{ $test->name }}
@@ -10,6 +10,7 @@
     @endforeach
     Question Set
     @parent
+    
 @stop
 
 {{-- page level styles --}}
@@ -69,13 +70,21 @@
                                     {{ $test->name }}
                                 @endif
                             @endforeach
-                            Question Set
+                            Question Set 
+                            @if($item_set->set_configuration_type==1)
+                            <b class="text-success">(Random Item)</b>
+                            @else
+                            <b class="text-success">(Static Item)</b>
+                             @endif
                         </h3>
                     </div>
                     <div class="panel-body">
 
                         <div class="form">
-                            <form method="POST" id="edit_qusetion_set">
+                            
+                            <form method="POST" id="edit_qusetion_set" >
+                                {{ csrf_field() }}
+                                {{-- action="{{url('/updateItemSet/'.$item_set->id)}}" --}}
 
                                 <input type="hidden" name="item_set_for" id="item_set_for" value="{{ $item_set_for }}">
                                 <input type="hidden" name="set_configuration_type" id="set_configuration_type" value="1">
@@ -111,8 +120,8 @@
                                 @foreach($counts as $key => $count)
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="{{ $key }}_level">{{ $key }} </label> ({{ $count }})
-                                            <input type="number" name="{{ $key }}" id="{{ $key }}_level" class="form-control item_type" min="1" max="{{ $count }}" placeholder="{{ $key }} level"  onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
+                                            <label for="{{ $key }}_level">{{ $count[$key.'_name'] }} </label> ({{ $count[$key.'_count'] }})
+                                            <input type="number" name="{{ $count[$key.'_name'] }}" value="{{$count[$key.'_item_data']}}" id="{{ $key }}_level" class="form-control item_type" min="1" max="({{ $count[$key.'_count'] }})" placeholder="{{ $key }} level"  onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
                                         </div>
                                     </div>
                                 @endforeach

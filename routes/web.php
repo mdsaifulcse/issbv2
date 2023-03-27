@@ -77,6 +77,12 @@ Route::group(['middleware' => ['auth']], function () {
 //        return view('welcome');
 //    });
 
+
+    /* ================   Result Connfig  ================ Md.Saiful Islam */
+    Route::post('/result-config', 'ResultConfigController@saveResultConfig')->name('result-config');
+    Route::get('/result-config', 'ResultConfigController@index');
+    Route::get('/load_test_config_data/{testId}', 'ResultConfigController@loadTestConfigDataByTestId');
+
     // side navigation
     Route::get('/item-create', 'AdminController@itemCreate');
     Route::get('/iq-item-create', 'AdminController@iqItemCreate');
@@ -269,10 +275,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/question-set', 'AdminController@questionSetList');
     Route::get('/create-set', 'AdminController@createSets');
     Route::post('/setRedirect', 'AdminController@setRedirect');
-    Route::get('/create-question-set', 'AdminController@createItemSet');
+    Route::get('/create-question-set', 'AdminController@createItemSet');// Old
+    //Route::get('/create-question-set/{item_set_for?}/{item_configuration_type?}', 'AdminController@createItemSet'); //Saif
     Route::post('/storeItemSet', 'AdminController@storeItemSet');
     Route::get('/edit-item-set/{id}', 'AdminController@editItemSet');
-    Route::post('/updateItemSet/{id}', 'AdminController@editItemSet');
+    Route::post('/updateItemSet/{id}', 'AdminController@updateItemSet');
     Route::delete('/destroyItemSet/{id}', 'AdminController@destroyItemSet');
 
     // memory item
@@ -295,6 +302,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/new-test-configuration', 'AdminController@testConfig');
     Route::post('/testRedirect', 'AdminController@testRedirect');
     Route::get('/create-test-configuration', 'AdminController@createTestConfig');
+    Route::get('/load-test-result-config/{totalItems}', 'AdminController@loadRestResultConfig');
     Route::post('/storeTestConfig', 'AdminController@storeTestConfig');
     Route::get('/update-test-configuration/{id}', 'AdminController@editTestConfig');
     Route::post('/updateTestConfig/{id}', 'AdminController@updateTestConfig');

@@ -52,8 +52,8 @@ $("#create_qusetion_set").validate(
                 var submitUrl=$('#postUrl').val();
                 var redirectUrl=$('#redirectUrl').val();
                 $.ajax({
-                    url:submitUrl,
-                    //url:'/storeItemSet',
+                    //url:submitUrl,
+                    url:'/storeItemSet',
                     method:"POST",
                     data:formData,
                     contentType: false,
@@ -64,8 +64,8 @@ $("#create_qusetion_set").validate(
                         if (data)
                         {
                             sessionStorage.setItem("new_success", "success");
-                            window.location.href = redirectUrl;
-                            //window.location.href = "/question-set";
+                            //window.location.href = redirectUrl;
+                            window.location.href = "/question-set";
                         }
                     },
                     error: function (e) {

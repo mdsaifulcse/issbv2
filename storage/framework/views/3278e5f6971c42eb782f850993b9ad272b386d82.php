@@ -1,1 +1,0 @@
-<?php /**PATH D:\xampp74\htdocs\issbv2\resources\views/admin/layouts/_messages.blade.php ENDPATH**/ ?>
