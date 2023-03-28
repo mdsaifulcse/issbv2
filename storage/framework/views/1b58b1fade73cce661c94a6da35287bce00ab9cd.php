@@ -1,39 +1,36 @@
-@extends('admin/layouts/default')
-
-{{-- Page title --}}
-@section('title')
+<?php $__env->startSection('title'); ?>
     Test Config List
-    @parent
-@stop
+    ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
+<?php $__env->stopSection(); ?>
 
-{{-- page level styles --}}
-@section('header_styles')
+
+<?php $__env->startSection('header_styles'); ?>
     <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
 
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" /> -->
-    <link href="{{ asset('DataTables/datatables.min.css') }}" rel="stylesheet" />
+    <link href="<?php echo e(asset('DataTables/datatables.min.css')); ?>" rel="stylesheet" />
     <style>
         .pagination {
             float: right;
         }
     </style>
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- Page content --}}
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <section class="content-header">
         <!--section starts-->
         <h1>
            Test Config List</h1>
         <ol class="breadcrumb">
             <li>
-                <a href="{{ URL::to('/') }}">Admin</a>
+                <a href="<?php echo e(URL::to('/')); ?>">Admin</a>
             </li>
             <li>
-                <a href="{{ URL::to('/test-configuration-list') }}">Test Config</a>
+                <a href="<?php echo e(URL::to('/test-configuration-list')); ?>">Test Config</a>
             </li>
             <li class="active">
                  Test Config List
@@ -47,13 +44,13 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                         Test Config List for @if(isset($testData)) {{$testData->name}} @endif
+                         Test Config List for <?php if(isset($testData)): ?> <?php echo e($testData->name); ?> <?php endif; ?>
                         </h3>
                         <div class="pull-right">
-                            @if(isset($testData))
-                                <a href="{{ URL::to('/test-configuration-list') }}" class="btn btn-sm btn-primary" title="All Test and Result Config list"><span class="glyphicon glyphicon-list" ></span> All Test List</a>
-                            @endif
-                            <a href="{{ URL::to('/new-test-configuration') }}" class="btn btn-sm btn-primary" title="Create new Test and Result Config"><span class="glyphicon glyphicon-plus" ></span> Create new</a>
+                            <?php if(isset($testData)): ?>
+                                <a href="<?php echo e(URL::to('/test-configuration-list')); ?>" class="btn btn-sm btn-primary" title="All Test and Result Config list"><span class="glyphicon glyphicon-list" ></span> All Test List</a>
+                            <?php endif; ?>
+                            <a href="<?php echo e(URL::to('/new-test-configuration')); ?>" class="btn btn-sm btn-primary" title="Create new Test and Result Config"><span class="glyphicon glyphicon-plus" ></span> Create new</a>
                         </div>
                     </div>
                     <div class="panel-body">
@@ -72,46 +69,47 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($test_config_list as $key => $value)
+                            <?php $__currentLoopData = $test_config_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td>{{ ++$key }}</td>
+                                    <td><?php echo e(++$key); ?></td>
                                     <td>
-                                        <input type="hidden" value="{{ $value->testFor->id }}" id="test_id{{$value->id}}"/>
-                                        {{ $value->testFor->name }}</td>
+                                        <input type="hidden" value="<?php echo e($value->testFor->id); ?>" id="test_id<?php echo e($value->id); ?>"/>
+                                        <?php echo e($value->testFor->name); ?></td>
                                     <td>
-                                        {{ $value->test_name }}</td>
+                                        <?php echo e($value->test_name); ?></td>
                                     <td>
-                                        <input type="hidden" value="{{ $value->total_item }}" id="total_item{{$value->id}}"/>
-                                        {{ $value->total_item }}</td>
+                                        <input type="hidden" value="<?php echo e($value->total_item); ?>" id="total_item<?php echo e($value->id); ?>"/>
+                                        <?php echo e($value->total_item); ?></td>
                                     <td>
-                                        @if (!empty($value->set_id))
+                                        <?php if(!empty($value->set_id)): ?>
                                             <span class="btn btn-success">Static</span>
-                                        @else
+                                        <?php else: ?>
                                             <span class="btn btn-primary">Random </span>
-                                        @endif
+                                        <?php endif; ?>
                                     </td>
 
-                                    <td>{{ $value->total_time }}</td>
-                                    <td>{{ $value->pass_mark }}</td>
+                                    <td><?php echo e($value->total_time); ?></td>
+                                    <td><?php echo e($value->pass_mark); ?></td>
                                     <td class="text-center">
-                                        <a href="{{ route('configInstruction.index', ['configId'=>$value->id]) }}" class="btn btn-sm btn-primary" title="Click here to set Instruction slider">Instruction</a>
+                                        <a href="<?php echo e(route('configInstruction.index', ['configId'=>$value->id])); ?>" class="btn btn-sm btn-primary" title="Click here to set Instruction slider">Instruction</a>
 
-                                        @if(count($value->resultConfigData)>0)
-                                            <a href="javascript:void(0)" class="btn btn-sm btn-warning" onclick="showEditResultConfigModal({{$value->id}})" title="Edit Result Config"><span class="glyphicon glyphicon-edit" ></span> Result Config</a>
-                                        @else
-                                            <a href="javascript:void(0)" class="btn btn-sm btn-success" onclick="showCreateResultConfigModal({{$value->id}})" title="Click here to set Result Config"><span class="glyphicon glyphicon-plus" ></span> Result Config</a>
-                                        @endif
+                                        <?php if(count($value->resultConfigData)>0): ?>
+                                            <a href="javascript:void(0)" class="btn btn-sm btn-warning" onclick="showEditResultConfigModal(<?php echo e($value->id); ?>)" title="Edit Result Config"><span class="glyphicon glyphicon-edit" ></span> Result Config</a>
+                                        <?php else: ?>
+                                            <a href="javascript:void(0)" class="btn btn-sm btn-success" onclick="showCreateResultConfigModal(<?php echo e($value->id); ?>)" title="Click here to set Result Config"><span class="glyphicon glyphicon-plus" ></span> Result Config</a>
+                                        <?php endif; ?>
 
-                                        @if(Auth::user()->hasRole('admin'))
-                                        <a href="{{ URL::to('update-test-configuration/'.$value->id) }}"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14" title="Update data" ></i></a>
+                                        <?php if(Auth::user()->hasRole('admin')): ?>
+                                        <a href="<?php echo e(URL::to('update-test-configuration/'.$value->id)); ?>"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14" title="Update data" ></i></a>
                                         <a><i class="livicon" data-name="trash" data-size="20" data-loop="true"  data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=testDelete('<?php echo $value->id ?>'); ></i></a>
-                                        @endif
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                         </table>
-                        {{ $test_config_list->links() }}
+                        <?php echo e($test_config_list->links()); ?>
+
                     </div>
                 </div>
             </div>
@@ -133,34 +131,34 @@
     </section>
     <!-- content -->
 
-    @stop
+    <?php $__env->stopSection(); ?>
 
-    {{-- page level scripts --}}
-    @section('footer_scripts')
+    
+    <?php $__env->startSection('footer_scripts'); ?>
 
             <!-- For Editors -->
 
     <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script> -->
-    <script language="javascript" type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
-    <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
+    <script language="javascript" type="text/javascript" src="<?php echo e(asset('DataTables/datatables.min.js')); ?>"></script>
+    <script language="javascript" type="text/javascript" src="<?php echo e(asset('assets/vendors/select2/js/select2.js')); ?>"></script>
 
-    @if(Session::has('success'))
+    <?php if(Session::has('success')): ?>
         <script type="text/javascript">
             swal({
                 title: "Success",
-                text: "{{Session::get('success')}}",
+                text: "<?php echo e(Session::get('success')); ?>",
                 type: "success",
                 confirmButtonText: "OK"
             });
         </script>
-    @endif
-    @if(Session::has('errors'))
+    <?php endif; ?>
+    <?php if(Session::has('errors')): ?>
         <script type="text/javascript">
-            toastr.error("{{Session::get("errors")}}", 'Error Alert', {timeOut: 5000});
+            toastr.error("<?php echo e(Session::get("errors")); ?>", 'Error Alert', {timeOut: 5000});
         </script>
-    @endif
+    <?php endif; ?>
 
     <script>
         function showCreateResultConfigModal(text_config_id) {
@@ -170,8 +168,8 @@
             if(total_question==0){
                 $('#testConfigDetails').empty();
             }else{
-                $('#testConfigDetails').html('<center><img src=" {{asset('images/default/loading.gif')}}"/></center>')
-                    .load('{{URL::to("load-test-result-config")}}/'+text_config_id+'/'+total_question);
+                $('#testConfigDetails').html('<center><img src=" <?php echo e(asset('images/default/loading.gif')); ?>"/></center>')
+                    .load('<?php echo e(URL::to("load-test-result-config")); ?>/'+text_config_id+'/'+total_question);
             }
 
             $('#resultConfigModal').modal('show')
@@ -184,8 +182,8 @@
             if(total_question==0){
                 $('#testConfigDetails').empty();
             }else{
-                $('#testConfigDetails').html('<center><img src=" {{asset('images/default/loading.gif')}}"/></center>')
-                    .load('{{URL::to("edit-load-test-result-config")}}/'+text_config_id+'/'+total_question);
+                $('#testConfigDetails').html('<center><img src=" <?php echo e(asset('images/default/loading.gif')); ?>"/></center>')
+                    .load('<?php echo e(URL::to("edit-load-test-result-config")); ?>/'+text_config_id+'/'+total_question);
             }
 
             $('#resultConfigModal').modal('show')
@@ -260,4 +258,6 @@
         }
     </script>
 
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\issbv2\resources\views/test_config_list.blade.php ENDPATH**/ ?>

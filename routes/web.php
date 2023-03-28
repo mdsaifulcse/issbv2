@@ -79,9 +79,11 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     /* ================   Result Connfig  ================ Md.Saiful Islam */
+    //Route::get('/result-config', 'ResultConfigController@index');
+    Route::get('/load-test-result-config/{textConfigId}/{totalItems}', 'ResultConfigController@createLoadRestResultConfig');
     Route::post('/result-config', 'ResultConfigController@saveResultConfig')->name('result-config');
-    Route::get('/result-config', 'ResultConfigController@index');
-    Route::get('/load_test_config_data/{testId}', 'ResultConfigController@loadTestConfigDataByTestId');
+    Route::get('/edit-load-test-result-config/{textConfigId}/{totalItems}', 'ResultConfigController@editLoadRestResultConfig');
+    Route::post('/update-result-config', 'ResultConfigController@updateResultConfig')->name('update-result-config');
 
     // side navigation
     Route::get('/item-create', 'AdminController@itemCreate');
@@ -302,7 +304,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/new-test-configuration', 'AdminController@testConfig');
     Route::post('/testRedirect', 'AdminController@testRedirect');
     Route::get('/create-test-configuration', 'AdminController@createTestConfig');
-    Route::get('/load-test-result-config/{totalItems}', 'AdminController@loadRestResultConfig');
     Route::post('/storeTestConfig', 'AdminController@storeTestConfig');
     Route::get('/update-test-configuration/{id}', 'AdminController@editTestConfig');
     Route::post('/updateTestConfig/{id}', 'AdminController@updateTestConfig');

@@ -1,29 +1,27 @@
-@extends('admin/layouts/default')
-
-{{-- Page title --}}
-@section('title')
+<?php $__env->startSection('title'); ?>
     Create
-    @foreach($test_list as $test)
-        @if($test->id == $test_for)
-            {{ $test->name }}
-        @endif
-    @endforeach
-    Test Config
-    @parent
-@stop
+    <?php $__currentLoopData = $test_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $test): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <?php if($test->id == $test_for): ?>
+            <?php echo e($test->name); ?>
 
-{{-- page level styles --}}
-@section('header_styles')
+        <?php endif; ?>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    Test Config
+    ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('header_styles'); ?>
     <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
     <style>
         .lowercase {
            text-transform: lowercase;
         }
     </style>
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- Page content --}}
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <section class="content-header">
         <!--section starts-->
         <h5></h5>
@@ -32,11 +30,12 @@
                 <a href="#">Admin</a>
             </li>
             <li class="active">Create
-                @foreach($test_list as $test)
-                    @if($test->id == $test_for)
-                        {{ $test->name }}
-                    @endif
-                @endforeach
+                <?php $__currentLoopData = $test_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $test): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php if($test->id == $test_for): ?>
+                        <?php echo e($test->name); ?>
+
+                    <?php endif; ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 Test Config
             </li>
         </ol>
@@ -51,11 +50,12 @@
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"><i class="livicon" data-name="doc-portrait" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                             Create
-                            @foreach($test_list as $test)
-                                @if($test->id == $test_for)
-                                    {{ $test->name }}
-                                @endif
-                            @endforeach
+                            <?php $__currentLoopData = $test_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $test): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php if($test->id == $test_for): ?>
+                                    <?php echo e($test->name); ?>
+
+                                <?php endif; ?>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             Test Config - (<b class="text-success">Random Item</b>)
                         </h3>
                     </div>
@@ -64,20 +64,20 @@
                         <div class="form">
                             <form method="POST" id="create_random_test">
 
-                                <input type="hidden" name="test_for" id="item_set_for" value="{{ $test_for }}">
+                                <input type="hidden" name="test_for" id="item_set_for" value="<?php echo e($test_for); ?>">
                                 <input type="hidden" name="test_type" id="set_configuration_type" value="1">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="">
                                             <label for="total_question">Test Name </label>
-                                            <input type="text" name="test_name" id="item_set_name" value="{{ $test_name }}" class="form-control" placeholder="Item Set Name" required/>
+                                            <input type="text" name="test_name" id="item_set_name" value="<?php echo e($test_name); ?>" class="form-control" placeholder="Item Set Name" required/>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="">
                                             <label for="total_question">Total Item</label>
-                                            <input type="number" name="total_item" id="total_question" value="{{ $total_item }}" class="form-control" placeholder="Total Item" required/>
+                                            <input type="number" name="total_item" id="total_question" value="<?php echo e($total_item); ?>" class="form-control" placeholder="Total Item" required/>
                                             <label id="invalid_total_question" class="error" idden></label>
                                             <span class="text-danger" id="totalItemError"></span>
                                         </div>
@@ -87,9 +87,9 @@
                                             <label for="candidate_type">Select Candidate Type</label>
                                             <select name="candidate_type" id="candidate_type" class="form-control" required>
                                                 <option value=""> Choose one </option>
-                                                @foreach($candidate_type as $value)
-                                                    <option value="{{ $value->id }}">{{ $value->name }}</option>
-                                                @endforeach
+                                                <?php $__currentLoopData = $candidate_type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($value->id); ?>"><?php echo e($value->name); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>
                                     </div>
@@ -104,32 +104,32 @@
                                 <br>
                                 <label for="">Item Level</label>
                                 <div class="row">
-                                    @foreach($counts as $key => $count)
+                                    <?php $__currentLoopData = $counts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $count): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="col-md-3">
                                             <div class="">
-                                                <label for="{{ $key }}_level">{{ $key }} </label> ({{ $count }})
-                                                <input type="number" name="{{ $key }}" id="{{ $key }}_level" class="form-control item_type" min="1" max="{{ $count }}" placeholder="{{ $key }} level"  onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
+                                                <label for="<?php echo e($key); ?>_level"><?php echo e($key); ?> </label> (<?php echo e($count); ?>)
+                                                <input type="number" name="<?php echo e($key); ?>" id="<?php echo e($key); ?>_level" class="form-control item_type" min="1" max="<?php echo e($count); ?>" placeholder="<?php echo e($key); ?> level"  onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');">
                                             </div>
                                         </div>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
                                 <br/>
                                 <div class="row">
-                                    @if($noAnswerExist==0)
+                                    <?php if($noAnswerExist==0): ?>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="total_time">Total Time</label>
                                             <input type="number" step="any" name="total_time" id="total_time" class="form-control" min="1" placeholder="Total Time" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
-                                            {{--<input type="number" step="any" name="total_time" id="total_time" class="form-control" min="1" placeholder="Total Time" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>--}}
+                                            
                                         </div>
                                     </div>
-                                    @else
+                                    <?php else: ?>
 
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="total_time_no_ans">Total Time In Second</label>
                                             <input type="number" step="any" name="total_time_no_ans" id="total_time_no_ans" class="form-control" placeholder="Total Time In Second"  required/>
-                                            <input type="hidden" name="noAnswerExist" value="{{$noAnswerExist}}"/>
+                                            <input type="hidden" name="noAnswerExist" value="<?php echo e($noAnswerExist); ?>"/>
                                         </div>
                                     </div>    
                                     <div class="col-md-4">
@@ -139,13 +139,13 @@
                                         </div>
                                     </div>
 
-                                        @endif
+                                        <?php endif; ?>
 
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="total_time">Pass Mark</label>
                                             <input type="number" name="pass_mark" id="pass_mark" class="form-control" min="1" placeholder="Candidate's pass mark" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
-                                            <input type="hidden" value="{{url('/')}}" id="baseUrl"/>
+                                            <input type="hidden" value="<?php echo e(url('/')); ?>" id="baseUrl"/>
                                         </div>
                                     </div>
 
@@ -161,7 +161,7 @@
                                 </div><!-- end row -->
 
                                 <button class="btn btn-success create_set">Submit</button>
-                                <a class="btn btn-danger pull-right" href="{{ URL::to('/new-test-configuration') }}">Back</a>
+                                <a class="btn btn-danger pull-right" href="<?php echo e(URL::to('/new-test-configuration')); ?>">Back</a>
                             </form>
                         </div>
                     </div>
@@ -171,38 +171,38 @@
         <!--/row-->
     </section>
 
-@stop
+<?php $__env->stopSection(); ?>
 
-{{-- page level scripts --}}
-@section('footer_scripts')
-    <script src="{{asset('js/jequery-validation.js')}}"></script>
-    <script src="{{ asset('js/create_random_test_validation.js') }}"></script>
 
-    {{--<script>--}}
-        {{--$('.result_config').on('change',function(){--}}
+<?php $__env->startSection('footer_scripts'); ?>
+    <script src="<?php echo e(asset('js/jequery-validation.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/create_random_test_validation.js')); ?>"></script>
 
-            {{--var total_question=$('#total_question').val()--}}
+    
+        
 
-            {{--// Total Item / question Validation --------------}}
-            {{--if(total_question==''){--}}
-                {{--$('#totalItemError').html('Total item is required')--}}
-                {{--$('#totalItemError').css('displey','block')--}}
-                {{--return false;--}}
-            {{--}else{--}}
-                {{--$('#totalItemError').html('')--}}
-                {{--$('#totalItemError').css('displey','none')--}}
-            {{--}--}}
+            
 
-            {{--var item_set_for=$('#item_set_for').val()--}}
-            {{--var result_config=$(this).val()--}}
-            {{----}}
-            {{--if(result_config==0){--}}
-                {{--$('#testConfigDetails').empty();--}}
-            {{--}else{--}}
-                {{--$('#testConfigDetails').html('<center><img src=" {{asset('images/default/loading.gif')}}"/></center>').load('{{URL::to("load-test-result-config")}}/'+total_question); --}}
-            {{--}--}}
-        {{--})--}}
-    {{--</script>--}}
+            
+            
+                
+                
+                
+            
+                
+                
+            
+
+            
+            
+            
+            
+                
+            
+                
+            
+        
+    
 
     <script>
         $(document).ready(function(){
@@ -215,4 +215,6 @@
             });
         });
     </script>
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin/layouts/default', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\issbv2\resources\views/create_random_test.blade.php ENDPATH**/ ?>

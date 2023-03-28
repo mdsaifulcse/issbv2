@@ -2316,7 +2316,7 @@ class AdminController extends Controller
     }
 
     public function questionSetList(){
-        $questions_set = QuestionSet::with('itemFor','candidateType')->paginate(20);
+        $questions_set = QuestionSet::with('itemFor','candidateType')->paginate(100);
         return view('question_set_list',compact('questions_set'));
     }
 
@@ -2324,10 +2324,11 @@ class AdminController extends Controller
 
     public function questionSet($set_for)
     {
+        $test=TestList::where(['id'=>$set_for])->first();
         $candidate_type = CandidateType::get();
         $test_list = TestList::get();
-        $questions_set = QuestionSet::where('item_set_for', $set_for)->paginate(20);
-        return view('question_set_list', compact('questions_set', 'set_for', 'candidate_type', 'test_list'));
+        $questions_set = QuestionSet::where('item_set_for', $set_for)->paginate(100);
+        return view('question_set_list', compact('questions_set', 'test','set_for', 'candidate_type', 'test_list'));
     }
 
     public function createSets()
@@ -2401,7 +2402,7 @@ class AdminController extends Controller
 
             $counts = [];
             foreach ($item_levels as $level) {
-                $count = ItemBank::Where('level', $level->id)->Where('item_for', $item_set_for)->WhereIn('item_status', [1,3,4])->count(); // (4=No Answer)Saif
+                $count = ItemBank::Where('level', $level->id)->Where('item_for', $item_set_for)->WhereIn('item_status', [1,3,4])->count(); // (1=Active,3=Test,4=No Answer)Saif
                 if ($count != 0) {
                     $counts = $this->array_push_assoc($counts, $level->name, $count);
                 }
@@ -2409,7 +2410,7 @@ class AdminController extends Controller
             return view('create_random_item_set', compact('item_set_for', 'test_list', 'candidate_type', 'item_set_name', 'counts', 'total_item'));
         } elseif ($item_configuration_type == 2) { // Static
 
-            $item_bank = ItemBank::WhereIn('item_status', [1,3,4])->Where('item_for', $item_set_for)->paginate(10);
+            $item_bank = ItemBank::WhereIn('item_status', [1,3,4])->Where('item_for', $item_set_for)->paginate(200); // (1=Active,3=Test,4=No Answer)Saif
             return view('create_static_item_set', compact('item_set_for', 'test_list', 'candidate_type', 'item_set_name', 'item_bank', 'item_levels', 'total_item'));
         } else {
             return redirect('/create-set')->with('choose', 'Please fill this form.');
@@ -2432,7 +2433,7 @@ class AdminController extends Controller
             $item_levels = ItemLevel::select('id', 'name')->get();
             $counts = [];
             foreach ($item_levels as $key => $level) {
-                $count = ItemBank::Where('item_for', $request->item_set_for)->Where('level', $level->id)->count();
+                $count = ItemBank::Where('item_for', $request->item_set_for)->Where('level', $level->id)->WhereIn('item_status', [1,3,4])->count();
 
                 if ($count != 0) {
                     $counts = $this->array_push_assoc($counts, $level->name, $count);
@@ -2444,7 +2445,8 @@ class AdminController extends Controller
 
                     if ($total_request != null) {
                         $question_levels[] = $level_id . '||' . $total_request;
-                    $questions[] = ItemBank::select('id')->where('item_for', $request->item_set_for)->where('level', $level->id)->inRandomOrder()->limit($total_request)->pluck('id')->toArray();
+                    $questions[] = ItemBank::select('id')->where('item_for', $request->item_set_for)->where('level', $level->id)->WhereIn('item_status', [1,3,4])
+                        ->inRandomOrder()->limit($total_request)->pluck('id')->toArray();
 
                     }
                     // That was mistake --------
@@ -2458,12 +2460,13 @@ class AdminController extends Controller
             $questions_id = implode('||', $question_numbers);
             $item_level = implode('~~', array_filter($question_levels));
         } elseif ($request->set_configuration_type == 2) { // Static -----------
-            return $request;
+           
             if ($request->data[0] == 'all') {
-                $item_number = ItemBank::Where('item_for', $request->item_set_for)->pluck('id')->toArray();
-                $total_items = ItemBank::Where('item_for', $request->item_set_for)->count();
+                // (1=Active,3=Test,4=No Answer)Saif
+                $item_number = ItemBank::Where('item_for', $request->item_set_for)->WhereIn('item_status', [1,3,4])->pluck('id')->toArray();
+                $total_items = ItemBank::Where('item_for', $request->item_set_for)->WhereIn('item_status', [1,3,4])->count();
 
-                $all_levels = ItemBank::Where('item_for', $request->item_set_for)->pluck('level')->toArray();
+                $all_levels = ItemBank::Where('item_for', $request->item_set_for)->WhereIn('item_status', [1,3,4])->pluck('level')->toArray();
                 $levels = array_count_values($all_levels);
 
                 $item_levels = [];
@@ -2521,8 +2524,9 @@ class AdminController extends Controller
 
         $levelWiseItems=[];
         foreach(explode('~~',$item_set->item_level) as $level){
-           $data= explode('||',$level);
-           array_push($levelWiseItems,['id'=>$data[0],'value'=>$data[1]]);
+
+            $data= explode('||',$level);
+            $levelWiseItems[$data[0]]=["id"=>$data[0],"value"=>$data[1]];
         }
 
         //return $levelWiseItems;
@@ -2530,13 +2534,13 @@ class AdminController extends Controller
         if ($item_set->set_configuration_type == 1) { // Random -------
             $counts = [];
             foreach ($item_levels as $key=>$level) {
-                $count = ItemBank::Where('level', $level->id)->Where('item_for', $item_set_for)->WhereIn('item_status', [1,3,4])->count();
+                $count = ItemBank::Where('level', $level->id)->Where('item_for', $item_set_for)->WhereIn('item_status', [1,3,4])->count(); // (1=Active,3=Test,4=No Answer)Saif
                 if ($count != 0) {
 
-                    foreach($levelWiseItems as $levelWiseItem){
-                        if($levelWiseItem['id']==$level->id){
-                            $counts[$key]= [$key.'_count'=>$count,$key.'_name'=>$level->name,$key.'_item_data'=>$levelWiseItem['value']];
-                        }
+                    if (array_key_exists($level->id,$levelWiseItems)){
+                        $counts[$key]= [$key.'_count'=>$count,$key.'_name'=>$level->name,$key.'_item_data'=>$levelWiseItems[$level->id]['value']];
+                    }else{
+                        $counts[$key]= [$key.'_count'=>$count,$key.'_name'=>$level->name,$key.'_item_data'=>''];
                     }
                    // $counts = $this->array_push_assoc($counts, $level->name, $count);
                 }
@@ -2546,7 +2550,8 @@ class AdminController extends Controller
 
             return view('edit_random_item_set', compact('item_set', 'candidate_type', 'test_list', 'item_set_for', 'counts'));
         } elseif ($item_set->set_configuration_type == 2) { // Static ----------
-            $item_bank = ItemBank::Where('item_status', 1)->Where('item_for', $item_set_for)->paginate(10);
+            //$item_bank = ItemBank::Where('item_status', 1)->Where('item_for', $item_set_for)->paginate(200);// old ---Saif
+            $item_bank = ItemBank::WhereIn('item_status', [1,3,4])->Where('item_for', $item_set_for)->paginate(200);// (1=Active,3=Test,4=No Answer)Saif
             return view('edit_static_item_set', compact('item_set', 'candidate_type', 'item_bank', 'item_levels', 'test_list', 'item_set_for'));
         }
     }
@@ -2568,8 +2573,8 @@ class AdminController extends Controller
                 $item_levels = ItemLevel::select('id', 'name')->get();
                 $counts = [];
                 foreach ($item_levels as $key => $level) {
-                   
-                    $count = ItemBank::Where('item_for', $request->item_set_for)->Where('level', $level->id)->count();
+                    // (1=Active,3=Test,4=No Answer)Saif
+                    $count = ItemBank::Where('item_for', $request->item_set_for)->Where('level', $level->id)->WhereIn('item_status', [1,3,4])->count();
 
                     if ($count != 0) {
                         $counts = $this->array_push_assoc($counts, $level->name, $count);
@@ -2581,7 +2586,8 @@ class AdminController extends Controller
 
                         if ($total_request != null) {
                             $question_levels[] = $level_id . '||' . $total_request;
-                            $questions[] = ItemBank::select('id')->where('item_for', $request->item_set_for)->where('level', $level->id)->inRandomOrder()->limit($total_request)->pluck('id')->toArray();
+                            $questions[] = ItemBank::select('id')->where('item_for', $request->item_set_for)->where('level', $level->id)->WhereIn('item_status', [1,3,4])
+                                ->inRandomOrder()->limit($total_request)->pluck('id')->toArray();
                         }
                         // that wat mistake --------
                        // $questions[] = ItemBank::select('id')->where('item_for', $request->item_set_for)->where('level', $level->id)->inRandomOrder()->limit($total_request)->pluck('id')->toArray();
@@ -2595,12 +2601,12 @@ class AdminController extends Controller
                 $item_level = implode('~~', array_filter($question_levels));
             }
         } elseif ($insert_data->set_configuration_type == 2) {  // Static -----------
-
+            // (1=Active,3=Test,4=No Answer)Saif
             if ($request->data[0] == 'all') {
-                $item_number = ItemBank::Where('item_for', $request->item_set_for)->WhereIn('item_status', [1,3])->pluck('id')->toArray();
-                $total_items = ItemBank::Where('item_for', $request->item_set_for)->WhereIn('item_status', [1,3])->count();
+                $item_number = ItemBank::Where('item_for', $request->item_set_for)->WhereIn('item_status', [1,3,4])->pluck('id')->toArray();
+                $total_items = ItemBank::Where('item_for', $request->item_set_for)->WhereIn('item_status', [1,3,4])->count();
 
-                $all_levels = ItemBank::Where('item_for', $request->item_set_for)->pluck('level')->toArray();
+                $all_levels = ItemBank::Where('item_for', $request->item_set_for)->WhereIn('item_status', [1,3,4])->pluck('level')->toArray();
                 $levels = array_count_values($all_levels);
 
                 $item_levels = [];
@@ -2917,7 +2923,7 @@ class AdminController extends Controller
 
      public function testConfigList()
     {
-        $test_config_list = TestConfiguration::with('testFor')->latest()->paginate(20);
+        $test_config_list = TestConfiguration::with('testFor','resultConfigData')->latest()->paginate(200);
         return view('test_config_list', compact('test_config_list'));
     }
 
@@ -2925,7 +2931,7 @@ class AdminController extends Controller
     public function testConfigurations($test_for)
     {
         $testData = TestList::find($test_for);
-        $test_config_list = TestConfiguration::with('testFor')->where('test_for', $test_for)->paginate(20);
+        $test_config_list = TestConfiguration::with('testFor','resultConfigData')->where('test_for', $test_for)->paginate(200);
         return view('test_config_list', compact('test_config_list', 'testData'));
     }
 
@@ -2979,16 +2985,16 @@ class AdminController extends Controller
                 if ($count != 0) {
 
                     $counts = $this->array_push_assoc($counts, $level->name, $count);
+                    //
+                    $countNoAnswerItem = ItemBank::Where('level', $level->id)->Where('item_for', $test_for)->WhereIn('item_status', [4])->count(); // 4=NoAnswer(Saif)
+                    if ($countNoAnswerItem > 0) {
+                        $noAnswerExist=1;
+                    }
                 }
-                $countNoAnswerItem = ItemBank::Where('level', $level->id)->Where('item_for', $test_for)->WhereIn('item_status', [4])->count(); // 4=NoAnswer(Saif)
-                if ($countNoAnswerItem > 0) {
-                    $noAnswerExist=1;
-                }
-
             }
             return view('create_random_test', compact('test_for', 'test_list', 'candidate_type', 'test_name', 'counts', 'total_item','noAnswerExist'));
         } elseif ($test_configuration_type == 2) { // static -----
-            $question_set = QuestionSet::Where('item_set_for', $test_for)->paginate(100);
+            $question_set = QuestionSet::Where('item_set_for', $test_for)->paginate(200);
 
             return view('create_static_test', compact('test_for', 'test_list', 'candidate_type', 'test_name', 'question_set', 'item_levels', 'total_item'));
         } else {
@@ -2997,11 +3003,6 @@ class AdminController extends Controller
         }
     }
 
-    public function loadRestResultConfig($totalItems){
-        $totalItems+=1;
-
-        return view('load_test_result_config',compact('totalItems'));
-    }
 
     public function storeTestConfig(Request $request)
     {
@@ -3013,14 +3014,12 @@ class AdminController extends Controller
             $insert_data->test_for = $request->test_for;
             $insert_data->test_configuration_type = $request->test_type;
             $insert_data->candidate_type = $request->candidate_type;
-            if ($request->noAnswerExist==0){
-                $insert_data->total_time = $request->total_time;
-            }else{
-                $insert_data->total_time = 0;
-                $insert_data->total_time_no_ans = $request->total_time_no_ans;
-                $insert_data->break_time = $request->break_time;
-            }
-            $insert_data->pass_mark = $request->pass_mark;
+
+            $insert_data->total_time = $request->total_time?$request->total_time:0;
+            $insert_data->total_time_no_ans = $request->total_time_no_ans?$request->total_time_no_ans:0;
+            $insert_data->break_time = $request->break_time?$request->break_time:0;
+
+            $insert_data->pass_mark = $request->pass_mark?$request->pass_mark:0;
 
             // random questions id generate
 
@@ -3041,8 +3040,12 @@ class AdminController extends Controller
 
                         if ($total_request != null) {
                             $question_levels[] = $level_id . '||' . $total_request;
+                            $questions[] = ItemBank::select('id')->where('item_for', $request->test_for)->WhereIn('item_status', [1,3,4])->where('level', $level->id)
+                                ->inRandomOrder()->limit($total_request)->pluck('id')->toArray();// 4=NoAnswer (Saif)
                         }
-                        $questions[] = ItemBank::select('id')->where('item_for', $request->test_for)->WhereIn('item_status', [1,3,4])->where('level', $level->id)->inRandomOrder()->limit($total_request)->pluck('id')->toArray();// 4=NoAnswer (Saif)
+                            // That was mistake ----- Saif
+//                        $questions[] = ItemBank::select('id')->where('item_for', $request->test_for)->WhereIn('item_status', [1,3,4])->where('level', $level->id)
+//                            ->inRandomOrder()->limit($total_request)->pluck('id')->toArray();// 4=NoAnswer (Saif)
                     }
                 }
 
@@ -3058,11 +3061,20 @@ class AdminController extends Controller
                 $insert_data->item_level = $item_level;
                 $insert_data->item_id = $questions_id;
                 $insert_data->flag = 0;
-            } elseif ($request->test_type == 2) {
-                if ($request->data == 'random') {
-                    $random_set_id = QuestionSet::select('id')->where('item_set_for', $request->test_for)->inRandomOrder()->limit(1)->pluck('id')->toArray();
-                    $set_id = $random_set_id[0];
-                } else {
+            } elseif ($request->test_type == 2) {  // Static Test
+                if ($request->data == 'random') { // Static Test(Random)
+                   // $random_set = QuestionSet::select('id')->where('item_set_for', $request->test_for)->inRandomOrder()->limit(1)->first();
+                    $random_set = QuestionSet::where('item_set_for', $request->test_for)->inRandomOrder()->limit(1)->first();
+                    $insert_data->total_item=$random_set->total_items;
+                    $insert_data->item_id=$random_set->questions_id;
+                    $insert_data->item_level=$random_set->item_level;
+                    $set_id = $random_set->id;
+
+                } else { // Static Test (Static)
+                    $setInfo = QuestionSet::where(['id'=>$request->data])->first();
+                    $insert_data->total_item=$setInfo->total_items;
+                    $insert_data->item_id=$setInfo->questions_id;
+                    $insert_data->item_level=$setInfo->item_level;
                     $set_id = $request->data;
                 }
 
@@ -3096,20 +3108,18 @@ class AdminController extends Controller
                 $insert_data->save();
 
                 if( $request->raw_score && count($request->raw_score)>0){
-                // Save Resutl Config Data -------------------------------
+                // Save Result Config Data -------------------------------
                 foreach($request->raw_score as $key=>$raw_score){
-        
                     $resultConfigInput[]=[
                         'raw_score'=>$raw_score,
                         'estimated_score'=>$request->estimated_score[$key]?$request->estimated_score[$key]:0,
                         'test_id'=>$request->test_for,
                         'test_config_id'=>$insert_data->id,
                     ];
-        
+
+                    }
+                    ResultConfig::insert($resultConfigInput);
                 }
-            }
-        
-                ResultConfig::insert($resultConfigInput);
 
                 Session::forget('test_for');
                 Session::forget('test_name');
@@ -3128,7 +3138,6 @@ class AdminController extends Controller
 
     public function editTestConfig($id)
     {
-        
         $test_config = TestConfiguration::with('resultConfigData')->find($id);
        
         // Result Configuration -- Yes / No
@@ -3137,40 +3146,54 @@ class AdminController extends Controller
         }else{
             $test_config['result_config']=0;
         }
-       
+
          $levelWiseItems=[];
-         foreach(explode('~~',$test_config->item_level) as $level){
+         foreach(explode('~~',$test_config->item_level) as $j=> $level){
 
             $data= explode('||',$level);
-            array_push($levelWiseItems,['id'=>$data[0],'value'=>$data[1]]);
-            
+             $levelWiseItems[$data[0]]=["id"=>$data[0],"value"=>$data[1]];
          }
 
-        // return $levelWiseItems;
-        
+         //return $levelIds;
+         //return $levelWiseItems;
+
         $test_list = TestList::get();
         $test_for = $test_config->test_for;
         $candidate_type = CandidateType::select('id', 'name')->get();
         $item_levels = ItemLevel::select('id', 'name')->get();
 
         if ($test_config->test_configuration_type == 1) { // Random ------------
+            $noAnswerExist=0;
             $counts = [];
             foreach ($item_levels as $key=>$level) {
                 
-                $count = ItemBank::Where('level', $level->id)->Where('item_for', $test_config->test_for)->WhereIn('item_status', [1,3])->count();
+                $count = ItemBank::Where('level', $level->id)->Where('item_for', $test_config->test_for)->WhereIn('item_status', [1,3,4])->count();
                 if ($count != 0) {
 
-                    foreach($levelWiseItems as $levelWiseItem){
-                        
-                        if($levelWiseItem['id']==$level->id){
-                            $counts[$key]= [$key.'_count'=>$count,$key.'_name'=>$level->name,$key.'_item_data'=>$levelWiseItem['value']];
-                        }
+                    if (array_key_exists($level->id,$levelWiseItems)){
+                        $counts[$key]= [$key.'_count'=>$count,$key.'_name'=>$level->name,$key.'_item_data'=>$levelWiseItems[$level->id]['value']];
+                    }else{
+                        $counts[$key]= [$key.'_count'=>$count,$key.'_name'=>$level->name,$key.'_item_data'=>''];
+                    }
+
+//                    foreach($levelWiseItems as $levelWiseItem){
+//
+//                        if($levelWiseItem['id']==$level->id){
+//
+//                        }
+//
+//                    }
+
+                    $countNoAnswerItem = ItemBank::Where('level', $level->id)->Where('item_for', $test_for)->WhereIn('item_status', [4])->count(); // 4=NoAnswer(Saif)
+                    if ($countNoAnswerItem > 0) {
+                        $noAnswerExist=1;
                     }
                     //$counts = $this->array_push_assoc($counts, $level->name, $count);
+
                 }
             }
-           // return $counts[0];
-            return view('edit_random_test', compact('test_for', 'test_list', 'candidate_type', 'counts', 'test_config'));
+              //return $counts;
+            return view('edit_random_test', compact('test_for', 'test_list', 'candidate_type', 'counts', 'test_config','noAnswerExist'));
         } elseif ($test_config->test_configuration_type == 2) {  // Static ------------
             $question_set = QuestionSet::Where('item_set_for', $test_config->test_for)->paginate(10);
             return view('edit_static_test', compact('test_for', 'test_list', 'candidate_type', 'question_set', 'item_levels', 'test_config'));
@@ -3195,7 +3218,7 @@ class AdminController extends Controller
             $item_levels = ItemLevel::select('id', 'name')->get();
             $counts = [];
             foreach ($item_levels as $key => $level) {
-                $count = ItemBank::Where('item_for', $update->test_for)->WhereIn('item_status', [1,3])->Where('level', $level->id)->count();
+                $count = ItemBank::Where('item_for', $update->test_for)->WhereIn('item_status', [1,3,4])->Where('level', $level->id)->count();
 
                 if ($count != 0) {
                     $counts = $this->array_push_assoc($counts, $level->name, $count);
@@ -3207,8 +3230,13 @@ class AdminController extends Controller
 
                     if ($total_request != null) {
                         $question_levels[] = $level_id . '||' . $total_request;
+                        $questions[] = ItemBank::select('id')->where('item_for', $update->test_for)->WhereIn('item_status', [1,3,4])->where('level', $level->id)
+                            ->inRandomOrder()
+                            ->limit($total_request)->pluck('id')->toArray();
                     }
-                    $questions[] = ItemBank::select('id')->where('item_for', $update->test_for)->WhereIn('item_status', [1,3])->where('level', $level->id)->inRandomOrder()->limit($total_request)->pluck('id')->toArray();
+                    // That was mistake ------saif
+//                    $questions[] = ItemBank::select('id')->where('item_for', $update->test_for)->WhereIn('item_status', [1,3])->where('level', $level->id)->inRandomOrder()
+//                        ->limit($total_request)->pluck('id')->toArray();
                 }
             }
 
@@ -3225,13 +3253,31 @@ class AdminController extends Controller
             }
 
             $update->flag = 0;
-        } elseif ($update->test_configuration_type == 2) {
-            if ($request->data == 'random') {
-                $random_set_id = QuestionSet::select('id')->where('item_set_for', $update->test_for)->inRandomOrder()->limit(1)->pluck('id')->toArray();
-                $set_id = $random_set_id[0];
-            } else {
+        } elseif ($update->test_configuration_type == 2) { // Static ---
+
+            if ($request->data == 'random') { // Static Test(Random)
+                // $random_set = QuestionSet::select('id')->where('item_set_for', $request->test_for)->inRandomOrder()->limit(1)->first();
+                $random_set = QuestionSet::where('item_set_for', $request->test_for)->inRandomOrder()->limit(1)->first();
+                $update->total_item=$random_set->total_items;
+                $update->item_id=$random_set->questions_id;
+                $update->item_level=$random_set->item_level;
+                $set_id = $random_set->id;
+
+            } else { // Static Test (Static)
+                $setInfo = QuestionSet::where(['id'=>$request->data])->first();
+                $update->total_item=$setInfo->total_items;
+                $update->item_id=$setInfo->questions_id;
+                $update->item_level=$setInfo->item_level;
                 $set_id = $request->data;
             }
+
+            // Old ----
+            //if ($request->data == 'random') {
+            //$random_set_id = QuestionSet::select('id')->where('item_set_for', $update->test_for)->inRandomOrder()->limit(1)->pluck('id')->toArray();
+            //$set_id = $random_set_id[0];
+            //} else {
+            // $set_id = $request->data;
+            //}
 
             $update->flag = $request->flag;
             $update->set_id = $set_id;
@@ -3239,30 +3285,6 @@ class AdminController extends Controller
 
         $update->save();
 
-        // 1. Delete old result config data -----
-        // 2. Then new insert result data -------
-
-       
-       $oldResultConfigs= ResultConfig::where(['test_id'=>$update->test_for,'test_config_id'=>$id])->get();
-       if(count($oldResultConfigs)>0){
-        foreach($oldResultConfigs as $oldResultConfig){
-            $oldResultConfig->delete();
-        }
-       }
-
-       if( $request->raw_score && count($request->raw_score)>0){
-        foreach($request->raw_score as $key=>$raw_score){
-            //return $request->estimated_score;
-
-            $resultConfigInput[]=[
-                'raw_score'=>$raw_score,
-                'estimated_score'=>$request->estimated_score[$key]?$request->estimated_score[$key]:0,
-                'test_id'=>$update->test_for,
-                'test_config_id'=>$id,
-            ];
-        }
-        ResultConfig::insert($resultConfigInput);
-    }
        
         DB::commit();
         return ($update->test_for);
