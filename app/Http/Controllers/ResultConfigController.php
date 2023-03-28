@@ -86,7 +86,6 @@ class ResultConfigController extends Controller
             }
         }
 
-
     $validator = Validator::make($request->all(), [
 
         'raw_score' => 'required|array',
@@ -98,8 +97,6 @@ class ResultConfigController extends Controller
     {
         return redirect()->back()->withErrors($validator)->withInput();
     }
-
-    //return $request;
 
     DB::beginTransaction();
     try{
@@ -113,7 +110,6 @@ class ResultConfigController extends Controller
                 'test_config_id'=>$request->test_config_id,
 
             ];
-
         }
 
         ResultConfig::insert($resultConfigInput);
