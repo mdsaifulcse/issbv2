@@ -53,7 +53,7 @@
                                 @csrf
                                 <div class="row">
                                     <div class="form-group col-lg-3">
-                                        <label class="control-label">Board No</label>
+                                        <label class="control-label">Board No </label>
                                         <div class="">
                                             <input type="text" class="form-control" name="board_name" required="">
                                         </div>
@@ -110,7 +110,7 @@
                                 <td>{{ ++$key }}</td>
                                 <td>{{ $candidate->board_name }}</td>
                                 <td>{{ $candidate->total_candidate }}</td>
-                                <td>@if($candidate->status == 0) InActive @else Active @endif</td>
+                                <td>@if($candidate->status == 0) <button class="btn btn-danger">InActive</button> @else <button class="btn btn-success">Active</button> @endif</td>
                                 <td class="text-center">
                                     <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal{{$candidate->id}}"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14"></i></a>
                                     <a href="javascript:void(0)"><i class="livicon" data-name="trash" data-size="20" data-loop="true" data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=Delete({{ $candidate->id }});></i></a>

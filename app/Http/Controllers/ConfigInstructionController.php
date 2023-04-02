@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ConfigInstruction;
+use App\TestConfiguration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,11 +16,11 @@ class ConfigInstructionController extends Controller
      */
     public function index(Request $request)
     {
+        $data['testConfigData']=TestConfiguration::with('testFor')->find($request->configId);
         $data['instructionTypes']= ConfigInstruction::instructionTypes();
         $data['configId'] = $configId = $request->configId;
-        $data['configInstructions'] = ConfigInstruction::where('test_config_id', $configId)->orderBy('sequence','ASC')->latest()->paginate(20);
+        $data['configInstructions'] = ConfigInstruction::where('test_config_id', $configId)->orderBy('sequence','ASC')->latest()->paginate(50);
         return view('configInstruction.listData', $data);
-
     }
 
     /**

@@ -95,6 +95,7 @@
                                     <td>{{ $value->pass_mark }}</td>
                                     <td class="text-center">
                                         <a href="{{ route('configInstruction.index', ['configId'=>$value->id]) }}" class="btn btn-sm btn-primary" title="Click here to set Instruction slider">Instruction</a>
+                                        @if(Auth::user()->hasRole('admin'))
 
                                         @if(count($value->resultConfigData)>0)
                                             <a href="javascript:void(0)" class="btn btn-sm btn-warning" onclick="showEditResultConfigModal({{$value->id}})" title="Edit Result Config"><span class="glyphicon glyphicon-edit" ></span> Result Config</a>
@@ -102,7 +103,6 @@
                                             <a href="javascript:void(0)" class="btn btn-sm btn-success" onclick="showCreateResultConfigModal({{$value->id}})" title="Click here to set Result Config"><span class="glyphicon glyphicon-plus" ></span> Result Config</a>
                                         @endif
 
-                                        @if(Auth::user()->hasRole('admin'))
                                         <a href="{{ URL::to('update-test-configuration/'.$value->id) }}"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14" title="Update data" ></i></a>
                                         <a><i class="livicon" data-name="trash" data-size="20" data-loop="true"  data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=testDelete('<?php echo $value->id ?>'); ></i></a>
                                         @endif

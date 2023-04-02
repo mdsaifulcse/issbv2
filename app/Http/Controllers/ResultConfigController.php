@@ -32,7 +32,6 @@ class ResultConfigController extends Controller
 
 
         $validator = Validator::make($request->all(), [
-            
             'raw_score' => 'required|array',
             'raw_score.*' => 'numeric:min:0|max:999',
             'estimated_score' => 'required|array',
@@ -40,6 +39,7 @@ class ResultConfigController extends Controller
         ]);
         if ($validator->fails())
         {
+            //return redirect()->back()->with('error', $validator->errors()->first() );
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
