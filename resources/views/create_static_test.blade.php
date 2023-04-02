@@ -110,17 +110,17 @@
                           <div class="row" style="margin-bottom: 25px;">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Test Configuration Type :
-                                         <input type="radio" name="set_type" class="set_type" id="static_set" value="2" checked required/> Static Set
-                                        &nbsp;&nbsp;&nbsp;</label>
-                                    {{-- <label for="random_set">
+                                    <label>Test Configuration Type :</label>
+                                         {{--<input type="radio" name="set_type" class="set_type" id="static_set" value="2" checked required/> Static Set--}}
+                                        {{--&nbsp;&nbsp;&nbsp;</label>--}}
+                                     <label for="random_set">
                                         <input type="radio" name="set_type" class="set_type" id="random_set" value="1" required/> Random Set
                                         &nbsp;&nbsp;&nbsp;
-                                    </label> 
+                                    </label>
                                     <label for="static_set">
                                         <input type="radio" name="set_type" class="set_type" id="static_set" value="2" checked required/> Static Set
                                         &nbsp;&nbsp;&nbsp;
-                                    </label> --}}
+                                    </label>
                                     <label id="set_type-error" class="error" for="set_type" hidden></label>
                                 </div>
                             </div>
@@ -158,6 +158,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+
                         <br>
                         <button type="submit" class="btn btn-success btn-sm submit">Submit</button>
                         <a class="btn btn-danger btn-sm" id="back" href="{{ URL::to('/new-test-configuration') }}">Back</a>
@@ -170,18 +171,41 @@
     <!-- content -->
 
     @stop
-
     {{-- page level scripts --}}
     @section('footer_scripts')
-
-            <!-- For Editors -->
-
+    <!-- For Editors -->
     <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script> -->
     <script language="javascript" type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
     <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
     <script src="{{ asset('jquery.validate.min.js') }}"></script>
+
+    <script>
+    {{--$('.result_config').on('change',function(){--}}
+
+            {{--var total_question=$('#total_question').val()--}}
+
+            {{--// Total Item / question Validation --------------}}
+            {{--if(total_question==''){--}}
+                {{--$('#totalItemError').html('Total item is required')--}}
+                {{--$('#totalItemError').css('displey','block')--}}
+                {{--return false;--}}
+            {{--}else{--}}
+                {{--$('#totalItemError').html('')--}}
+                {{--$('#totalItemError').css('displey','none')--}}
+            {{--}--}}
+
+            {{--var item_set_for=$('#item_set_for').val()--}}
+            {{--var result_config=$(this).val()--}}
+
+            {{--if(result_config==0){--}}
+                {{--$('#testConfigDetails').empty();--}}
+            {{--}else{--}}
+                {{--$('#testConfigDetails').html('<center><img src=" {{asset('images/default/loading.gif')}}"/></center>').load('{{URL::to("load-test-result-config")}}/'+total_question);--}}
+            {{--}--}}
+        {{--})--}}
+    </script>
     <script>
         $(document).ready(function() {
             $('.set_type').on('change', function () {
@@ -201,6 +225,9 @@
                 if(checked){
                     $('.check').prop('checked', false);
                     $(this).prop('checked', true);
+
+                    var resultConfigVal=$('.result_config').val()
+                    console.log(resultConfigVal)
                 }
             });
 

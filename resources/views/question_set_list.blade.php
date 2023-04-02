@@ -49,10 +49,13 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Question Set List
+                            Question Set List @if(isset($test)) <b>for {{$test->name}}</b> @endif
                         </h3>
                         <div class="pull-right">
-                            <a href="{{ URL::to('/create-set') }}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus" ></span>Create new set</a>
+                            @if(isset($test))
+                            <a href="{{ URL::to('/question-set') }}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-list" ></span> All Set List</a>
+                            @endif
+                            <a href="{{ URL::to('/create-set') }}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus" ></span> Create new set</a>
                         </div>
                     </div>
                     <div class="panel-body">
@@ -82,9 +85,9 @@
                                     <td>{{ ucfirst($value->set_type) }}</td>
                                     <td>
                                         @if($value->set_configuration_type == 1)
-                                            <span class="badge badge-info">Random</span>
+                                            <span class="btn btn-sm btn-primary">Random</span>
                                         @elseif($value->set_configuration_type == 2)
-                                            <span class="badge badge-info">Static</span>
+                                            <span class="btn btn-sm btn-success">Static</span>
                                         @endif
                                     </td>
                                     <td>

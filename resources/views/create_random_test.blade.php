@@ -141,27 +141,13 @@
 
                                         @endif
 
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="total_time">Pass Mark</label>
-                                                <input type="number" name="pass_mark" id="pass_mark" class="form-control" min="1" placeholder="Candidate's pass mark" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
-                                                <input type="hidden" value="{{url('/')}}" id="baseUrl"/>
-                                            </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="total_time">Pass Mark</label>
+                                            <input type="number" name="pass_mark" id="pass_mark" class="form-control" min="1" placeholder="Candidate's pass mark" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
+                                            <input type="hidden" value="{{url('/')}}" id="baseUrl"/>
                                         </div>
-    
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Result Configuration? </label>
-                                                <br/>
-                                                 <label for="result_config_yes">
-                                                    <input type="radio" name="result_config" class="result_config" id="result_config_yes" value="1" required/> Yes
-                                                </label>
-                                                 <label for="result_config_no">
-                                                    <input type="radio" name="result_config" class="result_config" id="result_config_no" value="0" required/> No
-                                                </label>
-                                                <label id="set_type-error" class="error" for="set_type" hidden></label>
-                                            </div>
-                                        </div>    
+                                    </div>
 
                                 </div>
 
@@ -192,33 +178,31 @@
     <script src="{{asset('js/jequery-validation.js')}}"></script>
     <script src="{{ asset('js/create_random_test_validation.js') }}"></script>
 
-    <script>
-        $('.result_config').on('change',function(){
+    {{--<script>--}}
+        {{--$('.result_config').on('change',function(){--}}
 
-            var total_question=$('#total_question').val()
+            {{--var total_question=$('#total_question').val()--}}
 
-            // Total Item / question Validation ------------
-            if(total_question==''){
-                $('#totalItemError').html('Total item is required')
-                $('#totalItemError').css('displey','block')
-                return false;
-            }else{
-                $('#totalItemError').html('')
-                $('#totalItemError').css('displey','none')
-            }
+            {{--// Total Item / question Validation --------------}}
+            {{--if(total_question==''){--}}
+                {{--$('#totalItemError').html('Total item is required')--}}
+                {{--$('#totalItemError').css('displey','block')--}}
+                {{--return false;--}}
+            {{--}else{--}}
+                {{--$('#totalItemError').html('')--}}
+                {{--$('#totalItemError').css('displey','none')--}}
+            {{--}--}}
 
-            var item_set_for=$('#item_set_for').val()
-            var result_config=$(this).val()
-            
-            if(result_config==0){
-                $('#testConfigDetails').empty();
-            }else{
-                $('#testConfigDetails').html('<center><img src=" {{asset('images/default/loading.gif')}}"/></center>').load('{{URL::to("load-test-result-config")}}/'+total_question); 
-            }
-
-            
-        })
-    </script>
+            {{--var item_set_for=$('#item_set_for').val()--}}
+            {{--var result_config=$(this).val()--}}
+            {{----}}
+            {{--if(result_config==0){--}}
+                {{--$('#testConfigDetails').empty();--}}
+            {{--}else{--}}
+                {{--$('#testConfigDetails').html('<center><img src=" {{asset('images/default/loading.gif')}}"/></center>').load('{{URL::to("load-test-result-config")}}/'+total_question); --}}
+            {{--}--}}
+        {{--})--}}
+    {{--</script>--}}
 
     <script>
         $(document).ready(function(){

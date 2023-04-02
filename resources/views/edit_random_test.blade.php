@@ -129,71 +129,43 @@
                                         </div>
                                     @endforeach
                                 </div> <!-- end row -->
-                                
+
+
 
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="total_time">Total Time</label>
-                                            <input type="number" name="total_time" id="total_time" class="form-control" value="{{ $test_config->total_time }}" min="1" placeholder="Total Time" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
+                                    @if($noAnswerExist==0)
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="total_time">Total Time</label>
+                                                <input type="number" step="any" name="total_time" value="{{ $test_config->total_time }}" id="total_time" class="form-control" min="1" placeholder="Total Time" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
+                                                {{--<input type="number" step="any" name="total_time" id="total_time" class="form-control" min="1" placeholder="Total Time" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>--}}
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
+                                    @else
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="total_time_no_ans">Total Time In Second</label>
+                                                <input type="number" step="any" name="total_time_no_ans" value="{{ $test_config->total_time_no_ans }}" id="total_time_no_ans" class="form-control" placeholder="Total Time In Second"  required/>
+                                                <input type="hidden" name="noAnswerExist" value="{{$noAnswerExist}}"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="break_time">Break Time</label>
+                                                <input type="number" name="break_time" value="{{ $test_config->break_time }}" id="break_time" class="form-control" placeholder="Break Time in minute"  required/>
+                                            </div>
+                                        </div>
+
+                                    @endif
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="total_time">Pass Mark</label>
                                             <input type="number" name="pass_mark" id="pass_mark" class="form-control" min="1" value="{{ $test_config->pass_mark }}" placeholder="Candidate's pass mark" onkeydown="if(event.key==='.'){event.preventDefault();}" oninput="event.target.value = event.target.value.replace(/[^0-9]*/g,'');" required/>
                                         </div>
                                     </div>
 
-                                    
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Result Configuration? </label>
-                                            <br/>
-                                             <label for="result_config_yes">
-                                                <input type="radio" name="result_config" class="result_config" id="result_config_yes" {{$test_config->result_config==1?'checked':''}} value="1" required/> Yes
-                                            </label>
-                                             <label for="result_config_no">
-                                                <input type="radio" name="result_config" class="result_config" id="result_config_no" {{$test_config->result_config==0?'checked':''}}  value="0" required/> No 
-                                            </label>
-                                            <label> <a href="">&nbsp; &nbsp;&nbsp;&nbsp; |&nbsp; &nbsp; Refresh </a> </label>
-                                        </div>
-                                    </div> 
                                 </div> <!--end row -->
-
-                                <div class="row">
-                                    <div class="col-md-12 col-lg-12">
-                                        <div id="testConfigDetails">
-                                            <table class="table table-border table-hover table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th>SL </th>
-                                                        <th>Raw Score</th>
-                                                        <th>Estimated Score</th>
-                                                    </tr>
-                                                </thead>
-                                            
-                                                <tbody>
-                                                @if(count($test_config->resultConfigData)>0)
-                                                @foreach ( $test_config->resultConfigData as $key=>$resultConfig)
-                                                <tr>
-                                                    <td>{{$key+1}}</td>
-                                                    <td><input type='number' name='raw_score[]' value="{{ $resultConfig->raw_score}}" min='0' max='999' placeholder='Raw Score' class='raw-score' style="width:120px;" required /> </td>
-                                                    <td><input type='number' name='estimated_score[]' value="{{$resultConfig->estimated_score}}" min='0' max='999999' placeholder='Estimated Score'   style="width:130px;" required/> </td>
-                                                </tr>
-                                                @endforeach
-
-                                                   
-                                                    @else
-                                                    <tr>
-                                                        <td colspan='3' style="text-align:center">No Test Config Data Found</td>
-                                                    </tr>
-                                                    @endif
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div><!-- end row -->
 
                                 <button class="btn btn-success create_set">Submit</button> | 
                                 <a class="btn btn-danger" href="{{ URL::to('/new-test-configuration') }}">Back</a>

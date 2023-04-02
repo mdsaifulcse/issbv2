@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-   Test Config List
+    Test Config List
     @parent
 @stop
 
@@ -47,8 +47,14 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                         Test Config List
+                         Test Config List for @if(isset($testData)) {{$testData->name}} @endif
                         </h3>
+                        <div class="pull-right">
+                            @if(isset($testData))
+                                <a href="{{ URL::to('/test-configuration-list') }}" class="btn btn-sm btn-primary" title="All Test and Result Config list"><span class="glyphicon glyphicon-list" ></span> All Test List</a>
+                            @endif
+                            <a href="{{ URL::to('/new-test-configuration') }}" class="btn btn-sm btn-primary" title="Create new Test and Result Config"><span class="glyphicon glyphicon-plus" ></span> Create new</a>
+                        </div>
                     </div>
                     <div class="panel-body">
 
@@ -58,6 +64,7 @@
                                 <th width="10%">SL No</th>
                                 <th width="10%">Test For</th>
                                 <th width="50%">Test Name</th>
+                                <th width="50%">Total Item</th>
                                 <th width="10%">Type</th>
                                 <th width="5%">Total Time</th>
                                 <th width="5%">Pass Mark</th>
@@ -68,19 +75,33 @@
                             @foreach($test_config_list as $key => $value)
                                 <tr>
                                     <td>{{ ++$key }}</td>
-                                    <td>{{ $value->testFor->name }}</td>
-                                    <td>{{ $value->test_name }}</td>
+                                    <td>
+                                        <input type="hidden" value="{{ $value->testFor->id }}" id="test_id{{$value->id}}"/>
+                                        {{ $value->testFor->name }}</td>
+                                    <td>
+                                        {{ $value->test_name }}</td>
+                                    <td>
+                                        <input type="hidden" value="{{ $value->total_item }}" id="total_item{{$value->id}}"/>
+                                        {{ $value->total_item }}</td>
                                     <td>
                                         @if (!empty($value->set_id))
-                                            Satic
+                                            <span class="btn btn-success">Static</span>
                                         @else
-                                            Random
+                                            <span class="btn btn-primary">Random </span>
                                         @endif
                                     </td>
+
                                     <td>{{ $value->total_time }}</td>
                                     <td>{{ $value->pass_mark }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('configInstruction.index', ['configId'=>$value->id]) }}" class="btn btn-sm btn-primary">Set Instruction Slide</a>
+                                        <a href="{{ route('configInstruction.index', ['configId'=>$value->id]) }}" class="btn btn-sm btn-primary" title="Click here to set Instruction slider">Instruction</a>
+
+                                        @if(count($value->resultConfigData)>0)
+                                            <a href="javascript:void(0)" class="btn btn-sm btn-warning" onclick="showEditResultConfigModal({{$value->id}})" title="Edit Result Config"><span class="glyphicon glyphicon-edit" ></span> Result Config</a>
+                                        @else
+                                            <a href="javascript:void(0)" class="btn btn-sm btn-success" onclick="showCreateResultConfigModal({{$value->id}})" title="Click here to set Result Config"><span class="glyphicon glyphicon-plus" ></span> Result Config</a>
+                                        @endif
+
                                         @if(Auth::user()->hasRole('admin'))
                                         <a href="{{ URL::to('update-test-configuration/'.$value->id) }}"><i class="livicon" data-name="edit" data-size="20" data-loop="true" data-c="#F89A14" data-hc="#F89A14" title="Update data" ></i></a>
                                         <a><i class="livicon" data-name="trash" data-size="20" data-loop="true"  data-c="#EF6F61" data-hc="#EF6F61" title="Delete data" onclick=testDelete('<?php echo $value->id ?>'); ></i></a>
@@ -96,7 +117,18 @@
             </div>
         </div>
 
+        <!-- Modal -->
+        <div id="resultConfigModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
 
+                <!-- Modal content-->
+
+                <div class="modal-content" id="testConfigDetails">
+
+                </div>
+
+            </div>
+        </div>
 
     </section>
     <!-- content -->
@@ -113,6 +145,52 @@
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script> -->
     <script language="javascript" type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
     <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
+
+    @if(Session::has('success'))
+        <script type="text/javascript">
+            swal({
+                title: "Success",
+                text: "{{Session::get('success')}}",
+                type: "success",
+                confirmButtonText: "OK"
+            });
+        </script>
+    @endif
+    @if(Session::has('errors'))
+        <script type="text/javascript">
+            toastr.error("{{Session::get("errors")}}", 'Error Alert', {timeOut: 5000});
+        </script>
+    @endif
+
+    <script>
+        function showCreateResultConfigModal(text_config_id) {
+
+            var total_question=$('#total_item'+text_config_id).val()
+
+            if(total_question==0){
+                $('#testConfigDetails').empty();
+            }else{
+                $('#testConfigDetails').html('<center><img src=" {{asset('images/default/loading.gif')}}"/></center>')
+                    .load('{{URL::to("load-test-result-config")}}/'+text_config_id+'/'+total_question);
+            }
+
+            $('#resultConfigModal').modal('show')
+        }
+
+        function showEditResultConfigModal(text_config_id) {
+
+            var total_question=$('#total_item'+text_config_id).val()
+
+            if(total_question==0){
+                $('#testConfigDetails').empty();
+            }else{
+                $('#testConfigDetails').html('<center><img src=" {{asset('images/default/loading.gif')}}"/></center>')
+                    .load('{{URL::to("edit-load-test-result-config")}}/'+text_config_id+'/'+total_question);
+            }
+
+            $('#resultConfigModal').modal('show')
+        }
+    </script>
 
     <script>
         $(document).ready(function() {
@@ -142,44 +220,43 @@
         {
 
             swal({
-                        title: "Are you sure?",
-                        text: "You will not be able to recover this record!",
-                        type: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "Yes, delete it!",
-                        closeOnConfirm: false
+                title: "Are you sure?",
+                text: "You will not be able to recover this record!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            },
+            function () {
+                $.ajax({
+                    url: '/destroyTestConfig/' + id,
+                    method: 'DELETE',
+                    headers:
+                    {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    function () {
-                        $.ajax({
-                            url: '/destroyTestConfig/' + id,
-                            method: 'DELETE',
-                            headers:
-                            {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            success: function (data) {
-                                setTimeout(function () {
-                                    swal({
-                                                title: "Deleted!",
-                                                text: "Data has been deleted.",
-                                                type: "success",
-                                                confirmButtonText: "OK"
-                                            },
-                                            function (isConfirm) {
-                                                if (isConfirm) {
-                                                    window.location.reload();
-                                                }
-                                            });
-                                }, 1000);
-                            },
-                            error: function (e) {
-                                toastr.error('You Got Error', 'Inconceivable!', {timeOut: 5000})
-                            }
-                        })
+                    success: function (data) {
+                        setTimeout(function () {
+                            swal({
+                                    title: "Deleted!",
+                                    text: "Data has been deleted.",
+                                    type: "success",
+                                    confirmButtonText: "OK"
+                                },
+                                function (isConfirm) {
+                                    if (isConfirm) {
+                                        window.location.reload();
+                                    }
+                                });
+                        }, 1000);
+                    },
+                    error: function (e) {
+                        toastr.error('You Got Error', 'Inconceivable!', {timeOut: 5000})
+                    }
+                })
 
-
-                    });
+            });
         }
     </script>
 

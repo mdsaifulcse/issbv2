@@ -1,6 +1,4 @@
 
-
-</styles>
 <div>
 @if($testConfigData)
     <h4>Test Config Name: <b>{{$testConfigData->test_name}}</b>, Total Item: <b>{{$testConfigData->total_item}}</b> 
@@ -33,4 +31,4 @@
         </tr>
         @endif
     </tbody>
-<table>
+</table>
