@@ -2212,7 +2212,7 @@ class AdminController extends Controller
         $test_list = TestList::get()->toArray();
 
         $insert_data->save();
-        return redirect('/items/' . $item_for . '/' . $status)->with('success', $test_list[$item_for - 1]['name'] . ' Item has been successfully updated.');
+        return redirect('/items/' . $item_for . '/' . $status)->with('success',$insert_data->name . ' Item has been successfully updated.');
     }
 
     public function activateItem(Request $request)

@@ -209,7 +209,7 @@
     <li>
         <a href="#">
         <i class="livicon" data-name="doc-portrait" data-size="18" data-c="#EF6F6C" data-hc="#EF6F6C" data-loop="true"></i>
-            <span class="title">Create Items</span>
+            <span class="title">Create</span>
             <span class="fa fa-angle-right"></span>
         </a>
         <ul class="sub-menu">
@@ -223,7 +223,14 @@
             <li>
                 <a href="{{ URL::to('/create-memory-item') }}">
                     <i class="fa fa-angle-double-right"></i>
-                    Create Memory Item
+                    Memory Item Create
+                </a>
+            </li>
+            </li>
+            <li>
+                <a href="{{ URL::to('/test-list') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                     Test Create 
                 </a>
             </li>
         </ul>
@@ -417,7 +424,7 @@
         </ul>
     </li>
 
-    <li>
+    {{-- <li>
         <a href="#">
             <i class="livicon" data-name="gears" data-c="#67C5DF" data-hc="#67C5DF" data-size="18" data-loop="true"></i>
             <span class="title">Setting</span>
@@ -441,7 +448,7 @@
           
 
         </ul>
-    </li>
+    </li> --}}
 
     <li>
         <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('frm-logout').submit();">
