@@ -52,12 +52,16 @@
                     <div class="panel-body">
                         <div class="form">
                             <form method="POST" id="create_data" enctype="multipart/form-data"  class="needs-validation" novalidate>
-
-                                <div class="form-group">
-                                    <label for="level_name">Level Name</label>
-                                    <input type="text" class="form-control" name="level_name" id="level_name" placeholder="Level Name" required/>
+                                <div class="row">
+                                    <div class="form-group col-md-8 col-lg-8">
+                                        <label for="level_name">Level Name</label>
+                                        <input type="text" class="form-control" name="level_name" id="level_name" placeholder="Level Name" required/>
+                                    </div>
+                                    <div class="form-group col-md-2 col-lg-2">
+                                        <br>
+                                        <button class="btn btn-success create">Submit</button>
+                                    </div>
                                 </div>
-                                <button class="btn btn-success create">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -70,11 +74,11 @@
                 <div class="panel panel-info">
                     <div class="panel-heading clearfix">
                         <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Difficulty Level
+                            Difficulty Level List
                         </h3>
-                        <div class="pull-right">
+                        {{-- <div class="pull-right">
                             <a href="{{ URL::to('/create-item-level') }}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span>Add New</a>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="panel-body">
 

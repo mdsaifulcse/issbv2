@@ -40,17 +40,48 @@ Candidate Type
     </ol>
 </section>
 <section class="content">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+                <div class="panel-heading clearfix">
+                    <h3 class="panel-title pull-left"><i class="livicon" data-name="doc-portrait" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                        Create Candidate Type
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form">
+                        <form method="POST" id="create_data" enctype="multipart/form-data"  class="needs-validation" novalidate>
+                            <div class="row">
+                                <div class="form-group col-md-8 col-lg-8">
+                                    <label for="candidate_type">Candidate Type</label>
+                                    <input type="text" class="form-control" name="candidate_type" id="candidate_type" placeholder="Candidate Type" required/>
+                                </div>
+                                <div class="form-group col-md-2 col-lg-2">
+                                    <label for="candidate_type">&nbsp;</label><br>
+                                    <button class="btn btn-success create">Submit</button>
+                                </div>
+                                
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
 
         <div class="col-lg-12">
             <div class="panel panel-info">
                 <div class="panel-heading clearfix">
                     <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        Candidate Type
+                        Candidate Type List
                     </h3>
-                    <div class="pull-right">
+                    {{-- <div class="pull-right">
                         <a href="{{ URL::to('/create-candidate-type') }}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span>Add New</a>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="panel-body">
 
@@ -98,7 +129,55 @@ Candidate Type
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script> -->
 <script language="javascript" type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
 <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
+<script src="{{ asset('assets/js/toastr.min.js') }}"></script>
+<script src="{{asset('js/jequery-validation.js')}}"></script>
+<script>
+    $("#create_data").validate(
+            {
+                ignore: [],
+                debug: false,
+                rules: {
+                },
+                messages: {
+                },
 
+                submitHandler: function(form) {
+                    $('.create').text('Sending');
+                    $('.create').prop('disabled', true);
+                    var formData = new FormData($(form)[0]);
+                    $.ajax({
+                        type: "POST",
+                        url: 'storeCandidateType',
+                        data:formData,
+                        processData: false,
+                        contentType: false,
+                        headers:
+                        {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        async: true,
+                        success: function(response) {
+                            if (response == 'success')
+                            {
+                                sessionStorage.setItem("new_success", "success");
+                                window.location.href = '/candidate-type';
+                            }
+                        },
+                        error: function (e) {
+                            toastr.error('You Got Error', 'Inconceivable!', {timeOut: 5000})
+
+                            $('.create').text('Submit');
+                            $('.create').prop('disabled', false);
+                        }
+                    });
+
+                    return false;
+
+                }
+
+
+            });
+</script>
 <script>
     $(document).ready(function() {
 

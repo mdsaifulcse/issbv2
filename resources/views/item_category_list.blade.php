@@ -46,17 +46,48 @@ Item {{$mnu}}
     </ol>
 </section>
 <section class="content">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+                <div class="panel-heading clearfix">
+                    <h3 class="panel-title pull-left"><i class="livicon" data-name="doc-portrait" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                        Create {{$mnu}}
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form">
+                        <form id="create_data" class="needs-validation" novalidate>
+                            <div class="row">
+                                <div class="form-group col-md-8 col-lg-8">
+                                    <label for="category_name">{{$mnu}} Name</label>
+                                    <input type="text" class="form-control" name="category_name" id="category_name" placeholder="Category Name" required/>
+                                </div>
+                                <div class="form-group col-md-2 col-lg-2">
+                                    <br>
+                                    <button class="btn btn-success create">Submit</button>
+                                </div>
+                                
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
 
         <div class="col-lg-12">
             <div class="panel panel-info">
                 <div class="panel-heading clearfix">
                     <h3 class="panel-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        {{$mnu}}
+                        {{$mnu}} List
                     </h3>
-                    <div class="pull-right">
+                    {{-- <div class="pull-right">
                         <a href="{{ URL::to('/create-item-category') }}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span>Add New</a>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="panel-body">
 
@@ -104,6 +135,59 @@ Item {{$mnu}}
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script> -->
 <script language="javascript" type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
 <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}"></script>
+<script src="{{ asset('assets/js/toastr.min.js') }}"></script>
+    <script src="{{asset('js/jequery-validation.js')}}"></script>
+    <script>
+        $("#create_data").validate(
+                {
+                    ignore: [],
+                    debug: false,
+                    rules: {
+                        category_name: {
+                            required: true
+                        }
+                    },
+                    messages: {
+                        category_name: "This field is required",
+                    },
+
+                    submitHandler: function(form) {
+                        $('.create').text('Sending');
+                        $('.create').prop('disabled', true);
+                        var formData = new FormData($(form)[0]);
+                        $.ajax({
+                            type: "POST",
+                            url: 'storeItemCategory',
+                            data:formData,
+                            processData: false,
+                            contentType: false,
+                            headers:
+                            {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            async: true,
+                            success: function(response) {
+                                if (response == 'success')
+                                {
+                                    sessionStorage.setItem("new_success", "success");
+                                    window.location.href = '/item-category';
+                                }
+                            },
+                            error: function (e) {
+                                toastr.error('You Got Error', 'Inconceivable!', {timeOut: 5000})
+
+                                $('.create').text('Submit');
+                                $('.create').prop('disabled', false);
+                            }
+                        });
+
+                        return false;
+
+                    }
+
+
+                });
+    </script>
 
 <script>
     $(document).ready(function() {
