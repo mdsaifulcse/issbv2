@@ -116,6 +116,7 @@ class ExamConfigController extends Controller
      */
     public function store(Request $request)
     {
+        return 'sdf';
         $this->validate($request, [
             'test_config_id'      => 'required',
             'exam_date'           => 'required',

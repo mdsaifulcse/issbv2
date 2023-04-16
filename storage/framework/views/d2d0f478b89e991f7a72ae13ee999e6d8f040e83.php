@@ -82,7 +82,7 @@
                                     <td><?php echo e(ucfirst($value->set_type)); ?></td>
                                     <td>
                                         <?php if($value->set_configuration_type == 1): ?>
-                                            <span class="badge progress-bar-info">Random</span>
+                                            <span class="badge progress-bar-success">Random</span>
                                         <?php elseif($value->set_configuration_type == 2): ?>
                                             <span class="badge progress-bar-info">Static</span>
                                         <?php endif; ?>
